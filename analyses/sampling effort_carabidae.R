@@ -1,4 +1,4 @@
-librarian::shelf(dplyr, tidyr, vegan, nls2, ggplot2, pacman, tidytable, iNEXT.4steps)
+librarian::shelf(dplyr, tidyr, vegan, nls2, ggplot2, pacman, tidytable, iNEXT.4steps, purrr)
 
 
 data <- read.csv("data/raw-data/carabidae.csv", h = T, sep = ";", fileEncoding="latin1")
