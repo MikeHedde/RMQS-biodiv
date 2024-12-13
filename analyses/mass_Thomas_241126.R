@@ -12,8 +12,6 @@ masse <- read.csv("C:/Users/Thoma/OneDrive/Bureau/R stage/SCRIPT moi/clean.csv",
 masse <- read.csv("data/raw-data/stage_Thomas_241126.csv", h=T, sep=";", dec=".", fileEncoding = "ISO-8859-1")
 
 
-library(dplyr)
-
 # Liste des mots à exclure
 mots_a_exclure <- c("endommagé", "a peser", "non", "abdomen creux", "corps coupé en 2 ", "abdomen absent","repeser", "absence d'élytres ", "vide")  # Ajoutez d'autres mots ici
 
@@ -21,17 +19,8 @@ mots_a_exclure <- c("endommagé", "a peser", "non", "abdomen creux", "corps coup
 mass <- masse %>%
   filter(!grepl(paste(mots_a_exclure, collapse = "|"), remarque, ignore.case = TRUE))
 
-
-
-
-
-
-
 # Convertir la colonne 'MASSE (mg)' en numérique --> permet de remplacer toutes les , par .
 mass$MASSE <- as.numeric(gsub(",", ".", mass$MASSE))
-
-
-
 
 # mass par esp
 mass_esp <- mass %>%
@@ -54,38 +43,44 @@ ggplot(mass_esp2, aes(x = reorder(NOM_VALIDE, MASSE, median), y = MASSE))+
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) # fond cadrillage ? 
 
 ###############################################################################################""
- sp_list = c("Poecilus cupreus (Linnaeus, 1758)", 
-            "Harpalus distinguendus (Duftschmid, 1812)",
-            "Amara aenea (De Geer, 1774)", 
-            "Carabus auratus Linnaeus, 1761",
-            "Calathus fuscipes (Goeze, 1777)",
-            "Abax parallelepipedus (Piller & Mitterpacher, 1783)",
-            "Carabus monilis Fabricius, 1792",
+sp_list = c("Poecilus cupreus", 
+            "Harpalus distinguendus",
+            "Amara aenea", 
+            "Carabus auratus",
+            "Calathus fuscipes",
+            "Abax parallelepipedus",
+            "Carabus monilis",
             "Carabus nemoralis")
 #Lignes a garder uniquement si je veux faire une liste a un momment 
-
-
-
-# Filtrer les données selon la liste d'espèces et utiliser "HABITAT" pour la couleur et la comparaison
-SP <- mass %>%
-  filter(NOM_VALIDE %in% sp_list)  # Garder seulement les espèces de sp_list
-
-
-#Version plus simple : 
-#Boxplot  milieux ouvert / fermé de la liste 
-
-
-#carabe_mass_individual <- mass %>%
-  filter(NOM_VALIDE %in% sp_list) %>%   # Garder les espèces de sp_list (carabes)
+carabe_mass_individual <- mass %>%
+  filter(LB_NOM %in% sp_list) %>%   # Garder les espèces de sp_list (carabes)
   mutate(MASSE = as.numeric(MASSE))     # Convertir MASSE en numérique si nécessaire
 
 # Créer le boxplot avec les masses individuelles par habitat de la liste 
-#ggplot(carabe_mass_individual, aes(x = HABITAT, y = MASSE, fill = HABITAT)) +
+ggplot(carabe_mass_individual, aes(x = HABITAT, y = MASSE, fill = HABITAT)) +
   geom_boxplot(outlier.shape = NA) +
   geom_jitter(alpha = 0.5, width = 0.25, colour = "lightgreen") + # Ajouter des points pour voir les valeurs individuelles
-  scale_y_continuous(trans = 'log10')
+  scale_y_continuous(trans = 'log10')+
+  facet_wrap(LB_NOM~.)+
   labs(y = "Masse individuelle des carabes (mg)", x = "Type de milieu") +
   theme_bw()
+
+# Créer le boxplot avec les masses individuelles par habitat de la liste 
+Ca <- carabe_mass_individual %>%
+  filter(LB_NOM == "Carabus auratus") %>%
+  mutate(sex = case_when(male %in% c(1) ~ "male", 
+                         femelle %in% c(1) ~ "femelle",
+                         .default = "NA")) %>%
+  filter(!is.na(sex))
+
+ggplot(Ca, aes(x = MASSE, fill = sex)) +
+  geom_density(alpha = 0.5)+
+  scale_fill_manual(values = c("#332288", "#DDCC77"))+
+  lims(x=c(100, 1000))+
+  facet_grid(HABITAT~.)+
+  labs(x = "Masse individuelle de Carabus auratus (mg)", y = "density") + #titre des axes
+  theme_bw()#ajoute un fond = meilleur visibilité du graph 
+
 #########################################################################################""
 
 # Créer le boxplot avec les masses individuelles par habitat (sans filtrer par sp_list)
@@ -95,6 +90,12 @@ ggplot(mass, aes(x = HABITAT, y = MASSE, fill = HABITAT)) +
   geom_jitter(alpha = 0.25, width = 0.25, colour = "lightgreen") + # Ajouter des points pour voir les valeurs individuelles; alpha =opacité width= dispersition evite superposition des points 
   scale_y_continuous(trans = 'log10') + # Appliquer la transformation logarithmique sur l'axe des y
   labs(y = "Masse individuelle des carabes (mg)", x = "Type de milieu") + #titre des axes
+  theme_bw()#ajoute un fond = meilleur visibilité du graph 
+
+ggplot(mass, aes(x = MASSE, fill = HABITAT)) +
+  geom_density(alpha = 0.5)+
+  scale_x_continuous(trans='log10')+
+  labs(x = "Masse individuelle des carabes (mg)", y = "density") + #titre des axes
   theme_bw()#ajoute un fond = meilleur visibilité du graph 
 
 
