@@ -29,9 +29,15 @@ divent_form_ba <- DIVERSITY(data = data_form[data_form$METHODE == "Pitfall",])
 def_cov <- rbind(cbind(taxa = "carabidaeBA", divent_car_ba$def_cov), 
                  cbind(taxa = "araneaeBA", divent_ara_ba$def_cov), 
                  cbind(taxa = "collembola", divent_coll$def_cov),
-                 cbind(taxa = "formicidaeBA", divent_form_ba$def_cov)) %>%
-  left_join(divent_ara$station) %>%
-  left_join(list_hab)
+                 cbind(taxa = "formicidaeBA", divent_form_ba$def_cov),
+                 cbind(taxa = "isopodaBA", divent_iso_ba$def_cov),
+                 cbind(taxa = "diplopodaBA", divent_diplo_ba$def_cov),
+                 cbind(taxa = "formicidaeTM", divent_form_tm$def_cov),
+                 cbind(taxa = "isopodaTM", divent_iso_tm$def_cov),
+                 cbind(taxa = "diplopodaTM", divent_diplo_tm$def_cov)) %>%
+  left_join(divent_ara_ba$station) %>%
+  left_join(list_hab)%>%
+  filter(!is.na(site))
 
     # fusion avec les degrés-jours
     clim_moy <- read.csv("data/derived-data/clim_moy.csv", h = T, sep = ",")
@@ -58,7 +64,7 @@ def_cov <- rbind(cbind(taxa = "carabidaeBA", divent_car_ba$def_cov),
       theme_bw()
 
       # Représentation du déficit par habitat
-      ggplot(def_cov, aes(x = taxa, y = def_cov)) +
+      ggplot(subset(def_cov, HABITAT_TYPE %in% c("FERME", "OUVERT")), aes(x = taxa, y = def_cov)) +
         geom_hline(aes(linetype = "5%"), yintercept = 5, 
                    color = "#1b9e77", linewidth = 1) +
         geom_hline(aes(linetype = "33%"), yintercept = 33, 
@@ -67,11 +73,11 @@ def_cov <- rbind(cbind(taxa = "carabidaeBA", divent_car_ba$def_cov),
         geom_jitter(width = 0.15, alpha = 0.2, colour = "violet")+
         labs(y = "Deficit de couverture\n(% nombre d'espèces)", linetype = "")+
         lims(y=c(0,100))+
-        facet_grid(.~HABITAT_TYPE)+
+        facet_grid(HABITAT_TYPE~.)+
         theme_bw()
       
       # Représentation du déficit par degre-jour cumulés
-      ggplot(def_cov, aes(x = DD_cum, y = def_cov)) +
+      ggplot(subset(def_cov, HABITAT_TYPE %in% c("FERME", "OUVERT")), aes(x = DD_cum, y = def_cov)) +
         geom_hline(aes(linetype = "5%"), yintercept = 5, 
                    color = "#1b9e77", linewidth = 1) +
         geom_hline(aes(linetype = "33%"), yintercept = 33, 
@@ -94,9 +100,14 @@ def_cov <- rbind(cbind(taxa = "carabidaeBA", divent_car_ba$def_cov),
       
 # partition de diversité multitaxa
 div_part <- rbind(cbind(taxa = "carabidaeBA", divent_car_ba$div_part), 
-                 cbind(taxa = "araneaeBA", divent_ara_ba$div_part), 
-                 cbind(taxa = "collembola", divent_coll$div_part), 
-                 cbind(taxa = "formicidaeBA", divent_form_ba$div_part)) %>%
+                  cbind(taxa = "araneaeBA", divent_ara_ba$div_part), 
+                  cbind(taxa = "collembola", divent_coll$div_part),
+                  cbind(taxa = "formicidaeBA", divent_form_ba$div_part),
+                  cbind(taxa = "isopodaBA", divent_iso_ba$div_part),
+                  cbind(taxa = "diplopodaBA", divent_diplo_ba$div_part),
+                  cbind(taxa = "formicidaeTM", divent_form_tm$div_part),
+                  cbind(taxa = "isopodaTM", divent_iso_tm$div_part),
+                  cbind(taxa = "diplopodaTM", divent_diplo_tm$div_part)) %>%
   select(taxa, scale, estimator, diversity) %>%
   add_row(taxa = "carabidaeBA", scale = "gamma_obs", estimator = "", 
           diversity = length(unique(data_car$LB_NOM[data_car$METHODE == "Pitfall"]))) %>%
@@ -106,10 +117,20 @@ div_part <- rbind(cbind(taxa = "carabidaeBA", divent_car_ba$div_part),
           diversity = length(unique(data_coll$LB_NOM))) %>%
   add_row(taxa = "formicidaeBA", scale = "gamma_obs", estimator = "", 
           diversity = length(unique(data_form$LB_NOM))) %>%  
+  add_row(taxa = "formicidaeTM", scale = "gamma_obs", estimator = "", 
+          diversity = length(unique(data_form$LB_NOM))) %>%  
+  add_row(taxa = "isopodaTM", scale = "gamma_obs", estimator = "", 
+          diversity = length(unique(data_iso$LB_NOM))) %>%
+  add_row(taxa = "isopodaBA", scale = "gamma_obs", estimator = "", 
+          diversity = length(unique(data_iso$LB_NOM))) %>%  
+  add_row(taxa = "diplopodaTM", scale = "gamma_obs", estimator = "", 
+          diversity = length(unique(data_diplo$LB_NOM))) %>%
+  add_row(taxa = "diplopodaBA", scale = "gamma_obs", estimator = "", 
+          diversity = length(unique(data_diplo$LB_NOM))) %>%
   tibble
   
 
-ggplot(div_part, aes(x = scale, y = log10(diversity)))+
+ggplot(div_part, aes(x = scale, y = diversity))+
   geom_bar(stat="identity")+
   facet_grid(taxa~., scales = "free") +
   labs(y = "Diversité \n(nombre d'espèces, log-transfromé)", x = "Echelles")+
@@ -118,8 +139,13 @@ ggplot(div_part, aes(x = scale, y = log10(diversity)))+
 # Completude
 cov <- rbind(cbind(taxa = "carabidaeBA", divent_car_ba$cov), 
              cbind(taxa = "araneaeBA", divent_ara_ba$cov), 
-             cbind(taxa = "collembola", divent_coll$cov), 
-             cbind(taxa = "formicidaeB1", divent_form_ba$cov)) %>%
+             cbind(taxa = "collembola", divent_coll$cov),
+             cbind(taxa = "formicidaeBA", divent_form_ba$cov),
+             cbind(taxa = "isopodaBA", divent_iso_ba$cov),
+             cbind(taxa = "diplopodaBA", divent_diplo_ba$cov),
+             cbind(taxa = "formicidaeTM", divent_form_tm$cov),
+             cbind(taxa = "isopodaTM", divent_iso_tm$cov),
+             cbind(taxa = "diplopodaTM", divent_diplo_tm$cov)) %>%
   left_join(list_hab) %>%
   filter(!is.na(HABITAT_CODE))
 
@@ -137,21 +163,26 @@ cov <- rbind(cbind(taxa = "carabidaeBA", divent_car_ba$cov),
         # Représentation du déficit par degre-jour cumulés
         ggplot(cov, aes(x = cumulative_dd, y = coverage)) +
           geom_point(colour = "violet")+
-          #geom_smooth(se=FALSE, method = "lm", formula = y ~ poly(x, 1), lty = "dashed", color = "#DEEBF7")+
-          geom_smooth(se=T, method = "lm", formula = y ~ poly(x, 2), lty = "dashed", color = "#9ECAE1")+
+          geom_smooth(se=FALSE, method = "lm", formula = y ~ poly(x, 1), lty = "dashed", color = "#DEEBF7")+
+          #geom_smooth(se=T, method = "lm", formula = y ~ poly(x, 2), lty = "dashed", color = "#9ECAE1")+
           #geom_smooth(se=FALSE, method = "lm", formula = y ~ poly(x, 3), lty = "dashed", color = "#4292C6")+
           labs(y = "complétude (%)", 
                x = "Degrés-jours (>10 °C) cumulés\nau jour du prélèvement", linetype = "")+
           #lims(y=c(0,100))+
-          #facet_grid(HABITAT_TYPE~.)+
+          facet_grid(HABITAT_TYPE~taxa)+
           theme_bw()
 
 # Species accumulation curves
 acc  <- rbind(cbind(taxa = "carabidaeBA", divent_car_ba$acc), 
-                     cbind(taxa = "araneaeBA", divent_ara_ba$acc), 
-                     cbind(taxa = "collembola", divent_coll$acc), 
-                     cbind(taxa = "formicidaeBA", divent_form_ba$acc)) %>%
-  left_join(divent_ara$station) %>%
+              cbind(taxa = "araneaeBA", divent_ara_ba$acc), 
+              cbind(taxa = "collembola", divent_coll$acc),
+              cbind(taxa = "formicidaeBA", divent_form_ba$acc),
+              cbind(taxa = "isopodaBA", divent_iso_ba$acc),
+              cbind(taxa = "diplopodaBA", divent_diplo_ba$acc),
+              cbind(taxa = "formicidaeTM", divent_form_tm$acc),
+              cbind(taxa = "isopodaTM", divent_iso_tm$acc),
+              cbind(taxa = "diplopodaTM", divent_diplo_tm$acc)) %>%
+  left_join(divent_ara_ba$station) %>%
   left_join(list_hab) %>% 
   select(site, taxa, level, diversity, STATION, HABITAT_CODE, HABITAT_TYPE) %>%
   left_join(cov[,1:4], relationship = "many-to-many") %>%
@@ -162,14 +193,20 @@ acc  <- rbind(cbind(taxa = "carabidaeBA", divent_car_ba$acc),
       # représentation
       ggplot(acc, aes(x = level, y = diversity, group = STATION)) +
         geom_path(aes(colour = STATION))+
-        facet_grid(taxa ~ HABITAT_CODE, scales = "free")+
+        facet_wrap(taxa ~ ., scales = "free")+
         theme_bw()
       
       # profil de diversité
       Hill_number <- rbind(cbind(taxa = "carabidaeBA", divent_car_ba$hill_prof), 
-                   cbind(taxa = "araneaeBA", divent_ara_ba$hill_prof), 
-                   cbind(taxa = "collembola", divent_coll$hill_prof)) %>%
-        left_join(divent_ara$station) %>%
+                           cbind(taxa = "araneaeBA", divent_ara_ba$hill_prof), 
+                           cbind(taxa = "collembola", divent_coll$hill_prof),
+                           cbind(taxa = "formicidaeBA", divent_form_ba$hill_prof),
+                           cbind(taxa = "isopodaBA", divent_iso_ba$hill_prof),
+                           cbind(taxa = "diplopodaBA", divent_diplo_ba$hill_prof),
+                           cbind(taxa = "formicidaeTM", divent_form_tm$hill_prof),
+                           cbind(taxa = "isopodaTM", divent_iso_tm$hill_prof),
+                           cbind(taxa = "diplopodaTM", divent_diplo_tm$hill_prof))  %>%
+        left_join(divent_ara_ba$station) %>%
         left_join(list_hab) %>%
         filter(order %in% c(0,1,2))
       
@@ -206,6 +243,6 @@ ggplot(subset(eff, weight>6), aes(cumulative_dd, weight,
   scale_x_log10()+
   labs(x = "Degrés-jours (>10 °C) cumulés\nau jour du prélèvement",
        y = "Effectifs \n(nombre d'individus)")+
-  facet_grid(taxa~.)+
+  facet_wrap(taxa~.)+
   theme_bw()
   
