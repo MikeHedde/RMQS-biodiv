@@ -1,70 +1,70 @@
-STATION;HABITAT_decrit;HABITAT_CODE
-2021;Chenaie;Foret
-2021;Chenaie;Foret
-1768;Chênaie claire;Foret
-2257;Chênaie/ Érablaie;Foret
-1837;Culture;Culture
-2182;Culture;Culture
-1893;Culture;Culture
-1243;Culture;Culture
-1064;Culture;Culture
-1992;Culture de coriande;CulturePerenne
-827;Culture en bord de mer;Culture
-812;Forêt;Foret
-633;Forêt;Foret
-870;Forêt;Foret
-1706;Forêt feuillus;Foret
-644;Forêt mixte;Foret
-792;Forêt mixte;Foret
-215;Forêt mixte;Foret
-1464;Forêt mixte;Foret
-805;Forêt mixte;Foret
-926;Forêt mixte;Foret
-1372;Forêt mixte;Foret
-620;Forêt mixte;Foret
-1477;Friche humide;VegArbustive
-2034;Garrigue;VegArbustive
-2276;Hetraie;Foret
-1887;Lande à bruyère / fougeraie;VegArbustive
-2260;Maquis;VegArbustive
-1180;Monoculture;Culture
-1274;Monoculture;Culture
-476;Monoculture;Culture
-408;Monoculture;Culture
-1058;Monoculture;Culture
-291;Monoculture;Culture
-1310;Monoculture;Culture
-1366;Monoculture;Culture
-1537;Monoculture;Culture
-1166;Monoculture;Culture
-1090;Monoculture;Culture
-1694;Monoculture;Culture
-1030;Monoculture;Culture
-609;Monoculture;Culture
-1875;Monoculture;Culture
-152;Monoculture;Culture
-1491;Monoculture;Culture
-1660;Monoculture;Culture
-223;Monoculture;Culture
-2011;Monoculture;Culture
-157;Monoculture;Culture
-1826;Monoculture;Culture
-400;Monoculture;Culture
-423;Monoculture;Culture
-730;Monoculture;Culture
-137;Monoculture;Culture
-391;Parc urbain;Pelouse
-2312;Pelouse alpine;Pelouse
-1686;Pelouse alpine;Pelouse
-2076;Pelouse écorchée à salicorne;Pelouse
-2205;Pinède;Foret
-1996;Prairie;Prairie
-1237;Prairie;Prairie
-1677;Prairie de fauche;Prairie
-1174;Prairie de fauche;Prairie
-1141;Prairie de fauche;Prairie
-788;Prairie de fauche;Prairie
-1549;Prairie de fauche;Prairie
-1587;Prairie de pâture;Prairie
-1556;Verger;CulturePerenne
-288;Vignes;CulturePerenne
+STATION;HABITAT_decrit;HABITAT_CODE;HABITAT_TYPE
+1837;Culture;Culture;OUVERT
+2182;Culture;Culture;OUVERT
+1893;Culture;Culture;OUVERT
+1243;Culture;Culture;OUVERT
+1064;Culture;Culture;OUVERT
+827;Culture en bord de mer;Culture;OUVERT
+1180;Monoculture;Culture;OUVERT
+1274;Monoculture;Culture;OUVERT
+476;Monoculture;Culture;OUVERT
+408;Monoculture;Culture;OUVERT
+1058;Monoculture;Culture;OUVERT
+291;Monoculture;Culture;OUVERT
+1310;Monoculture;Culture;OUVERT
+1366;Monoculture;Culture;OUVERT
+1537;Monoculture;Culture;OUVERT
+1166;Monoculture;Culture;OUVERT
+1090;Monoculture;Culture;OUVERT
+1694;Monoculture;Culture;OUVERT
+1030;Monoculture;Culture;OUVERT
+609;Monoculture;Culture;OUVERT
+1875;Monoculture;Culture;OUVERT
+152;Monoculture;Culture;OUVERT
+1491;Monoculture;Culture;OUVERT
+1660;Monoculture;Culture;OUVERT
+223;Monoculture;Culture;OUVERT
+2011;Monoculture;Culture;OUVERT
+157;Monoculture;Culture;OUVERT
+1826;Monoculture;Culture;OUVERT
+400;Monoculture;Culture;OUVERT
+423;Monoculture;Culture;OUVERT
+730;Monoculture;Culture;OUVERT
+137;Monoculture;Culture;OUVERT
+1992;Culture de coriande;CulturePerenne;OUVERT
+1556;Verger;CulturePerenne;FERME
+288;Vignes;CulturePerenne;OUVERT
+2021;Chenaie;Foret;FERME
+2021;Chenaie;Foret;FERME
+1768;Chênaie claire;Foret;FERME
+2257;Chênaie/ Érablaie;Foret;FERME
+812;Forêt;Foret;FERME
+633;Forêt;Foret;FERME
+870;Forêt;Foret;FERME
+1706;Forêt feuillus;Foret;FERME
+644;Forêt mixte;Foret;FERME
+792;Forêt mixte;Foret;FERME
+215;Forêt mixte;Foret;FERME
+1464;Forêt mixte;Foret;FERME
+805;Forêt mixte;Foret;FERME
+926;Forêt mixte;Foret;FERME
+1372;Forêt mixte;Foret;FERME
+620;Forêt mixte;Foret;FERME
+2276;Hetraie;Foret;FERME
+2205;Pinède;Foret;FERME
+391;Parc urbain;Pelouse;OUVERT
+2312;Pelouse alpine;Pelouse;OUVERT
+1686;Pelouse alpine;Pelouse;OUVERT
+2076;Pelouse écorchée à salicorne;Pelouse;OUVERT
+1996;Prairie;Prairie;OUVERT
+1237;Prairie;Prairie;OUVERT
+1677;Prairie de fauche;Prairie;OUVERT
+1174;Prairie de fauche;Prairie;OUVERT
+1141;Prairie de fauche;Prairie;OUVERT
+788;Prairie de fauche;Prairie;OUVERT
+1549;Prairie de fauche;Prairie;OUVERT
+1587;Prairie de pâture;Prairie;OUVERT
+1477;Friche humide;VegArbustive;OUVERT
+2034;Garrigue;VegArbustive;FERME
+1887;Lande à bruyère / fougeraie;VegArbustive;OUVERT
+2260;Maquis;VegArbustive;FERME
