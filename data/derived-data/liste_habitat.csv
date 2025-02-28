@@ -1,70 +1,70 @@
-STATION;HABITAT_decrit;HABITAT_CODE;HABITAT_TYPE
-1837;Culture;Culture;OUVERT
-2182;Culture;Culture;OUVERT
-1893;Culture;Culture;OUVERT
-1243;Culture;Culture;OUVERT
-1064;Culture;Culture;OUVERT
-827;Culture en bord de mer;Culture;OUVERT
-1180;Monoculture;Culture;OUVERT
-1274;Monoculture;Culture;OUVERT
-476;Monoculture;Culture;OUVERT
-408;Monoculture;Culture;OUVERT
-1058;Monoculture;Culture;OUVERT
-291;Monoculture;Culture;OUVERT
-1310;Monoculture;Culture;OUVERT
-1366;Monoculture;Culture;OUVERT
-1537;Monoculture;Culture;OUVERT
-1166;Monoculture;Culture;OUVERT
-1090;Monoculture;Culture;OUVERT
-1694;Monoculture;Culture;OUVERT
-1030;Monoculture;Culture;OUVERT
-609;Monoculture;Culture;OUVERT
-1875;Monoculture;Culture;OUVERT
-152;Monoculture;Culture;OUVERT
-1491;Monoculture;Culture;OUVERT
-1660;Monoculture;Culture;OUVERT
-223;Monoculture;Culture;OUVERT
-2011;Monoculture;Culture;OUVERT
-157;Monoculture;Culture;OUVERT
-1826;Monoculture;Culture;OUVERT
-400;Monoculture;Culture;OUVERT
-423;Monoculture;Culture;OUVERT
-730;Monoculture;Culture;OUVERT
-137;Monoculture;Culture;OUVERT
-1992;Culture de coriande;CulturePerenne;OUVERT
-1556;Verger;CulturePerenne;FERME
-288;Vignes;CulturePerenne;OUVERT
-2021;Chenaie;Foret;FERME
-2021;Chenaie;Foret;FERME
-1768;Chênaie claire;Foret;FERME
-2257;Chênaie/ Érablaie;Foret;FERME
-812;Forêt;Foret;FERME
-633;Forêt;Foret;FERME
-870;Forêt;Foret;FERME
-1706;Forêt feuillus;Foret;FERME
-644;Forêt mixte;Foret;FERME
-792;Forêt mixte;Foret;FERME
-215;Forêt mixte;Foret;FERME
-1464;Forêt mixte;Foret;FERME
-805;Forêt mixte;Foret;FERME
-926;Forêt mixte;Foret;FERME
-1372;Forêt mixte;Foret;FERME
-620;Forêt mixte;Foret;FERME
-2276;Hetraie;Foret;FERME
-2205;Pinède;Foret;FERME
-391;Parc urbain;Pelouse;OUVERT
-2312;Pelouse alpine;Pelouse;OUVERT
-1686;Pelouse alpine;Pelouse;OUVERT
-2076;Pelouse écorchée à salicorne;Pelouse;OUVERT
-1996;Prairie;Prairie;OUVERT
-1237;Prairie;Prairie;OUVERT
-1677;Prairie de fauche;Prairie;OUVERT
-1174;Prairie de fauche;Prairie;OUVERT
-1141;Prairie de fauche;Prairie;OUVERT
-788;Prairie de fauche;Prairie;OUVERT
-1549;Prairie de fauche;Prairie;OUVERT
-1587;Prairie de pâture;Prairie;OUVERT
-1477;Friche humide;VegArbustive;OUVERT
-2034;Garrigue;VegArbustive;FERME
-1887;Lande à bruyère / fougeraie;VegArbustive;OUVERT
-2260;Maquis;VegArbustive;FERME
+STATION;HABITAT_decrit;HABITAT_CODE;HABITAT_TYPE;HAB
+1556;Verger;CulturePerenne;FERME;50
+2021;Chenaie;Foret;FERME;100
+2021;Chenaie;Foret;FERME;100
+1768;Chênaie claire;Foret;FERME;100
+2257;Chênaie/ Érablaie;Foret;FERME;100
+812;Forêt;Foret;FERME;100
+633;Forêt;Foret;FERME;100
+870;Forêt;Foret;FERME;100
+1706;Forêt feuillus;Foret;FERME;100
+644;Forêt mixte;Foret;FERME;100
+792;Forêt mixte;Foret;FERME;100
+215;Forêt mixte;Foret;FERME;100
+1464;Forêt mixte;Foret;FERME;100
+805;Forêt mixte;Foret;FERME;100
+926;Forêt mixte;Foret;FERME;100
+1372;Forêt mixte;Foret;FERME;100
+620;Forêt mixte;Foret;FERME;100
+2276;Hetraie;Foret;FERME;100
+2205;Pinède;Foret;FERME;100
+2034;Garrigue;VegArbustive;FERME;80
+2260;Maquis;VegArbustive;FERME;80
+1837;Culture;Culture;OUVERT;0
+2182;Culture;Culture;OUVERT;0
+1893;Culture;Culture;OUVERT;0
+1243;Culture;Culture;OUVERT;0
+1064;Culture;Culture;OUVERT;0
+827;Culture en bord de mer;Culture;OUVERT;0
+1180;Monoculture;Culture;OUVERT;0
+1274;Monoculture;Culture;OUVERT;0
+476;Monoculture;Culture;OUVERT;0
+408;Monoculture;Culture;OUVERT;0
+1058;Monoculture;Culture;OUVERT;0
+291;Monoculture;Culture;OUVERT;0
+1310;Monoculture;Culture;OUVERT;0
+1366;Monoculture;Culture;OUVERT;0
+1537;Monoculture;Culture;OUVERT;0
+1166;Monoculture;Culture;OUVERT;0
+1090;Monoculture;Culture;OUVERT;0
+1694;Monoculture;Culture;OUVERT;0
+1030;Monoculture;Culture;OUVERT;0
+609;Monoculture;Culture;OUVERT;0
+1875;Monoculture;Culture;OUVERT;0
+152;Monoculture;Culture;OUVERT;0
+1491;Monoculture;Culture;OUVERT;0
+1660;Monoculture;Culture;OUVERT;0
+223;Monoculture;Culture;OUVERT;0
+2011;Monoculture;Culture;OUVERT;0
+157;Monoculture;Culture;OUVERT;0
+1826;Monoculture;Culture;OUVERT;0
+400;Monoculture;Culture;OUVERT;0
+423;Monoculture;Culture;OUVERT;0
+730;Monoculture;Culture;OUVERT;0
+137;Monoculture;Culture;OUVERT;0
+1992;Culture de coriande;CulturePerenne;OUVERT;0
+288;Vignes;CulturePerenne;OUVERT;50
+391;Parc urbain;Pelouse;OUVERT;0
+2312;Pelouse alpine;Pelouse;OUVERT;0
+1686;Pelouse alpine;Pelouse;OUVERT;0
+2076;Pelouse écorchée à salicorne;Pelouse;OUVERT;0
+1996;Prairie;Prairie;OUVERT;0
+1237;Prairie;Prairie;OUVERT;0
+1677;Prairie de fauche;Prairie;OUVERT;0
+1174;Prairie de fauche;Prairie;OUVERT;0
+1141;Prairie de fauche;Prairie;OUVERT;0
+788;Prairie de fauche;Prairie;OUVERT;0
+1549;Prairie de fauche;Prairie;OUVERT;0
+1587;Prairie de pâture;Prairie;OUVERT;0
+1477;Friche humide;VegArbustive;OUVERT;0
+1887;Lande à bruyère / fougeraie;VegArbustive;OUVERT;20
