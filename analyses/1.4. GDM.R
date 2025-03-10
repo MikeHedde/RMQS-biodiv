@@ -12,7 +12,7 @@ habitat <- read.csv("data/derived-data/liste_habitat.csv", h = T, sep = ";") %>%
 sol <- read.csv("data/derived-data/pc_sols.csv", h = T, sep = ",")
 clim <- read.csv("data/derived-data/clim_stat.csv", h = T, sep = ",") %>%
   select(-X)
-sampling <- read.csv("data/raw-data/sampling_date.csv", h = T, sep = ";") %>%
+sampling <- read.csv("data/raw-data/2.env/sampling_date.csv", h = T, sep = ";") %>%
   rename_with(toupper)
 ndvi <- read.csv("data/derived-data/ndvi.csv", h=T, sep=",") %>%
   select(site, ndvi_m, ndvi_max, ndvi_sd) %>%
@@ -31,7 +31,7 @@ write.csv(env, "data/derived-data/all_env_variables.csv")
 
 # Chargement des données des différents taxons
 ## Collemboles
-data_coll <- read.csv("data/raw-data/collembola.csv", h = T, sep = ";", fileEncoding="latin1")%>%
+data_coll <- read.csv("data/raw-data/1.faune/collembola.csv", h = T, sep = ";", fileEncoding="latin1")%>%
   filter(RANK == "S") %>%
   select(STATION, LB_NOM, ABONDANCE_TOTALE)%>%
   group_by(STATION, LB_NOM)%>%
@@ -40,7 +40,7 @@ data_coll <- read.csv("data/raw-data/collembola.csv", h = T, sep = ";", fileEnco
   filter(STATION %in% unique(env$STATION))
 
 ## isopodes
-data_iso <- read.csv("data/raw-data/isopoda.csv", h = T, sep = ";", fileEncoding="latin1")%>%
+data_iso <- read.csv("data/raw-data/1.faune/isopoda.csv", h = T, sep = ";", fileEncoding="latin1")%>%
   filter(RANK == "S") %>%
   select(STATION, LB_NOM, ABONDANCE_TOTALE)%>%
   group_by(STATION, LB_NOM)%>%
@@ -49,7 +49,7 @@ data_iso <- read.csv("data/raw-data/isopoda.csv", h = T, sep = ";", fileEncoding
   filter(STATION %in% unique(env$STATION))
 
 ## diplopodes
-data_diplo <- read.csv("data/raw-data/diplopoda.csv", h = T, sep = ";", fileEncoding="latin1")%>%
+data_diplo <- read.csv("data/raw-data/1.faune/diplopoda.csv", h = T, sep = ";", fileEncoding="latin1")%>%
   filter(RANK == "S") %>%
   select(STATION, LB_NOM, ABONDANCE_TOTALE)%>%
   group_by(STATION, LB_NOM)%>%
@@ -139,7 +139,11 @@ sumCoef_p <- ggplot(sumCoef, aes(x=taxa, y = coef, fill = grp))+
   labs(x = "", y = "Percentage of deviance explained", 
        fill = "Group of \npredictors") +
   theme_bw()+
-  theme(legend.position=c(.85,.4))
+  theme(legend.position=c(.85,.5),
+        legend.title = element_text(size = 5), 
+        legend.text = element_text(size = 5),
+        axis.text.y = element_text(size = 6))+
+  guides(fill = guide_legend(override.aes = list(size = 0.5)))
 
 # Effet de la distance écologique
 predecol_coll <- data.frame(taxa = "Collembola", obs = gdm.1$observed, ecol = gdm.1$ecological, pred = gdm.1$predicted)
@@ -203,7 +207,7 @@ splines_T360mean <- data.frame(x = param.x$T360_mean_x,
 splines_gdm <- rbind(splines_COT, splines_ndvi, splines_geo, splines_T360mean)
 
 splines_p <- ggplot(splines_gdm, aes(x = x, y = y, colour = taxa))+
-  geom_line(size = 1.5)+
+  geom_line(linewidth = 1.5)+
   scale_colour_paletteer_d("nationalparkcolors::ArcticGates")+
   labs(y="Partial ecological distance", x="")+
   facet_wrap(param~., scales = "free_x",
@@ -217,7 +221,10 @@ splines_p <- ggplot(splines_gdm, aes(x = x, y = y, colour = taxa))+
         strip.placement = "outside",
         legend.position = "none")
 
-ggarrange(ggarrange(sumCoef_p, predecol_p,  
+assembled_GDM <- ggarrange(ggarrange(sumCoef_p, predecol_p,  
                     labels = c("A", "B"),
                     ncol = 2, nrow = 1),
           splines_p, nrow = 2, labels = "C", label.y = 0.1)
+
+ggsave("figures/article ASE/GDM detritivore.png", 
+       width = 21, height = 12, units = "cm")

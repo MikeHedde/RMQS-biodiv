@@ -1,0 +1,356 @@
+STATION;METHODE;REPETITION;CLASSE;ORDRE;FAMILLE;CD_NOM;LB_NOM;NOM_VALIDE;BOITE;CD_COLLECTION;NOM_CITE;RANK;male;femelle;Juvénile;ABONDANCE_TOTALE;REMARQUE_INDIVIDU;A VERIFIER;DETERMINATEUR;LEG;DATE_DETERMINATION
+215;Pitfall;3;Malacostraca;Isopoda;Armadillidiidae;189462;Armadillidium;Armadillidium Brandt, 1831;ISO_B2_T16;FNOE-97;Armadillidium;G;;1;1;2;;;F.NOEL;;45595
+215;Pitfall;4;Malacostraca;Isopoda;Armadillidiidae;189462;Armadillidium;Armadillidium Brandt, 1831;ISO_B2_T18;FNOE-99;Armadillidium;G;;;1;1;;;F.NOEL;;45595
+1237;Pitfall;3;Malacostraca;Isopoda;Armadillidiidae;189462;Armadillidium;Armadillidium Brandt, 1831;ISO_B3_T23;FNOE-185;Armadillidium;G;;;2;2;;;F.NOEL;;45595
+2205;Pitfall;6;Malacostraca;Isopoda;Armadillidiidae;189462;Armadillidium;Armadillidium Brandt, 1831;ISO_B5_T11;FNOE-335;Armadillidium;G;;;1;1;A.arcangelii ??;;F.NOEL;;45595
+1237;Pitfall;3;Malacostraca;Isopoda;Armadillidiidae;1012421;Armadillidium arcangelii;Armadillidium arcangelii Strouhal, 1929;ISO_B3_T24;FNOE-186;Armadillidium arcangelii;S;1;;;1;;;F.NOEL;;45595
+2076;Pitfall;6;Malacostraca;Isopoda;Armadillidiidae;1012421;Armadillidium arcangelii;Armadillidium arcangelii Strouhal, 1929;ISO_B5_T13;FNOE-337;Armadillidium arcangelii;S;1;;;1;;;F.NOEL;;45595
+2076;Pitfall;5;Malacostraca;Isopoda;Armadillidiidae;1012421;Armadillidium arcangelii;Armadillidium arcangelii Strouhal, 1929;ISO_B5_T14;FNOE-338;Armadillidium arcangelii;S;;1;;1;;;F.NOEL;;45595
+2076;Pitfall;4;Malacostraca;Isopoda;Armadillidiidae;1012421;Armadillidium arcangelii;Armadillidium arcangelii Strouhal, 1929;ISO_B5_T15;FNOE-339;Armadillidium arcangelii;S;3;;;3;;;F.NOEL;;45595
+2076;Pitfall;3;Malacostraca;Isopoda;Armadillidiidae;1012421;Armadillidium arcangelii;Armadillidium arcangelii Strouhal, 1929;ISO_B5_T16;FNOE-340;Armadillidium arcangelii;S;2;2;;4;;;F.NOEL;;45595
+2076;Pitfall;2;Malacostraca;Isopoda;Armadillidiidae;1012421;Armadillidium arcangelii;Armadillidium arcangelii Strouhal, 1929;ISO_B5_T17;FNOE-341;Armadillidium arcangelii;S;2;3;;5;;;F.NOEL;;45595
+2076;Pitfall;1;Malacostraca;Isopoda;Armadillidiidae;1012421;Armadillidium arcangelii;Armadillidium arcangelii Strouhal, 1929;ISO_B5_T18;FNOE-342;Armadillidium arcangelii;S;1;;;1;;;F.NOEL;;45595
+476;Pitfall;1;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B1_T73;FNOE-73;Armadillidium nasatum;S;1;;;1;;;F.NOEL;;45595
+476;Pitfall;2;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B1_T75;FNOE-75;Armadillidium nasatum;S;5;3;6;14;;;F.NOEL;;45595
+476;Pitfall;3;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B1_T78;FNOE-78;Armadillidium nasatum;S;9;8;2;19;;;F.NOEL;;45595
+476;Pitfall;4;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B1_T80;FNOE-80;Armadillidium nasatum;S;4;15;1;20;;;F.NOEL;;45595
+476;Pitfall;5;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B2_T2;FNOE-83;Armadillidium nasatum;S;2;1;;3;;;F.NOEL;;45595
+476;Pitfall;6;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B2_T3;FNOE-84;Armadillidium nasatum;S;8;8;;16;;;F.NOEL;;45595
+1310;Pitfall;2;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B3_T13;FNOE-175;Armadillidium nasatum;S;4;5;1;10;;;F.NOEL;;45595
+1310;Pitfall;3;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B3_T14;FNOE-176;Armadillidium nasatum;S;2;3;;5;;;F.NOEL;;45595
+1310;Pitfall;4;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B3_T15;FNOE-177;Armadillidium nasatum;S;2;;;2;;;F.NOEL;;45595
+1310;Pitfall;5;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B3_T16;FNOE-178;Armadillidium nasatum;S;7;6;;13;;;F.NOEL;;45595
+1310;Pitfall;6;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B3_T17;FNOE-179;Armadillidium nasatum;S;1;3;;4;;;F.NOEL;;45595
+1237;Pitfall;3;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B3_T25;FNOE-187;Armadillidium nasatum;S;2;1;;3;;;F.NOEL;;45595
+1237;Pitfall;6;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B3_T34;FNOE-196;Armadillidium nasatum;S;1;1;;2;;;F.NOEL;;45595
+1237;trimanuel;2;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B3_T40;FNOE-202;Armadillidium nasatum;S;1;;;1;;;F.NOEL;;45595
+1237;trimanuel;3;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B3_T42;FNOE-204;Armadillidium nasatum;S;;;3;3;;;F.NOEL;;45595
+1166;Pitfall;5;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B3_T70;FNOE-232;Armadillidium nasatum;S;1;2;;3;;;F.NOEL;;45595
+1166;trimanuel;2;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B3_T71;FNOE-233;Armadillidium nasatum;S;;;1;1;;;F.NOEL;;45595
+1166;trimanuel;3;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B3_T72;FNOE-234;Armadillidium nasatum;S;1;;;1;;;F.NOEL;;45595
+1166;trimanuel;5;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B3_T73;FNOE-235;Armadillidium nasatum;S;1;;1;2;;;F.NOEL;;45595
+1058;Pitfall;1;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B3_T75;FNOE-237;Armadillidium nasatum;S;1;1;;2;;;F.NOEL;;45595
+1556;Pitfall;6;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B4_T43;FNOE-286;Armadillidium nasatum;S;1;2;;3;;;F.NOEL;;45595
+1556;Pitfall;5;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B4_T44;FNOE-287;Armadillidium nasatum;S;2;5;;7;;;F.NOEL;;45595
+1556;Pitfall;4;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B4_T45;FNOE-288;Armadillidium nasatum;S;1;1;;2;;;F.NOEL;;45595
+1556;Pitfall;3;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B4_T46;FNOE-289;Armadillidium nasatum;S;2;3;;5;;;F.NOEL;;45595
+1556;Pitfall;2;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B4_T47;FNOE-290;Armadillidium nasatum;S;2;7;2;11;;;F.NOEL;;45595
+1556;trimanuel;5;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B4_T48;FNOE-291;Armadillidium nasatum;S;3;1;;4;;;F.NOEL;;45595
+1556;trimanuel;4;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B4_T49;FNOE-292;Armadillidium nasatum;S;2;;;2;;;F.NOEL;;45595
+1556;trimanuel;3;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B4_T50;FNOE-293;Armadillidium nasatum;S;3;1;;4;;;F.NOEL;;45595
+1826;Pitfall;6;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B4_T75;FNOE-318;Armadillidium nasatum;S;1;;;1;;;F.NOEL;;45595
+1826;Pitfall;5;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B4_T77;FNOE-320;Armadillidium nasatum;S;;1;;1;;;F.NOEL;;45595
+1826;trimanuel;5;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B4_T78;FNOE-321;Armadillidium nasatum;S;;;5;5;;;F.NOEL;;45595
+1826;trimanuel;4;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B4_T80;FNOE-323;Armadillidium nasatum;S;;;6;6;;;F.NOEL;;45595
+1826;trimanuel;2;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B5_T1;FNOE-325;Armadillidium nasatum;S;;;2;2;;;F.NOEL;;45595
+1826;trimanuel;1;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B5_T2;FNOE-326;Armadillidium nasatum;S;;;2;2;;;F.NOEL;;45595
+2011;Pitfall;6;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B5_T21;FNOE-345;Armadillidium nasatum;S;;1;;1;;;F.NOEL;;45595
+2011;Pitfall;5;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B5_T22;FNOE-346;Armadillidium nasatum;S;;1;;1;;;F.NOEL;;45595
+2011;Pitfall;4;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B5_T23;FNOE-347;Armadillidium nasatum;S;;1;;1;;;F.NOEL;;45595
+1875;Pitfall;5;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_GB1_T3;FNOE-350;Armadillidium nasatum;S;6;5;1;12;;;F.NOEL;;45595
+1875;Pitfall;4;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B5_T30;FNOE-354;Armadillidium nasatum;S;1;4;1;6;;;F.NOEL;;45595
+1875;Pitfall;3;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B5_T32;FNOE-356;Armadillidium nasatum;S;;2;1;3;;;F.NOEL;;45595
+1875;Pitfall;2;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B5_T34;FNOE-358;Armadillidium nasatum;S;2;3;2;7;;;F.NOEL;;45595
+1875;trimanuel;3;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B5_T36;FNOE-360;Armadillidium nasatum;S;;1;;1;;;F.NOEL;;45595
+1875;trimanuel;2;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B5_T37;FNOE-361;Armadillidium nasatum;S;3;3;;6;;;F.NOEL;;45595
+1491;trimanuel;4;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B5_T39;FNOE-363;Armadillidium nasatum;S;;;1;1;;;F.NOEL;;45595
+1491;trimanuel;6;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B5_T39;FNOE-363;Armadillidium nasatum;S;;;1;1;;;F.NOEL;;45595
+1537;trimanuel;2;Malacostraca;Isopoda;Armadillidiidae;699887;Armadillidium nasatum;Armadillidium nasatum Budde-Lund, 1885;ISO_B5_T43;FNOE-367;Armadillidium nasatum;S;;;1;1;;;F.NOEL;;45595
+1464;Pitfall;5;Malacostraca;Isopoda;Armadillidiidae;237023;Armadillidium pictum;Armadillidium pictum Brandt, 1833;ISO_B2_T51;FNOE-132;Armadillidium pictum;S;1;;;1;;;F.NOEL;;45595
+1464;Pitfall;6;Malacostraca;Isopoda;Armadillidiidae;237023;Armadillidium pictum;Armadillidium pictum Brandt, 1833;ISO_B2_T56;FNOE-137;Armadillidium pictum;S;1;;;1;;;F.NOEL;;45595
+1464;Pitfall;1;Malacostraca;Isopoda;Armadillidiidae;237023;Armadillidium pictum;Armadillidium pictum Brandt, 1833;ISO_B2_T63;FNOE-144;Armadillidium pictum;S;;1;;1;;;F.NOEL;;45595
+1464;Pitfall;3;Malacostraca;Isopoda;Armadillidiidae;237023;Armadillidium pictum;Armadillidium pictum Brandt, 1833;ISO_B2_T68;FNOE-149;Armadillidium pictum;S;;1;;1;;;F.NOEL;;45595
+1464;trimanuel;4;Malacostraca;Isopoda;Armadillidiidae;237023;Armadillidium pictum;Armadillidium pictum Brandt, 1833;ISO_B4_T35;FNOE-278;Armadillidium pictum;S;;1;;1;;;F.NOEL;;45595
+1464;Pitfall;5;Malacostraca;Isopoda;Armadillidiidae;237025;Armadillidium pulchellum;Armadillidium pulchellum (Zenker, 1799);ISO_B2_T50;FNOE-131;Armadillidium pulchellum;S;2;3;;5;;;F.NOEL;;45595
+1464;Pitfall;6;Malacostraca;Isopoda;Armadillidiidae;237025;Armadillidium pulchellum;Armadillidium pulchellum (Zenker, 1799);ISO_B2_T55;FNOE-136;Armadillidium pulchellum;S;2;1;;3;;;F.NOEL;;45595
+1464;trimanuel;3;Malacostraca;Isopoda;Armadillidiidae;237025;Armadillidium pulchellum;Armadillidium pulchellum (Zenker, 1799);ISO_B2_T59;FNOE-140;Armadillidium pulchellum;S;1;;;1;;;F.NOEL;;45595
+1464;Pitfall;1;Malacostraca;Isopoda;Armadillidiidae;237025;Armadillidium pulchellum;Armadillidium pulchellum (Zenker, 1799);ISO_B2_T62;FNOE-143;Armadillidium pulchellum;S;2;;2;4;;;F.NOEL;;45595
+1464;Pitfall;2;Malacostraca;Isopoda;Armadillidiidae;237025;Armadillidium pulchellum;Armadillidium pulchellum (Zenker, 1799);ISO_B2_T67;FNOE-148;Armadillidium pulchellum;S;;;1;1;;;F.NOEL;;45595
+1464;trimanuel;6;Malacostraca;Isopoda;Armadillidiidae;237025;Armadillidium pulchellum;Armadillidium pulchellum (Zenker, 1799);ISO_B4_T31;FNOE-274;Armadillidium pulchellum;S;1;1;;2;;;F.NOEL;;45595
+476;Pitfall;2;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B1_T77;FNOE-77;Armadillidium vulgare;S;;1;;1;;;F.NOEL;;45595
+1366;trimanuel;5;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B3_T12;FNOE-174;Armadillidium vulgare;S;;1;;1;;;F.NOEL;;45595
+1274;trimanuel;6;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B3_T20;FNOE-182;Armadillidium vulgare;S;;1;;1;;;F.NOEL;;45595
+1237;Pitfall;3;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B3_T22;FNOE-184;Armadillidium vulgare;S;;;2;2;;;F.NOEL;;45595
+1237;Pitfall;4;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B3_T28;FNOE-190;Armadillidium vulgare;S;;1;1;2;;;F.NOEL;;45595
+1237;Pitfall;5;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B3_T31;FNOE-193;Armadillidium vulgare;S;1;;;1;;;F.NOEL;;45595
+1237;Pitfall;6;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_GB1-T1;FNOE-195;Armadillidium vulgare;S;10;19;3;32;;;F.NOEL;;45595
+1237;trimanuel;1;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B3_T38;FNOE-200;Armadillidium vulgare;S;;;3;3;;;F.NOEL;;45595
+1237;trimanuel;3;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B3_T41;FNOE-203;Armadillidium vulgare;S;;;8;8;;;F.NOEL;;45595
+1237;trimanuel;4;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B3_T46;FNOE-208;Armadillidium vulgare;S;;;1;1;;;F.NOEL;;45595
+1237;Pitfall;1;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B3_T52;FNOE-214;Armadillidium vulgare;S;1;2;;3;;;F.NOEL;;45595
+1237;Pitfall;2;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B3_T57;FNOE-219;Armadillidium vulgare;S;;;2;2;;;F.NOEL;;45595
+2205;Pitfall;4;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B5_T12;FNOE-336;Armadillidium vulgare;S;;;1;1;;;F.NOEL;;45595
+1875;Pitfall;6;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B5_T25;FNOE-349;Armadillidium vulgare;S;4;4;;8;;;F.NOEL;;45595
+1875;Pitfall;5;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B5_T27;FNOE-351;Armadillidium vulgare;S;1;8;;9;;;F.NOEL;;45595
+1875;Pitfall;4;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_GB1_T4;FNOE-353;Armadillidium vulgare;S;5;16;;21;;;F.NOEL;;45595
+1875;Pitfall;3;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B5_T31;FNOE-355;Armadillidium vulgare;S;5;8;1;14;;;F.NOEL;;45595
+1875;Pitfall;2;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B5_T33;FNOE-357;Armadillidium vulgare;S;2;6;;8;;;F.NOEL;;45595
+1875;Pitfall;1;Malacostraca;Isopoda;Armadillidiidae;18829;Armadillidium vulgare;Armadillidium vulgare (Latreille, 1804);ISO_B5_T35;FNOE-359;Armadillidium vulgare;S;1;3;;4;;;F.NOEL;;45595
+1992;Pitfall;4;Malacostraca;Isopoda;Philosciidae;202726;Chaetophiloscia elongata;Chaetophiloscia Verhoeff, 1909;ISO_B5_T24;FNOE-348;Chaetophiloscia;G;;2;;2;cf. C. sicula;;F.NOEL;;45595
+1237;Pitfall;3;Malacostraca;Isopoda;Philosciidae;237055;Chaetophiloscia elongata;Chaetophiloscia elongata (Dollfus, 1884);ISO_B3_T27;FNOE-189;Chaetophiloscia elongata;S;;2;;2;;;F.NOEL;;45595
+1237;Pitfall;4;Malacostraca;Isopoda;Philosciidae;237055;Chaetophiloscia elongata;Chaetophiloscia elongata (Dollfus, 1884);ISO_B3_T29;FNOE-191;Chaetophiloscia elongata;S;;1;;1;;;F.NOEL;;45595
+1237;Pitfall;6;Malacostraca;Isopoda;Philosciidae;237055;Chaetophiloscia elongata;Chaetophiloscia elongata (Dollfus, 1884);ISO_B3_T35;FNOE-197;Chaetophiloscia elongata;S;;10;;10;à minima;;F.NOEL;;45595
+1237;trimanuel;1;Malacostraca;Isopoda;Philosciidae;237055;Chaetophiloscia elongata;Chaetophiloscia elongata (Dollfus, 1884);ISO_B3_T39;FNOE-201;Chaetophiloscia elongata;S;1;;;1;;;F.NOEL;;45595
+1237;trimanuel;3;Malacostraca;Isopoda;Philosciidae;237055;Chaetophiloscia elongata;Chaetophiloscia elongata (Dollfus, 1884);ISO_B3_T44;FNOE-206;Chaetophiloscia elongata;S;;1;;1;;;F.NOEL;;45595
+1237;trimanuel;4;Malacostraca;Isopoda;Philosciidae;237055;Chaetophiloscia elongata;Chaetophiloscia elongata (Dollfus, 1884);ISO_B3_T47;FNOE-209;Chaetophiloscia elongata;S;1;;;1;;;F.NOEL;;45595
+1237;trimanuel;5;Malacostraca;Isopoda;Philosciidae;237055;Chaetophiloscia elongata;Chaetophiloscia elongata (Dollfus, 1884);ISO_B3_T50;FNOE-212;Chaetophiloscia elongata;S;;1;;1;;;F.NOEL;;45595
+1237;Pitfall;1;Malacostraca;Isopoda;Philosciidae;237055;Chaetophiloscia elongata;Chaetophiloscia elongata (Dollfus, 1884);ISO_B3_T53;FNOE-215;Chaetophiloscia elongata;S;;2;;2;;;F.NOEL;;45595
+827;trimanuel;3;Malacostraca;Isopoda;Philosciidae;237055;Chaetophiloscia elongata;Chaetophiloscia elongata (Dollfus, 1884);ISO_B4_T14;FNOE-257;Chaetophiloscia elongata;S;;1;;1;;;F.NOEL;;45595
+827;trimanuel;6;Malacostraca;Isopoda;Philosciidae;237055;Chaetophiloscia elongata;Chaetophiloscia elongata (Dollfus, 1884);ISO_B4_T17;FNOE-260;Chaetophiloscia elongata;S;;1;;1;;;F.NOEL;;45595
+827;trimanuel;2;Malacostraca;Isopoda;Philosciidae;237055;Chaetophiloscia elongata;Chaetophiloscia elongata (Dollfus, 1884);ISO_B4_T22;FNOE-265;Chaetophiloscia elongata;S;;2;;2;;;F.NOEL;;45595
+827;trimanuel;1;Malacostraca;Isopoda;Philosciidae;237055;Chaetophiloscia elongata;Chaetophiloscia elongata (Dollfus, 1884);ISO_B4_T23;FNOE-266;Chaetophiloscia elongata;S;1;;;1;;;F.NOEL;;45595
+1875;Pitfall;5;Malacostraca;Isopoda;Philosciidae;237055;Chaetophiloscia elongata;Chaetophiloscia elongata (Dollfus, 1884);ISO_B5_T28;FNOE-352;Chaetophiloscia elongata;S;1;;;1;;;F.NOEL;;45595
+1237;Pitfall;3;Malacostraca;Isopoda;Philosciidae;237057;Chaetophiloscia sicula;Chaetophiloscia sicula Verhoeff, 1909;ISO_B3_T26;FNOE-188;Chaetophiloscia sicula;S;1;4;;5;;;F.NOEL;;45595
+1237;Pitfall;4;Malacostraca;Isopoda;Philosciidae;237057;Chaetophiloscia sicula;Chaetophiloscia sicula Verhoeff, 1909;ISO_B3_T30;FNOE-192;Chaetophiloscia sicula;S;1;2;;3;;;F.NOEL;;45595
+1237;Pitfall;5;Malacostraca;Isopoda;Philosciidae;237057;Chaetophiloscia sicula;Chaetophiloscia sicula Verhoeff, 1909;ISO_B3_T32;FNOE-194;Chaetophiloscia sicula;S;;2;;2;;;F.NOEL;;45595
+1237;Pitfall;6;Malacostraca;Isopoda;Philosciidae;237057;Chaetophiloscia sicula;Chaetophiloscia sicula Verhoeff, 1909;ISO_GB1-T2;FNOE-198;Chaetophiloscia sicula;S;;;;71;71 non sexés, probablement majorité de C.sicula;;F.NOEL;;45595
+1237;trimanuel;3;Malacostraca;Isopoda;Philosciidae;237057;Chaetophiloscia sicula;Chaetophiloscia sicula Verhoeff, 1909;ISO_B3_T43;FNOE-205;Chaetophiloscia sicula;S;1;8;;9;;;F.NOEL;;45595
+1237;trimanuel;4;Malacostraca;Isopoda;Philosciidae;237057;Chaetophiloscia sicula;Chaetophiloscia sicula Verhoeff, 1909;ISO_B3_T48;FNOE-210;Chaetophiloscia sicula;S;2;1;;3;;;F.NOEL;;45595
+1237;trimanuel;5;Malacostraca;Isopoda;Philosciidae;237057;Chaetophiloscia sicula;Chaetophiloscia sicula Verhoeff, 1909;ISO_B3_T49;FNOE-211;Chaetophiloscia sicula;S;;1;;1;;;F.NOEL;;45595
+1237;trimanuel;6;Malacostraca;Isopoda;Philosciidae;237057;Chaetophiloscia sicula;Chaetophiloscia sicula Verhoeff, 1909;ISO_B3_T51;FNOE-213;Chaetophiloscia sicula;S;;1;;1;;;F.NOEL;;45595
+1237;Pitfall;1;Malacostraca;Isopoda;Philosciidae;237057;Chaetophiloscia sicula;Chaetophiloscia sicula Verhoeff, 1909;ISO_B3_T54;FNOE-216;Chaetophiloscia sicula;S;;1;;1;;;F.NOEL;;45595
+1237;Pitfall;2;Malacostraca;Isopoda;Philosciidae;237057;Chaetophiloscia sicula;Chaetophiloscia sicula Verhoeff, 1909;ISO_B3_T56;FNOE-218;Chaetophiloscia sicula;S;;1;;1;;;F.NOEL;;45595
+1826;Pitfall;6;Malacostraca;Isopoda;Philosciidae;237057;Chaetophiloscia sicula;Chaetophiloscia sicula Verhoeff, 1909;ISO_B4_T74;FNOE-317;Chaetophiloscia sicula;S;1;;;1;;;F.NOEL;;45595
+1826;Pitfall;5;Malacostraca;Isopoda;Philosciidae;237057;Chaetophiloscia sicula;Chaetophiloscia sicula Verhoeff, 1909;ISO_B4_T76;FNOE-319;Chaetophiloscia sicula;S;;1;;1;;;F.NOEL;;45595
+1826;trimanuel;5;Malacostraca;Isopoda;Philosciidae;237057;Chaetophiloscia sicula;Chaetophiloscia sicula Verhoeff, 1909;ISO_B4_T79;FNOE-322;Chaetophiloscia sicula;S;;3;;3;;;F.NOEL;;45595
+1826;trimanuel;4;Malacostraca;Isopoda;Philosciidae;237057;Chaetophiloscia sicula;Chaetophiloscia sicula Verhoeff, 1909;ISO_B4_T81;FNOE-324;Chaetophiloscia sicula;S;;2;;2;;;F.NOEL;;45595
+2034;Pitfall;2;Malacostraca;Isopoda;Philosciidae;237057;Chaetophiloscia sicula;Chaetophiloscia sicula Verhoeff, 1909;ISO_B5_T19;FNOE-343;Chaetophiloscia sicula;S;1;;;1;ovigère;;F.NOEL;;45595
+1372;Pitfall;4;Malacostraca;Isopoda;Armadillidiidae;781044;Eluma caelata;Eluma caelata (Miers, 1878);ISO_B2_T71;FNOE-152;Eluma caelata;S;1;;;1;;;F.NOEL;;45595
+1372;Pitfall;5;Malacostraca;Isopoda;Armadillidiidae;781044;Eluma caelata;Eluma caelata (Miers, 1878);ISO_B2_T73;FNOE-154;Eluma caelata;S;1;;;1;;;F.NOEL;;45595
+1372;trimanuel;1;Malacostraca;Isopoda;Armadillidiidae;781044;Eluma caelata;Eluma caelata (Miers, 1878);ISO_B2_T75;FNOE-156;Eluma caelata;S;;;2;2;;;F.NOEL;;45595
+1372;trimanuel;2;Malacostraca;Isopoda;Armadillidiidae;781044;Eluma caelata;Eluma caelata (Miers, 1878);ISO_B2_T77;FNOE-158;Eluma caelata;S;1;;1;2;;;F.NOEL;;45595
+1372;trimanuel;3;Malacostraca;Isopoda;Armadillidiidae;781044;Eluma caelata;Eluma caelata (Miers, 1878);ISO_B2_T81;FNOE-162;Eluma caelata;S;;;3;3;;;F.NOEL;;45595
+1372;trimanuel;5;Malacostraca;Isopoda;Armadillidiidae;781044;Eluma caelata;Eluma caelata (Miers, 1878);ISO_B3_T4;FNOE-166;Eluma caelata;S;1;;;1;;;F.NOEL;;45595
+1372;trimanuel;6;Malacostraca;Isopoda;Armadillidiidae;781044;Eluma caelata;Eluma caelata (Miers, 1878);ISO_B3_T5;FNOE-167;Eluma caelata;S;1;;;1;;;F.NOEL;;45595
+1372;Pitfall;2;Malacostraca;Isopoda;Armadillidiidae;781044;Eluma caelata;Eluma caelata (Miers, 1878);ISO_B3_T9;FNOE-171;Eluma caelata;S;1;1;;2;;;F.NOEL;;45595
+1464;Pitfall;1;Malacostraca;Isopoda;Trichoniscidae;237139;Hyloniscus riparius;Hyloniscus riparius (Koch, 1838);ISO_B2_T64;FNOE-145;Hyloniscus riparius;S;1;;;1;;;F.NOEL;;45595
+1477;trimanuel;5;Malacostraca;Isopoda;Trichoniscidae;237139;Hyloniscus riparius;Hyloniscus riparius (Koch, 1838);ISO_B4_T37;FNOE-280;Hyloniscus riparius;S;;1;;1;;;F.NOEL;;45595
+1477;trimanuel;1;Malacostraca;Isopoda;Trichoniscidae;237139;Hyloniscus riparius;Hyloniscus riparius (Koch, 1838);ISO_B4_T38;FNOE-281;Hyloniscus riparius;S;;2;;2;;;F.NOEL;;45595
+926;Pitfall;2;Malacostraca;Isopoda;Ligiidae;237050;Ligidium hypnorum;Ligidium hypnorum (Cuvier, 1792);ISO_B3_T78;FNOE-240;Ligidium hypnorum;S;3;2;;5;;;F.NOEL;;45595
+926;Pitfall;6;Malacostraca;Isopoda;Ligiidae;237050;Ligidium hypnorum;Ligidium hypnorum (Cuvier, 1792);ISO_B4_T3;FNOE-246;Ligidium hypnorum;S;1;;;1;;;F.NOEL;;45595
+644;Pitfall;2;Malacostraca;Isopoda;Oniscidae;237051;Oniscus asellus;Oniscus asellus Linnaeus, 1758;ISO_B1_T28;FNOE-28;Oniscus asellus;S;;1;;1;ovigère;;F.NOEL;;45595
+633;trimanuel;1;Malacostraca;Isopoda;Oniscidae;237051;Oniscus asellus;Oniscus asellus Linnaeus, 1758;ISO_B1_T39;FNOE-39;Oniscus asellus;S;;;1;1;;;F.NOEL;;45595
+620;Pitfall;4;Malacostraca;Isopoda;Oniscidae;237051;Oniscus asellus;Oniscus asellus Linnaeus, 1758;ISO_B1_T59;FNOE-59;Oniscus asellus;S;;1;;1;;;F.NOEL;;45595
+620;trimanuel;4;Malacostraca;Isopoda;Oniscidae;237051;Oniscus asellus;Oniscus asellus Linnaeus, 1758;ISO_B1_T68;FNOE-68;Oniscus asellus;S;;;1;1;;;F.NOEL;;45595
+926;Pitfall;4;Malacostraca;Isopoda;Oniscidae;237051;Oniscus asellus;Oniscus asellus Linnaeus, 1758;ISO_B3_T80;FNOE-242;Oniscus asellus;S;;1;;1;;;F.NOEL;;45595
+1706;trimanuel;3;Malacostraca;Isopoda;Agnaridae;311068;Orthometopon planum;Orthometopon planum (Budde-Lund, 1885);ISO_B4_T64;FNOE-307;Orthometopon planum;S;;1;;1;;;F.NOEL;;45595
+1706;trimanuel;2;Malacostraca;Isopoda;Agnaridae;311068;Orthometopon planum;Orthometopon planum (Budde-Lund, 1885);ISO_B4_T66;FNOE-309;Orthometopon planum;S;;1;;1;;;F.NOEL;;45595
+1706;trimanuel;1;Malacostraca;Isopoda;Agnaridae;311068;Orthometopon planum;Orthometopon planum (Budde-Lund, 1885);ISO_B4_T68;FNOE-311;Orthometopon planum;S;1;;;1;;;F.NOEL;;45595
+215;Pitfall;6;Malacostraca;Isopoda;Philosciidae;202731;Philoscia muscorum;Philoscia Latreille, 1804;ISO_B2_T20;FNOE-101;Philoscia;G;;;;2;2 ind non identifiables, secs;;F.NOEL;;45595
+812;Pitfall;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T1;FNOE-1;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+812;Pitfall;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T2;FNOE-2;philoscia muscorum;S;;;;4;secs;;F.NOEL;;45595
+812;Pitfall;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T3;FNOE-3;philoscia muscorum;S;2;;;2;;;F.NOEL;;45595
+805;Pitfall;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T4;FNOE-4;philoscia muscorum;S;22;9;;31;;;F.NOEL;;45595
+805;Pitfall;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T5;FNOE-5;philoscia muscorum;S;2;5;;7;;;F.NOEL;;45595
+805;Pitfall;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T7;FNOE-7;philoscia muscorum;S;2;2;;4;;;F.NOEL;;45595
+805;trimanuel;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T10;FNOE-10;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+805;trimanuel;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T11;FNOE-11;philoscia muscorum;S;2;1;;3;;;F.NOEL;;45595
+805;trimanuel;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T12;FNOE-12;philoscia muscorum;S;1;2;;3;;;F.NOEL;;45595
+805;trimanuel;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T15;FNOE-15;philoscia muscorum;S;;5;1;6;;;F.NOEL;;45595
+805;trimanuel;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T16;FNOE-16;philoscia muscorum;S;2;2;1;5;;;F.NOEL;;45595
+792;Pitfall;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T17;FNOE-17;philoscia muscorum;S;3;2;;5;;;F.NOEL;;45595
+792;Pitfall;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T18;FNOE-18;philoscia muscorum;S;;3;;3;;;F.NOEL;;45595
+792;trimanuel;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T19;FNOE-19;philoscia muscorum;S;;;1;1;;;F.NOEL;;45595
+792;trimanuel;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T21;FNOE-21;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+792;trimanuel;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T22;FNOE-22;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+792;Pitfall;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T23;FNOE-23;philoscia muscorum;S;6;4;;10;;;F.NOEL;;45595
+730;Pitfall;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T24;FNOE-24;philoscia muscorum;S;1;;;1;;;F.NOEL;;45595
+730;Pitfall;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T25;FNOE-25;philoscia muscorum;S;1;;;1;;;F.NOEL;;45595
+730;Pitfall;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T26;FNOE-26;philoscia muscorum;S;2;;;2;;;F.NOEL;;45595
+644;Pitfall;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T27;FNOE-27;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+644;Pitfall;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T29;FNOE-29;philoscia muscorum;S;1;2;;3;;;F.NOEL;;45595
+644;Pitfall;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T30;FNOE-30;philoscia muscorum;S;;2;;2;;;F.NOEL;;45595
+644;trimanuel;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T32;FNOE-32;philoscia muscorum;S;;1;;1;ovigère;;F.NOEL;;45595
+644;trimanuel;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T33;FNOE-33;philoscia muscorum;S;1;2;;3;;;F.NOEL;;45595
+644;trimanuel;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T34;FNOE-34;philoscia muscorum;S;1;;;1;;;F.NOEL;;45595
+644;trimanuel;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T35;FNOE-35;philoscia muscorum;S;;2;;2;;;F.NOEL;;45595
+633;Pitfall;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T36;FNOE-36;philoscia muscorum;S;2;5;;7;;;F.NOEL;;45595
+633;Pitfall;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T37;FNOE-37;philoscia muscorum;S;4;5;;9;;;F.NOEL;;45595
+633;trimanuel;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T38;FNOE-38;philoscia muscorum;S;5;2;;7;;;F.NOEL;;45595
+633;trimanuel;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T42;FNOE-42;philoscia muscorum;S;6;7;2;15;;;F.NOEL;;45595
+633;trimanuel;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T43;FNOE-43;philoscia muscorum;S;3;3;;6;;;F.NOEL;;45595
+633;trimanuel;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T45;FNOE-45;philoscia muscorum;S;10;5;1;16;;;F.NOEL;;45595
+633;trimanuel;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T47;FNOE-47;philoscia muscorum;S;1;;;1;;;F.NOEL;;45595
+620;trimanuel;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T49;FNOE-49;philoscia muscorum;S;;2;;2;;;F.NOEL;;45595
+620;trimanuel;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T51;FNOE-51;philoscia muscorum;S;1;6;;7;;;F.NOEL;;45595
+620;Pitfall;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T53;FNOE-53;philoscia muscorum;S;1;3;;4;;;F.NOEL;;45595
+620;Pitfall;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T54;FNOE-54;philoscia muscorum;S;4;8;;12;;;F.NOEL;;45595
+620;Pitfall;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T55;FNOE-55;philoscia muscorum;S;3;1;;4;;;F.NOEL;;45595
+620;Pitfall;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T57;FNOE-57;philoscia muscorum;S;10;6;;16;;;F.NOEL;;45595
+620;Pitfall;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T60;FNOE-60;philoscia muscorum;S;8;7;2;17;"2 ""juvs"" = 2 inds sexe indéterminé";;F.NOEL;;45595
+620;Pitfall;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T62;FNOE-62;philoscia muscorum;S;4;3;;7;;;F.NOEL;;45595
+620;trimanuel;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T63;FNOE-63;philoscia muscorum;S;4;7;;11;;;F.NOEL;;45595
+620;trimanuel;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T64;FNOE-64;philoscia muscorum;S;3;7;;10;;;F.NOEL;;45595
+609;Pitfall;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T69;FNOE-69;philoscia muscorum;S;1;;;1;;;F.NOEL;;45595
+609;Pitfall;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T70;FNOE-70;philoscia muscorum;S;1;;;1;;;F.NOEL;;45595
+609;trimanuel;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T71;FNOE-71;philoscia muscorum;S;;2;;2;;;F.NOEL;;45595
+609;trimanuel;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B1_T72;FNOE-72;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+223;Pitfall;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T9;FNOE-90;philoscia muscorum;S;;2;;2;;;F.NOEL;;45595
+215;Pitfall;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T10;FNOE-91;philoscia muscorum;S;1;3;;4;;;F.NOEL;;45595
+215;Pitfall;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T13;FNOE-94;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+215;Pitfall;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T15;FNOE-96;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+215;Pitfall;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T17;FNOE-98;philoscia muscorum;S;2;5;;7;;;F.NOEL;;45595
+215;trimanuel;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T22;FNOE-103;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+215;trimanuel;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T26;FNOE-107;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+157;Pitfall;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T28;FNOE-109;philoscia muscorum;S;1;;;1;;;F.NOEL;;45595
+812;trimanuel;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T29;FNOE-110;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+805;Pitfall;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T31;FNOE-112;philoscia muscorum;S;3;4;;7;;;F.NOEL;;45595
+792;Pitfall;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T33;FNOE-114;philoscia muscorum;S;1;2;;3;;;F.NOEL;;45595
+633;trimanuel;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T36;FNOE-117;philoscia muscorum;S;;3;;3;;;F.NOEL;;45595
+620;trimanuel;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T38;FNOE-119;philoscia muscorum;S;;6;;6;;;F.NOEL;;45595
+609;trimanuel;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T39;FNOE-120;philoscia muscorum;S;;2;;2;;;F.NOEL;;45595
+215;trimanuel;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T42;FNOE-123;philoscia muscorum;S;2;;;2;;;F.NOEL;;45595
+1464;Pitfall;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T49;FNOE-130;philoscia muscorum;S;1;3;;4;;;F.NOEL;;45595
+1464;Pitfall;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T53;FNOE-134;philoscia muscorum;S;1;;;1;;;F.NOEL;;45595
+1464;Pitfall;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T60;FNOE-141;philoscia muscorum;S;2;1;;3;;;F.NOEL;;45595
+1464;Pitfall;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T65;FNOE-146;philoscia muscorum;S;7;5;;12;;;F.NOEL;;45595
+1372;Pitfall;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T70;FNOE-151;philoscia muscorum;S;2;;;2;;;F.NOEL;;45595
+1372;Pitfall;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T72;FNOE-153;philoscia muscorum;S;1;3;;4;;;F.NOEL;;45595
+1372;Pitfall;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T74;FNOE-155;philoscia muscorum;S;2;3;;5;;;F.NOEL;;45595
+1372;trimanuel;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T76;FNOE-157;philoscia muscorum;S;;2;;2;;;F.NOEL;;45595
+1372;trimanuel;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T78;FNOE-159;philoscia muscorum;S;2;3;;5;;;F.NOEL;;45595
+1372;trimanuel;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B2_T80;FNOE-161;philoscia muscorum;S;2;3;;5;;;F.NOEL;;45595
+1372;trimanuel;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B3_T2;FNOE-164;philoscia muscorum;S;;4;;4;;;F.NOEL;;45595
+1372;trimanuel;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B3_T3;FNOE-165;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+1372;trimanuel;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B3_T6;FNOE-168;philoscia muscorum;S;;3;;3;;;F.NOEL;;45595
+1372;Pitfall;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B3_T8;FNOE-170;philoscia muscorum;S;1;2;;3;;;F.NOEL;;45595
+1372;Pitfall;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B3_T11;FNOE-173;philoscia muscorum;S;2;11;;13;;;F.NOEL;;45595
+1243;trimanuel;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B3_T21;FNOE-183;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+1237;trimanuel;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B3_T45;FNOE-207;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+1237;Pitfall;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B3_T55;FNOE-217;philoscia muscorum;S;1;;;1;;;F.NOEL;;45595
+1141;trimanuel;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B3_T74;FNOE-236;philoscia muscorum;S;1;;;1;;;F.NOEL;;45595
+926;Pitfall;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B3_T76;FNOE-238;philoscia muscorum;S;4;6;;10;;;F.NOEL;;45595
+926;Pitfall;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B3_T77;FNOE-239;philoscia muscorum;S;4;2;;6;;;F.NOEL;;45595
+926;Pitfall;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B3_T81;FNOE-243;philoscia muscorum;S;1;4;;5;;;F.NOEL;;45595
+926;Pitfall;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T1;FNOE-244;philoscia muscorum;S;1;3;;4;;;F.NOEL;;45595
+926;Pitfall;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T2;FNOE-245;philoscia muscorum;S;3;9;;12;;;F.NOEL;;45595
+870;Pitfall;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T5;FNOE-248;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+870;Pitfall;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T6;FNOE-249;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+870;Pitfall;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T7;FNOE-250;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+870;Pitfall;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T8;FNOE-251;philoscia muscorum;S;1;4;;5;;;F.NOEL;;45595
+870;Pitfall;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T10;FNOE-253;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+870;Pitfall;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T11;FNOE-254;philoscia muscorum;S;1;2;;3;;;F.NOEL;;45595
+827;trimanuel;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T13;FNOE-256;philoscia muscorum;S;1;2;;3;;;F.NOEL;;45595
+827;trimanuel;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T15;FNOE-258;philoscia muscorum;S;;2;;2;;;F.NOEL;;45595
+827;trimanuel;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T16;FNOE-259;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+827;Pitfall;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T18;FNOE-261;philoscia muscorum;S;2;1;;3;;;F.NOEL;;45595
+827;Pitfall;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T19;FNOE-262;philoscia muscorum;S;1;;;1;;;F.NOEL;;45595
+827;Pitfall;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T20;FNOE-263;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+827;trimanuel;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T21;FNOE-264;philoscia muscorum;S;;6;;6;;;F.NOEL;;45595
+812;trimanuel;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T25;FNOE-268;philoscia muscorum;S;1;1;;2;;;F.NOEL;;45595
+812;trimanuel;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T27;FNOE-270;philoscia muscorum;S;1;;;1;;;F.NOEL;;45595
+1464;trimanuel;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T30;FNOE-273;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+1464;trimanuel;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T32;FNOE-275;philoscia muscorum;S;2;;;2;;;F.NOEL;;45595
+1706;Pitfall;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T57;FNOE-300;philoscia muscorum;S;2;;;2;;;F.NOEL;;45595
+1706;Pitfall;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T58;FNOE-301;philoscia muscorum;S;1;2;;3;;;F.NOEL;;45595
+1706;Pitfall;3;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T59;FNOE-302;philoscia muscorum;S;1;2;;3;;;F.NOEL;;45595
+1706;Pitfall;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T60;FNOE-303;philoscia muscorum;S;;2;;2;;;F.NOEL;;45595
+1706;Pitfall;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T61;FNOE-304;philoscia muscorum;S;3;;;3;;;F.NOEL;;45595
+1706;trimanuel;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T62;FNOE-305;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+1706;trimanuel;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T63;FNOE-306;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+1706;trimanuel;2;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T67;FNOE-310;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+1706;trimanuel;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B4_T69;FNOE-312;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+1537;trimanuel;1;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B5_T42;FNOE-366;philoscia muscorum;S;;1;;1;;;F.NOEL;;45595
+1537;trimanuel;5;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B5_T44;FNOE-368;philoscia muscorum;S;1;;;1;;;F.NOEL;;45595
+1549;Pitfall;4;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B5_T47;FNOE-371;philoscia muscorum;S;1;;;1;;;F.NOEL;;45595
+1549;Pitfall;6;Malacostraca;Isopoda;Philosciidae;237061;Philoscia muscorum;Philoscia muscorum (Scopoli, 1763);ISO_B5_T49;FNOE-373;philoscia muscorum;S;;3;;3;;;F.NOEL;;45595
+805;Pitfall;4;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B1_T8;FNOE-8;Porcellio gallicus;S;;1;;1;;;F.NOEL;;45595
+805;trimanuel;4;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B1_T13;FNOE-13;Porcellio gallicus;S;;1;;1;;;F.NOEL;;45595
+620;trimanuel;6;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B1_T52;FNOE-52;Porcellio gallicus;S;1;;;1;;;F.NOEL;;45595
+620;Pitfall;4;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B1_T58;FNOE-58;Porcellio gallicus;S;1;2;;3;;;F.NOEL;;45595
+620;trimanuel;3;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B1_T65;FNOE-65;Porcellio gallicus;S;2;2;;4;;;F.NOEL;;45595
+620;trimanuel;4;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B1_T67;FNOE-67;Porcellio gallicus;S;;1;;1;;;F.NOEL;;45595
+812;trimanuel;1;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B2_T30;FNOE-111;Porcellio gallicus;S;;1;;1;;;F.NOEL;;45595
+805;Pitfall;6;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B2_T32;FNOE-113;Porcellio gallicus;S;1;;;1;;;F.NOEL;;45595
+2257;trimanuel;2;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B2_T45;FNOE-126;Porcellio gallicus;S;;1;;1;;;F.NOEL;;45595
+2257;trimanuel;4;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B2_T46;FNOE-127;Porcellio gallicus;S;;1;;1;ovigère;;F.NOEL;;45595
+2257;trimanuel;5;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B2_T47;FNOE-128;Porcellio gallicus;S;;1;;1;;;F.NOEL;;45595
+1464;Pitfall;5;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B2_T48;FNOE-129;Porcellio gallicus;S;;2;;2;ovigère;;F.NOEL;;45595
+1464;Pitfall;6;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B2_T52;FNOE-133;Porcellio gallicus;S;2;4;;6;;;F.NOEL;;45595
+1464;trimanuel;2;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B2_T57;FNOE-138;Porcellio gallicus;S;1;;;1;;;F.NOEL;;45595
+1464;trimanuel;3;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B2_T58;FNOE-139;Porcellio gallicus;S;1;1;1;3;;;F.NOEL;;45595
+1464;Pitfall;1;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B2_T61;FNOE-142;Porcellio gallicus;S;;1;;1;;;F.NOEL;;45595
+812;trimanuel;2;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B4_T24;FNOE-267;Porcellio gallicus;S;;1;;1;;;F.NOEL;;45595
+812;trimanuel;6;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B4_T28;FNOE-271;Porcellio gallicus;S;;;1;1;;;F.NOEL;;45595
+1464;trimanuel;6;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B4_T29;FNOE-272;Porcellio gallicus;S;3;5;1;9;;;F.NOEL;;45595
+1464;trimanuel;4;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B4_T34;FNOE-277;Porcellio gallicus;S;;1;1;2;;;F.NOEL;;45595
+1706;trimanuel;3;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B4_T65;FNOE-308;Porcellio gallicus;S;2;;;2;;;F.NOEL;;45595
+2257;Pitfall;6;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B5_T4;FNOE-328;Porcellio gallicus;S;;;1;1;;;F.NOEL;;45595
+2257;Pitfall;3;Malacostraca;Isopoda;Porcellionidae;237088;Porcellio gallicus;Porcellio gallicus Dollfus, 1904;ISO_B5_T7;FNOE-331;Porcellio gallicus;S;;1;;1;;;F.NOEL;;45595
+805;trimanuel;5;Malacostraca;Isopoda;Porcellionidae;237094;Porcellio monticola;Porcellio monticola Lereboullet, 1853;ISO_B1_T14;FNOE-14;Porcellio monticola;S;1;;;1;;;F.NOEL;;45595
+633;trimanuel;1;Malacostraca;Isopoda;Porcellionidae;237094;Porcellio monticola;Porcellio monticola Lereboullet, 1853;ISO_B1_T41;FNOE-41;Porcellio monticola;S;;1;;1;;;F.NOEL;;45595
+633;trimanuel;4;Malacostraca;Isopoda;Porcellionidae;237094;Porcellio monticola;Porcellio monticola Lereboullet, 1853;ISO_B1_T44;FNOE-44;Porcellio monticola;S;1;;;1;;;F.NOEL;;45595
+633;trimanuel;6;Malacostraca;Isopoda;Porcellionidae;237094;Porcellio monticola;Porcellio monticola Lereboullet, 1853;ISO_B1_T48;FNOE-48;Porcellio monticola;S;;1;;1;;;F.NOEL;;45595
+1464;Pitfall;6;Malacostraca;Isopoda;Porcellionidae;237094;Porcellio monticola;Porcellio monticola Lereboullet, 1853;ISO_B2_T54;FNOE-135;Porcellio monticola;S;;1;;1;;;F.NOEL;;45595
+1768;trimanuel;6;Malacostraca;Isopoda;Porcellionidae;237094;Porcellio monticola;Porcellio monticola Lereboullet, 1853;ISO_B4_T72;FNOE-315;Porcellio monticola;S;1;;;1;;;F.NOEL;;45595
+1768;trimanuel;3;Malacostraca;Isopoda;Porcellionidae;237094;Porcellio monticola;Porcellio monticola Lereboullet, 1853;ISO_B4_T73;FNOE-316;Porcellio monticola;S;;1;;1;;;F.NOEL;;45595
+2257;Pitfall;5;Malacostraca;Isopoda;Porcellionidae;237094;Porcellio monticola;Porcellio monticola Lereboullet, 1853;ISO_B5_T5;FNOE-329;Porcellio monticola;S;;1;;1;;;F.NOEL;;45595
+2257;Pitfall;1;Malacostraca;Isopoda;Porcellionidae;237094;Porcellio monticola;Porcellio monticola Lereboullet, 1853;ISO_B5_T9;FNOE-333;Porcellio monticola;S;;2;;2;;;F.NOEL;;45595
+805;Pitfall;3;Malacostraca;Isopoda;Porcellionidae;18820;Porcellio scaber;Porcellio scaber Latreille, 1804;ISO_B1_T6;FNOE-6;Porcellio scaber;S;;1;;1;;;F.NOEL;;45595
+476;Pitfall;4;Malacostraca;Isopoda;Porcellionidae;18820;Porcellio scaber;Porcellio scaber Latreille, 1804;ISO_B2_T1;FNOE-82;Porcellio scaber;S;1;;;1;;;F.NOEL;;45595
+391;Pitfall;4;Malacostraca;Isopoda;Porcellionidae;18820;Porcellio scaber;Porcellio scaber Latreille, 1804;ISO_B2_T5;FNOE-86;Porcellio scaber;S;;2;;2;;;F.NOEL;;45595
+288;Pitfall;1;Malacostraca;Isopoda;Porcellionidae;18820;Porcellio scaber;Porcellio scaber Latreille, 1804;ISO_B2_T6;FNOE-87;Porcellio scaber;S;;1;;1;;;F.NOEL;;45595
+288;Pitfall;4;Malacostraca;Isopoda;Porcellionidae;18820;Porcellio scaber;Porcellio scaber Latreille, 1804;ISO_B2_T7;FNOE-88;Porcellio scaber;S;1;2;;3;;;F.NOEL;;45595
+288;Pitfall;6;Malacostraca;Isopoda;Porcellionidae;18820;Porcellio scaber;Porcellio scaber Latreille, 1804;ISO_B2_T8;FNOE-89;Porcellio scaber;S;3;;;3;;;F.NOEL;;45595
+391;Pitfall;5;Malacostraca;Isopoda;Porcellionidae;18820;Porcellio scaber;Porcellio scaber Latreille, 1804;ISO_B2_T40;FNOE-121;Porcellio scaber;S;1;;;1;;;F.NOEL;;45595
+476;Pitfall;1;Malacostraca;Isopoda;Trachelipodidae;237114;Trachelipus rathkii;Trachelipus rathkii (Brandt, 1833);ISO_B1_T74;FNOE-74;Trachelipus rathkii;S;;1;;1;;;F.NOEL;;45595
+476;Pitfall;2;Malacostraca;Isopoda;Trachelipodidae;237114;Trachelipus rathkii;Trachelipus rathkii (Brandt, 1833);ISO_B1_T76;FNOE-76;Trachelipus rathkii;S;1;;;1;;;F.NOEL;;45595
+476;Pitfall;3;Malacostraca;Isopoda;Trachelipodidae;237114;Trachelipus rathkii;Trachelipus rathkii (Brandt, 1833);ISO_B1_T79;FNOE-79;Trachelipus rathkii;S;2;1;;3;;;F.NOEL;;45595
+476;Pitfall;4;Malacostraca;Isopoda;Trachelipodidae;237114;Trachelipus rathkii;Trachelipus rathkii (Brandt, 1833);ISO_B1_T81;FNOE-81;Trachelipus rathkii;S;;4;;4;;;F.NOEL;;45595
+476;Pitfall;6;Malacostraca;Isopoda;Trachelipodidae;237114;Trachelipus rathkii;Trachelipus rathkii (Brandt, 1833);ISO_B2_T4;FNOE-85;Trachelipus rathkii;S;1;;;1;;;F.NOEL;;45595
+157;trimanuel;6;Malacostraca;Isopoda;Trachelipodidae;237114;Trachelipus rathkii;Trachelipus rathkii (Brandt, 1833);ISO_B2_T27;FNOE-108;Trachelipus rathkii;S;;1;;1;;;F.NOEL;;45595
+1274;trimanuel;4;Malacostraca;Isopoda;Trachelipodidae;237114;Trachelipus rathkii;Trachelipus rathkii (Brandt, 1833);ISO_B3_T18;FNOE-180;Trachelipus rathkii;S;;1;;1;ovigère;;F.NOEL;;45595
+1274;trimanuel;5;Malacostraca;Isopoda;Trachelipodidae;237114;Trachelipus rathkii;Trachelipus rathkii (Brandt, 1833);ISO_B3_T19;FNOE-181;Trachelipus rathkii;S;1;;;1;;;F.NOEL;;45595
+1477;Pitfall;4;Malacostraca;Isopoda;Trachelipodidae;237114;Trachelipus rathkii;Trachelipus rathkii (Brandt, 1833);ISO_B4_T39;FNOE-282;Trachelipus rathkii;S;;1;;1;;;F.NOEL;;45595
+1477;Pitfall;3;Malacostraca;Isopoda;Trachelipodidae;237114;Trachelipus rathkii;Trachelipus rathkii (Brandt, 1833);ISO_B4_T40;FNOE-283;Trachelipus rathkii;S;;2;;2;;;F.NOEL;;45595
+1477;Pitfall;2;Malacostraca;Isopoda;Trachelipodidae;237114;Trachelipus rathkii;Trachelipus rathkii (Brandt, 1833);ISO_B4_T41;FNOE-284;Trachelipus rathkii;S;2;4;;6;;;F.NOEL;;45595
+1477;Pitfall;1;Malacostraca;Isopoda;Trachelipodidae;237114;Trachelipus rathkii;Trachelipus rathkii (Brandt, 1833);ISO_B4_T42;FNOE-285;Trachelipus rathkii;S;;3;;3;;;F.NOEL;;45595
+1549;Pitfall;3;Malacostraca;Isopoda;Trachelipodidae;237114;Trachelipus rathkii;Trachelipus rathkii (Brandt, 1833);ISO_B5_T46;FNOE-370;Trachelipus rathkii;S;;2;;2;;;F.NOEL;;45595
+1549;Pitfall;6;Malacostraca;Isopoda;Trachelipodidae;237114;Trachelipus rathkii;Trachelipus rathkii (Brandt, 1833);ISO_B5_T50;FNOE-374;Trachelipus rathkii;S;;1;;1;;;F.NOEL;;45595
+870;Pitfall;4;Malacostraca;Isopoda;Trachelipodidae;237115;Trachelipus ratzeburgii;Trachelipus ratzeburgii (Brandt, 1833);ISO_B4_T9;FNOE-252;Trachelipus ratzeburgii;S;1;1;;2;;;F.NOEL;;45595
+870;trimanuel;1;Malacostraca;Isopoda;Trachelipodidae;237115;Trachelipus ratzeburgii;Trachelipus ratzeburgii (Brandt, 1833);ISO_B4_T12;FNOE-255;Trachelipus ratzeburgii;S;1;2;;3;;;F.NOEL;;45595
+1174;trimanuel;1;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B3_T58;FNOE-220;Trachelipus razzautii;S;1;3;1;5;ovigère;;F.NOEL;;45595
+1174;trimanuel;2;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B3_T59;FNOE-221;Trachelipus razzautii;S;;2;;2;ovigère;;F.NOEL;;45595
+1174;trimanuel;3;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B3_T60;FNOE-222;Trachelipus razzautii;S;;3;;3;;;F.NOEL;;45595
+1174;trimanuel;4;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B3_T61;FNOE-223;Trachelipus razzautii;S;1;1;;2;ovigère;;F.NOEL;;45595
+1174;trimanuel;5;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B3_T62;FNOE-224;Trachelipus razzautii;S;1;1;;2;ovigère;;F.NOEL;;45595
+1174;trimanuel;6;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B3_T63;FNOE-225;Trachelipus razzautii;S;;2;;2;;;F.NOEL;;45595
+1174;Pitfall;1;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B3_T64;FNOE-226;Trachelipus razzautii;S;;1;5;6;;;F.NOEL;;45595
+1174;Pitfall;2;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B3_T65;FNOE-227;Trachelipus razzautii;S;;1;5;6;;;F.NOEL;;45595
+1174;Pitfall;3;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B3_T66;FNOE-228;Trachelipus razzautii;S;;4;1;5;;;F.NOEL;;45595
+1174;Pitfall;4;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B3_T67;FNOE-229;Trachelipus razzautii;S;2;6;;8;;;F.NOEL;;45595
+1174;Pitfall;5;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B3_T68;FNOE-230;Trachelipus razzautii;S;3;6;;9;;;F.NOEL;;45595
+1174;Pitfall;6;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B3_T69;FNOE-231;Trachelipus razzautii;S;1;3;;4;;;F.NOEL;;45595
+1660;trimanuel;5;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B4_T51;FNOE-294;Trachelipus razzautii;S;;1;;1;;;F.NOEL;;45595
+1660;Pitfall;5;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B4_T52;FNOE-295;Trachelipus razzautii;S;1;3;;4;;;F.NOEL;;45595
+1660;Pitfall;4;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B4_T53;FNOE-296;Trachelipus razzautii;S;2;1;1;4;;;F.NOEL;;45595
+1660;Pitfall;3;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B4_T54;FNOE-297;Trachelipus razzautii;S;1;;;1;;;F.NOEL;;45595
+1660;Pitfall;2;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B4_T55;FNOE-298;Trachelipus razzautii;S;;1;;1;;;F.NOEL;;45595
+1660;Pitfall;1;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B4_T56;FNOE-299;Trachelipus razzautii;S;1;;;1;;;F.NOEL;;45595
+1837;Pitfall;3;Malacostraca;Isopoda;Trachelipodidae;311119;Trachelipus razzautii;Trachelipus razzautii (Arcangeli, 1913);ISO_B5_T3;FNOE-327;Trachelipus razzautii;S;1;;;1;;;F.NOEL;;45595
+620;trimanuel;1;Malacostraca;Isopoda;Trichoniscidae;202796;Trichoniscoides;Trichoniscoides G. O. Sars, 1899;ISO_B2_T37;FNOE-118;Trichoniscoides;G;;1;;1;cf T. albidus;;F.NOEL;;45595
+215;Pitfall;6;Malacostraca;Isopoda;Trichoniscidae;184501;Trichoniscus;Trichoniscidae Sars, 1899;ISO_B2_T21;FNOE-102;Trichoniscidae;F;;;;6;6 ind non identifiables, secs;;F.NOEL;;45595
+792;trimanuel;2;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B1_T20;FNOE-20;Trichoniscus;S;;3;;3;;;F.NOEL;;45595
+633;trimanuel;1;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B1_T40;FNOE-40;Trichoniscus;S;;1;;1;;;F.NOEL;;45595
+633;trimanuel;5;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B1_T46;FNOE-46;Trichoniscus;S;;2;;2;;;F.NOEL;;45595
+620;trimanuel;5;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B1_T50;FNOE-50;Trichoniscus;S;;1;;1;;;F.NOEL;;45595
+620;trimanuel;3;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B1_T66;FNOE-66;trichoniscus;S;;3;;3;;;F.NOEL;;45595
+215;Pitfall;1;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B2_T11;FNOE-92;Trichoniscus;S;;2;;2;;;F.NOEL;;45595
+215;Pitfall;4;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B2_T19;FNOE-100;Trichoniscus;S;;1;;1;;;F.NOEL;;45595
+215;trimanuel;1;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B2_T23;FNOE-104;Trichoniscus;S;;1;;1;;;F.NOEL;;45595
+215;trimanuel;3;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B2_T24;FNOE-105;Trichoniscus;S;;4;;4;ovigère;;F.NOEL;;45595
+215;trimanuel;2;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B2_T41;FNOE-122;Trichoniscus;S;;3;1;4;;;F.NOEL;;45595
+2276;trimanuel;6;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B2_T43;FNOE-124;Trichoniscus;S;;1;;1;ovigère;;F.NOEL;;45595
+2276;Pitfall;1;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B2_T44;FNOE-125;Trichoniscus;S;;1;;1;ovigère;;F.NOEL;;45595
+1464;Pitfall;2;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B2_T66;FNOE-147;trichoniscus;S;;1;;1;;;F.NOEL;;45595
+1372;trimanuel;2;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B2_T79;FNOE-160;Trichoniscus;S;;2;;2;ovigère;;F.NOEL;;45595
+1372;trimanuel;3;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B3_T1;FNOE-163;Trichoniscus;S;;1;;1;;;F.NOEL;;45595
+1372;trimanuel;6;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B3_T7;FNOE-169;Trichoniscus;S;;2;;2;;;F.NOEL;;45595
+812;trimanuel;2;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B4_T26;FNOE-269;Trichoniscus;S;;2;;2;ovigère;;F.NOEL;;45595
+1464;trimanuel;5;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B4_T33;FNOE-276;Trichoniscus;S;;1;;1;ovigère;;F.NOEL;;45595
+1464;trimanuel;4;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B4_T36;FNOE-279;Trichoniscus;S;;1;;1;ovigère;;F.NOEL;;45595
+812;trimanuel;1;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B5_T38;FNOE-362;Trichoniscus;S;;1;;1;ovigère;;F.NOEL;;45595
+2276;trimanuel;4;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B5_T40;FNOE-364;Trichoniscus;S;;;1;1;;;F.NOEL;;45595
+1549;Pitfall;1;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B5_T45;FNOE-369;Trichoniscus;S;;1;;1;;;F.NOEL;;45595
+1549;Pitfall;4;Malacostraca;Isopoda;Trichoniscidae;202799;Trichoniscus;Trichoniscus Brandt, 1833;ISO_B5_T48;FNOE-372;Trichoniscus;S;1;;;1;;;F.NOEL;;45595
+215;trimanuel;5;Malacostraca;Isopoda;Trichoniscidae;237211;Trichoniscus;Trichoniscus pusillus Brandt, 1833;ISO_B2_T25;FNOE-106;Trichoniscus pusillus;S;;13;;13;ovigère;;F.NOEL;;45595
