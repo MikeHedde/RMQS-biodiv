@@ -1,0 +1,415 @@
+STATION;LAND_USE;ALT;X;Y;indice;valeur
+137;Annual crops;97;3,65;49,71;EI;77
+291;Annual crops;144;4,51;49,12;EI;76
+400;Annual crops;143;4,28;48,83;EI;90
+408;Annual crops;273;6,02;48,79;EI;70
+476;Annual crops;185;7,53;48,59;EI;70
+609;Annual crops;71;-1,98;48,2;EI;49
+1030;Annual crops;172;-0,63;47,09;EI;65
+1058;Annual crops;184;5,27;47,09;EI;70
+1090;Annual crops;215;2,74;46,98;EI;23
+1166;Annual crops;113;0,86;46,68;EI;51
+1174;Annual crops;168;2,53;46,69;EI;44
+1243;Annual crops;94;-0,17;46,38;EI;83
+1310;Annual crops;201;5,02;46,23;EI;67
+1366;Annual crops;62;-0,57;45,93;EI;76
+1491;Annual crops;114;0,07;45,52;EI;78
+1660;Annual crops;130;0,7;44,95;EI;49
+1694;Annual crops;52;-0,91;44,77;EI;64
+1826;Annual crops;90;0,12;44,37;EI;64
+1875;Annual crops;187;1,32;44,24;EI;96
+1992;Annual crops;712;6,1;43,89;EI;52
+2011;Annual crops;195;0,74;43,8;EI;70
+2142;Annual crops;187;-0,43;43,35;EI;82
+2182;Annual crops;246;-0,23;43,21;EI;92
+137;Annual crops;97;3,65;49,71;SI;8
+291;Annual crops;144;4,51;49,12;SI;28
+400;Annual crops;143;4,28;48,83;SI;7
+408;Annual crops;273;6,02;48,79;SI;0
+476;Annual crops;185;7,53;48,59;SI;48
+609;Annual crops;71;-1,98;48,2;SI;45
+1030;Annual crops;172;-0,63;47,09;SI;70
+1058;Annual crops;184;5,27;47,09;SI;48
+1090;Annual crops;215;2,74;46,98;SI;40
+1166;Annual crops;113;0,86;46,68;SI;53
+1174;Annual crops;168;2,53;46,69;SI;46
+1243;Annual crops;94;-0,17;46,38;SI;43
+1310;Annual crops;201;5,02;46,23;SI;85
+1366;Annual crops;62;-0,57;45,93;SI;69
+1491;Annual crops;114;0,07;45,52;SI;82
+1660;Annual crops;130;0,7;44,95;SI;31
+1694;Annual crops;52;-0,91;44,77;SI;60
+1826;Annual crops;90;0,12;44,37;SI;51
+1875;Annual crops;187;1,32;44,24;SI;83
+1992;Annual crops;712;6,1;43,89;SI;7
+2011;Annual crops;195;0,74;43,8;SI;8
+2142;Annual crops;187;-0,43;43,35;SI;69
+2182;Annual crops;246;-0,23;43,21;SI;58
+137;Annual crops;97;3,65;49,71;ab_libres;142
+291;Annual crops;144;4,51;49,12;ab_libres;413
+400;Annual crops;143;4,28;48,83;ab_libres;617
+408;Annual crops;273;6,02;48,79;ab_libres;1250
+476;Annual crops;185;7,53;48,59;ab_libres;285
+609;Annual crops;71;-1,98;48,2;ab_libres;1746
+1030;Annual crops;172;-0,63;47,09;ab_libres;562
+1058;Annual crops;184;5,27;47,09;ab_libres;233
+1090;Annual crops;215;2,74;46,98;ab_libres;438
+1166;Annual crops;113;0,86;46,68;ab_libres;130
+1174;Annual crops;168;2,53;46,69;ab_libres;185
+1243;Annual crops;94;-0,17;46,38;ab_libres;986
+1310;Annual crops;201;5,02;46,23;ab_libres;408
+1366;Annual crops;62;-0,57;45,93;ab_libres;784
+1491;Annual crops;114;0,07;45,52;ab_libres;307
+1660;Annual crops;130;0,7;44,95;ab_libres;557
+1694;Annual crops;52;-0,91;44,77;ab_libres;287
+1826;Annual crops;90;0,12;44,37;ab_libres;336
+1875;Annual crops;187;1,32;44,24;ab_libres;1128
+1992;Annual crops;712;6,1;43,89;ab_libres;975
+2011;Annual crops;195;0,74;43,8;ab_libres;438
+2142;Annual crops;187;-0,43;43,35;ab_libres;151
+2182;Annual crops;246;-0,23;43,21;ab_libres;530
+137;Annual crops;97;3,65;49,71;ab_phytofac;54
+291;Annual crops;144;4,51;49,12;ab_phytofac;158
+400;Annual crops;143;4,28;48,83;ab_phytofac;69
+408;Annual crops;273;6,02;48,79;ab_phytofac;292
+476;Annual crops;185;7,53;48,59;ab_phytofac;240
+609;Annual crops;71;-1,98;48,2;ab_phytofac;1241
+1030;Annual crops;172;-0,63;47,09;ab_phytofac;959
+1058;Annual crops;184;5,27;47,09;ab_phytofac;82
+1090;Annual crops;215;2,74;46,98;ab_phytofac;719
+1166;Annual crops;113;0,86;46,68;ab_phytofac;62
+1174;Annual crops;168;2,53;46,69;ab_phytofac;172
+1243;Annual crops;94;-0,17;46,38;ab_phytofac;452
+1310;Annual crops;201;5,02;46,23;ab_phytofac;269
+1366;Annual crops;62;-0,57;45,93;ab_phytofac;218
+1491;Annual crops;114;0,07;45,52;ab_phytofac;546
+1660;Annual crops;130;0,7;44,95;ab_phytofac;494
+1694;Annual crops;52;-0,91;44,77;ab_phytofac;66
+1826;Annual crops;90;0,12;44,37;ab_phytofac;710
+1875;Annual crops;187;1,32;44,24;ab_phytofac;378
+1992;Annual crops;712;6,1;43,89;ab_phytofac;256
+2011;Annual crops;195;0,74;43,8;ab_phytofac;86
+2142;Annual crops;187;-0,43;43,35;ab_phytofac;322
+2182;Annual crops;246;-0,23;43,21;ab_phytofac;274
+137;Annual crops;97;3,65;49,71;ab_phytopar;127
+291;Annual crops;144;4,51;49,12;ab_phytopar;43
+400;Annual crops;143;4,28;48,83;ab_phytopar;128
+408;Annual crops;273;6,02;48,79;ab_phytopar;3312
+476;Annual crops;185;7,53;48,59;ab_phytopar;492
+609;Annual crops;71;-1,98;48,2;ab_phytopar;1515
+1030;Annual crops;172;-0,63;47,09;ab_phytopar;59
+1058;Annual crops;184;5,27;47,09;ab_phytopar;1065
+1090;Annual crops;215;2,74;46,98;ab_phytopar;1407
+1166;Annual crops;113;0,86;46,68;ab_phytopar;625
+1174;Annual crops;168;2,53;46,69;ab_phytopar;653
+1243;Annual crops;94;-0,17;46,38;ab_phytopar;838
+1310;Annual crops;201;5,02;46,23;ab_phytopar;328
+1366;Annual crops;62;-0,57;45,93;ab_phytopar;819
+1491;Annual crops;114;0,07;45,52;ab_phytopar;757
+1660;Annual crops;130;0,7;44,95;ab_phytopar;88
+1694;Annual crops;52;-0,91;44,77;ab_phytopar;142
+1826;Annual crops;90;0,12;44,37;ab_phytopar;528
+1875;Annual crops;187;1,32;44,24;ab_phytopar;196
+1992;Annual crops;712;6,1;43,89;ab_phytopar;29
+2011;Annual crops;195;0,74;43,8;ab_phytopar;190
+2142;Annual crops;187;-0,43;43,35;ab_phytopar;3
+2182;Annual crops;246;-0,23;43,21;ab_phytopar;47
+137;Annual crops;97;3,65;49,71;ab_tot;323
+291;Annual crops;144;4,51;49,12;ab_tot;614
+400;Annual crops;143;4,28;48,83;ab_tot;814
+408;Annual crops;273;6,02;48,79;ab_tot;4854
+476;Annual crops;185;7,53;48,59;ab_tot;1017
+609;Annual crops;71;-1,98;48,2;ab_tot;4502
+1030;Annual crops;172;-0,63;47,09;ab_tot;1580
+1058;Annual crops;184;5,27;47,09;ab_tot;1380
+1090;Annual crops;215;2,74;46,98;ab_tot;2564
+1166;Annual crops;113;0,86;46,68;ab_tot;817
+1174;Annual crops;168;2,53;46,69;ab_tot;1010
+1243;Annual crops;94;-0,17;46,38;ab_tot;2276
+1310;Annual crops;201;5,02;46,23;ab_tot;1005
+1366;Annual crops;62;-0,57;45,93;ab_tot;1821
+1491;Annual crops;114;0,07;45,52;ab_tot;1610
+1660;Annual crops;130;0,7;44,95;ab_tot;1139
+1694;Annual crops;52;-0,91;44,77;ab_tot;495
+1826;Annual crops;90;0,12;44,37;ab_tot;1574
+1875;Annual crops;187;1,32;44,24;ab_tot;1702
+1992;Annual crops;712;6,1;43,89;ab_tot;1260
+2011;Annual crops;195;0,74;43,8;ab_tot;714
+2142;Annual crops;187;-0,43;43,35;ab_tot;476
+2182;Annual crops;246;-0,23;43,21;ab_tot;851
+215;Forests & tree plantations;363;5,85;49,37;EI;81
+620;Forests & tree plantations;89;0,38;48,26;EI;66
+633;Forests & tree plantations;146;3,19;48,27;EI;57
+644;Forests & tree plantations;436;5,55;48,23;EI;64
+792;Forests & tree plantations;134;0,83;47,83;EI;47
+805;Forests & tree plantations;183;3,61;47,84;EI;85
+812;Forests & tree plantations;450;5,1;47,81;EI;76
+870;Forests & tree plantations;289;6,37;47,63;EI;67
+926;Forests & tree plantations;502;7,21;47,45;EI;24
+1372;Forests & tree plantations;223;0,67;45,96;EI;79
+1464;Forests & tree plantations;983;2,94;45,68;EI;46
+1477;Forests & tree plantations;209;5,61;45,64;EI;93
+1706;Forests & tree plantations;216;1,52;44,82;EI;87
+1768;Forests & tree plantations;759;5,35;44,64;EI;53
+2021;Forests & tree plantations;488;2,72;43,81;EI;75
+2034;Forests & tree plantations;332;5,3;43,77;EI;43
+2205;Forests & tree plantations;261;5,86;43,18;EI;34
+2257;Forests & tree plantations;499;2,13;42,95;EI;31
+2260;Forests & tree plantations;378;2,72;42,95;EI;24
+2276;Forests & tree plantations;1247;1,35;42,8;EI;36
+215;Forests & tree plantations;363;5,85;49,37;SI;71
+620;Forests & tree plantations;89;0,38;48,26;SI;71
+633;Forests & tree plantations;146;3,19;48,27;SI;52
+644;Forests & tree plantations;436;5,55;48,23;SI;60
+792;Forests & tree plantations;134;0,83;47,83;SI;30
+805;Forests & tree plantations;183;3,61;47,84;SI;60
+812;Forests & tree plantations;450;5,1;47,81;SI;84
+870;Forests & tree plantations;289;6,37;47,63;SI;86
+926;Forests & tree plantations;502;7,21;47,45;SI;82
+1372;Forests & tree plantations;223;0,67;45,96;SI;77
+1464;Forests & tree plantations;983;2,94;45,68;SI;11
+1477;Forests & tree plantations;209;5,61;45,64;SI;32
+1706;Forests & tree plantations;216;1,52;44,82;SI;81
+1768;Forests & tree plantations;759;5,35;44,64;SI;43
+2021;Forests & tree plantations;488;2,72;43,81;SI;81
+2034;Forests & tree plantations;332;5,3;43,77;SI;20
+2205;Forests & tree plantations;261;5,86;43,18;SI;57
+2257;Forests & tree plantations;499;2,13;42,95;SI;86
+2260;Forests & tree plantations;378;2,72;42,95;SI;45
+2276;Forests & tree plantations;1247;1,35;42,8;SI;69
+215;Forests & tree plantations;363;5,85;49,37;ab_libres;407
+620;Forests & tree plantations;89;0,38;48,26;ab_libres;883
+633;Forests & tree plantations;146;3,19;48,27;ab_libres;1115
+644;Forests & tree plantations;436;5,55;48,23;ab_libres;343
+792;Forests & tree plantations;134;0,83;47,83;ab_libres;345
+805;Forests & tree plantations;183;3,61;47,84;ab_libres;38
+812;Forests & tree plantations;450;5,1;47,81;ab_libres;95
+870;Forests & tree plantations;289;6,37;47,63;ab_libres;147
+926;Forests & tree plantations;502;7,21;47,45;ab_libres;132
+1372;Forests & tree plantations;223;0,67;45,96;ab_libres;717
+1464;Forests & tree plantations;983;2,94;45,68;ab_libres;1211
+1477;Forests & tree plantations;209;5,61;45,64;ab_libres;1148
+1706;Forests & tree plantations;216;1,52;44,82;ab_libres;970
+1768;Forests & tree plantations;759;5,35;44,64;ab_libres;162
+2021;Forests & tree plantations;488;2,72;43,81;ab_libres;335
+2034;Forests & tree plantations;332;5,3;43,77;ab_libres;781
+2205;Forests & tree plantations;261;5,86;43,18;ab_libres;376
+2257;Forests & tree plantations;499;2,13;42,95;ab_libres;468
+2260;Forests & tree plantations;378;2,72;42,95;ab_libres;615
+2276;Forests & tree plantations;1247;1,35;42,8;ab_libres;969
+215;Forests & tree plantations;363;5,85;49,37;ab_phytofac;1707
+620;Forests & tree plantations;89;0,38;48,26;ab_phytofac;1138
+633;Forests & tree plantations;146;3,19;48,27;ab_phytofac;761
+644;Forests & tree plantations;436;5,55;48,23;ab_phytofac;1219
+792;Forests & tree plantations;134;0,83;47,83;ab_phytofac;1207
+805;Forests & tree plantations;183;3,61;47,84;ab_phytofac;38
+812;Forests & tree plantations;450;5,1;47,81;ab_phytofac;1533
+870;Forests & tree plantations;289;6,37;47,63;ab_phytofac;1998
+926;Forests & tree plantations;502;7,21;47,45;ab_phytofac;566
+1372;Forests & tree plantations;223;0,67;45,96;ab_phytofac;1192
+1464;Forests & tree plantations;983;2,94;45,68;ab_phytofac;268
+1477;Forests & tree plantations;209;5,61;45,64;ab_phytofac;268
+1706;Forests & tree plantations;216;1,52;44,82;ab_phytofac;1900
+1768;Forests & tree plantations;759;5,35;44,64;ab_phytofac;236
+2021;Forests & tree plantations;488;2,72;43,81;ab_phytofac;417
+2034;Forests & tree plantations;332;5,3;43,77;ab_phytofac;194
+2205;Forests & tree plantations;261;5,86;43,18;ab_phytofac;369
+2257;Forests & tree plantations;499;2,13;42,95;ab_phytofac;3379
+2260;Forests & tree plantations;378;2,72;42,95;ab_phytofac;1548
+2276;Forests & tree plantations;1247;1,35;42,8;ab_phytofac;1015
+215;Forests & tree plantations;363;5,85;49,37;ab_phytopar;126
+620;Forests & tree plantations;89;0,38;48,26;ab_phytopar;124
+633;Forests & tree plantations;146;3,19;48,27;ab_phytopar;140
+644;Forests & tree plantations;436;5,55;48,23;ab_phytopar;99
+792;Forests & tree plantations;134;0,83;47,83;ab_phytopar;172
+805;Forests & tree plantations;183;3,61;47,84;ab_phytopar;5
+812;Forests & tree plantations;450;5,1;47,81;ab_phytopar;82
+870;Forests & tree plantations;289;6,37;47,63;ab_phytopar;193
+926;Forests & tree plantations;502;7,21;47,45;ab_phytopar;196
+1372;Forests & tree plantations;223;0,67;45,96;ab_phytopar;33
+1464;Forests & tree plantations;983;2,94;45,68;ab_phytopar;57
+1477;Forests & tree plantations;209;5,61;45,64;ab_phytopar;306
+1706;Forests & tree plantations;216;1,52;44,82;ab_phytopar;40
+1768;Forests & tree plantations;759;5,35;44,64;ab_phytopar;29
+2021;Forests & tree plantations;488;2,72;43,81;ab_phytopar;41
+2034;Forests & tree plantations;332;5,3;43,77;ab_phytopar;387
+2205;Forests & tree plantations;261;5,86;43,18;ab_phytopar;29
+2257;Forests & tree plantations;499;2,13;42,95;ab_phytopar;52
+2260;Forests & tree plantations;378;2,72;42,95;ab_phytopar;10
+2276;Forests & tree plantations;1247;1,35;42,8;ab_phytopar;259
+215;Forests & tree plantations;363;5,85;49,37;ab_tot;2240
+620;Forests & tree plantations;89;0,38;48,26;ab_tot;2145
+633;Forests & tree plantations;146;3,19;48,27;ab_tot;2016
+644;Forests & tree plantations;436;5,55;48,23;ab_tot;1661
+792;Forests & tree plantations;134;0,83;47,83;ab_tot;1724
+805;Forests & tree plantations;183;3,61;47,84;ab_tot;81
+812;Forests & tree plantations;450;5,1;47,81;ab_tot;1710
+870;Forests & tree plantations;289;6,37;47,63;ab_tot;2338
+926;Forests & tree plantations;502;7,21;47,45;ab_tot;894
+1372;Forests & tree plantations;223;0,67;45,96;ab_tot;1942
+1464;Forests & tree plantations;983;2,94;45,68;ab_tot;1536
+1477;Forests & tree plantations;209;5,61;45,64;ab_tot;1722
+1706;Forests & tree plantations;216;1,52;44,82;ab_tot;2910
+1768;Forests & tree plantations;759;5,35;44,64;ab_tot;427
+2021;Forests & tree plantations;488;2,72;43,81;ab_tot;793
+2034;Forests & tree plantations;332;5,3;43,77;ab_tot;1362
+2205;Forests & tree plantations;261;5,86;43,18;ab_tot;774
+2257;Forests & tree plantations;499;2,13;42,95;ab_tot;3899
+2260;Forests & tree plantations;378;2,72;42,95;ab_tot;2173
+2276;Forests & tree plantations;1247;1,35;42,8;ab_tot;2243
+391;Urban;47;2,32;48,85;EI;59
+391;Urban;47;2,32;48,85;SI;63
+391;Urban;47;2,32;48,85;ab_libres;114
+391;Urban;47;2,32;48,85;ab_phytofac;154
+391;Urban;47;2,32;48,85;ab_phytopar;391
+391;Urban;47;2,32;48,85;ab_tot;659
+152;Pastures and meadows;146;0,56;49,56;EI;67
+157;Pastures and meadows;167;1,66;49,57;EI;40
+223;Pastures and meadows;40;-0,97;49,24;EI;51
+423;Pastures and meadows;123;-3,97;48,54;EI;72
+730;Pastures and meadows;76;-0,68;47,95;EI;84
+788;Pastures and meadows;39;-0,03;47,82;EI;20
+827;Pastures and meadows;1;-2,79;47,59;EI;40
+1064;Pastures and meadows;885;6,54;47,05;EI;54
+1141;Pastures and meadows;318;4,21;46,82;EI;45
+1180;Pastures and meadows;271;3,79;46,68;EI;44
+1237;Pastures and meadows;3;-1,42;46,34;EI;73
+1274;Pastures and meadows;432;6,27;46,34;EI;28
+1537;Pastures and meadows;206;0,89;45,39;EI;54
+1549;Pastures and meadows;405;3,35;45,39;EI;49
+1587;Pastures and meadows;915;2,53;45,25;EI;57
+1677;Pastures and meadows;1309;4,15;44,95;EI;52
+1686;Pastures and meadows;1883;5,97;44,91;EI;55
+1837;Pastures and meadows;579;2,32;44,39;EI;41
+1887;Pastures and meadows;908;3,72;44,24;EI;27
+1996;Pastures and meadows;756;6,9;43,86;EI;42
+2076;Pastures and meadows;1;4,5;43,65;EI;63
+2312;Pastures and meadows;2266;1,74;42,52;EI;45
+152;Pastures and meadows;146;0,56;49,56;SI;54
+157;Pastures and meadows;167;1,66;49,57;SI;69
+223;Pastures and meadows;40;-0,97;49,24;SI;44
+423;Pastures and meadows;123;-3,97;48,54;SI;66
+730;Pastures and meadows;76;-0,68;47,95;SI;69
+788;Pastures and meadows;39;-0,03;47,82;SI;53
+827;Pastures and meadows;1;-2,79;47,59;SI;76
+1064;Pastures and meadows;885;6,54;47,05;SI;56
+1141;Pastures and meadows;318;4,21;46,82;SI;23
+1180;Pastures and meadows;271;3,79;46,68;SI;32
+1237;Pastures and meadows;3;-1,42;46,34;SI;20
+1274;Pastures and meadows;432;6,27;46,34;SI;37
+1537;Pastures and meadows;206;0,89;45,39;SI;51
+1549;Pastures and meadows;405;3,35;45,39;SI;48
+1587;Pastures and meadows;915;2,53;45,25;SI;83
+1677;Pastures and meadows;1309;4,15;44,95;SI;45
+1686;Pastures and meadows;1883;5,97;44,91;SI;10
+1837;Pastures and meadows;579;2,32;44,39;SI;16
+1887;Pastures and meadows;908;3,72;44,24;SI;72
+1996;Pastures and meadows;756;6,9;43,86;SI;18
+2076;Pastures and meadows;1;4,5;43,65;SI;45
+2312;Pastures and meadows;2266;1,74;42,52;SI;67
+152;Pastures and meadows;146;0,56;49,56;ab_libres;1380
+157;Pastures and meadows;167;1,66;49,57;ab_libres;860
+223;Pastures and meadows;40;-0,97;49,24;ab_libres;560
+423;Pastures and meadows;123;-3,97;48,54;ab_libres;824
+730;Pastures and meadows;76;-0,68;47,95;ab_libres;821
+788;Pastures and meadows;39;-0,03;47,82;ab_libres;104
+827;Pastures and meadows;1;-2,79;47,59;ab_libres;581
+1064;Pastures and meadows;885;6,54;47,05;ab_libres;1048
+1141;Pastures and meadows;318;4,21;46,82;ab_libres;199
+1180;Pastures and meadows;271;3,79;46,68;ab_libres;948
+1237;Pastures and meadows;3;-1,42;46,34;ab_libres;570
+1274;Pastures and meadows;432;6,27;46,34;ab_libres;561
+1537;Pastures and meadows;206;0,89;45,39;ab_libres;909
+1549;Pastures and meadows;405;3,35;45,39;ab_libres;662
+1587;Pastures and meadows;915;2,53;45,25;ab_libres;2120
+1677;Pastures and meadows;1309;4,15;44,95;ab_libres;1745
+1686;Pastures and meadows;1883;5,97;44,91;ab_libres;43
+1837;Pastures and meadows;579;2,32;44,39;ab_libres;678
+1887;Pastures and meadows;908;3,72;44,24;ab_libres;442
+1996;Pastures and meadows;756;6,9;43,86;ab_libres;404
+2076;Pastures and meadows;1;4,5;43,65;ab_libres;118
+2312;Pastures and meadows;2266;1,74;42,52;ab_libres;561
+152;Pastures and meadows;146;0,56;49,56;ab_phytofac;525
+157;Pastures and meadows;167;1,66;49,57;ab_phytofac;803
+223;Pastures and meadows;40;-0,97;49,24;ab_phytofac;702
+423;Pastures and meadows;123;-3,97;48,54;ab_phytofac;113
+730;Pastures and meadows;76;-0,68;47,95;ab_phytofac;1571
+788;Pastures and meadows;39;-0,03;47,82;ab_phytofac;94
+827;Pastures and meadows;1;-2,79;47,59;ab_phytofac;866
+1064;Pastures and meadows;885;6,54;47,05;ab_phytofac;1093
+1141;Pastures and meadows;318;4,21;46,82;ab_phytofac;455
+1180;Pastures and meadows;271;3,79;46,68;ab_phytofac;435
+1237;Pastures and meadows;3;-1,42;46,34;ab_phytofac;479
+1274;Pastures and meadows;432;6,27;46,34;ab_phytofac;2935
+1537;Pastures and meadows;206;0,89;45,39;ab_phytofac;416
+1549;Pastures and meadows;405;3,35;45,39;ab_phytofac;929
+1587;Pastures and meadows;915;2,53;45,25;ab_phytofac;707
+1677;Pastures and meadows;1309;4,15;44,95;ab_phytofac;367
+1686;Pastures and meadows;1883;5,97;44,91;ab_phytofac;35
+1837;Pastures and meadows;579;2,32;44,39;ab_phytofac;440
+1887;Pastures and meadows;908;3,72;44,24;ab_phytofac;557
+1996;Pastures and meadows;756;6,9;43,86;ab_phytofac;444
+2076;Pastures and meadows;1;4,5;43,65;ab_phytofac;5
+2312;Pastures and meadows;2266;1,74;42,52;ab_phytofac;104
+152;Pastures and meadows;146;0,56;49,56;ab_phytopar;794
+157;Pastures and meadows;167;1,66;49,57;ab_phytopar;1476
+223;Pastures and meadows;40;-0,97;49,24;ab_phytopar;1150
+423;Pastures and meadows;123;-3,97;48,54;ab_phytopar;205
+730;Pastures and meadows;76;-0,68;47,95;ab_phytopar;273
+788;Pastures and meadows;39;-0,03;47,82;ab_phytopar;330
+827;Pastures and meadows;1;-2,79;47,59;ab_phytopar;404
+1064;Pastures and meadows;885;6,54;47,05;ab_phytopar;896
+1141;Pastures and meadows;318;4,21;46,82;ab_phytopar;220
+1180;Pastures and meadows;271;3,79;46,68;ab_phytopar;644
+1237;Pastures and meadows;3;-1,42;46,34;ab_phytopar;406
+1274;Pastures and meadows;432;6,27;46,34;ab_phytopar;1231
+1537;Pastures and meadows;206;0,89;45,39;ab_phytopar;1553
+1549;Pastures and meadows;405;3,35;45,39;ab_phytopar;1057
+1587;Pastures and meadows;915;2,53;45,25;ab_phytopar;870
+1677;Pastures and meadows;1309;4,15;44,95;ab_phytopar;276
+1686;Pastures and meadows;1883;5,97;44,91;ab_phytopar;5
+1837;Pastures and meadows;579;2,32;44,39;ab_phytopar;1012
+1887;Pastures and meadows;908;3,72;44,24;ab_phytopar;115
+1996;Pastures and meadows;756;6,9;43,86;ab_phytopar;157
+2076;Pastures and meadows;1;4,5;43,65;ab_phytopar;0
+2312;Pastures and meadows;2266;1,74;42,52;ab_phytopar;88
+152;Pastures and meadows;146;0,56;49,56;ab_tot;2699
+157;Pastures and meadows;167;1,66;49,57;ab_tot;3139
+223;Pastures and meadows;40;-0,97;49,24;ab_tot;2412
+423;Pastures and meadows;123;-3,97;48,54;ab_tot;1142
+730;Pastures and meadows;76;-0,68;47,95;ab_tot;2665
+788;Pastures and meadows;39;-0,03;47,82;ab_tot;528
+827;Pastures and meadows;1;-2,79;47,59;ab_tot;1851
+1064;Pastures and meadows;885;6,54;47,05;ab_tot;3037
+1141;Pastures and meadows;318;4,21;46,82;ab_tot;874
+1180;Pastures and meadows;271;3,79;46,68;ab_tot;2027
+1237;Pastures and meadows;3;-1,42;46,34;ab_tot;1455
+1274;Pastures and meadows;432;6,27;46,34;ab_tot;4727
+1537;Pastures and meadows;206;0,89;45,39;ab_tot;2878
+1549;Pastures and meadows;405;3,35;45,39;ab_tot;2648
+1587;Pastures and meadows;915;2,53;45,25;ab_tot;3697
+1677;Pastures and meadows;1309;4,15;44,95;ab_tot;2388
+1686;Pastures and meadows;1883;5,97;44,91;ab_tot;83
+1837;Pastures and meadows;579;2,32;44,39;ab_tot;2130
+1887;Pastures and meadows;908;3,72;44,24;ab_tot;1114
+1996;Pastures and meadows;756;6,9;43,86;ab_tot;1005
+2076;Pastures and meadows;1;4,5;43,65;ab_tot;123
+2312;Pastures and meadows;2266;1,74;42,52;ab_tot;753
+288;Permanent crops;190;3,86;49,13;EI;65
+1556;Permanent crops;137;4,77;45,37;EI;93
+1893;Permanent crops;113;4,92;44,21;EI;46
+288;Permanent crops;190;3,86;49,13;SI;34
+1556;Permanent crops;137;4,77;45,37;SI;40
+1893;Permanent crops;113;4,92;44,21;SI;9
+288;Permanent crops;190;3,86;49,13;ab_libres;188
+1556;Permanent crops;137;4,77;45,37;ab_libres;1126
+1893;Permanent crops;113;4,92;44,21;ab_libres;144
+288;Permanent crops;190;3,86;49,13;ab_phytofac;68
+1556;Permanent crops;137;4,77;45,37;ab_phytofac;119
+1893;Permanent crops;113;4,92;44,21;ab_phytofac;44
+288;Permanent crops;190;3,86;49,13;ab_phytopar;74
+1556;Permanent crops;137;4,77;45,37;ab_phytopar;125
+1893;Permanent crops;113;4,92;44,21;ab_phytopar;201
+288;Permanent crops;190;3,86;49,13;ab_tot;330
+1556;Permanent crops;137;4,77;45,37;ab_tot;1370
+1893;Permanent crops;113;4,92;44,21;ab_tot;389
