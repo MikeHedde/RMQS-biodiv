@@ -1,6 +1,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# RMQS-biodiv <img src="man/figures/compendium-sticker.png" align="right" style="float:right; height:120px;"/>
+# RMQS-biodiversité <img src="man/figures/compendium-sticker.png" align="right" style="float:right; height:120px;"/>
 
 <!-- badges: start -->
 
