@@ -1,12 +1,12 @@
 librarian::shelf(ggplot2, dplyr, forcats, ade4)
 
 
-data_car <- read.csv("data/raw-data/carabidae.csv", h = T, sep = ";", fileEncoding="latin1")
-data_ara <- read.csv("data/raw-data/araneae.csv", h = T, sep = ";", fileEncoding="latin1")
-data_iso <- read.csv("data/raw-data/isopoda.csv", h = T, sep = ";", fileEncoding="latin1")
-data_diplo <- read.csv("data/raw-data/diplopoda.csv", h = T, sep = ";", fileEncoding="latin1")
-data_coll <- read.csv("data/raw-data/collembola.csv", h = T, sep = ";", fileEncoding="latin1")
-data_form <- read.csv("data/raw-data/formicidae.csv", h = T, sep = ";", fileEncoding="latin1")
+data_car <- read.csv("data/raw-data/1.faune/carabidae.csv", h = T, sep = ";", fileEncoding="latin1")
+data_ara <- read.csv("data/raw-data/1.faune/araneae.csv", h = T, sep = ";", fileEncoding="latin1")
+data_iso <- read.csv("data/raw-data/1.faune/isopoda.csv", h = T, sep = ";", fileEncoding="latin1")
+data_diplo <- read.csv("data/raw-data/1.faune/diplopoda.csv", h = T, sep = ";", fileEncoding="latin1")
+data_coll <- read.csv("data/raw-data/1.faune/collembola.csv", h = T, sep = ";", fileEncoding="latin1")
+data_form <- read.csv("data/raw-data/1.faune/formicidae.csv", h = T, sep = ";", fileEncoding="latin1")
 
 
 list_hab <- read.csv("data/derived-data/liste_habitat.csv", h = T, sep = ";") %>%
