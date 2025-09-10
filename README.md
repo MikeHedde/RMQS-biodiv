@@ -1,6 +1,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# RMQS-biodiv <img src="man/figures/compendium-sticker.png" align="right" style="float:right; height:120px;"/>
+# RMQS-biodiversité <img src="man/figures/compendium-sticker.png" align="right" style="float:right; height:120px;"/>
 
 <!-- badges: start -->
 
@@ -21,12 +21,11 @@
 
 ## Overview
 
-This research compendium… **{{ DESCRIBE YOUR PROJECT }}**
+This research compendium is link to the data obtained by the RMQS-Biodiversité project.
 
 ## Features
 
-The main purpose of this compendium is to… **{{ DESCRIBE THE MAIN
-FEATURES }}**
+The main purpose of this compendium is to synthesize, analyse and represent the RMQS-Biodiversité datasets on soil fauna (micro-, meso- and macro-fauna)
 
 ## Content
 
