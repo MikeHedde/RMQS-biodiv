@@ -18,16 +18,17 @@ remove_outliers <- function(data, column, threshold) {
 }
 
 # Chargement des données de masses des Carabidae et fusion avec les données environnementales
-mass0 <- read.csv("data/raw-data/carabidae.csv", h=TRUE, sep=";", dec=".", fileEncoding = "ISO-8859-1") %>%
+mass0 <- read.csv("data/raw-data/1.faune/carabidae.csv", h=TRUE, sep=";", dec=".", fileEncoding = "ISO-8859-1") %>%
   separate(ID_ECHANTILLON, "_", into = c("pj", "YEAR", "CITY", "STATION", "ECH")) %>%
   filter(!grepl(paste(mots_a_exclure, collapse = "|"), REMARQUE_INDIVIDU, ignore.case = TRUE)) %>%
   mutate(MASSE = as.numeric(MASSE), STATION = as.factor(STATION)) %>%
-  filter(STATION %in% env$STATION) %>%
+  filter(STATION %in% env0$STATION) %>%
   select(STATION, NOM_VALIDE, male, female, MASSE)
 
 env <- subset(env0, STATION %in% mass0$STATION) %>%
   mutate(hab_class = ifelse(HAB == 0, "Open", "Closed")) %>%
   select(STATION, hab_class) %>%
+  mutate(STATION = as.factor(STATION)) %>%
   unique()
   
 mass <- mass0 %>% 

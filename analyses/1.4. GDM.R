@@ -31,6 +31,9 @@ write.csv(env, "data/derived-data/all_env_variables.csv")
 
 # Chargement des données des différents taxons
 ## Collemboles
+abtot_coll <- read.csv("data/raw-data/1.faune/collembola.csv", h = T, sep = ";", fileEncoding="latin1")%>%
+  summarise(abtot = sum(ABONDANCE_TOTALE))
+
 data_coll <- read.csv("data/raw-data/1.faune/collembola.csv", h = T, sep = ";", fileEncoding="latin1")%>%
   filter(RANK == "S") %>%
   select(STATION, LB_NOM, ABONDANCE_TOTALE)%>%
@@ -38,8 +41,13 @@ data_coll <- read.csv("data/raw-data/1.faune/collembola.csv", h = T, sep = ";", 
   summarise(ab = sum(ABONDANCE_TOTALE)) %>%
   pivot_wider(id_cols = STATION, names_from = LB_NOM, values_from = ab, values_fill = 0) %>%
   filter(STATION %in% unique(env$STATION))
+sum(data_coll[,-1])
+abtot_coll
 
 ## isopodes
+abtot_iso <- read.csv("data/raw-data/1.faune/isopoda.csv", h = T, sep = ";", fileEncoding="latin1")%>%
+  summarise(abtot = sum(ABONDANCE_TOTALE))
+
 data_iso <- read.csv("data/raw-data/1.faune/isopoda.csv", h = T, sep = ";", fileEncoding="latin1")%>%
   filter(RANK == "S") %>%
   select(STATION, LB_NOM, ABONDANCE_TOTALE)%>%
@@ -47,8 +55,13 @@ data_iso <- read.csv("data/raw-data/1.faune/isopoda.csv", h = T, sep = ";", file
   summarise(ab = sum(ABONDANCE_TOTALE)) %>%
   pivot_wider(id_cols = STATION, names_from = LB_NOM, values_from = ab, values_fill = 0) %>%
   filter(STATION %in% unique(env$STATION))
+sum(data_iso[,-1])
+abtot_iso
 
 ## diplopodes
+abtot_diplo <- read.csv("data/raw-data/1.faune/diplopoda.csv", h = T, sep = ";", fileEncoding="latin1") %>%
+  summarise(abtot = sum(ABONDANCE_TOTALE))
+
 data_diplo <- read.csv("data/raw-data/1.faune/diplopoda.csv", h = T, sep = ";", fileEncoding="latin1")%>%
   filter(RANK == "S") %>%
   select(STATION, LB_NOM, ABONDANCE_TOTALE)%>%
@@ -56,6 +69,8 @@ data_diplo <- read.csv("data/raw-data/1.faune/diplopoda.csv", h = T, sep = ";", 
   summarise(ab = sum(ABONDANCE_TOTALE)) %>%
   pivot_wider(id_cols = STATION, names_from = LB_NOM, values_from = ab, values_fill = 0) %>%
   filter(STATION %in% unique(env$STATION))
+sum(data_diplo[,-1])
+abtot_diplo
 
 # Formatage des données pour le GDM
 env2 <- env[env$STATION %in% unique(data_coll$STATION),] %>%

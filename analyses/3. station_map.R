@@ -4,7 +4,8 @@
 # Objectif : Cartographier les points d'échantillonnage 
 
 # Chargement des bibliothèques nécessaires
-librarian::shelf(ggplot2, dplyr, sf, osmdata, ggspatial, maptiles, tidyterra, giscoR)
+librarian::shelf(ggplot2, dplyr, sf, osmdata, ggspatial, maptiles, tidyterra, giscoR, 
+                 cowplot, magick)
 
 # Définition de la palette de couleurs
 land_use_colors <- c("Annual crops" = "#121510FF",
@@ -48,6 +49,22 @@ map_plot <-
   scale_color_manual(name = "Land Use", values = land_use_colors) +
   theme_minimal() +
   theme(legend.position = "left")
+
+
+# Liste des fichiers images (ex: photos/stations/photo1.jpg, photo2.jpg, ...)
+photo_files <- list.files("photos/", pattern = "\\.jpg$", full.names = TRUE)
+
+# Charger les images sous forme de grobs (objets graphiques)
+photo_list <- lapply(photo_files, function(file) {
+  ggdraw() + draw_image(file, scale = 1)
+})
+
+# Créer un patchwork avec cowplot
+photo_patchwork <- plot_grid(plotlist = photo_list, ncol = 2)  # Ajuster `ncol` selon le nombre d'images
+
+
+
+
 
 # Sauvegarde
 ggsave("figures/article ASE/stations_map.png", map_plot, width = 12, height = 8, units = "in", dpi = 300)
