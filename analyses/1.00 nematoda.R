@@ -1,6 +1,6 @@
 # Analyse des indicateurs nématofauniques
 # Auteur : Mickael Hedde
-# Date : 17-03-2025
+# Date : 11-09-2025
 # Objectif : Décrire la valeurs des indicateurs basés sur la nématofaune 
 
 # Chargement des bibliothèques nécessaires
@@ -21,12 +21,15 @@ nem_indice <- nem0 %>%
   pivot_wider(id_cols = c(STATION, LAND_USE, ALT, X, fact_col), names_from = indice,
               values_from = valeur) 
 
-# Matrice ddes abondances
+# Matrice des abondances
 nem_ab<- nem0 %>%
   pivot_wider(id_cols = c(STATION, LAND_USE, fact_col), names_from = indice,
               values_from = valeur) %>%
-  filter(!LAND_USE %in% c("Permanent crops", "Urban")) %>%
+  #filter(!LAND_USE %in% c("Permanent crops", "Urban")) %>%
   mutate(prc_phyto = ab_phytofac/ab_tot*100) %>%
+  mutate(ab_libres = log10(ab_libres), 
+         ab_phytofac = log10(ab_phytofac), 
+         ab_phytopar = log10(ab_phytopar)) %>%
   select(STATION, LAND_USE, fact_col, ab_libres, ab_phytofac, ab_phytopar, prc_phyto) %>%
   pivot_longer(cols=4:7)
 
@@ -38,9 +41,9 @@ land_use_colors <- c("Annual crops" = "#121510FF",
                      "Permanent crops" = "#E5AD4FFF", 
                      "Forests & tree plantations" = "#BD5630FF")
 
-indice_names <- as_labeller(c("ab_libres" = "Free-living nematode abundance \n(Individuals per 100 g dry soil)",
-                              "ab_phytopar" = "Obligate plant-feeding nematode abundance \n(Individuals per 100 g dry soil)",
-                              "ab_phytofac" = "Facultative plant-feeding  nematode abundance \n(Individuals per 100 g dry soil)",
+indice_names <- as_labeller(c("ab_libres" = "Free-living nematode abundance \n(Log10 Individuals per 100 g dry soil)",
+                              "ab_phytopar" = "Obligate plant-feeding nematode abundance \n(Log10 Individuals per 100 g dry soil)",
+                              "ab_phytofac" = "Facultative plant-feeding  nematode abundance \n(Log10 Individuals per 100 g dry soil)",
                               "prc_phyto" = "Facultative plant-feeding  nematodes proportion \n(Percentage of the total community)"))  
 
 # Réprésentation SI - EI
@@ -75,3 +78,19 @@ assembled_nem <- ggarrange(indices_plot, ab_plot,
 # Sauvegarde de la figure finale
 ggsave("figures/article ASE/nematodes.png", 
        width = 36, height = 12, units = "cm")
+
+
+#Tests stats
+# Matrice ddes abondances
+nem_ab2<- nem0 %>%
+  pivot_wider(id_cols = c(STATION, LAND_USE, fact_col), names_from = indice,
+              values_from = valeur) %>%
+  filter(!LAND_USE %in% c("Permanent crops", "Urban")) %>%
+  mutate(prc_phyto = ab_phytofac/ab_tot*100) %>%
+  select(STATION, LAND_USE, fact_col, ab_libres, ab_phytofac, ab_phytopar, prc_phyto) %>%
+  pivot_longer(cols=4:7)
+
+kruskal.test(value~LAND_USE, data=nem_ab2[nem_ab2$name == "ab_libres",])
+kruskal.test(value~LAND_USE, data=nem_ab2[nem_ab2$name == "ab_phytopar",])
+kruskal.test(value~LAND_USE, data=nem_ab2[nem_ab2$name == "ab_phytofac",])
+kruskal.test(value~LAND_USE, data=nem_ab2[nem_ab2$name == "prc_phyto",])
