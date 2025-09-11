@@ -27,9 +27,9 @@ nem_ab<- nem0 %>%
               values_from = valeur) %>%
   #filter(!LAND_USE %in% c("Permanent crops", "Urban")) %>%
   mutate(prc_phyto = ab_phytofac/ab_tot*100) %>%
-  mutate(ab_libres = log10(ab_libres), 
-         ab_phytofac = log10(ab_phytofac), 
-         ab_phytopar = log10(ab_phytopar)) %>%
+  #mutate(ab_libres = log10(ab_libres), 
+  #       ab_phytofac = log10(ab_phytofac), 
+  #       ab_phytopar = log10(ab_phytopar)) %>%
   select(STATION, LAND_USE, fact_col, ab_libres, ab_phytofac, ab_phytopar, prc_phyto) %>%
   pivot_longer(cols=4:7)
 
@@ -41,9 +41,9 @@ land_use_colors <- c("Annual crops" = "#121510FF",
                      "Permanent crops" = "#E5AD4FFF", 
                      "Forests & tree plantations" = "#BD5630FF")
 
-indice_names <- as_labeller(c("ab_libres" = "Free-living nematode abundance \n(Log10 Individuals per 100 g dry soil)",
-                              "ab_phytopar" = "Obligate plant-feeding nematode abundance \n(Log10 Individuals per 100 g dry soil)",
-                              "ab_phytofac" = "Facultative plant-feeding  nematode abundance \n(Log10 Individuals per 100 g dry soil)",
+indice_names <- as_labeller(c("ab_libres" = "Free-living nematode abundance \n(Individuals per 100 g dry soil)",
+                              "ab_phytopar" = "Obligate plant-feeding nematode abundance \n(Individuals per 100 g dry soil)",
+                              "ab_phytofac" = "Facultative plant-feeding  nematode abundance \n(Individuals per 100 g dry soil)",
                               "prc_phyto" = "Facultative plant-feeding  nematodes proportion \n(Percentage of the total community)"))  
 
 # Réprésentation SI - EI
