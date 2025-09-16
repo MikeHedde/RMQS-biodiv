@@ -20,7 +20,8 @@ gpd_cross_m        <- 1.0
 gpd_unit_intensity <- gpd_open_circ_m + gpd_cross_m
 
 ## 1) Packages ----------------------------------------------------------------
-pkgs <- c("dplyr","tidyr","readr","stringr","tibble","purrr","unmarked","ggplot2")
+pkgs <- c("dplyr","tidyr","readr","stringr","tibble","purrr","unmarked","ggplot2",
+          "pbkrtest", "lmerTest")
 to_install <- setdiff(pkgs, rownames(installed.packages()))
 if (length(to_install)) install.packages(to_install, repos = "https://cloud.r-project.org")
 invisible(lapply(pkgs, library, character.only = TRUE))
@@ -465,3 +466,113 @@ ggplot(tab_p, aes(x = method, y = p_hat)) +
 ggsave(file.path(out_dir, "p_by_method_unmarked_effort_psi_cov.png"), p_fig, width = 8, height = 5, dpi = 200)
 
 message("=== FIN ===  Résultats : ", normalizePath(out_dir))
+
+
+################ DO TRAITS EXPLAIN DETECTABILITY ##############################
+mass <- raw %>%
+  filter(PROJET == "RMQS_2025") %>%
+  select(LB_NOM, `MASSE (mg)`) %>%
+  rename(species = LB_NOM) %>%
+  group_by(species) %>%
+  summarise(mass = median(`MASSE (mg)`, na.rm = T))
+
+dat <- tab_p %>%
+  left_join(mass)
+
+ggplot(subset(dat, method %in% c("GPD", "Pitfall10", "Pitfall6", "Pitfall4")), 
+       aes(x=log(mass), y=p_hat, colour=method))+
+  geom_point()+
+  stat_smooth(method='lm')+
+  facet_grid(method~.)
+
+# ===== Passer p_hat sur l’échelle logit + poids méta ====================
+# Calcul SE(p) approx. depuis l'IC95% si possible : se_p ≈ (ucl - lcl) / (2 * 1.96)
+# Puis delta-method : se_logit = se_p / (p * (1 - p))
+# On tronque p pour éviter 0/1 exacts.
+
+logit <- function(p) log(p/(1-p))
+
+dat2 <- dat %>%
+  mutate(
+    p_clip  = pmin(pmax(p_hat, 1e-5), 1 - 1e-5),
+    logit_p = logit(p_clip),
+    se_p    = ifelse(!is.na(lcl) & !is.na(ucl),
+                     (ucl - lcl) / (2 * 1.96),
+                     NA_real_),
+    se_logit = ifelse(!is.na(se_p),
+                      se_p / (p_clip * (1 - p_clip)),
+                      NA_real_),
+    weight   = 1 / (se_logit^2)
+  )
+
+# Si certains n'ont pas d'IC, on leur met un poids neutre (1)
+dat2 <- dat2 %>%
+  mutate(weight = ifelse(is.finite(weight), weight, 1))
+
+# ===== 4) Ajuster un modèle : logit(p_hat) ~ method * log(mass) =============
+# Comme mass est au niveau espèce et qu’on a répété par méthode,
+# on met un intercept aléatoire par espèce pour la corrélation intra-espèce.
+
+dat2 <- dat2 %>% filter(!is.na(mass) & mass > 0)
+
+dat2 <- dat2 %>%
+  mutate(
+    log_mass = log10(mass),
+    species  = factor(species)
+  )
+
+# lmer accepte des poids observationnels
+m_mass_int <- lmer(logit_p ~ method * log_mass + (1 | species),
+                   data = dat2, weights = weight, REML = TRUE)
+
+summary(m_mass_int)
+
+# ===== 5) Pentes par méthode et comparaisons (emmeans) =====================
+
+# Pente de logit(p) par rapport à log_mass pour chaque méthode
+trends <- emtrends(m_mass_int, ~ method, var = "log_mass")
+trends
+pairs(trends)  # comparer les pentes entre méthodes
+
+# ===== 6) Visualisation simple =============================================
+
+# Prédictions (lissées) par méthode sur une grille de masses
+newgrid <- dat2 %>%
+  group_by(method) %>%
+  summarise(m_min = quantile(log_mass, 0.05),
+            m_max = quantile(log_mass, 0.95), .groups="drop") %>%
+  rowwise() %>%
+  do({
+    tibble(
+      method  = .$method,
+      log_mass = seq(.$m_min, .$m_max, length.out = 100)
+    )
+  }) %>%
+  ungroup()
+
+pred <- cbind(newgrid,
+              predict(m_mass_int, newdata = newgrid, re.form = NA, se.fit = TRUE)) %>%
+  as_tibble() %>%
+  mutate(
+    p_fit  = plogis(fit),
+    p_lcl  = plogis(fit - 1.96 * se.fit),
+    p_ucl  = plogis(fit + 1.96 * se.fit)
+  )
+
+dat2_r <- subset(dat2, method %in% c("GPD", "Pitfall10", "Pitfall6"))
+pred_r <- subset(pred, method %in% c("GPD", "Pitfall10", "Pitfall6"))
+
+ggplot(dat2_r,
+       aes(x = log_mass, y = p_clip, colour = method)) +
+  geom_point(alpha = 0.5) +
+  geom_line(data = pred_r, aes(x = log_mass, y = p_fit, colour = method), linewidth = 1) +
+  geom_ribbon(data = pred_r,
+              aes(x = log_mass, ymin = p_lcl, ymax = p_ucl, fill = method),
+              alpha = 0.15, inherit.aes = FALSE) +
+  scale_y_continuous(limits = c(0,1)) +
+  facet_wrap(method~.)+
+  labs(x = "log10(body mass, mg)",
+       y = "Detectability p̂\n (occupancy, logit back-transformed)",
+       title = "Effect of body mass on detectability by method") +
+  theme_minimal()+
+  theme(legend.position = "none")
