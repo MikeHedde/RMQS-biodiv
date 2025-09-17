@@ -6,7 +6,7 @@
 # ============================================================
 
 ## 0) Paramètres ---------------------------------------------------------------
-in_path   <- "data/raw-data/lab files/databases update/update_carabidae.csv"
+in_path   <- "data/raw-data/lab files/databases update/all_together.csv"
 out_dir   <- "data/derived-data/occupancy"
 target_yr <- "2025"
 target_project <- "RMQS_2025"
@@ -419,13 +419,20 @@ fit_one_species_occu <- function(sp_name) {
 spp_all <- dimnames(Y)$species
 res_list <- purrr::map(spp_all, ~try(fit_one_species_occu(.x), silent=TRUE))
 
+order <- raw %>%
+  select(LB_NOM, ORDRE)%>%
+  unique() %>%
+  rename(species = LB_NOM, order = ORDRE)
+
 tab_p <- res_list %>%
   purrr::keep(~!inherits(.x,"try-error") && !is.null(.x$p_table)) %>%
-  purrr::map("p_table") %>% dplyr::bind_rows()
+  purrr::map("p_table") %>% dplyr::bind_rows() %>%
+  left_join(order)
 
 tab_beta <- res_list %>%
   purrr::keep(~!inherits(.x,"try-error") && !is.null(.x$beta)) %>%
-  purrr::map("beta") %>% dplyr::bind_rows()
+  purrr::map("beta") %>% dplyr::bind_rows()%>%
+  left_join(order)
 
 tab_psi <- res_list %>%
   purrr::keep(~!inherits(.x,"try-error") && !is.null(.x$psi_hat)) %>%
@@ -464,14 +471,16 @@ tab_beta <- tab_beta %>%
 readr::write_csv(tab_beta, file.path(out_dir, "psi_coefficients_by_species.csv"))
 
 # Petits graphiques de synthèse
-g1 <- ggplot(tab_beta, aes(x = beta_ALT)) + geom_density(na.rm=TRUE) +
+g1 <- ggplot(tab_beta, aes(x = beta_alt)) + geom_density(na.rm=TRUE) +
   geom_vline(xintercept = 0, linetype="dashed") +
   labs(x="Effect on occupancy (β_ALTITUDE_z)", y="Density", title="Community distribution of altitude effects on ψ") +
+  facet_wrap(order~.)+
   theme_minimal()
 
-g2 <- ggplot(tab_beta, aes(x = beta_DOY)) + geom_density(na.rm=TRUE) +
+g2 <- ggplot(tab_beta, aes(x = beta_doy)) + geom_density(na.rm=TRUE) +
   geom_vline(xintercept = 0, linetype="dashed") +
   labs(x="Effect on occupancy (β_DOY_z)", y="Density", title="Community distribution of date (DOY) effects on ψ") +
+  facet_wrap(order~.)+
   theme_minimal()
 
 ggsave(file.path(out_dir, "psi_effects_altitude_density.png"), g1, width=6, height=4, dpi=200)
@@ -483,6 +492,7 @@ p_fig <- ggplot(tab_p, aes(x = method, y = p_hat)) +
   geom_violin(fill = "grey92") +
   geom_point(position = position_jitter(width = 0.08), alpha = 0.5) +
   geom_point(data = comm_sum, aes(y = p_med), color = "red", size = 3) +
+  facet_wrap(order~.)+
   labs(
     y = "p̂ (détectabilité, occupancy unmarked;\n effort médian par méthode)",
     x = NULL,
@@ -496,6 +506,7 @@ ggplot(tab_p, aes(x = method, y = p_hat)) +
   geom_point(data = comm_sum, aes(y = p_med), color = "red", size = 3) +
   geom_point(data=subset(tab_p, species == "Trechus quadristriatus"), 
              aes(y=p_hat), color = "blue", size=2)+
+  facet_wrap(order~.)+
   labs(
     y = "p̂ (détectabilité, occupancy unmarked;\n effort médian par méthode)",
     x = NULL,
@@ -509,7 +520,8 @@ message("=== FIN ===  Résultats : ", normalizePath(out_dir))
 
 
 ################ DO TRAITS EXPLAIN DETECTABILITY ##############################
-mass <- raw %>%
+# Traits mesurés sur les animaux du dataset
+trait <- raw %>%
   filter(PROJET == "RMQS_2025") %>%
   select(LB_NOM, `MASSE (mg)`) %>%
   rename(species = LB_NOM) %>%
@@ -517,7 +529,18 @@ mass <- raw %>%
   summarise(mass = median(`MASSE (mg)`, na.rm = T))
 
 dat <- tab_p %>%
-  left_join(mass)
+  left_join(trait)
+
+# traits issus de BETSI
+devtools::install_git("https://src.koda.cnrs.fr/cefe/bioflux/betsir.git")
+library(betsir)
+
+h <- get_coded_value("Carabidae", "diet", include_subtaxa = TRUE)
+############### /!\ à terminer #################
+
+
+dat <- tab_p %>%
+  left_join(trait)
 
 ggplot(subset(dat, method %in% c("GPD", "Pitfall10", "Pitfall6", "Pitfall4")), 
        aes(x=log(mass), y=p_hat, colour=method))+
@@ -624,15 +647,7 @@ ggplot(dat2_r,
 # + Profils de Hill q∈[0,2]
 # =========================
 
-library(dplyr)
-library(tidyr)
-library(vegan)
-library(purrr)
-library(ggplot2)
-library(readr)
-library(stringr)
-library(lme4)
-library(lmerTest)
+
 
 # -------------------------
 # 0) Données d'entrée

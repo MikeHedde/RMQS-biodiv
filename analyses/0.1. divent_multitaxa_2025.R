@@ -1,4 +1,4 @@
-
+ 
 librarian::shelf(dplyr, tidyr, ggplot2, vegan, forcats, divent, ggdist)
 
 data_car <- read.csv("data/raw-data/lab files/databases update/update_carabidae.csv", h = T, sep = ";", fileEncoding="latin1")
