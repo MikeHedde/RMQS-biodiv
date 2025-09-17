@@ -9,7 +9,9 @@
 in_path   <- "data/raw-data/lab files/databases update/update_carabidae.csv"
 out_dir   <- "data/derived-data/occupancy"
 target_yr <- "2025"
+target_project <- "RMQS_2025"
 min_sites <- 2
+taxo_level <- "ES"
 require_contrast <- TRUE
 
 # Constantes effort
@@ -20,12 +22,10 @@ gpd_cross_m        <- 1.0
 gpd_unit_intensity <- gpd_open_circ_m + gpd_cross_m
 
 ## 1) Packages ----------------------------------------------------------------
-pkgs <- c("dplyr","tidyr","readr","stringr","tibble","purrr","unmarked","ggplot2",
-          "pbkrtest", "lmerTest")
-to_install <- setdiff(pkgs, rownames(installed.packages()))
-if (length(to_install)) install.packages(to_install, repos = "https://cloud.r-project.org")
-invisible(lapply(pkgs, library, character.only = TRUE))
-dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+pkgs <- c()
+librarian::shelf(dplyr, tidyr, ggplot2, vegan, forcats, divent, ggdist,
+                 readr,stringr,tibble,purrr,unmarked, lme4,
+                 pbkrtest, lmerTest)
 
 ## 2) Lecture CSV et détection colonnes ---------------------------------------
 raw <- readr::read_delim(in_path, delim = ";", locale = readr::locale(encoding = "Latin1"),
@@ -41,9 +41,10 @@ col_project  <- col_exists(c("PROJET"))
 col_DATE     <- col_exists(c("DATE"))
 col_DATEFIN  <- col_exists(c("DATE_FIN"))
 col_alt      <- col_exists(c("ALTITUDE"))
+col_rang     <- col_exists(c("RANG"))
 
 stopifnot(!is.na(col_station), !is.na(col_method), !is.na(col_species),
-          !is.na(col_abund), !is.na(col_sample))
+          !is.na(col_abund), !is.na(col_sample), !is.na(col_rang))
 
 ## 3) Normalisation / parsing --------------------------------------------------
 norm_method <- function(x) {
@@ -60,6 +61,8 @@ parse_abund <- function(x) suppressWarnings(as.numeric(x))
 parse_date_fr <- function(x) as.Date(suppressWarnings(readr::parse_date(as.character(x), "%d/%m/%Y")))
 
 dat0 <- raw %>%
+  filter(PROJET %in% c(target_project),
+         RANG %in% c(taxo_level)) %>%
   transmute(
     site_id = as.character(.data[[col_station]]),
     method  = norm_method(.data[[col_method]]),
@@ -72,8 +75,7 @@ dat0 <- raw %>%
     DATE     = if (!is.na(col_DATE))    parse_date_fr(.data[[col_DATE]])    else as.Date(NA),
     DATE_FIN = if (!is.na(col_DATEFIN)) parse_date_fr(.data[[col_DATEFIN]]) else as.Date(NA),
     ALTITUDE = if (!is.na(col_alt)) suppressWarnings(as.numeric(.data[[col_alt]])) else NA_real_
-  ) %>%
-  filter(year == !!target_yr)
+  ) 
 
 stopifnot(nrow(dat0) > 0)
 
@@ -126,7 +128,7 @@ det_gpd <- dat0 %>%
 
 ## 5) Effort par site × méthode -----------------------------------------------
 
-# Pitfall — comme avant
+# --- Pitfall 
 eff_pit_site <- dat0 %>%
   filter(method == "Pitfall", !is.na(trap), trap %in% 1:10) %>%
   group_by(site_id) %>%
@@ -166,13 +168,23 @@ eff_gpd_site <- gpd_subtrap %>%
     eff_gpd = gpd_unit_intensity * days_gpd * pmax(0, n_active_subtraps)
   )
 
-# Fusion effort (une ligne par site, colonnes par réplicat)
+#--- Fusion effort (une ligne par site, colonnes par réplicat)
 sites_all <- sort(unique(dat0$site_id))
 effort_wide <- tibble(site_id = sites_all) %>%
   left_join(eff_pit_site %>% select(site_id, eff_p10, eff_p8, eff_p6, eff_p4, eff_p2), by="site_id") %>%
   left_join(eff_gpd_site %>% select(site_id, eff_gpd, n_active_subtraps), by="site_id") %>%
   mutate(across(c(eff_p10, eff_p8, eff_p6, eff_p4, eff_p2, eff_gpd), ~ tidyr::replace_na(., 0)),
          n_active_subtraps = tidyr::replace_na(n_active_subtraps, 0L))
+
+effort_long <- effort_wide %>%
+  pivot_longer(cols = 2:ncol(.), names_to = "method", values_to = "values") %>%
+  filter(method %in% c("eff_p10", "eff_p6", "eff_gpd"))
+
+#--- Visualisation des efforts
+ggplot(effort_long, aes(x=method, y =values))+
+  geom_boxplot()+
+  geom_jitter()+
+  theme_bw()
 
 ## 6) Table des méthodes disponibles (GPD absent si 0 sous-piège actif) --------
 sampling_map <- dat0 %>%
@@ -294,7 +306,7 @@ method_eff_medians <- function(eff_z_matrix) {
   apply(eff_z_matrix, 2, function(col) if (all(is.na(col))) 0 else stats::median(col, na.rm=TRUE))
 }
 
-fit_one_species_unmarked <- function(sp_name) {
+fit_one_species_occu <- function(sp_name) {
   k <- which(dimnames(Y)$species == sp_name)
   if (length(k) != 1) return(NULL)
   Yk <- Y[,,k, drop=FALSE][,,1]  # J × R
@@ -343,15 +355,21 @@ fit_one_species_unmarked <- function(sp_name) {
   umf <- unmarked::unmarkedFrameOccu(
     y = Yk,
     siteCovs = sc,
-    obsCovs  = list(I8 = I8_mat, I6 = I6_mat,I4 = I4_mat, I2 = I2_mat, IGPD = IGPD_mat, eff_z = eff_sp)
+    obsCovs  = list(I8 = I8_mat, I6 = I6_mat,
+                    I4 = I4_mat, I2 = I2_mat, 
+                    IGPD = IGPD_mat, eff_z = eff_sp)
   )
   
-  fm <- try(unmarked::occu(form_occu, data = umf, control = list(maxit = 200)), silent = TRUE)
+  fm <- try(unmarked::occu(form_occu, data = umf, 
+                           control = list(maxit = 200)), 
+            silent = TRUE)
   if (inherits(fm, "try-error")) return(NULL)
   
   # Prédictions p(method) à l'effort médian global
   eff_med_all <- method_eff_medians(eff_z)
-  eff_for <- function(m) if (m %in% names(eff_med_all)) eff_med_all[[m]] else 0
+  eff_for <- function(m) 
+    if (m %in% names(eff_med_all)) eff_med_all[[m]] 
+    else 0
   mk_pred <- function(I8v, I6v, I4v, I2v, IGPDv, effv) {
     # Pour la prédiction de p, l’occupation est conditionnée par (ALT=0, DOY=0) si présents
     nd <- data.frame(I8 = I8v, I6 = I6v, I4 = I4v, I2 = I2v, IGPD = IGPDv, eff_z = effv)
@@ -366,44 +384,66 @@ fit_one_species_unmarked <- function(sp_name) {
   p_p2  <- mk_pred(0,0,0,1,0, eff_for("Pitfall2"))
   p_gpd <- mk_pred(0,0,0,0,1, eff_for("GPD"))
   
-  # Coefficients d’occupation (ψ) — forcer NA en numérique
-  b_state <- try(coef(fm, type = "state"), silent = TRUE)
-  se_state <- try(unmarked::SE(fm, type = "state"), silent = TRUE)
-  
-  grab_num <- function(x, nm) {
-    if (inherits(x, "try-error") || is.null(names(x)) || !(nm %in% names(x))) return(NA_real_)
-    as.numeric(x[[nm]])
-  }
-  beta_ALT <- if (has_var_alt) grab_num(b_state, "psi(ALTITUDE_z)") else NA_real_
-  se_ALT   <- if (has_var_alt) grab_num(se_state, "psi(ALTITUDE_z)") else NA_real_
-  beta_DOY <- if (has_var_doy) grab_num(b_state, "psi(DOY_z)")      else NA_real_
-  se_DOY   <- if (has_var_doy) grab_num(se_state, "psi(DOY_z)")      else NA_real_
-  
-  tibble::tibble(
+  tab_p <- tibble::tibble(
     species  = sp_name,
     method   = c("Pitfall10","Pitfall8","Pitfall6","Pitfall4","Pitfall2","GPD"),
     p_hat    = c(p_p10$Predicted, p_p8$Predicted, p_p6$Predicted, p_p4$Predicted, p_p2$Predicted, p_gpd$Predicted),
     lcl      = c(p_p10$lower,     p_p8$lower,     p_p6$lower,     p_p4$lower,     p_p2$lower,     p_gpd$lower),
     ucl      = c(p_p10$upper,     p_p8$upper,     p_p6$upper,     p_p4$upper,     p_p2$upper,     p_gpd$upper),
     n_sites  = nrow(Yk),
-    n_rep    = ncol(Yk),
-    beta_ALT = beta_ALT,
-    se_ALT   = se_ALT,
-    beta_DOY = beta_DOY,
-    se_DOY   = se_DOY
+    n_rep    = ncol(Yk)
   )
+  
+  # Coefs ψ (ALT, DOY)
+  co <- summary(fm)  # matrix with Estimate/SE
+  co_state <- co$state
+  beta_ALT <- if ("ALTITUDE_z" %in% rownames(co_state)) co_state[rownames(co_state)=="ALTITUDE_z", colnames(co_state) == "Estimate"] else NA_real_
+  se_ALT   <- if ("ALTITUDE_z" %in% rownames(co_state)) co_state[rownames(co_state)=="ALTITUDE_z", colnames(co_state) == "SE"] else NA_real_
+  beta_DOY <- if ("DOY_z" %in% rownames(co_state)) co_state[rownames(co_state)=="DOY_z", colnames(co_state) == "Estimate"] else NA_real_
+  se_DOY   <- if ("DOY_z" %in% rownames(co_state)) co_state[rownames(co_state)=="DOY_z", colnames(co_state) == "SE"]       else NA_real_
+  
+  # ψ̂ par site (pour richesse attendue Σψ̂)
+  psi_pred <- as.data.frame(unmarked::predict(fm, type="state")) # ordre = sites de Yk
+  psi_hat  <- psi_pred$Predicted
+  names(psi_hat) <- rownames(Yk)
+  
+  list(p_table = tab_p,
+       beta = tibble::tibble(species=sp_name,
+                             beta_alt=beta_ALT, se_alt=se_ALT,
+                             beta_doy=beta_DOY, se_doy=se_DOY),
+       psi_hat = tibble::tibble(site_id=rownames(Yk),
+                                species=sp_name, psi_hat=psi_hat))
 }
-
 
 ## 11) Lancer sur toutes les espèces -------------------------------------------
 spp_all <- dimnames(Y)$species
-tab_list <- purrr::map(spp_all, ~try(fit_one_species_unmarked(.x), silent = TRUE))
-tab_p <- tab_list %>%
-  purrr::keep(~!inherits(.x, "try-error") && !is.null(.x) && nrow(.x) > 0) %>%
-  dplyr::bind_rows()
+res_list <- purrr::map(spp_all, ~try(fit_one_species_occu(.x), silent=TRUE))
 
-readr::write_csv(tab_p, file.path(out_dir, "species_detection_by_method_unmarked_effort_psi_cov.csv"))
+tab_p <- res_list %>%
+  purrr::keep(~!inherits(.x,"try-error") && !is.null(.x$p_table)) %>%
+  purrr::map("p_table") %>% dplyr::bind_rows()
+
+tab_beta <- res_list %>%
+  purrr::keep(~!inherits(.x,"try-error") && !is.null(.x$beta)) %>%
+  purrr::map("beta") %>% dplyr::bind_rows()
+
+tab_psi <- res_list %>%
+  purrr::keep(~!inherits(.x,"try-error") && !is.null(.x$psi_hat)) %>%
+  purrr::map("psi_hat") %>% dplyr::bind_rows()
+
+readr::write_csv(tab_p,   file.path(out_dir, "p_hat_by_method_unmarked_full.csv"))
+readr::write_csv(tab_beta,file.path(out_dir, "psi_coef_ALT_DOY_by_species.csv"))
+readr::write_csv(tab_psi, file.path(out_dir, "psi_hat_by_site_species.csv"))
+
 message("Espèces retenues : ", dplyr::n_distinct(tab_p$species), "/", length(spp_all))
+
+# Richesse attendue par site (corrigée détectabilité) : Σ_s ψ̂_is
+psi_rich_site <- tab_psi %>%
+  group_by(site_id) %>%
+  summarise(S_exp = sum(psi_hat, na.rm=TRUE), .groups="drop")
+
+readr::write_csv(psi_rich_site, file.path(out_dir, "expected_richness_by_site.csv"))
+
 
 ## 12) Synthèse communautaire & figures ----------------------------------------
 # Détectabilité par méthode
@@ -418,8 +458,8 @@ print(comm_sum)
 readr::write_csv(comm_sum, file.path(out_dir, "community_detection_unmarked_effort_psi_cov.csv"))
 
 # Distribution des effets ALT & DOY sur ψ (par espèce)
-tab_beta <- tab_p %>%
-  distinct(species, beta_ALT, se_ALT, beta_DOY, se_DOY)
+tab_beta <- tab_beta %>%
+  distinct(species, beta_alt, se_alt, beta_doy, se_doy)
 
 readr::write_csv(tab_beta, file.path(out_dir, "psi_coefficients_by_species.csv"))
 
@@ -437,7 +477,7 @@ g2 <- ggplot(tab_beta, aes(x = beta_DOY)) + geom_density(na.rm=TRUE) +
 ggsave(file.path(out_dir, "psi_effects_altitude_density.png"), g1, width=6, height=4, dpi=200)
 ggsave(file.path(out_dir, "psi_effects_doy_density.png"), g2, width=6, height=4, dpi=200)
 
-# Violin plot p_hat par méthode (comme avant)
+# Violin plot p_hat par méthode
 tab_p$method <- factor(tab_p$method, levels = c("GPD", "Pitfall10", "Pitfall8", "Pitfall6", "Pitfall4", "Pitfall2"))
 p_fig <- ggplot(tab_p, aes(x = method, y = p_hat)) +
   geom_violin(fill = "grey92") +
@@ -576,3 +616,163 @@ ggplot(dat2_r,
        title = "Effect of body mass on detectability by method") +
   theme_minimal()+
   theme(legend.position = "none")
+
+
+###################### DIversité ~##################################
+# =========================
+# Diversité spécifique par méthode
+# + Profils de Hill q∈[0,2]
+# =========================
+
+library(dplyr)
+library(tidyr)
+library(vegan)
+library(purrr)
+library(ggplot2)
+library(readr)
+library(stringr)
+library(lme4)
+library(lmerTest)
+
+# -------------------------
+# 0) Données d'entrée
+# -------------------------
+# dat0 : site_id, method, species, abund  (déjà construit dans ton script précédent)
+stopifnot(all(c("site_id","method","species","abund") %in% names(dat0)))
+
+# (Option) Détectabilités par espèce×méthode (si dispo) pour correction HT
+# Décommente si tu veux activer la correction
+# p_tab <- readr::read_csv("data/derived-data/occupancy/species_detection_by_method_unmarked_effort.csv")
+# head(p_tab)
+# -> colonnes attendues : species, method, p_hat
+
+# Normalise/filtre les méthodes que tu veux comparer
+method_levels <- c("GPD","Pitfall")
+dat_use <- dat0 %>%
+  mutate(method = factor(method, levels = method_levels)) %>%
+  filter(!is.na(method)) %>%
+  # garde seulement les méthodes présentes
+  filter(method %in% levels(method)[!is.na(levels(method))])
+
+# -------------------------
+# 1) Matrices site × espèce par méthode (abondances & présence)
+# -------------------------
+# Abondance (somme par site×espèce×méthode)
+abund_long <- dat_use %>%
+  group_by(site_id, method, species) %>%
+  summarise(abund = sum(as.numeric(abund %||% 0), na.rm = TRUE), .groups = "drop")
+
+# Présence/absence dérivée
+pa_long <- abund_long %>%
+  mutate(det = as.integer(abund > 0))
+
+# Pour calculs par méthode, on construit des matrices site×espèce séparées par méthode
+make_comm_matrix <- function(df_long, value = c("abund","det")) {
+  val <- match.arg(value)
+  df_wide <- df_long %>%
+    select(site_id, method, species, !!sym(val)) %>%
+    pivot_wider(names_from = species, values_from = !!sym(val), values_fill = 0)
+  df_wide
+}
+
+comm_abund <- make_comm_matrix(abund_long, "abund")
+comm_pa    <- make_comm_matrix(pa_long,    "det")
+
+# -------------------------
+# 2) Indices de diversité par site × méthode
+# -------------------------
+#Calculer les profils de diversité à l'aide de 0.1. divent_multitaxa
+#extraire les valeurs de 3 indices
+
+m_S  <- lmer(richness ~ method + (1|site_id), data = div_hill)
+m_q1 <- lmer(Hill_q1 ~ method + (1|site_id), data = div_hill)
+m_q2 <- lmer(Hill_q2 ~ method + (1|site_id), data = div_hill)
+
+summary(m_S)
+summary(m_q1)
+summary(m_q2)
+
+# Visualisation simple
+ggplot(div_hill, aes(x = method, y = richness)) +
+  geom_violin(fill = "grey92") +
+  geom_point(position = position_jitter(width = 0.08), alpha = 0.5) +
+  ggtitle("Richesse spécifique par méthode (abondances)") +
+  theme_minimal()
+
+ggplot(div_hill, aes(x = method, y = Hill_q1)) +
+  geom_violin(fill = "grey92") +
+  geom_point(position = position_jitter(width = 0.08), alpha = 0.5) +
+  #ylab(expression(^1*D==e^{H})) +
+  ggtitle("Diversité de Hill q=1 (exp(Shannon)) par méthode") +
+  theme_minimal()
+
+ggplot(div_hill, aes(x = method, y = Hill_q2)) +
+  geom_violin(fill = "grey92") +
+  geom_point(position = position_jitter(width = 0.08), alpha = 0.5) +
+  #ylab(expression(^2*D)) +
+  ggtitle("Diversité de Hill q=2 (Inverse Simpson) par méthode") +
+  theme_minimal()
+
+# -------------------------
+# 5) (Option) Correction HT par détectabilité p̂ (espèce×méthode)
+# -------------------------
+# Si 'tab_p' est disponible : species, method, p_hat
+# -> On corrige les abondances par 1/p_hat (borné), puis on refait les indices et Hill
+#    (Rappel : c’est une correction grossière, p pas spécifique au site)
+
+# Clean p_hat
+   p_tab2 <- tab_p %>%
+     select(species, method, p_hat) %>%
+     mutate(method = factor(method, levels = method_levels)) %>%
+     filter(!is.na(p_hat) & p_hat > 0) %>%
+     mutate(p_hat = pmin(p_hat, 0.999))  # borne
+
+   abund_corr <- abund_long %>%
+     left_join(p_tab2, by = c("species","method")) %>%
+     mutate(abund_corr = ifelse(!is.na(p_hat) & p_hat > 0,
+                                abund / p_hat, NA_real_)) %>%
+     # fallback: si p absent, on garde l’abondance observée (ou NA si tu préfères)
+     mutate(abund_corr = ifelse(is.na(abund_corr), abund, abund_corr))
+
+   comm_abund_corr <- abund_corr %>%
+     select(site_id, method, species, abund_corr) %>%
+     pivot_wider(names_from = species, values_from = abund_corr, values_fill = 0)
+
+   div_abund_corr <- calc_div(comm_abund_corr, is_abundance = TRUE) %>%
+     mutate(Hill_q1 = exp(shannon), Hill_q2 = simpson)
+
+   # Compare modèles “observé” vs “corrigé”
+   m_S_corr  <- lmer(richness ~ method + (1|site_id), data = div_abund_corr)
+   m_q1_corr <- lmer(Hill_q1 ~ method + (1|site_id), data = div_abund_corr)
+   m_q2_corr <- lmer(Hill_q2 ~ method + (1|site_id), data = div_abund_corr)
+
+   summary(m_S_corr)
+   summary(m_q1_corr)
+   summary(m_q2_corr)
+
+   # Profils de Hill “corrigés”
+   hill_profiles_corr <- comm_abund_corr %>%
+     group_by(site_id, method) %>%
+     group_modify(~{
+       abund_vec <- as.numeric(.x %>% select(-1:2))
+       den <- sum(abund_vec)
+       if (den == 0) tibble(q = q_grid, hill = 0) else {
+         pvec <- abund_vec / den
+         tibble(q = q_grid, hill = sapply(q_grid, function(q) hill_D(pvec, q)))
+       }
+     }) %>%
+     ungroup() %>%
+     group_by(method, q) %>%
+     summarise(hill_med = median(hill, na.rm=TRUE),
+               hill_lo  = quantile(hill, 0.25, na.rm=TRUE),
+               hill_hi  = quantile(hill, 0.75, na.rm=TRUE),
+               .groups = "drop")
+
+   ggplot(hill_profiles_corr, aes(x=q, y=hill_med, color=method)) +
+     geom_ribbon(aes(ymin = hill_lo, ymax = hill_hi, fill = method), alpha = 0.15, color = NA) +
+     geom_line(linewidth = 1) +
+     scale_x_continuous("q (ordre de Hill)", breaks = seq(0,2,0.5), limits = c(0,2)) +
+     #ylab(expression(^q*D)) +
+     ggtitle("Profils de diversité (Hill) par méthode — abondances corrigées par p̂") +
+     theme_minimal()
+
