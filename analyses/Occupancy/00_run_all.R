@@ -1,0 +1,11 @@
+# Orchestration du workflow
+source("analyses/Occupancy/01_config.R")
+source("analyses/Occupancy/02_packages.R")
+source("analyses/Occupancy/03_read_parse.R")
+source("analyses/Occupancy/04_detection_effort.R")
+source("analyses/Occupancy/05_occupancy_fit.R")
+source("analyses/Occupancy/06_occupancy_figs.R")
+source("analyses/Occupancy/07_traits_detectability.R")
+source("analyses/Occupancy/08_diversity_indices.R")
+source("analyses/Occupancy/09_composition_beta.R")
+message("=== FIN WORKFLOW ===  Résultats : ", normalizePath(out_dir))

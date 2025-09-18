@@ -6,7 +6,7 @@
 # ============================================================
 
 ## 0) Paramètres ---------------------------------------------------------------
-in_path   <- "data/raw-data/lab files/databases update/all_together.csv"
+in_path   <- "data/raw-data/lab files/databases update/update_araneae.csv"
 out_dir   <- "data/derived-data/occupancy"
 target_yr <- "2025"
 target_project <- "RMQS_2025"
@@ -20,6 +20,7 @@ pit_circ_m         <- pi * pit_diam_m
 gpd_open_circ_m    <- pi * pit_diam_m
 gpd_cross_m        <- 1.0
 gpd_unit_intensity <- gpd_open_circ_m + gpd_cross_m
+tm_unit            <- 0.0625
 
 ## 1) Packages ----------------------------------------------------------------
 pkgs <- c()
@@ -52,7 +53,7 @@ norm_method <- function(x) {
   dplyr::case_when(
     stringr::str_detect(x, "(?i)gpd|directionnel|croisillon") ~ "GPD",
     stringr::str_detect(x, "(?i)barb|pitfall|piege\\s*barber") ~ "Pitfall",
-    stringr::str_detect(x, "(?i)dvac|aspir") ~ "DVAC100",          # TODO futur
+    stringr::str_detect(x, "(?i)dvac|aspir") ~ "DVAC",          # TODO futur
     stringr::str_detect(x, "(?i)tri\\s*manuel|tri\\s*manu") ~ "TRI",# TODO futur
     TRUE ~ x
   )
@@ -126,6 +127,18 @@ det_gpd <- dat0 %>%
   group_by(site_id, species) %>%
   summarise(GPD = as.integer(any(det == 1, na.rm=TRUE)), .groups="drop")
 
+# DVAC : 1 réplicat 
+det_dvac <- dat0 %>%
+  filter(method == "DVAC") %>%
+  group_by(site_id, species) %>%
+  summarise(DVAC = as.integer(any(det == 1, na.rm=TRUE)), .groups="drop")
+
+# DVAC : 1 réplicat 
+det_tm <- dat0 %>%
+  filter(method == "Tri manuel") %>%
+  group_by(site_id, species) %>%
+  summarise(TM = as.integer(any(det == 1, na.rm=TRUE)), .groups="drop")
+
 ## 5) Effort par site × méthode -----------------------------------------------
 
 # --- Pitfall 
@@ -168,22 +181,41 @@ eff_gpd_site <- gpd_subtrap %>%
     eff_gpd = gpd_unit_intensity * days_gpd * pmax(0, n_active_subtraps)
   )
 
+# DVAC : 100 aspirations=1 sample. 1 seul sample par site
+eff_dvac_site <- dat0 %>%
+  filter(method == "DVAC" )%>%
+  select(site_id) %>%
+  mutate(eff_dvac = 1)
+
+# --- TM : nb de repetitions = 6 ------
+eff_tm_site <- dat0 %>%
+  filter(method == "TRI") %>%
+  select(site_id) %>%
+  mutate(eff_tm = 6 * tm_unit) %>%
+  unique()
+
 #--- Fusion effort (une ligne par site, colonnes par réplicat)
 sites_all <- sort(unique(dat0$site_id))
 effort_wide <- tibble(site_id = sites_all) %>%
   left_join(eff_pit_site %>% select(site_id, eff_p10, eff_p8, eff_p6, eff_p4, eff_p2), by="site_id") %>%
   left_join(eff_gpd_site %>% select(site_id, eff_gpd, n_active_subtraps), by="site_id") %>%
-  mutate(across(c(eff_p10, eff_p8, eff_p6, eff_p4, eff_p2, eff_gpd), ~ tidyr::replace_na(., 0)),
+  left_join(eff_dvac_site %>% select(site_id, eff_dvac), by="site_id") %>%
+  left_join(eff_tm_site %>% select(site_id, eff_tm), by="site_id") %>%
+  mutate(across(c(eff_p10, eff_p8, eff_p6, eff_p4, eff_p2, eff_gpd, eff_dvac, eff_tm), ~ tidyr::replace_na(., 0)),  
          n_active_subtraps = tidyr::replace_na(n_active_subtraps, 0L))
 
 effort_long <- effort_wide %>%
   pivot_longer(cols = 2:ncol(.), names_to = "method", values_to = "values") %>%
-  filter(method %in% c("eff_p10", "eff_p6", "eff_gpd"))
+  filter(method %in% c("eff_p10", "eff_p8", "eff_p6", "eff_p4","eff_p2", "eff_gpd", "eff_dvac", "eff_tm")) %>%  
+  filter(values>0)
+
+effort_long$method <- factor(effort_long$method, levels = c("eff_gpd", "eff_p10", "eff_p8", "eff_p6", "eff_p4","eff_p2", "eff_dvac"))
 
 #--- Visualisation des efforts
 ggplot(effort_long, aes(x=method, y =values))+
   geom_boxplot()+
   geom_jitter()+
+  labs(y="Sampling effort (meter.days)")+
   theme_bw()
 
 ## 6) Table des méthodes disponibles (GPD absent si 0 sous-piège actif) --------
@@ -193,14 +225,19 @@ sampling_map <- dat0 %>%
   transmute(
     site_id,
     has_pit_raw = as.integer(!is.na(Pitfall)),
-    has_gpd_raw = as.integer(!is.na(GPD))
+    has_gpd_raw = as.integer(!is.na(GPD)),
+    has_dvac_raw = as.integer(!is.na(DVAC)),
+    has_tm_raw = as.integer(!is.na(TRI))
   ) %>%
   left_join(effort_wide %>% select(site_id, eff_gpd, n_active_subtraps), by="site_id") %>%
   mutate(
     has_pit = has_pit_raw,
-    has_gpd = ifelse(eff_gpd > 0 & n_active_subtraps > 0, 1L, 0L)
+    has_gpd = ifelse(eff_gpd > 0 & n_active_subtraps > 0, 1L, 0L),
+    has_dvac = has_dvac_raw,
+    has_tm = has_tm_raw
   ) %>%
-  select(site_id, has_pit, has_gpd)
+  select(site_id, has_pit, has_gpd, has_dvac, has_tm) %>%
+  unique()
 
 ## 7) Détections + NA si méthode absente ---------------------------------------
 keys <- dat0 %>% distinct(site_id, species)
@@ -211,26 +248,30 @@ det_wide <- keys %>%
   left_join(det_pit4,  by = c("site_id","species")) %>%
   left_join(det_pit2,  by = c("site_id","species")) %>%
   left_join(det_gpd,   by = c("site_id","species")) %>%
-  mutate(across(c(Pitfall10,Pitfall8,Pitfall6,Pitfall4,Pitfall2, GPD), ~ tidyr::replace_na(., 0L))) %>%
+  left_join(det_tm,    by = c("site_id","species")) %>%
+  left_join(det_dvac,  by = c("site_id","species")) %>%
+  mutate(across(c(Pitfall10,Pitfall8,Pitfall6,Pitfall4,Pitfall2, GPD, DVAC, TM), ~ tidyr::replace_na(., 0L))) %>%
   left_join(sampling_map, by="site_id") %>%
   mutate(
-    Pitfall10 = ifelse(has_pit==1L, Pitfall10, NA),
-    Pitfall8  = ifelse(has_pit==1L, Pitfall8,  NA),
-    Pitfall6  = ifelse(has_pit==1L, Pitfall6,  NA),
-    Pitfall4  = ifelse(has_pit==1L, Pitfall4,  NA),
-    Pitfall2  = ifelse(has_pit==1L, Pitfall2,  NA),
-    GPD       = ifelse(has_gpd==1L, GPD,       NA)
+    Pitfall10  = ifelse(has_pit==1L, Pitfall10, NA),
+    Pitfall8   = ifelse(has_pit==1L, Pitfall8,  NA),
+    Pitfall6   = ifelse(has_pit==1L, Pitfall6,  NA),
+    Pitfall4   = ifelse(has_pit==1L, Pitfall4,  NA),
+    Pitfall2   = ifelse(has_pit==1L, Pitfall2,  NA),
+    GPD        = ifelse(has_gpd==1L, GPD,       NA),
+    TM        = ifelse(has_tm==1L,  TM,       NA),
+    DVAC       = ifelse(has_dvac==1L,DVAC,      NA)
   ) %>%
-  select(site_id, species, Pitfall10, Pitfall8,Pitfall6,Pitfall4,Pitfall2, GPD)
+  select(site_id, species, Pitfall10, Pitfall8,Pitfall6,Pitfall4,Pitfall2, GPD, DVAC, TM)
 
 ## 8) Construire Y (sites × réplicats × espèces) + matrices d’effort ------------
 sites <- sort(unique(det_wide$site_id))
 spp   <- sort(unique(det_wide$species))
-J <- length(sites); R <- 6; N <- length(spp)
+J <- length(sites); R <- 8; N <- length(spp)
 
 Y <- array(NA_integer_, dim = c(J, R, N),
            dimnames = list(site = sites,
-                           rep  = c("Pitfall10","Pitfall8","Pitfall6","Pitfall4","Pitfall2","GPD"),
+                           rep  = c("Pitfall10","Pitfall8","Pitfall6","Pitfall4","Pitfall2","GPD", "DVAC", "TM"),
                            species = spp))
 
 det_long <- det_wide %>%
@@ -249,17 +290,22 @@ for (k in seq_along(spp)) {
   Y[,4,k] <- as.numeric(dk$Pitfall4)
   Y[,5,k] <- as.numeric(dk$Pitfall2)
   Y[,6,k] <- as.numeric(dk$GPD)
-}
+  Y[,7,k] <- as.numeric(dk$DVAC)
+  Y[,8,k] <- as.numeric(dk$TM)
+  }
 
 # Effort matrices alignées (J × R)
-eff_tab <- effort_wide %>% mutate(site_id = factor(site_id, levels = sites)) %>% arrange(site_id)
-eff_mat <- matrix(0, nrow=J, ncol=R, dimnames = list(sites, c("Pitfall10","Pitfall8","Pitfall6","Pitfall4","Pitfall2","GPD")))
+eff_tab <- effort_wide %>% mutate(site_id = factor(site_id, levels = sites)) %>% arrange(site_id) %>% unique()
+eff_mat <- matrix(0, nrow=J, ncol=R, 
+                  dimnames = list(sites, c("Pitfall10","Pitfall8","Pitfall6","Pitfall4","Pitfall2","GPD", "DVAC", "TM")))
 eff_mat[, "Pitfall10"] <- eff_tab$eff_p10
 eff_mat[, "Pitfall8"]  <- eff_tab$eff_p8
 eff_mat[, "Pitfall6"]  <- eff_tab$eff_p6
 eff_mat[, "Pitfall4"]  <- eff_tab$eff_p4
 eff_mat[, "Pitfall2"]  <- eff_tab$eff_p2
 eff_mat[, "GPD"]       <- eff_tab$eff_gpd
+eff_mat[, "DVAC"]      <- eff_tab$eff_dvac
+eff_mat[, "TM"]        <- eff_tab$eff_tm
 
 # Standardisation effort (log1p + z)
 eff_vec  <- as.vector(eff_mat)
@@ -331,9 +377,12 @@ fit_one_species_occu <- function(sp_name) {
   I4_mat   <- matrix(as.numeric(rep_names=="Pitfall4"), nrow(Yk), ncol(Yk), byrow=TRUE)
   I2_mat   <- matrix(as.numeric(rep_names=="Pitfall2"), nrow(Yk), ncol(Yk), byrow=TRUE)
   IGPD_mat <- matrix(as.numeric(rep_names=="GPD"),      nrow(Yk), ncol(Yk), byrow=TRUE)
+  IDVAC_mat<- matrix(as.numeric(rep_names=="DVAC"),     nrow(Yk), ncol(Yk), byrow=TRUE)
+  ITM_mat  <- matrix(as.numeric(rep_names=="TM"),       nrow(Yk), ncol(Yk), byrow=TRUE)
   
   eff_sp <- eff_z[rownames(Yk), rep_names, drop = FALSE]
-  I8_mat[is.na(Yk)] <- NA;I6_mat[is.na(Yk)] <- NA;I4_mat[is.na(Yk)] <- NA; I2_mat[is.na(Yk)] <- NA; IGPD_mat[is.na(Yk)] <- NA; eff_sp[is.na(Yk)] <- NA
+  I8_mat[is.na(Yk)] <- NA;I6_mat[is.na(Yk)] <- NA;I4_mat[is.na(Yk)] <- NA; I2_mat[is.na(Yk)] <- NA; 
+  IGPD_mat[is.na(Yk)] <- NA; IDVAC_mat[is.na(Yk)] <- NA; ITM_mat[is.na(Yk)]<- NA; eff_sp[is.na(Yk)] <- NA
   
   # Covariables de site alignées + variance locale
   sc <- site_cov %>%
@@ -350,14 +399,15 @@ fit_one_species_occu <- function(sp_name) {
   if (has_var_alt) state_terms <- c(state_terms, "ALTITUDE_z")
   if (has_var_doy) state_terms <- c(state_terms, "DOY_z")
   state_rhs <- if (length(state_terms)) paste(state_terms, collapse = " + ") else "1"
-  form_occu <- as.formula(paste("~ I8 + I6 + I4 + I2 + IGPD + eff_z ~", state_rhs))
+  form_occu <- as.formula(paste("~ I8 + I6 + I4 + I2 + IGPD + IDVAC + ITM + eff_z ~", state_rhs))
   
   umf <- unmarked::unmarkedFrameOccu(
     y = Yk,
     siteCovs = sc,
     obsCovs  = list(I8 = I8_mat, I6 = I6_mat,
                     I4 = I4_mat, I2 = I2_mat, 
-                    IGPD = IGPD_mat, eff_z = eff_sp)
+                    IGPD = IGPD_mat, IDVAC = IDVAC_mat,
+                    ITM = ITM_mat, eff_z = eff_sp)
   )
   
   fm <- try(unmarked::occu(form_occu, data = umf, 
@@ -370,26 +420,28 @@ fit_one_species_occu <- function(sp_name) {
   eff_for <- function(m) 
     if (m %in% names(eff_med_all)) eff_med_all[[m]] 
     else 0
-  mk_pred <- function(I8v, I6v, I4v, I2v, IGPDv, effv) {
+  mk_pred <- function(I8v, I6v, I4v, I2v, IGPDv, ITMv, IDVACv, effv) {
     # Pour la prédiction de p, l’occupation est conditionnée par (ALT=0, DOY=0) si présents
-    nd <- data.frame(I8 = I8v, I6 = I6v, I4 = I4v, I2 = I2v, IGPD = IGPDv, eff_z = effv)
+    nd <- data.frame(I8 = I8v, I6 = I6v, I4 = I4v, I2 = I2v, IGPD = IGPDv, IDVAC = IDVACv, ITM = ITMv, eff_z = effv)
     if (has_var_alt) nd$ALTITUDE_z <- 0
     if (has_var_doy) nd$DOY_z      <- 0
     as.data.frame(unmarked::predict(fm, type = "det", newdata = nd))
   }
-  p_p10 <- mk_pred(0,0,0,0,0, eff_for("Pitfall10"))
-  p_p8  <- mk_pred(1,0,0,0,0, eff_for("Pitfall8"))
-  p_p6  <- mk_pred(0,1,0,0,0, eff_for("Pitfall6"))
-  p_p4  <- mk_pred(0,0,1,0,0, eff_for("Pitfall4"))
-  p_p2  <- mk_pred(0,0,0,1,0, eff_for("Pitfall2"))
-  p_gpd <- mk_pred(0,0,0,0,1, eff_for("GPD"))
+  p_p10 <- mk_pred(0,0,0,0,0,0,0, eff_for("Pitfall10"))
+  p_p8  <- mk_pred(1,0,0,0,0,0,0, eff_for("Pitfall8"))
+  p_p6  <- mk_pred(0,1,0,0,0,0,0, eff_for("Pitfall6"))
+  p_p4  <- mk_pred(0,0,1,0,0,0,0, eff_for("Pitfall4"))
+  p_p2  <- mk_pred(0,0,0,1,0,0,0, eff_for("Pitfall2"))
+  p_gpd <- mk_pred(0,0,0,0,1,0,0, eff_for("GPD"))
+  p_dvac<- mk_pred(0,0,0,0,0,1,0, eff_for("DVAC"))
+  p_tm  <- mk_pred(0,0,0,0,0,0,1, eff_for("TM"))
   
   tab_p <- tibble::tibble(
     species  = sp_name,
-    method   = c("Pitfall10","Pitfall8","Pitfall6","Pitfall4","Pitfall2","GPD"),
-    p_hat    = c(p_p10$Predicted, p_p8$Predicted, p_p6$Predicted, p_p4$Predicted, p_p2$Predicted, p_gpd$Predicted),
-    lcl      = c(p_p10$lower,     p_p8$lower,     p_p6$lower,     p_p4$lower,     p_p2$lower,     p_gpd$lower),
-    ucl      = c(p_p10$upper,     p_p8$upper,     p_p6$upper,     p_p4$upper,     p_p2$upper,     p_gpd$upper),
+    method   = c("Pitfall10","Pitfall8","Pitfall6","Pitfall4","Pitfall2","GPD", "DVAC", "TM"),
+    p_hat    = c(p_p10$Predicted, p_p8$Predicted, p_p6$Predicted, p_p4$Predicted, p_p2$Predicted, p_gpd$Predicted, p_dvac$Predicted, p_tm$Predicted),
+    lcl      = c(p_p10$lower,     p_p8$lower,     p_p6$lower,     p_p4$lower,     p_p2$lower,     p_gpd$lower,     p_dvac$lower,     p_tm$lower),
+    ucl      = c(p_p10$upper,     p_p8$upper,     p_p6$upper,     p_p4$upper,     p_p2$upper,     p_gpd$upper,     p_dvac$upper,     p_tm$upper),
     n_sites  = nrow(Yk),
     n_rep    = ncol(Yk)
   )
@@ -424,14 +476,21 @@ order <- raw %>%
   unique() %>%
   rename(species = LB_NOM, order = ORDRE)
 
+family <- raw %>%
+  select(LB_NOM, FAMILLE)%>%
+  unique() %>%
+  rename(species = LB_NOM, family = FAMILLE)
+
 tab_p <- res_list %>%
   purrr::keep(~!inherits(.x,"try-error") && !is.null(.x$p_table)) %>%
   purrr::map("p_table") %>% dplyr::bind_rows() %>%
+  left_join(family) %>%
   left_join(order)
 
 tab_beta <- res_list %>%
   purrr::keep(~!inherits(.x,"try-error") && !is.null(.x$beta)) %>%
   purrr::map("beta") %>% dplyr::bind_rows()%>%
+  left_join(family) %>%
   left_join(order)
 
 tab_psi <- res_list %>%
@@ -455,7 +514,7 @@ readr::write_csv(psi_rich_site, file.path(out_dir, "expected_richness_by_site.cs
 ## 12) Synthèse communautaire & figures ----------------------------------------
 # Détectabilité par méthode
 comm_sum <- tab_p %>%
-  group_by(method) %>%
+  group_by(method, order, family) %>%
   summarise(p_med = median(p_hat, na.rm=TRUE),
             p_mean = mean(p_hat, na.rm=TRUE),
             lcl_med = median(lcl, na.rm=TRUE),
@@ -466,7 +525,7 @@ readr::write_csv(comm_sum, file.path(out_dir, "community_detection_unmarked_effo
 
 # Distribution des effets ALT & DOY sur ψ (par espèce)
 tab_beta <- tab_beta %>%
-  distinct(species, beta_alt, se_alt, beta_doy, se_doy)
+  distinct(species, order, family, beta_alt, se_alt, beta_doy, se_doy)
 
 readr::write_csv(tab_beta, file.path(out_dir, "psi_coefficients_by_species.csv"))
 
@@ -474,25 +533,25 @@ readr::write_csv(tab_beta, file.path(out_dir, "psi_coefficients_by_species.csv")
 g1 <- ggplot(tab_beta, aes(x = beta_alt)) + geom_density(na.rm=TRUE) +
   geom_vline(xintercept = 0, linetype="dashed") +
   labs(x="Effect on occupancy (β_ALTITUDE_z)", y="Density", title="Community distribution of altitude effects on ψ") +
-  facet_wrap(order~.)+
+  facet_wrap(order+family~.)+
   theme_minimal()
 
 g2 <- ggplot(tab_beta, aes(x = beta_doy)) + geom_density(na.rm=TRUE) +
   geom_vline(xintercept = 0, linetype="dashed") +
   labs(x="Effect on occupancy (β_DOY_z)", y="Density", title="Community distribution of date (DOY) effects on ψ") +
-  facet_wrap(order~.)+
+  facet_wrap(order+family~.)+
   theme_minimal()
 
 ggsave(file.path(out_dir, "psi_effects_altitude_density.png"), g1, width=6, height=4, dpi=200)
 ggsave(file.path(out_dir, "psi_effects_doy_density.png"), g2, width=6, height=4, dpi=200)
 
 # Violin plot p_hat par méthode
-tab_p$method <- factor(tab_p$method, levels = c("GPD", "Pitfall10", "Pitfall8", "Pitfall6", "Pitfall4", "Pitfall2"))
+tab_p$method <- factor(tab_p$method, levels = c("GPD", "Pitfall10", "Pitfall8", "Pitfall6", "Pitfall4", "Pitfall2", "DVAC", "TM"))
 p_fig <- ggplot(tab_p, aes(x = method, y = p_hat)) +
   geom_violin(fill = "grey92") +
   geom_point(position = position_jitter(width = 0.08), alpha = 0.5) +
   geom_point(data = comm_sum, aes(y = p_med), color = "red", size = 3) +
-  facet_wrap(order~.)+
+  facet_wrap(order+family~.)+
   labs(
     y = "p̂ (détectabilité, occupancy unmarked;\n effort médian par méthode)",
     x = NULL,
@@ -502,8 +561,8 @@ p_fig <- ggplot(tab_p, aes(x = method, y = p_hat)) +
 
 ggplot(tab_p, aes(x = method, y = p_hat)) +
   geom_violin(fill = "grey92") +
-  geom_point(position = position_jitter(width = 0.08), alpha = 0.5) +
-  geom_point(data = comm_sum, aes(y = p_med), color = "red", size = 3) +
+  #geom_point(position = position_jitter(width = 0.08), alpha = 0.5) +
+  geom_point(data = comm_sum, aes(y = p_med, color = family), size = 3) +
   geom_point(data=subset(tab_p, species == "Trechus quadristriatus"), 
              aes(y=p_hat), color = "blue", size=2)+
   facet_wrap(order~.)+

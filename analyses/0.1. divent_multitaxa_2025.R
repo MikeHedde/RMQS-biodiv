@@ -60,7 +60,7 @@ acc_sub <- acc %>%
       # représentation
       ggplot(acc, aes(x = level, y = diversity, group = methode)) +
         geom_path(aes(colour = methode, linewidth = estimator))+
-        labs(x="Nb of individuals (log10)", y = "Species Number (log10)", title =  "Araneae")+
+        labs(x="Nb of individuals (log10)", y = "Species Number (log10)", title =  "Carabidae")+
         facet_wrap(station~.)+
         scale_x_log10()+        scale_y_log10()+
         #lims(x = c(0,300))+
