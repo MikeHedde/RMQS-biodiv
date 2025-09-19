@@ -1,0 +1,32 @@
+Linear mixed model fit by REML ['lmerMod']
+Formula: richness ~ method + (1 | site_id)
+   Data: data
+
+REML criterion at convergence: 327.6
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.7727 -0.5571 -0.0178  0.6065  2.4316 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ site_id  (Intercept) 24.783   4.978   
+ Residual              3.879   1.970   
+Number of obs: 71, groups:  site_id, 12
+
+Fixed effects:
+                Estimate Std. Error t value
+(Intercept)       9.9752     1.5568   6.408
+methodPitfall10   2.1914     0.8256   2.654
+methodPitfall8    1.1914     0.8256   1.443
+methodPitfall6   -0.1419     0.8256  -0.172
+methodPitfall4   -2.0586     0.8256  -2.493
+methodPitfall2   -4.5586     0.8256  -5.522
+
+Correlation of Fixed Effects:
+            (Intr) mthP10 mthdP8 mthdP6 mthdP4
+mthdPtfll10 -0.279                            
+methdPtfll8 -0.279  0.526                     
+methdPtfll6 -0.279  0.526  0.526              
+methdPtfll4 -0.279  0.526  0.526  0.526       
+methdPtfll2 -0.279  0.526  0.526  0.526  0.526
