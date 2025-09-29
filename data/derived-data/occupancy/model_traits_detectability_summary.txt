@@ -3,43 +3,55 @@ Formula: logit_p ~ method * log_mass + (1 | species)
    Data: dat2
 Weights: weight
 
-REML criterion at convergence: 1008.8
+REML criterion at convergence: 1913.7
 
 Scaled residuals: 
     Min      1Q  Median      3Q     Max 
--3.7277 -0.0975  0.0001  0.1071  2.0817 
+-2.8830 -0.0024  0.0010  0.1372  3.5614 
 
 Random effects:
  Groups   Name        Variance Std.Dev.
- species  (Intercept) 5.039    2.245   
- Residual             5.388    2.321   
-Number of obs: 84, groups:  species, 14
+ species  (Intercept) 8.376    2.8941  
+ Residual             0.127    0.3564  
+Number of obs: 174, groups:  species, 29
 
 Fixed effects:
-                         Estimate Std. Error t value
-(Intercept)                0.4862     1.8766   0.259
-methodPitfall10            2.9072     6.3419   0.458
-methodPitfall2             0.3876     2.2350   0.173
-methodPitfall4            -1.4534     2.1414  -0.679
-methodPitfall6            -1.1849     2.2723  -0.521
-methodPitfall8            -1.1602     2.4313  -0.477
-log_mass                   0.0905     1.3922   0.065
-methodPitfall10:log_mass   2.8064     3.4841   0.805
-methodPitfall2:log_mass   -2.3237     1.5902  -1.461
-methodPitfall4:log_mass    2.6022     1.5238   1.708
-methodPitfall6:log_mass    2.6253     1.5834   1.658
-methodPitfall8:log_mass    3.2048     1.6926   1.893
+                          Estimate Std. Error t value
+(Intercept)                 1.9619     0.9978   1.966
+methodPitfall10             9.4459  2758.6775   0.003
+methodPitfall2             -0.6667     0.2312  -2.884
+methodPitfall4              0.6802     0.2463   2.761
+methodPitfall6              1.4206     0.2613   5.436
+methodPitfall8              1.8494     0.3076   6.013
+log_mass                   -1.0956     0.6345  -1.727
+methodPitfall10:log_mass    1.1365  1887.4386   0.001
+methodPitfall2:log_mass    -0.1733     0.1482  -1.169
+methodPitfall4:log_mass    -0.3280     0.1592  -2.061
+methodPitfall6:log_mass    -0.3877     0.1737  -2.232
+methodPitfall8:log_mass    -0.5600     0.2083  -2.688
 
 Correlation of Fixed Effects:
-            (Intr) mthP10 mthdP2 mthdP4 mthdP6 mthdP8 lg_mss mP10:_ mtP2:_ mtP4:_ mtP6:_
-mthdPtfll10 -0.192                                                                      
-methdPtfll2 -0.644  0.189                                                               
-methdPtfll4 -0.611  0.191  0.589                                                        
-methdPtfll6 -0.576  0.188  0.546  0.587                                                 
-methdPtfll8 -0.543  0.183  0.510  0.547  0.540                                          
-log_mass    -0.864  0.166  0.558  0.527  0.499  0.470                                   
-mthdPtf10:_  0.223 -0.951 -0.218 -0.220 -0.216 -0.211 -0.246                            
-mthdPtfl2:_  0.577 -0.168 -0.882 -0.523 -0.488 -0.459 -0.625  0.242                     
-mthdPtfl4:_  0.547 -0.170 -0.524 -0.890 -0.524 -0.488 -0.593  0.244  0.569              
-mthdPtfl6:_  0.527 -0.170 -0.498 -0.534 -0.898 -0.489 -0.572  0.241  0.544  0.585       
-mthdPtfl8:_  0.497 -0.166 -0.468 -0.497 -0.489 -0.889 -0.539  0.236  0.518  0.542  0.536
+            (Intr) mthP10 mthdP2 mthdP4 mthdP6 mthdP8 lg_mss mP10:_ mtP2:_ mtP4:_
+mthdPtfll10  0.000                                                               
+methdPtfll2 -0.131  0.000                                                        
+methdPtfll4 -0.134  0.000  0.551                                                 
+methdPtfll6 -0.128  0.000  0.518  0.615                                          
+methdPtfll8 -0.131  0.000  0.395  0.508  0.518                                   
+log_mass    -0.832  0.000  0.116  0.122  0.113  0.115                            
+mthdPtf10:_  0.000 -0.829  0.000  0.000  0.000  0.000  0.000                     
+mthdPtfl2:_  0.115  0.000 -0.878 -0.485 -0.454 -0.348 -0.134  0.000              
+mthdPtfl4:_  0.119  0.000 -0.481 -0.880 -0.535 -0.442 -0.139  0.000  0.552       
+mthdPtfl6:_  0.107  0.000 -0.436 -0.517 -0.849 -0.436 -0.119  0.000  0.492  0.560
+mthdPtfl8:_  0.108  0.000 -0.331 -0.415 -0.423 -0.804 -0.115  0.000  0.379  0.450
+            mtP6:_
+mthdPtfll10       
+methdPtfll2       
+methdPtfll4       
+methdPtfll6       
+methdPtfll8       
+log_mass          
+mthdPtf10:_       
+mthdPtfl2:_       
+mthdPtfl4:_       
+mthdPtfl6:_       
+mthdPtfl8:_  0.447

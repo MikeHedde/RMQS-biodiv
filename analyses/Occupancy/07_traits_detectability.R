@@ -49,7 +49,7 @@ pred <- cbind(newgrid,
 ggplot(dat2, aes(x = log_mass, y = p_clip, colour = method)) +
   geom_point(alpha = 0.5) +
   geom_line(data = pred, aes(y = p_fit), linewidth = 1) +
-  #geom_ribbon(data = pred, aes(ymin = p_lcl, ymax = p_ucl, fill = method), alpha = 0.15, inherit.aes = FALSE) +
+  geom_ribbon(data = pred, aes(x = log_mass,ymin = p_lcl, ymax = p_ucl, fill = method), alpha = 0.15, inherit.aes = FALSE) +
   scale_y_continuous(limits = c(0,1)) +
   facet_wrap(method~.) +
   labs(x = "log10(body mass, mg)", y = "Detectability p̂ (back-transformed)",
@@ -59,3 +59,4 @@ ggplot(dat2, aes(x = log_mass, y = p_clip, colour = method)) +
   p_mass
 
 ggsave(file.path(out_dir, "detectability_vs_mass_by_method.png"), p_mass, width = 9, height = 6, dpi = 200)
+
