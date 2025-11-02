@@ -103,7 +103,7 @@ comm_pa_all <- comm_pa %>% dplyr::relocate(site_id, method)
 X <- comm_pa_all %>% dplyr::select(-site_id, -method) %>% as.matrix()
 
 if (nrow(X) >= 3 && ncol(X) >= 1) {
-  d_jac <- vegan::vegdist(X, method = "jaccard", binary = TRUE)
+  d_jac <- vegan::vegdist(sqrt(X), method = "jaccard", binary = TRUE)
   pco <- stats::cmdscale(d_jac, k = 2, eig = TRUE)
   scores <- as.data.frame(pco$points); colnames(scores) <- c("PCoA1","PCoA2")
   scores$site_id <- comm_pa_all$site_id
@@ -169,18 +169,22 @@ if (nrow(beta_pairs) > 0) {
   readr::write_csv(beta_summary,file.path(out_dir, "beta_pairs_summary_turnover_nestedness.csv"))
   
   p_beta <- beta_summary %>%
-    dplyr::mutate(pair = paste(m1, "vs", m2)) %>%
-    ggplot2::ggplot(ggplot2::aes(x = pair, y = median, fill = component)) +
-    ggplot2::geom_col(position = ggplot2::position_dodge(width = .8)) +
-    ggplot2::geom_errorbar(ggplot2::aes(ymin = q25, ymax = q75),
-                           position = ggplot2::position_dodge(width = .8), width = .2) +
-    ggplot2::coord_flip() +
-    ggplot2::labs(
+    dplyr::filter(m2 == 6) %>%
+    mutate(pair = paste(as.numeric(m1)*2, " traps vs GPD"))
+
+    
+  
+  p_beta <- ggplot(p_beta, aes(x = pair, y = median, fill = component)) +
+    geom_col() +
+    geom_errorbar(ggplot2::aes(ymin = q25, ymax = q75)) +
+    coord_flip() +
+    labs(
       x = "Paire de méthodes (segmentées)",
       y = "β (Jaccard) — médiane [IQR]",
       title = "Partition de la β-diversité : turnover vs nestedness\n(entre méthodes segmentées, au sein des sites)"
     ) +
-    ggplot2::theme_minimal()
+    facet_wrap(component~.)+
+    theme_minimal()
   
   ggplot2::ggsave(file.path(out_dir, "beta_partition_methods.png"), p_beta, width = 9, height = 5, dpi = 200)
 }

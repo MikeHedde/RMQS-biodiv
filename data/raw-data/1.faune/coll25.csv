@@ -1,0 +1,176 @@
+station;rep;NOM_CITE;ABONDANCE_TOTALE
+2161;CM1;Protaphorura;1
+2161;CM1;Lepidocyrtus lanuginosus;1
+2161;CM3;Heteromurus major;1
+2161;CM3;Entomobrya lanuginosa;4
+2161;CM4;Lepidocyrtus lanuginosus;10
+2161;CM4;Heteromurus major;1
+2161;CM4;Heteromurus major;1
+2161;CM5;Sphaeridia pumilis;2
+2161;CM5;Protaphorura armata;7
+2161;CM5;Poduromorpha;2
+2161;CM5;Lepidocyrtus lanuginosus;1
+2161;CM6;Sphaeridia pumilis;1
+2161;CM6;Protaphorura;4
+2161;CM6;Heteromurus major;2
+2161;CM6;Entomobrya lanuginosa;1
+2161;CM6;Parisotoma notabilis;1
+2207;CM1;Sminthurinus niger;1
+2207;CM1;Cryptopygus thermophilus;6
+2207;CM1;Sphaeridia pumilis;1
+2207;CM2;Cryptopygus thermophilus;9
+2207;CM2;Brachystomella parvula;1
+2207;CM3;Cryptopygus thermophilus;38
+2207;CM3;Sphaeridia pumilis;1
+2207;CM3;Cryptopygus thermophilus;20
+2207;CM3;Cryptopygus thermophilus;22
+2207;CM4;Cryptopygus thermophilus;9
+2207;CM5;Cryptopygus thermophilus;7
+2207;CM6;Cryptopygus thermophilus;10
+2207;CM6;Sphaeridia pumilis;2
+153;CM1;Folsomia quadrioculata / brevicauda;1
+153;CM1;Parisotoma notabilis;1
+153;CM2;Isotomiella minor;2
+153;CM2;Poduromorpha;1
+153;CM2;Entomobryomorpha;1
+153;CM2;Parisotoma notabilis;2
+153;CM3;Folsomia quadrioculata / brevicauda;1
+153;CM3;Sminthurinus niger;1
+153;CM4;Folsomia quadrioculata / brevicauda;1
+153;CM4;Poduromorpha;1
+153;CM5;Poduromorpha;1
+153;CM5;Poduromorpha;1
+153;CM6;Folsomia quadrioculata / brevicauda;15
+2172;CM1;Ceratophysella;6
+2172;CM1;Protaphorura;1
+2172;CM1;Parisotoma notabilis;12
+2172;CM1;Lepidocyrtus lanuginosus;1
+2172;CM1;Sphaeridia pumilis;1
+2172;CM2;Parisotoma notabilis;1
+2172;CM3;Isotomiella minor;4
+2172;CM3;Parisotoma notabilis;11
+2172;CM3;Ceratophysella;1
+2172;CM3;Protaphorura;1
+2172;CM4;Isotomiella minor;1
+2172;CM4;Isotomidae A;1
+2172;CM4;Lepidocyrtus cyaneus;3
+2172;CM4;Parisotoma notabilis;3
+2172;CM4;Ceratophysella;16
+2172;CM4;Protaphorura;2
+2172;CM4;Sphaeridia pumilis;1
+2172;CM5;Parisotoma notabilis;8
+2172;CM5;Arrhopalites;1
+2172;CM5;Sphaeridia;1
+2172;CM6;Entomobrydae;5
+2172;CM6;Parisotoma notabilis;3
+2172;CM6;Ceratophysella;1
+2172;CM6;Megalothorax minimus;1
+1747;CM1;Neanuridae ?;1
+1747;CM1;Parisotoma notabilis;2
+1747;CM1;Sphaeridia ?;1
+1747;CM1;Isotomiella minor;1
+1747;CM2;Sphaeridia pumilis;5
+1747;CM2;Sminthurides schoetti;3
+1747;CM2;Pseudosinella alba;6
+1747;CM2;Parisotoma notabilis;3
+1747;CM2;Isotomurus;11
+1747;CM2;Isotomiella minor;3
+1747;CM2;Isotomurus;5
+1747;CM2;Parisotoma notabilis;17
+1747;CM2;Pseudosinella alba;1
+1747;CM3;Parisotoma notabilis;14
+1747;CM3;Sminthurides schoetti;1
+1747;CM3;Isotomidae;2
+1747;CM3;Pseudosinella alba;5
+1747;CM3;Isotomiella minor;2
+1747;CM3;Isotomurus;1
+1747;CM3;Sphaeridia ?;3
+1747;CM3;Sphaeridia ?;1
+1747;CM3;Isotomiella minor;6
+1747;CM3;Megalothorax minimus;1
+1747;CM3;Pseudosinella alba;3
+1747;CM3;Parisotoma notabilis;1
+1747;CM4;Isotomiella minor;2
+1747;CM4;Isotomurus;6
+1747;CM4;Pseudosinella alba;3
+1747;CM4;Parisotoma notabilis;3
+1747;CM4;Sphaeridia ?;6
+1747;CM5;Isotomurus;7
+1747;CM5;Parisotoma notabilis;10
+1747;CM5;Sphaeridia;7
+1747;CM5;Pseudosinella alba;1
+1747;CM5;Arthropoda;1
+1747;CM5;Isotomiella minor;3
+1747;CM5;Brachystomella parvula;3
+1747;CM6;Sphaeridia ?;1
+1747;CM6;Isotomiella minor;1
+1747;CM6;Pseudosinella alba;8
+1747;CM6;Parisotoma notabilis;6
+1747;CM6;Collembola;1
+1747;CM6;Protaphorura;1
+1747;CM6;Isotomurus;2
+1657;CM2;Isotomiella minor;2
+1657;CM2;Agrenia bidenticulata;2
+1657;CM3;Sphaeridia pumilis;2
+1657;CM4;Heteromurus major;1
+1657;CM5;Agrenia bidenticulata;1
+1657;CM6;Agrenia bidenticulata;3
+1578;CM1;Agrenia bidenticulata ?;1
+1578;CM1;Isotomidae A;1
+1578;CM1;Brachystomella parvula;1
+1578;CM2;Isotomiella minor;9
+1578;CM2;Parisotoma notabilis;2
+1578;CM2;Isotomidae A;3
+1578;CM2;Symphypleona;1
+1578;CM2;Symphypleona;1
+1578;CM3;Isotomiella minor;1
+1578;CM3;Isotomidae A;6
+1578;CM4;Isotomiella minor;12
+1578;CM4;Isotomidae A;6
+1578;CM4;Parisotoma notabilis;2
+1578;CM4;Lepidocyrtus cyaneus;1
+1578;CM4;Isotomiella minor;5
+1578;CM4;Isotomidae A;2
+1578;CM5;Isotomiella minor;9
+1578;CM5;Isotomidae A;12
+1578;CM6;Isotomiella minor;6
+1578;CM6;Entomobrya lanuginosa;1
+1773;CM1;Thysanoptera;1
+1773;CM1;Allonychiurus edinensis;2
+1773;CM2;Parisotoma notabilis;16
+1773;CM2;Cryptopygus thermophilus;3
+1773;CM2;Thysanoptera;2
+1773;CM2;Allonychiurus edinensis;1
+1773;CM2;Symphypleona;4
+1773;CM2;Isotomidae A;2
+1773;CM2;Entomobrya lanuginosa;1
+1773;CM2;Insecta;1
+1773;CM3;Parisotoma notabilis;1
+1773;CM3;Insecta;1
+1773;CM4;Cryptopygus thermophilus;8
+1773;CM4;Symphypleona;3
+1773;CM5;Parisotoma notabilis;16
+1773;CM5;Cryptopygus thermophilus;10
+1773;CM5;Isotomidae A;1
+1773;CM5;Entomobrya lanuginosa;2
+1773;CM6;Cryptopygus thermophilus;2
+1773;CM6;Parisotoma notabilis;1
+1773;CM6;Allonychiurus edinensis;2
+1773;CM6;Entomobrya lanuginosa;1
+325;CM2;Isotomurus;1
+325;CM2;Parisotoma notabilis;2
+325;CM3;Isotomidae;1
+325;CM3;Lepidocyrtus;12
+325;CM3;Entomobrya;1
+325;CM3;Allonychiurus edinensis;1
+325;CM4;Cryptopygus thermophilus;2
+325;CM4;Entomobrya;1
+325;CM5;Allonychiurus edinensis;1
+325;CM6;Entomobrya;2
+325;CM6;Isotomiella minor;1
+325;CM6;Cryptopygus thermophilus;1
+418;CM1;Entomobrya;3
+418;CM2;Entomobrya;4
+418;CM3;Allonychiurus edinensis;1
+418;CM3;Entomobrya;1
+418;CM5;Ceratophysella;3

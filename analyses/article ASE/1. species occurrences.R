@@ -3,6 +3,7 @@ librarian::shelf(ggplot2, dplyr, tidyr, forcats, ade4, paletteer)
 
 data_car <- read.csv("data/raw-data/1.faune/carabidae.csv", h = T, sep = ";", fileEncoding="latin1") %>%
   separate(ID_ECHANTILLON, "_", into = c("pj", "YEAR", "CITY", "STATION", "ECH")) %>%
+  filter(PROJET == "RMQS_2024") %>%
   select(STATION, NOM_VALIDE, ABONDANCE_TOTALE, RANK) %>%
   mutate(STATION = as.integer(STATION), taxa = "Carabidae")
 data_ara <- read.csv("data/raw-data/1.faune/araneae.csv", h = T, sep = ";", fileEncoding="latin1")  %>%
@@ -20,12 +21,12 @@ data_coll <- read.csv("data/raw-data/1.faune/collembola.csv", h = T, sep = ";", 
 data_form <- read.csv("data/raw-data/1.faune/formicidae.csv", h = T, sep = ";", fileEncoding="latin1")  %>%
   select(STATION, NOM_VALIDE, ABONDANCE_TOTALE, RANK) %>%
   mutate(taxa = "Formicidae")
-data_vdt <- read.csv("data/raw-data/1.faune/vdt.csv", h = T, sep = ";", fileEncoding="latin1")  %>%
+data_vdt <- read.csv("data/raw-data/1.faune/oligochaeta.csv", h = T, sep = ";", fileEncoding="latin1")  %>%
   select(STATION, NOM_VALIDE, ABONDANCE_TOTALE, RANK) %>%
   mutate(taxa = "Oligochaeta")
 
 occ_sp <- bind_rows(list(data_car, data_ara, data_iso, data_diplo, data_coll, data_form, data_vdt)) %>%
-  filter(RANK == "S") %>%
+  filter(RANK %in% c("ES", "S")) %>%
   group_by(taxa, NOM_VALIDE, STATION) %>%
   summarise(ab = sum(ABONDANCE_TOTALE)) %>%
   mutate(occ = ifelse(ab == 0, 0, 1))
@@ -42,9 +43,10 @@ occ_prop_sp <- occ_sp %>%
 occ_prop_plot <- ggplot(occ_prop_sp, aes(x = reorder(NOM_VALIDE, -prop), y = prop)) + 
   geom_bar(stat = "identity", aes(fill = taxa))+
   facet_wrap(taxa~. , nrow = 2)+
-  geom_hline(yintercept = 20, linetype = "dotted")+
-  labs(x = "", y = "Precentage of occurrence")+
-  scale_fill_paletteer_d("rcartocolor::Temps")+
+  geom_hline(yintercept = 20, linetype = "dotted", linewidth = 1)+
+  labs(x = "Species ordered by frequency of occurrence", 
+       y = "Frequency of occurrence")+
+  scale_fill_paletteer_d("rcartocolor::Bold")+
   theme_classic()+
   theme(axis.text.x = element_blank(),
         axis.ticks.length.x = unit(0,"cm"),

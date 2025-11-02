@@ -1,7 +1,7 @@
 librarian::shelf(dplyr, ggplot2, MODISTools)
 
 # Définir les points d'intérêt
-ROIs <- read.csv("data/raw-data/sampling_date.csv", h = T, sep = ";") %>%
+ROIs <- read.csv("data/raw-data/2.env/sampling_date.csv", h = T, sep = ";") %>%
   rename(site_name = station, lat = Latitude, lon = Longitude) %>%
   select(site_name, lat, lon) %>%
   mutate(site_name = as.factor(site_name))
@@ -15,7 +15,7 @@ NDVI_dates <- mt_dates(product = MODproduct,
                        lat = ROIs$lat[1],
                        lon = ROIs$lon[1])
 startDate = "2024-01-01"
-endDate = "2024-08-12"
+endDate = "2025-08-12"
 
 #Selectionner la 'band' qui nous interesse (possibilité d'en sélectionner plusieurs)
 bands = mt_bands(MODproduct)
@@ -71,7 +71,7 @@ NDVI_q <- NDVI_hab %>%
 ggplot(subset(NDVI_q, quality == 0), aes(x = as.Date(calendar_date), y = ndvi, colour = HABITAT_CODE))+
   geom_line()+
   labs(x = "date", y = "NDVI (cleaned)")+
-  facet_wrap(.~site)+
+  #facet_wrap(.~site)+
   theme_bw()
 
 ## Calcul de la moyenne, du maximum et de la déviation standard

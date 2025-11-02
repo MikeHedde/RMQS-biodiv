@@ -5,7 +5,7 @@ librarian::shelf(ggplot2, dplyr, tidyverse, stringr,
 
 #Matrice de données environnementales
 hab <- read.csv("data/derived-data/liste_habitat.csv", sep = ";", h = T) %>%
-  select(STATION, hab_class) %>%
+  select(STATION, HABITAT_TYPE) %>%
   mutate(STATION = as.factor(STATION)) %>%
   unique()
 
@@ -17,7 +17,7 @@ mass0 <- read.csv("data/raw-data/1.faune/carabidae.csv", h=TRUE, sep=";", dec=".
   separate(ID_ECHANTILLON, "_", into = c("pj", "YEAR", "CITY", "STATION", "ECH")) %>%
   dplyr::filter(!grepl(paste(mots_a_exclure, collapse = "|"), 
                 REMARQUE_INDIVIDU, ignore.case = TRUE),
-                RANK == "S",
+                RANK %in% c("ES", "S"),
                 ABONDANCE_TOTALE == 1,
                 !is.na(MASSE)) %>%
   mutate(MASSE = as.numeric(MASSE), STATION = as.factor(STATION)) %>%
@@ -26,7 +26,7 @@ mass0 <- read.csv("data/raw-data/1.faune/carabidae.csv", h=TRUE, sep=";", dec=".
 
 # distribution des espèces
 ab_prop <- mass0 %>%
-  group_by(STATION, hab_class, NOM_VALIDE) %>%
+  group_by(STATION, HABITAT_TYPE, NOM_VALIDE) %>%
   summarise(nb = n(), m_mass = mean(MASSE), 
             etendue = max(MASSE)-min(MASSE),
             etendue_norm = etendue/mean(MASSE),
@@ -35,7 +35,7 @@ ab_prop <- mass0 %>%
 
 #En présence de P. cupreus
 dom_prop <- ab_prop %>%
-  filter(hab_class %in% c("crop", "non-crop")) %>%
+  #filter(hab_class %in% c("crop", "non-crop")) %>%
   group_by(STATION) %>%
   filter(any(NOM_VALIDE == "Poecilus cupreus (Linnaeus, 1758)")) %>%
   mutate(
@@ -51,7 +51,7 @@ dom_prop <- ab_prop %>%
       mass_poecilus < 80 ~ "low",
       mass_poecilus >= 80 ~ "high"),
     pc_freq_class = ntile(freq_poecilus, 4)) %>%
-  group_by(STATION, hab_class, NOM_VALIDE, pc_mass_class)%>%
+  group_by(STATION, HABITAT_TYPE, NOM_VALIDE, pc_mass_class)%>%
   summarise(across(where(is.numeric), mean, na.rm = TRUE), .groups = "drop") %>%
   #filter(!NOM_VALIDE == "Poecilus cupreus (Linnaeus, 1758)") %>%
   mutate(ecart_mass_class = case_when(

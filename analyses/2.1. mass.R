@@ -121,7 +121,7 @@ graph_combined <- ggarrange(distri_esp,
                             ggarrange(graph_relation, graph_conf, ncol = 2,
                                       labels = c("B", "C"), common.legend = TRUE, legend = "bottom"), 
                             labels = c("A"),
-                            ncol = 1, nrow = 2, common.legend = F, align = h)
+                            ncol = 1, nrow = 2, common.legend = F)
 
 graph_combined
 

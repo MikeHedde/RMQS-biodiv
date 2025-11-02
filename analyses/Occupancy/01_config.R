@@ -1,7 +1,7 @@
 # ============================================================
 # PARAMÈTRES GLOBAUX
 # ============================================================
-in_path        <- "data/raw-data/lab files/databases update/update_carabidae.csv"
+in_path        <- "data/raw-data/1.faune/carabidae.csv"
 out_dir        <- "data/derived-data/occupancy"
 target_project <- "RMQS_2025"
 taxo_level     <- "ES"

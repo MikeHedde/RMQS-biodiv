@@ -272,3 +272,4 @@ if (file.exists(p_file)) {
 }
 
 message("=== FIN 08_diversity_indices (accum_hill + segmentation Pitfall) ===  Résultats : ", normalizePath(out_dir))
+

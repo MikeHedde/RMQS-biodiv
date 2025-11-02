@@ -78,7 +78,7 @@ env2 <- env[env$STATION %in% unique(data_coll$STATION),] %>%
          HAB, ndvi_m, ndvi_sd,                                               #habitat
          clay, sand,                                                         #soil granulo
          CN, COT, calc, CEC,                                                 #C resource & nutrients
-         DD_cum, T360_mean, #T30_mean, T30_max, T30_min, T30_sd, T360_sd,    #climat
+         DD_cum, T360_mean, #T30_mean, T30_max, T30_min, T30_sd, T360_sd,    #climate
          pH, Cd_disp, Pb_disp, #Cu_disp,                                      #stress
          LONGITUDE, LATITUDE                                                 #geographic
          ) %>%                              
@@ -141,10 +141,10 @@ sumCoef <- rbind(sumCoef_coll, sumCoef_iso, sumCoef_diplo) %>%
   mutate(grp = case_when(predictors %in% c("HAB", "ndvi_m", "ndvi_max", "ndvi_sd") ~ "habitat",
                          predictors %in% c("clay", "sand") ~ "soil texture",
                          predictors %in% c("CN", "Ctot", "COT", "N", "Ca", "Mg", "Mn", "K", "Na", "calc", "CEC") ~ "nutrients & C",
-                         predictors %in% c("DD_cum", "T30_mean", "T30_max", "T30_min", "T30_sd", "T360_sd", "T360_mean") ~ "climat",
+                         predictors %in% c("DD_cum", "T30_mean", "T30_max", "T30_min", "T30_sd", "T360_sd", "T360_mean") ~ "climate",
                          predictors %in% c("pH", "Al", "Hum_res", "Cd_disp", "Pb_disp") ~ "stress",
                          predictors %in% c("Geographic") ~ "geographic")) %>%
-  mutate(grp = fct_relevel(grp, c("geographic", "habitat", "climat", "stress", "nutrients & C")))
+  mutate(grp = fct_relevel(grp, c("geographic", "habitat", "climate", "stress", "nutrients & C")))
 
 sumCoef_p <- ggplot(sumCoef, aes(x=taxa, y = coef, fill = grp))+
   geom_bar(position="stack", stat="identity", colour = "grey")+

@@ -1,143 +1,141 @@
-<<<<<<< HEAD
-STATION;HABITAT_decrit;HABITAT_CODE;HABITAT_TYPE;HAB
-1556;Verger;Orchard;FERME;50
-2021;Chenaie;Forest;FERME;100
-2021;Chenaie;Forest;FERME;100
-1768;Chênaie claire;Forest;FERME;100
-2257;Chênaie/ Érablaie;Forest;FERME;100
-812;Forêt;Forest;FERME;100
-633;Forêt;Forest;FERME;100
-870;Forêt;Forest;FERME;100
-1706;Forêt feuillus;Forest;FERME;100
-644;Forêt mixte;Forest;FERME;100
-792;Forêt mixte;Forest;FERME;100
-215;Forêt mixte;Forest;FERME;100
-1464;Forêt mixte;Forest;FERME;100
-805;Forêt mixte;Forest;FERME;100
-926;Forêt mixte;Forest;FERME;100
-1372;Forêt mixte;Forest;FERME;100
-620;Forêt mixte;Forest;FERME;100
-2276;Hetraie;Forest;FERME;100
-2205;Pinède;Forest;FERME;100
-2034;Garrigue;Shrubland;FERME;80
-2260;Maquis;Shrubland;FERME;80
-1837;Culture;Crop;OUVERT;0
-2182;Culture;Crop;OUVERT;0
-1893;Culture;Crop;OUVERT;0
-1243;Culture;Crop;OUVERT;0
-1064;Culture;Crop;OUVERT;0
-827;Culture en bord de mer;Crop;OUVERT;0
-1180;Monoculture;Crop;OUVERT;0
-1274;Monoculture;Crop;OUVERT;0
-476;Monoculture;Crop;OUVERT;0
-408;Monoculture;Crop;OUVERT;0
-1058;Monoculture;Crop;OUVERT;0
-291;Monoculture;Crop;OUVERT;0
-1310;Monoculture;Crop;OUVERT;0
-1366;Monoculture;Crop;OUVERT;0
-1537;Monoculture;Crop;OUVERT;0
-1166;Monoculture;Crop;OUVERT;0
-1090;Monoculture;Crop;OUVERT;0
-1694;Monoculture;Crop;OUVERT;0
-1030;Monoculture;Crop;OUVERT;0
-609;Monoculture;Crop;OUVERT;0
-1875;Monoculture;Crop;OUVERT;0
-152;Monoculture;Crop;OUVERT;0
-1491;Monoculture;Crop;OUVERT;0
-1660;Monoculture;Crop;OUVERT;0
-223;Monoculture;Crop;OUVERT;0
-2011;Monoculture;Crop;OUVERT;0
-157;Monoculture;Crop;OUVERT;0
-1826;Monoculture;Crop;OUVERT;0
-400;Monoculture;Crop;OUVERT;0
-423;Monoculture;Crop;OUVERT;0
-730;Monoculture;Crop;OUVERT;0
-137;Monoculture;Crop;OUVERT;0
-1992;Culture de coriande;Crop;OUVERT;0
-288;Vignes;Vineyard;OUVERT;50
-391;Parc urbain;Grassland / Meadow;OUVERT;0
-2312;Pelouse alpine;Grassland / Meadow;OUVERT;0
-1686;Pelouse alpine;Grassland / Meadow;OUVERT;0
-2076;Pelouse écorchée à salicorne;Grassland / Meadow;OUVERT;0
-1996;Prairie;Grassland / Meadow;OUVERT;0
-1237;Prairie;Grassland / Meadow;OUVERT;0
-1677;Prairie de fauche;Grassland / Meadow;OUVERT;0
-1174;Prairie de fauche;Grassland / Meadow;OUVERT;0
-1141;Prairie de fauche;Grassland / Meadow;OUVERT;0
-788;Prairie de fauche;Grassland / Meadow;OUVERT;0
-1549;Prairie de fauche;Grassland / Meadow;OUVERT;0
-1587;Prairie de pâture;Grassland / Meadow;OUVERT;0
-1477;Friche humide;Schrubland;OUVERT;0
-1887;Lande à bruyère / fougeraie;Schrubland;OUVERT;20
-=======
-STATION;HABITAT_decrit;HABITAT_CODE;HABITAT_TYPE;HAB;hab_class
-1556;Verger;CulturePerenne;FERME;50;FERME
-2021;Chenaie;Foret;FERME;100;FERME
-2021;Chenaie;Foret;FERME;100;FERME
-1768;Chênaie claire;Foret;FERME;100;FERME
-2257;Chênaie/ Érablaie;Foret;FERME;100;FERME
-812;Forêt;Foret;FERME;100;FERME
-633;Forêt;Foret;FERME;100;FERME
-870;Forêt;Foret;FERME;100;FERME
-1706;Forêt feuillus;Foret;FERME;100;FERME
-644;Forêt mixte;Foret;FERME;100;FERME
-792;Forêt mixte;Foret;FERME;100;FERME
-215;Forêt mixte;Foret;FERME;100;FERME
-1464;Forêt mixte;Foret;FERME;100;FERME
-805;Forêt mixte;Foret;FERME;100;FERME
-926;Forêt mixte;Foret;FERME;100;FERME
-1372;Forêt mixte;Foret;FERME;100;FERME
-620;Forêt mixte;Foret;FERME;100;FERME
-2276;Hetraie;Foret;FERME;100;FERME
-2205;Pinède;Foret;FERME;100;FERME
-2034;Garrigue;VegArbustive;FERME;80;FERME
-2260;Maquis;VegArbustive;FERME;80;FERME
-1837;Culture;Culture;OUVERT;0;crop
-2182;Culture;Culture;OUVERT;0;crop
-1893;Culture;Culture;OUVERT;0;crop
-1243;Culture;Culture;OUVERT;0;crop
-1064;Culture;Culture;OUVERT;0;crop
-827;Culture en bord de mer;Culture;OUVERT;0;crop
-1180;Monoculture;Culture;OUVERT;0;crop
-1274;Monoculture;Culture;OUVERT;0;crop
-476;Monoculture;Culture;OUVERT;0;crop
-408;Monoculture;Culture;OUVERT;0;crop
-1058;Monoculture;Culture;OUVERT;0;crop
-291;Monoculture;Culture;OUVERT;0;crop
-1310;Monoculture;Culture;OUVERT;0;crop
-1366;Monoculture;Culture;OUVERT;0;crop
-1537;Monoculture;Culture;OUVERT;0;crop
-1166;Monoculture;Culture;OUVERT;0;crop
-1090;Monoculture;Culture;OUVERT;0;crop
-1694;Monoculture;Culture;OUVERT;0;crop
-1030;Monoculture;Culture;OUVERT;0;crop
-609;Monoculture;Culture;OUVERT;0;crop
-1875;Monoculture;Culture;OUVERT;0;crop
-152;Monoculture;Culture;OUVERT;0;crop
-1491;Monoculture;Culture;OUVERT;0;crop
-1660;Monoculture;Culture;OUVERT;0;crop
-223;Monoculture;Culture;OUVERT;0;crop
-2011;Monoculture;Culture;OUVERT;0;crop
-157;Monoculture;Culture;OUVERT;0;crop
-1826;Monoculture;Culture;OUVERT;0;crop
-400;Monoculture;Culture;OUVERT;0;crop
-423;Monoculture;Culture;OUVERT;0;crop
-730;Monoculture;Culture;OUVERT;0;crop
-137;Monoculture;Culture;OUVERT;0;crop
-1992;Culture de coriande;CulturePerenne;OUVERT;0;non-crop
-288;Vignes;CulturePerenne;OUVERT;50;non-crop
-391;Parc urbain;Pelouse;OUVERT;0;non-crop
-2312;Pelouse alpine;Pelouse;OUVERT;0;non-crop
-1686;Pelouse alpine;Pelouse;OUVERT;0;non-crop
-2076;Pelouse écorchée à salicorne;Pelouse;OUVERT;0;non-crop
-1996;Prairie;Prairie;OUVERT;0;non-crop
-1237;Prairie;Prairie;OUVERT;0;non-crop
-1677;Prairie de fauche;Prairie;OUVERT;0;non-crop
-1174;Prairie de fauche;Prairie;OUVERT;0;non-crop
-1141;Prairie de fauche;Prairie;OUVERT;0;non-crop
-788;Prairie de fauche;Prairie;OUVERT;0;non-crop
-1549;Prairie de fauche;Prairie;OUVERT;0;non-crop
-1587;Prairie de pâture;Prairie;OUVERT;0;non-crop
-1477;Friche humide;VegArbustive;OUVERT;0;non-crop
-1887;Lande à bruyère / fougeraie;VegArbustive;OUVERT;20;non-crop
->>>>>>> 1dc9b516197f8af02d6f827de4ed504607e57dfb
+STATION;HABITAT_decrit;HABITAT_CODE;HABITAT_TYPE
+53;Prairie permanente;Grassland / Meadow;OUVERT
+137;Monoculture;Crop;OUVERT
+147;Prairie de pâture;Grassland / Meadow;OUVERT
+152;Monoculture;Crop;OUVERT
+153;Hêtraie;Forest;FERME
+157;Monoculture;Crop;OUVERT
+199;Monoculture;Crop;OUVERT
+210;Forêt feuillus;Forest;FERME
+215;Forêt mixte;Forest;FERME
+223;Monoculture;Crop;OUVERT
+277;Prairie de fauche;Grassland / Meadow;OUVERT
+288;Vignes;Vineyard;OUVERT
+291;Monoculture;Crop;OUVERT
+325;Monoculture;Crop;OUVERT
+347;Forêt;Forest;FERME
+391;Parc urbain;Grassland / Meadow;OUVERT
+400;Monoculture;Crop;OUVERT
+401;Monoculture (blé);Crop;OUVERT
+408;Monoculture;Crop;OUVERT
+412;Forêt feuillus;Forest;FERME
+418;Prairie permanente;Grassland / Meadow;OUVERT
+423;Monoculture;Crop;OUVERT
+438;Prairie de pâture (bovins);Grassland / Meadow;OUVERT
+476;Monoculture;Crop;OUVERT
+509;Monoculture (colza);Crop;OUVERT
+557;Monoculture (blé);Crop;OUVERT
+594;Monoculture (labour);Crop;OUVERT
+609;Monoculture;Crop;OUVERT
+612;Monoculture (colza);Crop;OUVERT
+620;Forêt mixte;Forest;FERME
+633;Forêt;Forest;FERME
+637;Jachère;Schrubland;OUVERT
+640;Monoculture (blé);Crop;OUVERT
+644;Forêt mixte;Forest;FERME
+647;Monoculture;Crop;OUVERT
+663;Monoculture (blé);Crop;OUVERT
+680;Monoculture (Colza);Crop;OUVERT
+688;Monoculture (blé);Crop;OUVERT
+730;Monoculture;Crop;OUVERT
+788;Prairie de fauche;Grassland / Meadow;OUVERT
+792;Forêt mixte;Forest;FERME
+803;Labour;Crop;OUVERT
+805;Forêt mixte;Forest;FERME
+812;Forêt;Forest;FERME
+827;Culture en bord de mer;Crop;OUVERT
+831;Prairie permanente;Grassland / Meadow;OUVERT
+870;Forêt;Forest;FERME
+899;Monoculture (colza);Crop;OUVERT
+903;Pinède (plantation);Forest;FERME
+926;Forêt mixte;Forest;FERME
+939;Vigne;Vineyard;OUVERT
+946;Culture (prairie avec repousse moutarde);Crop;OUVERT
+970;Monoculture (blé);Crop;OUVERT
+997;Prairie permanente;Grassland / Meadow;OUVERT
+1030;Monoculture;Crop;OUVERT
+1058;Monoculture;Crop;OUVERT
+1064;Culture;Crop;OUVERT
+1090;Monoculture;Crop;OUVERT
+1107;Prairie permanente;Grassland / Meadow;OUVERT
+1126;Monoculture (colza);Crop;OUVERT
+1141;Prairie de fauche;Grassland / Meadow;OUVERT
+1166;Monoculture;Crop;OUVERT
+1174;Prairie de fauche;Grassland / Meadow;OUVERT
+1180;Monoculture;Crop;OUVERT
+1216;Prairie temporaire (trèfle et poacées);Grassland / Meadow;OUVERT
+1237;Prairie;Grassland / Meadow;OUVERT
+1238;Monoculture (blé);Crop;OUVERT
+1243;Culture;Crop;OUVERT
+1264;Prairie pâturée (bovins);Grassland / Meadow;OUVERT
+1274;Monoculture;Crop;OUVERT
+1275;Prairie rase;Grassland / Meadow;OUVERT
+1283;Friche;Schrubland;OUVERT
+1295;Prairie permanente;Grassland / Meadow;OUVERT
+1310;Monoculture;Crop;OUVERT
+1345;Forêt;Forest;FERME
+1366;Monoculture;Crop;OUVERT
+1372;Forêt mixte;Forest;FERME
+1399;Hêtraie-Épicéa;Forest;FERME
+1402;Lande à rhododendrons;Schrubland;OUVERT
+1421;Prairie de fauche;Grassland / Meadow;OUVERT
+1464;Forêt mixte;Forest;FERME
+1477;Friche humide;Schrubland;OUVERT
+1491;Monoculture;Crop;OUVERT
+1517;Monoculture;Crop;OUVERT
+1537;Monoculture;Crop;OUVERT
+1549;Prairie de fauche;Grassland / Meadow;OUVERT
+1549;Prairie de fauche;Grassland / Meadow;OUVERT
+1556;Verger;Orchard;FERME
+1571;Prairie de pâture (bovins);Grassland / Meadow;OUVERT
+1578;Prairie permanente;Grassland / Meadow;OUVERT
+1584;Prairie permanente;Grassland / Meadow;OUVERT
+1587;Prairie de pâture;Grassland / Meadow;OUVERT
+1589;Sylviculture (Pin);Forest;FERME
+1594;Vigne;Vineyard;OUVERT
+1635;Forêt;Forest;FERME
+1657;Monoculture (blé);Crop;OUVERT
+1660;Monoculture;Crop;OUVERT
+1677;Prairie de fauche;Grassland / Meadow;OUVERT
+1685;Hêtraie-sapinière;Forest;FERME
+1686;Pelouse alpine;Grassland / Meadow;OUVERT
+1694;Monoculture;Crop;OUVERT
+1706;Forêt feuillus;Forest;FERME
+1747;Prairie permanente;Grassland / Meadow;OUVERT
+1756;Hêtraie;Forest;FERME
+1764;Prairie;Grassland / Meadow;OUVERT
+1768;Chênaie claire;Forest;FERME
+1778;Pinède (plantation);Forest;FERME
+1826;Monoculture;Crop;OUVERT
+1837;Culture;Crop;OUVERT
+1875;Monoculture;Crop;OUVERT
+1878;Forêt feuillus;Forest;FERME
+1882;Monoculture (maïs);Crop;OUVERT
+1887;Lande à bruyère / fougeraie;Schrubland;OUVERT
+1890;Chenaie verte;Forest;FERME
+1893;Culture;Crop;OUVERT
+1904;Ancienne châtaigneraie sur terrasse;Forest;FERME
+1911;Pinède (plantation);Forest;FERME
+1948;Hêtraie;Forest;FERME
+1992;Culture de coriande;Crop;OUVERT
+1996;Prairie;Grassland / Meadow;OUVERT
+2011;Monoculture;Crop;OUVERT
+2021;Chenaie;Forest;FERME
+2021;Chenaie;Forest;FERME
+2034;Garrigue;Schrubland;OUVERT
+2076;Pelouse écorchée à salicorne;Grassland / Meadow;OUVERT
+2079;Parc urbain;Grassland / Meadow;OUVERT
+2099;Chataîgneraie;Forest;FERME
+2110;Monoculture (féverolle);Crop;OUVERT
+2161;Vignes;Vineyard;OUVERT
+2172;Pinède claire à genévriers;Forest;FERME
+2182;Culture;Crop;OUVERT
+2186;Prairie de fauche;Grassland / Meadow;OUVERT
+2205;Pinède;Forest;FERME
+2207;Oliveraie;Crop;OUVERT
+2257;Chênaie/ Érablaie;Forest;FERME
+2260;Maquis;Schrubland;OUVERT
+2260;Maquis;Schrubland;OUVERT
+2269;Prairie pâturée par bovins;Grassland / Meadow;OUVERT
+2276;Hetraie;Forest;FERME
+2312;Pelouse alpine;Grassland / Meadow;OUVERT

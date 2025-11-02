@@ -2,31 +2,31 @@ Linear mixed model fit by REML ['lmerMod']
 Formula: Hill_q2 ~ method + (1 | site_id)
    Data: data
 
-REML criterion at convergence: 481.4
+REML criterion at convergence: 1263.6
 
 Scaled residuals: 
     Min      1Q  Median      3Q     Max 
--3.8453 -0.5121 -0.0623  0.5836  2.3996 
+-4.0759 -0.4179 -0.0958  0.3806  3.8729 
 
 Random effects:
  Groups   Name        Variance Std.Dev.
- site_id  (Intercept) 2.0250   1.4230  
- Residual             0.9228   0.9606  
-Number of obs: 150, groups:  site_id, 26
+ site_id  (Intercept) 3.6508   1.911   
+ Residual             0.7938   0.891   
+Number of obs: 396, groups:  site_id, 68
 
 Fixed effects:
                 Estimate Std. Error t value
-(Intercept)       3.8043     0.3419  11.128
-methodPitfall10  -0.2643     0.2729  -0.968
-methodPitfall8   -0.1870     0.2768  -0.676
-methodPitfall6   -0.2813     0.2768  -1.017
-methodPitfall4   -0.8145     0.2768  -2.943
-methodPitfall2   -1.3551     0.2768  -4.896
+(Intercept)       3.7960     0.2578  14.723
+methodPitfall10  -0.2348     0.1575  -1.491
+methodPitfall8   -0.2604     0.1575  -1.653
+methodPitfall6   -0.3193     0.1575  -2.027
+methodPitfall4   -0.5452     0.1575  -3.462
+methodPitfall2   -0.9445     0.1586  -5.953
 
 Correlation of Fixed Effects:
             (Intr) mthP10 mthdP8 mthdP6 mthdP4
-mthdPtfll10 -0.418                            
-methdPtfll8 -0.413  0.517                     
-methdPtfll6 -0.413  0.517  0.518              
-methdPtfll4 -0.413  0.517  0.518  0.518       
-methdPtfll2 -0.413  0.517  0.518  0.518  0.518
+mthdPtfll10 -0.315                            
+methdPtfll8 -0.315  0.522                     
+methdPtfll6 -0.315  0.522  0.522              
+methdPtfll4 -0.315  0.522  0.522  0.522       
+methdPtfll2 -0.312  0.517  0.517  0.517  0.517

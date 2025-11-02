@@ -4,7 +4,7 @@ library(dplyr)
 library(zoo)
 
 # Importer les dates de prélèvement
-sampl_date0 <- read.csv("data/raw-data/sampling_date.csv", h=T, sep = ";")
+sampl_date0 <- read.csv("data/raw-data/2.env/sampling_date.csv", h=T, sep = ";")
 sampl_date <- sampl_date0 %>%
   mutate(date = as.Date(date, "%d/%m/%Y"))%>%
   rename(sampl_date = date, LAT = Latitude, 

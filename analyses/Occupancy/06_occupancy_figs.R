@@ -52,4 +52,14 @@ if (nrow(tab_p) > 0) {
          x = NULL, title = "Détectabilité par méthode —\najustée pour l’effort (unmarked::occu)") +
     theme_minimal()
   ggsave(file.path(out_dir, "p_by_method_unmarked_effort_psi_cov.png"), p_fig2, width = 8, height = 5, dpi = 200)
+
+
+  p_fig2bis <- ggplot(tab_p, aes(x = method, y = p_hat)) +
+    geom_point() +
+    geom_point(data = comm_sum, aes(y = p_med), color = "red", size = 1) +
+    labs(y = "p̂ (détectabilité, occupancy unmarked\ neffort médian par méthode)",
+         x = NULL, title = "Détectabilité par méthode —\najustée pour l’effort (unmarked::occu)") +
+    facet_wrap(species~.)+
+    theme_minimal()
+  ggsave(file.path(out_dir, "p_by_method_unmarked_effort_psi_cov_sp.png"), p_fig2bis, width = 12, height = 12, dpi = 600)
 }

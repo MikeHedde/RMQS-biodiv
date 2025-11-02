@@ -148,6 +148,7 @@ eff_z[mask_allNA_sr] <- NA
 # 4.4 Covariables site
 site_alt <- dat0 %>% group_by(site_id) %>% summarise(ALTITUDE = median(ALTITUDE, na.rm=TRUE), .groups="drop")
 site_doy <- dat0 %>% group_by(site_id) %>% summarise(DOY = median(as.integer(format(DATE, "%j")),  na.rm=TRUE), .groups="drop")
+
 site_cov <- tibble(site_id = sites) %>%
   left_join(site_alt, by="site_id") %>%
   left_join(site_doy, by="site_id") %>%
