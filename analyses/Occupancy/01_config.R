@@ -2,10 +2,10 @@
 # PARAMÈTRES GLOBAUX
 # ============================================================
 in_path        <- "data/raw-data/1.faune/carabidae.csv"
-out_dir        <- "data/derived-data/occupancy"
+out_dir        <- "figures/detectability/carabidae"
 target_project <- "RMQS_2025"
-taxo_level     <- "ES"
-min_sites      <- 2
+taxo_level     <- c("ES", "S")
+min_sites      <- 3
 require_contrast <- TRUE
 
 # Méthodes analysées

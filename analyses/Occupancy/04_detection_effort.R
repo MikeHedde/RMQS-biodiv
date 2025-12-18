@@ -148,9 +148,24 @@ eff_z[mask_allNA_sr] <- NA
 # 4.4 Covariables site
 site_alt <- dat0 %>% group_by(site_id) %>% summarise(ALTITUDE = median(ALTITUDE, na.rm=TRUE), .groups="drop")
 site_doy <- dat0 %>% group_by(site_id) %>% summarise(DOY = median(as.integer(format(DATE, "%j")),  na.rm=TRUE), .groups="drop")
+site_ndvi <- read.csv("data/derived-data/ndvi.csv", h = T, sep = ";") %>%
+  rename(site_id = site)%>%
+  mutate(site_id = as.character(site_id))
 
 site_cov <- tibble(site_id = sites) %>%
   left_join(site_alt, by="site_id") %>%
   left_join(site_doy, by="site_id") %>%
-  mutate(ALTITUDE_z = zstd(ALTITUDE), DOY_z = zstd(DOY)) %>%
-  select(site_id, ALTITUDE_z, DOY_z)
+  rename(site_id_full = site_id) %>%
+  separate(site_id_full,
+           into = c("programme", "year", "locality", "site_id"),
+           sep = "_",
+           remove = FALSE) %>%
+  left_join(site_hab, by="site_id") %>%
+  left_join(site_ndvi) %>% 
+  mutate(ALTITUDE_z = zstd(ALTITUDE), 
+         DOY_z = zstd(DOY),
+         NDVI_m_z = zstd(ndvi_m),
+         NDVI_sd_z = zstd(ndvi_sd)
+         ) %>%
+  select(site_id_full, ALTITUDE_z, DOY_z, NDVI_m_z, NDVI_sd_z) %>%
+  rename(site_id = site_id_full)

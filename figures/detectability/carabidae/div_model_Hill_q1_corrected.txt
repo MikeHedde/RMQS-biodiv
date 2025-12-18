@@ -1,0 +1,36 @@
+Linear mixed model fit by REML ['lmerMod']
+Formula: Hill_q1 ~ method + (1 | site_id)
+   Data: data
+
+REML criterion at convergence: 1776.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.0009 -0.5237 -0.0625  0.4673  2.8308 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ site_id  (Intercept) 4.531    2.129   
+ Residual             2.325    1.525   
+Number of obs: 435, groups:  site_id, 69
+
+Fixed effects:
+                Estimate Std. Error t value
+(Intercept)      4.97010    0.32156  15.456
+methodPitfall10  0.02454    0.26901   0.091
+methodPitfall8  -0.09096    0.26901  -0.338
+methodPitfall6  -0.27431    0.26901  -1.020
+methodPitfall4  -0.78739    0.26901  -2.927
+methodPitfall2  -1.56939    0.27098  -5.792
+methodDVAC      -3.54015    0.34611 -10.228
+methodTM        -4.74422    0.60384  -7.857
+
+Correlation of Fixed Effects:
+            (Intr) mthP10 mthdP8 mthdP6 mthdP4 mthdP2 mtDVAC
+mthdPtfll10 -0.433                                          
+methdPtfll8 -0.433  0.521                                   
+methdPtfll6 -0.433  0.521  0.521                            
+methdPtfll4 -0.433  0.521  0.521  0.521                     
+methdPtfll2 -0.428  0.515  0.515  0.515  0.515              
+methodDVAC  -0.339  0.393  0.393  0.393  0.393  0.391       
+methodTM    -0.190  0.229  0.229  0.229  0.229  0.228  0.170

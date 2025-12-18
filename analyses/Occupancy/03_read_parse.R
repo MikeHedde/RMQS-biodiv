@@ -36,7 +36,7 @@ parse_date_fr <- function(x) as.Date(suppressWarnings(readr::parse_date(as.chara
 to_doy        <- function(d) ifelse(is.na(d), NA, as.integer(format(d, "%j")))
 extract_last_int <- function(x) suppressWarnings(readr::parse_integer(stringr::str_extract(x, "(\\d+)\\s*$")))
 
-dat0 <- raw %>%
+dat00 <- raw %>%
   filter(.data[[col_project]] %in% target_project,
          .data[[col_rang]]    %in% taxo_level) %>%
   transmute(
@@ -51,14 +51,15 @@ dat0 <- raw %>%
   ) %>%
   filter(method %in% methods_use)
 
-stopifnot(nrow(dat0) > 0)
+stopifnot(nrow(dat00) > 0)
 
-dat0 <- dat0 %>%
+dat0 <- dat00 %>%
   mutate(
     trap    = ifelse(method == "Pitfall",
                      suppressWarnings(readr::parse_integer(stringr::str_extract(sample, "(?<=PB)\\d+$"))),
                      NA_integer_),
     gpd_sub = ifelse(method == "GPD", extract_last_int(sample), NA_integer_),
+    dvac = ifelse(method == "DVAC", extract_last_int(sample), NA_integer_),
     det     = as.integer(abund > 0),
     days    = { d <- as.numeric(DATE_FIN - DATE) + 1; ifelse(is.na(d) | d < 1, 1, d) }
   )

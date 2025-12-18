@@ -99,11 +99,15 @@ if (length(methods_for_venn) >= 2) {
 }
 
 # ---------- PCoA (Jaccard binaire) + PERMANOVA (strata = site) ----------
-comm_pa_all <- comm_pa %>% dplyr::relocate(site_id, method)
-X <- comm_pa_all %>% dplyr::select(-site_id, -method) %>% as.matrix()
+comm_pa_all <- comm_pa %>% 
+  dplyr::relocate(site_id, method) %>%
+  filter(method %in% c("GPD", "DVAC", "Pitfall10"))
+X <- comm_pa_all %>% 
+  dplyr::select(-site_id, -method) %>% 
+  as.matrix()
 
 if (nrow(X) >= 3 && ncol(X) >= 1) {
-  d_jac <- vegan::vegdist(sqrt(X), method = "jaccard", binary = TRUE)
+  d_jac <- vegan::vegdist(sqrt(X), method = "bray", binary = TRUE)
   pco <- stats::cmdscale(d_jac, k = 2, eig = TRUE)
   scores <- as.data.frame(pco$points); colnames(scores) <- c("PCoA1","PCoA2")
   scores$site_id <- comm_pa_all$site_id
@@ -113,7 +117,7 @@ if (nrow(X) >= 3 && ncol(X) >= 1) {
     ggplot2::geom_point(size = 2, alpha = .8) +
     ggplot2::stat_ellipse(type = "norm", level = .67, linewidth = .6, alpha = .4) +
     ggplot2::theme_minimal() +
-    ggplot2::ggtitle("PCoA (Jaccard, présence/absence) — coloré par méthode (segmentation Pitfall)")
+    ggplot2::ggtitle("PCoA (Bray-Curtis dist) — coloré par méthode (segmentation Pitfall)")
   ggplot2::ggsave(file.path(out_dir, "PCoA_methods.png"), p_pcoa, width = 7, height = 5, dpi = 200)
   
   set.seed(123)
@@ -152,7 +156,7 @@ pair_turnover_nestedness_by_site <- function(sid, methods_vec) {
 
 beta_pairs <- purrr::map_dfr(
   sort(unique(dat0$site_id)),
-  ~ pair_turnover_nestedness_by_site(.x, method_levels)
+  ~ pair_turnover_nestedness_by_site(.x, c("DVAC", "GPD", "Pitfall10"))
 )
 
 if (nrow(beta_pairs) > 0) {
@@ -168,20 +172,24 @@ if (nrow(beta_pairs) > 0) {
   readr::write_csv(beta_pairs,  file.path(out_dir, "beta_pairs_by_site_turnover_nestedness.csv"))
   readr::write_csv(beta_summary,file.path(out_dir, "beta_pairs_summary_turnover_nestedness.csv"))
   
-  p_beta <- beta_summary %>%
-    dplyr::filter(m2 == 6) %>%
-    mutate(pair = paste(as.numeric(m1)*2, " traps vs GPD"))
-
-    
+  lbl <- c("DVAC", "GPD", "Pitfall10")
   
-  p_beta <- ggplot(p_beta, aes(x = pair, y = median, fill = component)) +
+  beta_summary1 <- beta_summary %>%
+    dplyr::mutate(
+      m1 = factor(m1), m2 = factor(m2),       # au cas où
+      m1_lab = ifelse(m1 == 1, "DVAC", "GPD"),
+      m2_lab = ifelse(m2 == 3, "Pitfall10", "GPD"),
+      pair   = paste(m1_lab, "vs", m2_lab)
+    )
+  
+  p_beta <- ggplot(beta_summary1, aes(x = pair, y = median, fill = component)) +
     geom_col() +
     geom_errorbar(ggplot2::aes(ymin = q25, ymax = q75)) +
-    coord_flip() +
+    #coord_flip() +
     labs(
       x = "Paire de méthodes (segmentées)",
       y = "β (Jaccard) — médiane [IQR]",
-      title = "Partition de la β-diversité : turnover vs nestedness\n(entre méthodes segmentées, au sein des sites)"
+      title = "Partition de la β-diversité : turnover vs nestedness"
     ) +
     facet_wrap(component~.)+
     theme_minimal()
