@@ -8,15 +8,46 @@ tab_p <- readr::read_csv(file.path(out_dir, "p_hat_by_method_unmarked_full.csv")
 trait0 <- read.csv("data/raw-data/1.faune/trait_carabidae.csv", h=T, sep=";")
 
 # Max Body length
-trait <- trait0 %>%
-  mutate(sp = taxize::gna_parse(species)$canonical_full) %>%
-  filter(raw_trait_value == "Body_length") %>%
-  mutate(trait_value = as.numeric(trait_value))  %>%
-  group_by(sp) %>%
-  summarise(max_BL = max(trait_value))%>%
-  rename(species = sp)
+tmp <- trait0 %>%
+  distinct(species) %>%
+  mutate(parsed = rgnparser::gn_parse(species))
 
-dat <- tab_p %>% left_join(trait, by = "species")
+# Aplatit parsed en colonnes
+tmp2 <- tmp %>%
+  tidyr::unnest_wider(parsed)
+
+names(tmp2)
+
+canon_col <- intersect(
+  c("canonicalName", "canonical", "canonical_name", "canonicalname"),
+  names(tmp2)
+)[1]
+
+map <- tmp2 %>%
+  transmute(
+    species,
+    sp = map_chr(canonical, \(x) {
+      if (is.null(x) || length(x) == 0) return(NA_character_)
+      if (!is.null(x$simple)  && length(x$simple)  > 0 && nzchar(x$simple[1])) return(x$simple[1])
+      if (!is.null(x$full)    && length(x$full)    > 0 && nzchar(x$full[1]))   return(x$full[1])
+      if (!is.null(x$stemmed) && length(x$stemmed) > 0 && nzchar(x$stemmed[1]))return(x$stemmed[1])
+      NA_character_
+    })
+  )
+
+bad <- tmp2 %>% filter(map_lgl(canonical, ~ is.null(.x) || length(.x) == 0))
+bad$species %>% head(50)
+
+BL <- trait0 %>%
+  left_join(map, by = "species") %>%
+  filter(raw_trait_value == "Body_length") %>%
+  mutate(trait_value = as.numeric(trait_value)) %>%
+  group_by(sp) %>%
+  summarise(max_BL = max(trait_value, na.rm = TRUE), .groups = "drop") %>%
+  rename(species = sp) %>%
+  filter(!is.na(species), species != "")
+
+dat <- tab_p %>% left_join(BL, by = "species")
 
 # Mise à l’échelle logit + poids méta depuis IC95%
 dat2 <- dat %>%
@@ -67,7 +98,7 @@ ggsave(file.path(out_dir, "Detectability_vs_BL_by_method.png"), p_BL, width = 9,
 
 # Motion strategy
 trait_sp <- trait0 %>%
-  mutate(sp = taxize::gna_parse(species)$canonical_full) %>%
+  left_join(map, by = "species") %>%
   filter(raw_trait_value == "Wing_development") %>%
   mutate(wing_bin = case_when(
     str_detect(attribute_trait, regex("macropterous", ignore_case = TRUE)) ~ "fully_winged",
@@ -122,8 +153,6 @@ ggplot(subset(dat_filled, !is.na(full_wing)), aes(x = full_wing, y = p_hat, colo
   p_wing
 
 ggsave(file.path(out_dir, "detectability_vs_wing_by_method.png"), p_wing, width = 12, height = 6, dpi = 200)
-
-library(cowplot)
 
 p_traits <- plot_grid(
   p_BL,
@@ -209,7 +238,7 @@ emm_df2 <- as.data.frame(emm) %>%
     upr   = plogis(upper.CL)
   )
 
-ggplot(emm_df2,
+p_traits_inter <- ggplot(emm_df2,
        aes(x = log_BL, y = prob, colour = full_wing, fill = full_wing)) +
   geom_line(linewidth = 1) +
   geom_ribbon(aes(ymin = lwr, ymax = upr), alpha = 0.2, colour = NA) +
@@ -219,3 +248,11 @@ ggplot(emm_df2,
        colour = "Wing development",
        fill   = "Wing development") +
   theme_minimal()
+
+ggsave(
+  file.path(out_dir, "detectability_traits_interaction.png"),
+  p_traits_inter,
+  width = 12,
+  height = 7,
+  dpi = 200
+)

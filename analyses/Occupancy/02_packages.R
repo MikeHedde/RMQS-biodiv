@@ -1,7 +1,7 @@
 suppressPackageStartupMessages({
   librarian::shelf(
-    dplyr, tidyr, ggplot2, readr, stringr, tibble, purrr, taxize,
-    unmarked, vegan, betapart, ggvenn, lme4, emmeans, stringi
+    dplyr, tidyr, ggplot2, readr, stringr, tibble, purrr, taxize, cowplot,
+    unmarked, vegan, betapart, ggvenn, lme4, emmeans, stringi, rgnparser
   )
 })
 

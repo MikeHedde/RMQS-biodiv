@@ -123,11 +123,11 @@ fit_one_species_occu <- function(sp_name,
     for (nm in rep_names_k) {
       nd[[nm]] <- as.numeric(nm == tag)
     }
-    # DOY_z fixé à 0 si présent dans le modèle
-    if (has_doy) nd$DOY_z <- 0
-    if (has_altitude) nd$ALTITUDE_z <- 0
-    if (has_ndvi_m) nd$NDVI_m_z <- 0
-    if (has_ndvi_sd) nd$NDVI_sd_z <- 0
+    # xxx_z fixé à 0 si présent dans le modèle
+    nd$DOY_z <- 0
+    nd$ALTITUDE_z <- 0
+    nd$NDVI_m_z <- 0
+    nd$NDVI_sd_z <- 0
     
     as.data.frame(unmarked::predict(fm, type = "det", newdata = nd))
   }

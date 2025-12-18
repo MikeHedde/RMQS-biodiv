@@ -160,7 +160,6 @@ site_cov <- tibble(site_id = sites) %>%
            into = c("programme", "year", "locality", "site_id"),
            sep = "_",
            remove = FALSE) %>%
-  left_join(site_hab, by="site_id") %>%
   left_join(site_ndvi) %>% 
   mutate(ALTITUDE_z = zstd(ALTITUDE), 
          DOY_z = zstd(DOY),

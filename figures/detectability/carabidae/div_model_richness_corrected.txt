@@ -2,35 +2,31 @@ Linear mixed model fit by REML ['lmerMod']
 Formula: richness ~ method + (1 | site_id)
    Data: data
 
-REML criterion at convergence: 2262
+REML criterion at convergence: 1984.4
 
 Scaled residuals: 
-    Min      1Q  Median      3Q     Max 
--3.4520 -0.5506 -0.0426  0.5039  3.0370 
+     Min       1Q   Median       3Q      Max 
+-3.12791 -0.56374 -0.01408  0.55311  2.73727 
 
 Random effects:
  Groups   Name        Variance Std.Dev.
- site_id  (Intercept) 28.338   5.323   
- Residual              6.403   2.530   
-Number of obs: 435, groups:  site_id, 69
+ site_id  (Intercept) 33.435   5.782   
+ Residual              4.684   2.164   
+Number of obs: 396, groups:  site_id, 68
 
 Fixed effects:
                 Estimate Std. Error t value
-(Intercept)      10.2520     0.7176  14.287
-methodPitfall10   2.0954     0.4466   4.692
-methodPitfall8    0.9163     0.4466   2.052
-methodPitfall6   -0.2778     0.4466  -0.622
-methodPitfall4   -2.1434     0.4466  -4.799
-methodPitfall2   -4.6300     0.4499 -10.292
-methodDVAC      -10.5458     0.5762 -18.301
-methodTM         -8.2063     1.0043  -8.171
+(Intercept)      10.2314     0.7531  13.586
+methodPitfall10   2.0452     0.3827   5.344
+methodPitfall8    0.8661     0.3827   2.263
+methodPitfall6   -0.3279     0.3827  -0.857
+methodPitfall4   -2.1936     0.3827  -5.732
+methodPitfall2   -4.6845     0.3855 -12.153
 
 Correlation of Fixed Effects:
-            (Intr) mthP10 mthdP8 mthdP6 mthdP4 mthdP2 mtDVAC
-mthdPtfll10 -0.322                                          
-methdPtfll8 -0.322  0.521                                   
-methdPtfll6 -0.322  0.521  0.521                            
-methdPtfll4 -0.322  0.521  0.521  0.521                     
-methdPtfll2 -0.319  0.516  0.516  0.516  0.516              
-methodDVAC  -0.252  0.391  0.391  0.391  0.391  0.390       
-methodTM    -0.141  0.228  0.228  0.228  0.228  0.227  0.169
+            (Intr) mthP10 mthdP8 mthdP6 mthdP4
+mthdPtfll10 -0.262                            
+methdPtfll8 -0.262  0.523                     
+methdPtfll6 -0.262  0.523  0.523              
+methdPtfll4 -0.262  0.523  0.523  0.523       
+methdPtfll2 -0.259  0.517  0.517  0.517  0.517

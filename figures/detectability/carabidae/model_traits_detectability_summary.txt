@@ -31,27 +31,15 @@ methodPitfall10:log_BL  1.96498    1.69452   1.160
 methodGPD:log_BL        0.71389    0.58995   1.210
 
 Correlation of Fixed Effects:
-            (Intr) mthdP4 mthdP6 mthdP8 mthP10 mthGPD log_BL mP4:_B
-methdPtfll4 -0.418                                                 
-methdPtfll6 -0.400  0.390                                          
-methdPtfll8 -0.329  0.312  0.335                                   
-mthdPtfll10 -0.191  0.163  0.167  0.155                            
-methodGPD   -0.487  0.467  0.427  0.348  0.190                     
-log_BL      -0.973  0.411  0.390  0.320  0.186  0.479              
-mthdPt4:_BL  0.402 -0.975 -0.375 -0.300 -0.156 -0.448 -0.416       
-mthdPt6:_BL  0.376 -0.368 -0.975 -0.317 -0.156 -0.402 -0.385  0.373
-mthdPt8:_BL  0.308 -0.294 -0.317 -0.974 -0.146 -0.326 -0.315  0.297
-mthdP10:_BL  0.190 -0.162 -0.165 -0.154 -0.966 -0.189 -0.196  0.164
-mthdGPD:_BL  0.469 -0.446 -0.406 -0.330 -0.182 -0.972 -0.484  0.451
-            mP6:_B mP8:_B mP10:_
-methdPtfll4                     
-methdPtfll6                     
-methdPtfll8                     
-mthdPtfll10                     
-methodGPD                       
-log_BL                          
-mthdPt4:_BL                     
-mthdPt6:_BL                     
-mthdPt8:_BL  0.315              
-mthdP10:_BL  0.163  0.152       
-mthdGPD:_BL  0.401  0.323  0.189
+            (Intr) mthdP4 mthdP6 mthdP8 mthP10 mthGPD log_BL mP4:_B mP6:_B mP8:_B mP10:_
+methdPtfll4 -0.418                                                                      
+methdPtfll6 -0.400  0.390                                                               
+methdPtfll8 -0.329  0.312  0.335                                                        
+mthdPtfll10 -0.191  0.163  0.167  0.155                                                 
+methodGPD   -0.487  0.467  0.427  0.348  0.190                                          
+log_BL      -0.973  0.411  0.390  0.320  0.186  0.479                                   
+mthdPt4:_BL  0.402 -0.975 -0.375 -0.300 -0.156 -0.448 -0.416                            
+mthdPt6:_BL  0.376 -0.368 -0.975 -0.317 -0.156 -0.402 -0.385  0.373                     
+mthdPt8:_BL  0.308 -0.294 -0.317 -0.974 -0.146 -0.326 -0.315  0.297  0.315              
+mthdP10:_BL  0.190 -0.162 -0.165 -0.154 -0.966 -0.189 -0.196  0.164  0.163  0.152       
+mthdGPD:_BL  0.469 -0.446 -0.406 -0.330 -0.182 -0.972 -0.484  0.451  0.401  0.323  0.189
