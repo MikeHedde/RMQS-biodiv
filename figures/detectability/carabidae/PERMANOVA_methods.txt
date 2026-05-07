@@ -6,6 +6,6 @@ Number of permutations: 9999
 
 vegan::adonis2(formula = d_jac ~ method, data = comm_pa_all, permutations = 9999, by = "margin", strata = comm_pa_all$site_id)
           Df SumOfSqs      R2      F Pr(>F)
-method     1    0.083 0.00177 0.2269 0.7208
-Residual 128   46.731 0.99823              
-Total    129   46.814 1.00000              
+method     1    0.191 0.00367 0.5051 0.8588
+Residual 137   51.835 0.99633              
+Total    138   52.026 1.00000              

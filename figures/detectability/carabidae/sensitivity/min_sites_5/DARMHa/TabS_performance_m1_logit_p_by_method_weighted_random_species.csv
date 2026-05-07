@@ -1,0 +1,2 @@
+model_id,singular,r2_marginal,r2_conditional,icc,AIC,BIC,logLik
+m1_logit_p_by_method_weighted_random_species,FALSE,0.9513861491727266,0.9817614313610556,0.6248277326610752,2323.3940004113247,2353.3380259138007,-1153.6970002056623

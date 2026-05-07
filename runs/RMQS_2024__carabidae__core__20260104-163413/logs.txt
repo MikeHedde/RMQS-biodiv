@@ -1,0 +1,19 @@
+[2026-01-04 16:34:13] [INFO] RUN_TAG=RMQS_2024__carabidae__core__20260104-163413
+[2026-01-04 16:34:13] [INFO] IN_FILE=data/raw-data/1.faune/carabidae.csv
+[2026-01-04 16:34:13] [INFO] methods_use=Pitfall, TRI, Core
+[2026-01-04 16:34:13] [INFO] pit_reps=2, 4, 6
+[2026-01-04 16:34:13] [INFO] [02] read_delim(;): data/raw-data/1.faune/carabidae.csv
+[2026-01-04 16:34:15] [INFO] [02] dat_samp: rows=25766 sites=186 methods=Pitfall, TRI
+[2026-01-04 16:34:15] [INFO] [02] dat_sp  : rows=25766 sites=186 spp=236
+[2026-01-04 16:34:15] [INFO] [09] dat_samp sites=186 rows=25766 methods=Pitfall, TRI
+[2026-01-04 16:34:15] [INFO] [09] dat_sp sites=186 rows=25766 spp=236
+[2026-01-04 16:34:16] [INFO] [04] start proj=RMQS_2024 methods=Pitfall, TRI, Core pit_reps=2,4,6
+[2026-01-04 16:34:16] [INFO] [04] constants pit_circ_m=0.1571 gpd=1.1571 dvac=1.0000 tm=0.0625 core_vol=1.000000
+[2026-01-04 16:34:16] [INFO] [04] det_cols=Pitfall2, Pitfall4, Pitfall6, TM, Core
+[2026-01-04 16:34:17] [INFO] [04] DONE: sites=186 spp=236 reps=5
+[2026-01-04 16:34:17] [INFO] [09] Y dims: sites=186 reps=5 spp=236
+[2026-01-04 16:34:17] [INFO] [09] Y reps: Pitfall2, Pitfall4, Pitfall6, TM, Core
+[2026-01-04 16:34:17] [INFO] [05] Y dims: sites=186 reps=5 spp=236
+[2026-01-04 16:34:17] [INFO] [05] reps: Pitfall2, Pitfall4, Pitfall6, TM, Core
+[2026-01-04 16:34:17] [INFO] [05] spp (head): Abax ovalis (Duftschmid, 1812) | Abax parallelepipedus (Piller & Mitterpacher, 1783) | Abax parallelus (Duftschmid, 1812) | Acupalpus brunnipes (Sturm, 1825) | Acupalpus dubius Schilsky, 1888
+[2026-01-04 16:34:17] [INFO] [05] Building unmarkedFrameOccuMulti...

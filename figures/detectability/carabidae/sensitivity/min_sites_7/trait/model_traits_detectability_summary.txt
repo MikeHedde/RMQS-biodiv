@@ -1,0 +1,41 @@
+Linear mixed model fit by REML ['lmerMod']
+Formula: logit_p ~ method * log_BL + (1 | species)
+   Data: dat2_tr
+Weights: weight
+
+REML criterion at convergence: 772.4
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.7897 -0.3524  0.0006  0.6357  2.4329 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ species  (Intercept) 0.4464   0.6681  
+ Residual             0.4271   0.6535  
+Number of obs: 175, groups:  species, 35
+
+Fixed effects:
+                      Estimate Std. Error t value
+(Intercept)           -0.36553    0.63383  -0.577
+methodPitfall2        -0.47542    0.45427  -1.047
+methodPitfall6         0.52644    0.63380   0.831
+methodPitfall8         2.11124    0.99456   2.123
+methodGPD             -0.26001    0.46700  -0.557
+log_BL                 1.37728    0.67162   2.051
+methodPitfall2:log_BL -0.45038    0.49162  -0.916
+methodPitfall6:log_BL  0.04221    0.70299   0.060
+methodPitfall8:log_BL -1.03138    1.12363  -0.918
+methodGPD:log_BL       0.15771    0.50833   0.310
+
+Correlation of Fixed Effects:
+            (Intr) mthdP2 mthdP6 mthdP8 mthGPD log_BL mP2:_B mP6:_B mP8:_B
+methdPtfll2 -0.412                                                        
+methdPtfll6 -0.297  0.405                                                 
+methdPtfll8 -0.193  0.259  0.211                                          
+methodGPD   -0.406  0.564  0.392  0.262                                   
+log_BL      -0.977  0.417  0.298  0.196  0.411                            
+mthdPt2:_BL  0.408 -0.977 -0.401 -0.257 -0.558 -0.432                     
+mthdPt6:_BL  0.285 -0.391 -0.981 -0.205 -0.377 -0.300  0.404              
+mthdPt8:_BL  0.184 -0.246 -0.201 -0.986 -0.250 -0.195  0.255  0.203       
+mthdGPD:_BL  0.401 -0.555 -0.384 -0.260 -0.976 -0.425  0.575  0.388  0.258

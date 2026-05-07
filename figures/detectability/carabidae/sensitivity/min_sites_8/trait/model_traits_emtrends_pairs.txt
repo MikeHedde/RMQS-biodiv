@@ -1,0 +1,14 @@
+ contrast            estimate    SE     df t.ratio p.value
+ Pitfall4 - Pitfall2  0.37527 0.498 632.79   0.754  0.9435
+ Pitfall4 - Pitfall6 -0.00737 0.717 115.07  -0.010  1.0000
+ Pitfall4 - Pitfall8  0.66623 0.947  10.15   0.704  0.9510
+ Pitfall4 - GPD      -0.16774 0.514 555.47  -0.326  0.9975
+ Pitfall2 - Pitfall6 -0.38264 0.687 119.44  -0.557  0.9809
+ Pitfall2 - Pitfall8  0.29096 0.927   9.97   0.314  0.9975
+ Pitfall2 - GPD      -0.54301 0.464 888.27  -1.170  0.7686
+ Pitfall6 - Pitfall8  0.67360 1.020  10.61   0.659  0.9611
+ Pitfall6 - GPD      -0.16036 0.701 115.81  -0.229  0.9994
+ Pitfall8 - GPD      -0.83397 0.931  10.10  -0.895  0.8923
+
+Degrees-of-freedom method: kenward-roger 
+P value adjustment: tukey method for comparing a family of 5 estimates 

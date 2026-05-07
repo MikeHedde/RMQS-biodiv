@@ -1,0 +1,8 @@
+==============================
+RUN_TAG : RMQS_2025__carabidae__core__20260105-204441
+IN_FILE : data/raw-data/1.faune/carabidae.csv
+METHODS : Pitfall, TRI, Carottage
+PIT_REPS: 2, 4, 6
+============================== 
+Normalize: n_rows total=15695 ; dat_samp=569 ; dat_sp=15695 ; n_species=162 
+QC/Filter: min_sites=5 ; kept_species=77 ; dropped_species=85 

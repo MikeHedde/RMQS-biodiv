@@ -1,0 +1,11 @@
+trap;trap_id;x_m;y_m;coordinate_origin
+1;PB1;1;17;SW corner of 30x30 m grid
+2;PB2;5;29;SW corner of 30x30 m grid
+3;PB3;11;23;SW corner of 30x30 m grid
+4;PB4;7;11;SW corner of 30x30 m grid
+5;PB5;13;1;SW corner of 30x30 m grid
+6;PB6;25;1;SW corner of 30x30 m grid
+7;PB7;19;7;SW corner of 30x30 m grid
+8;PB8;23;19;SW corner of 30x30 m grid
+9;PB9;29;25;SW corner of 30x30 m grid
+10;PB10;29;13;SW corner of 30x30 m grid

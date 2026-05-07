@@ -1,0 +1,236 @@
+Abax ovalis (Duftschmid, 1812)
+Abax parallelepipedus (Piller & Mitterpacher, 1783)
+Abax parallelus (Duftschmid, 1812)
+Acupalpus brunnipes (Sturm, 1825)
+Acupalpus dubius Schilsky, 1888
+Acupalpus flavicollis (Sturm, 1825)
+Acupalpus Latreille, 1829
+Acupalpus meridianus (Linnaeus, 1761)
+Acupalpus notatus Mulsant & Rey, 1861
+Acupalpus parvulus (Sturm, 1825)
+Agonum marginatum (Linnaeus, 1758)
+Agonum muelleri (Herbst, 1784)
+Agonum nigrum Dejean, 1828
+Agonum viridicupreum (Goeze, 1777)
+Amara aenea (De Geer, 1774)
+Amara anthobia A. Villa & G.B. Villa, 1833
+Amara bifrons (Gyllenhal, 1810)
+Amara Bonelli, 1810
+Amara communis (Panzer, 1796)
+Amara consularis (Duftschmid, 1812)
+Amara convexior Stephens, 1828
+Amara curta Dejean, 1828
+Amara equestris (Duftschmid, 1812)
+Amara eurynota (Panzer, 1796)
+Amara familiaris (Duftschmid, 1812)
+Amara fulvipes (Audinet-Serville, 1821)
+Amara kulti Fassati, 1947
+Amara lucida (Duftschmid, 1812)
+Amara lunicollis Schidte, 1837
+Amara nigricornis C.G. Thomson, 1857
+Amara nitida Sturm, 1825
+Amara ovata (Fabricius, 1792)
+Amara plebeja (Gyllenhal, 1810)
+Amara praetermissa (C.R. Sahlberg, 1827)
+Amara quenseli (Schnherr, 1806)
+Amara rufipes Dejean, 1828
+Amara similata (Gyllenhal, 1810)
+Amara tibialis (Paykull, 1798)
+Amblystomus niger (Heer, 1841)
+Anchomenus dorsalis (Pontoppidan, 1763)
+Anisodactylus binotatus (Fabricius, 1787)
+Anisodactylus signatus (Panzer, 1796)
+Apotomus rufus (Rossi, 1790)
+Asaphidion curtum (Heyden, 1870)
+Asaphidion Gozis, 1886
+Asaphidion stierlini (Heyden, 1880)
+Badister bullatus (Schrank, 1798)
+Badister lacertosus Sturm, 1815
+Badister sodalis (Duftschmid, 1812)
+Bembidion axillare occiduum Marggi & Huber, 2001
+Bembidion biguttatum (Fabricius, 1779)
+Bembidion callosum Kster, 1847
+Bembidion callosum subconnexum de Monte, 1953
+Bembidion guttula (Fabricius, 1792)
+Bembidion humerale Sturm, 1825
+Bembidion iricolor Bedel, 1879
+Bembidion jacqueti (Jeannel, 1941)
+Bembidion lampros (Herbst, 1784)
+Bembidion latinum Netolitzky, 1911
+Bembidion Latreille, 1802
+Bembidion lunulatum (Geoffroy, 1785)
+Bembidion obtusum Audinet-Serville, 1821
+Bembidion properans (Stephens, 1828)
+Bembidion pyrenaeum Dejean, 1831
+Bembidion pyrenaeum poenini Marggi & Huber, 1993
+Bembidion quadrimaculatum (Linnaeus, 1761)
+Bembidion tethys Netolitzky, 1926
+Bembidion tetracolum Say, 1823
+Brachinus crepitans (Linnaeus, 1758)
+Brachinus elegans Chaudoir, 1842
+Brachinus explodens Duftschmid, 1812
+Brachinus psophia Audinet-Serville, 1821
+Brachinus sclopeta (Fabricius, 1792)
+Bradycellus harpalinus (Audinet-Serville, 1821)
+Calathus ambiguus (Paykull, 1790)
+Calathus Bonelli, 1810
+Calathus cinctus Motschulsky, 1850
+Calathus circumseptus Germar, 1823
+Calathus fuscipes (Goeze, 1777)
+Calathus luctuosus (Latreille, 1804)
+Calathus melanocephalus (Linnaeus, 1758)
+Calathus micropterus (Duftschmid, 1812)
+Calathus rotundicollis Dejean, 1828
+Callistus lunatus (Fabricius, 1775)
+Calosoma inquisitor (Linnaeus, 1758)
+Carabus auratus Linnaeus, 1761
+Carabus auronitens Fabricius, 1792
+Carabus cancellatus Illiger, 1798
+Carabus convexus Fabricius, 1775
+Carabus coriaceus coriaceus Linnaeus, 1758
+Carabus coriaceus Linnaeus, 1758
+Carabus depressus Bonelli, 1810
+Carabus granulatus Linnaeus, 1758
+Carabus hispanus Fabricius, 1787
+Carabus monilis Fabricius, 1792
+Carabus nemoralis O.F. Mller, 1764
+Carabus problematicus Herbst, 1786
+Carabus splendens Olivier, 1790
+Carabus violaceus Linnaeus, 1758
+Carabus violaceus purpurascens Fabricius, 1787
+Chlaenius chrysocephalus (Rossi, 1790)
+Chlaenius nigricornis (Fabricius, 1787)
+Chlaenius tibialis Dejean, 1826
+Chlaenius vestitus (Paykull, 1790)
+Cicindela campestris Linnaeus, 1758
+Cicindela gallica Brull, 1834
+Clivina collaris (Herbst, 1784)
+Clivina fossor (Linnaeus, 1758)
+Cychrus attenuatus (Fabricius, 1792)
+Cylindera germanica (Linnaeus, 1758)
+Cymindis axillaris (Fabricius, 1794)
+Cymindis coadunata Dejean, 1825
+Cymindis etrusca etrusca Bassi, 1834
+Cymindis humeralis (Geoffroy in Fourcroy, 1785)
+Cymindis scapularis Schaum, 1857
+Cymindis vaporariorum (Linnaeus, 1758)
+Demetrias atricapillus (Linnaeus, 1758)
+Diachromus germanus (Linnaeus, 1758)
+Dyschirius aeneus (Dejean, 1825)
+Dyschirius globosus (Herbst, 1784)
+Dyschirius tristis Stephens, 1827
+Gynandromorphus etruscus (Quensel in Schnherr, 1806)
+Harpalus affinis (Schrank, 1781)
+Harpalus anxius (Duftschmid, 1812)
+Harpalus attenuatus Stephens, 1828
+Harpalus cupreus Dejean, 1829
+Harpalus decipiens Dejean, 1829
+Harpalus dimidiatus (Rossi, 1790)
+Harpalus dispar Dejean, 1829
+Harpalus distinguendus (Duftschmid, 1812)
+Harpalus honestus (Duftschmid, 1812)
+Harpalus laevipes Zetterstedt, 1828
+Harpalus Latreille, 1802
+Harpalus latus (Linnaeus, 1758)
+Harpalus luteicornis (Duftschmid, 1812)
+Harpalus neglectus Audinet-Serville, 1821
+Harpalus oblitus Dejean, 1829
+Harpalus punctatostriatus Dejean, 1829
+Harpalus punctipennis Mulsant, 1852
+Harpalus pygmaeus Dejean, 1829
+Harpalus rubripes (Duftschmid, 1812)
+Harpalus rufipalpis Sturm, 1818
+Harpalus serripes (Quensel in Schnherr, 1806)
+Harpalus solitaris Dejean, 1829
+Harpalus sulphuripes Germar, 1823
+Harpalus tardus (Panzer, 1797)
+Laemostenus oblongus (Dejean, 1828)
+Leistus Frhlich, 1799
+Leistus fulvibarbis Dejean, 1826
+Leistus rufomarginatus (Duftschmid, 1812)
+Leistus spinibarbis (Fabricius, 1775)
+Licinus cassideus (Fabricius, 1792)
+Licinus punctatulus (Fabricius, 1792)
+Licinus silphoides (Rossi, 1790)
+Loricera pilicornis (Fabricius, 1775)
+Microlestes abeillei (Brisout de Barneville, 1885)
+Microlestes fulvibasis (Reitter, 1901)
+Microlestes luctuosus Holdhaus in Apfelbeck, 1904
+Microlestes maurus (Sturm, 1827)
+Microlestes minutulus (Goeze, 1777)
+Microlestes Schmidt-Gdel, 1846
+Molops piceus (Panzer, 1793)
+Nebria brevicollis (Fabricius, 1792)
+Nebria castanea (Bonelli, 1810)
+Nebria Latreille, 1802
+Nebria salina Fairmaire & Laboulbne, 1854
+Notiophilus aestuans Dejean, 1826
+Notiophilus aquaticus (Linnaeus, 1758)
+Notiophilus biguttatus (Fabricius, 1779)
+Notiophilus germinyi Fauvel, 1863
+Notiophilus palustris (Duftschmid, 1812)
+Notiophilus quadripunctatus Dejean, 1826
+Notiophilus rufipes Curtis, 1829
+Notiophilus substriatus G.R. Waterhouse, 1833
+Ophonus ardosiacus (Lutshnik, 1922)
+Ophonus azureus (Fabricius, 1775)
+Ophonus cribricollis (Dejean, 1829)
+Ophonus laticollis Mannerheim, 1825
+Ophonus puncticeps Stephens, 1828
+Ophonus subquadratus (Dejean, 1829)
+Oxypselaphus obscurus (Herbst, 1784)
+Panagaeus bipustulatus (Fabricius, 1775)
+Pangus scaritides (Sturm, 1818)
+Parophonus maculicornis (Duftschmid, 1812)
+Pedius longicollis (Duftschmid, 1812)
+Platyderus depressus (Audinet-Serville, 1821)
+Platynus assimilis (Paykull, 1790)
+Poecilus Bonelli, 1810
+Poecilus cupreus (Linnaeus, 1758)
+Poecilus kugelanni (Panzer, 1797)
+Poecilus lepidus (Leske, 1785)
+Poecilus lepidus gressorius (Dejean, 1828)
+Poecilus purpurascens (Dejean, 1828)
+Poecilus sericeus desbrochersi Jeannel, 1942
+Poecilus sericeus Fischer von Waldheim, 1824
+Poecilus versicolor (Sturm, 1824)
+Polistichus connexus (Geoffroy in Fourcroy, 1785)
+Pseudoophonus griseus (Panzer, 1797)
+Pseudoophonus Motschulsky, 1844
+Pseudoophonus rufipes (De Geer, 1774)
+Pterostichus anthracinus (Illiger, 1798)
+Pterostichus burmeisteri Heer, 1838
+Pterostichus colasi (Jeannel, 1937)
+Pterostichus cristatus (L. Dufour, 1820)
+Pterostichus diligens (Sturm, 1824)
+Pterostichus dufourii dufourii (Dejean, 1828)
+Pterostichus externepunctatus (Dejean, 1828)
+Pterostichus funestes Csiki, 1930
+Pterostichus madidus (Fabricius, 1775)
+Pterostichus melanarius (Illiger, 1798)
+Pterostichus minor (Gyllenhal, 1827)
+Pterostichus morio baudii (Chaudoir, 1868)
+Pterostichus multipunctatus (Dejean, 1828)
+Pterostichus niger (Schaller, 1783)
+Pterostichus oblongopunctatus (Fabricius, 1787)
+Pterostichus ovoideus (Sturm, 1824)
+Pterostichus pumilio (Dejean, 1828)
+Pterostichus selmanni (Duftschmid, 1812)
+Pterostichus strenuus (Panzer, 1796)
+Pterostichus unctulatus (Duftschmid, 1812)
+Pterostichus vernalis (Panzer, 1796)
+Pterostichus xatartii (Dejean, 1828)
+Scybalicus oblongiusculus (Dejean, 1829)
+Semiophonus signaticornis (Duftschmid, 1812)
+Stenolophus teutonus (Schrank, 1781)
+Stomis pumicatus (Panzer, 1796)
+Syntomus foveatus (Geoffroy in Fourcroy, 1785)
+Syntomus obscuroguttatus (Duftschmid, 1812)
+Syntomus truncatellus (Linnaeus, 1761)
+Synuchus vivalis (Illiger, 1798)
+Tachys bistriatus (Duftschmid, 1812)
+Tachyura parvula (Dejean, 1831)
+Trechus obtusus Erichson, 1837
+Trechus quadristriatus (Schrank, 1781)
+Trichotichnus nitens (Heer, 1837)
+Zabrus tenebrioides (Goeze, 1777)

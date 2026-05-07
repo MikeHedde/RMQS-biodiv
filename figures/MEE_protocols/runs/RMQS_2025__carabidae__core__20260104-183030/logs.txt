@@ -1,0 +1,12 @@
+[2026-01-04 18:30:30] [INFO] RUN_TAG=RMQS_2025__carabidae__core__20260104-183030
+[2026-01-04 18:30:30] [INFO] IN_FILE=data/raw-data/1.faune/carabidae.csv
+[2026-01-04 18:30:30] [INFO] methods_use=Pitfall, TRI, Core
+[2026-01-04 18:30:30] [INFO] pit_reps=2, 4, 6
+[2026-01-04 18:30:30] [INFO] [02] read_delim(;): data/raw-data/1.faune/carabidae.csv
+[2026-01-04 18:30:33] [INFO] [02] dat_samp: rows=25766 sites=186 methods=Pitfall, TRI
+[2026-01-04 18:30:33] [INFO] [02] dat_sp  : rows=25766 sites=186 spp=236
+[2026-01-04 18:30:33] [INFO] [09] dat_samp sites=186 rows=25766 methods=Pitfall, TRI
+[2026-01-04 18:30:33] [INFO] [09] dat_sp sites=186 rows=25766 spp=236
+[2026-01-04 18:30:33] [INFO] [04] start proj=RMQS_2025 methods=Pitfall, TRI, Core pit_reps=2,4,6
+[2026-01-04 18:30:33] [INFO] [04] constants pit_circ_m=0.1571 gpd=1.1571 dvac=1.2000 tm=0.0625 core_vol=0.392699
+[2026-01-04 18:30:33] [INFO] [04] det_cols=Pitfall2, Pitfall4, Pitfall6, TM, Core

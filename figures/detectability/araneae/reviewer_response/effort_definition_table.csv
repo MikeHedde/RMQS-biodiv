@@ -1,0 +1,9 @@
+protocol,sampling_unit,unit_intensity,effort_formula,notes
+Pitfall10,individual conventional pitfall trap,0.15707963267948966,pitfall circumference × duration × number of traps 1:10,nested operational subset used in the main analysis
+Pitfall8,individual conventional pitfall trap,0.15707963267948966,pitfall circumference × duration × number of traps 1:8,nested operational subset used in the main analysis
+Pitfall6,individual conventional pitfall trap,0.15707963267948966,pitfall circumference × duration × number of traps 1:6,nested operational subset used in the main analysis
+Pitfall4,individual conventional pitfall trap,0.15707963267948966,pitfall circumference × duration × number of traps 1:4,nested operational subset used in the main analysis
+Pitfall2,individual conventional pitfall trap,0.15707963267948966,pitfall circumference × duration × number of traps 1:2,nested operational subset used in the main analysis
+GPD,one full X-shaped directional pitfall device,1.1570796326794897,GPD effective interception length (1.157 m) × duration × number of GPD units,gpd_effort_unit = 'device'; use sensitivity script to vary IL
+DVAC,one D-vac sampling event / site-level unit,1,number of D-vac units; replace with sampled area if available,nominal effort proxy; refine if exact sampled area is available
+TM,one hand-sorting monolith,0.0625,monolith area × number of monoliths,25 × 25 cm monolith assumed

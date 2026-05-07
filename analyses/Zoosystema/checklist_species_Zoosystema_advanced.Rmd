@@ -1,0 +1,414 @@
+---
+title: "Annotated species checklist (Zoosystema-ready) — Material examined"
+author: "Mike Hedde"
+date: "`r format(Sys.Date(), '%Y-%m-%d')`"
+output:
+  word_document:
+    toc: false
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+library(tidyverse)
+library(readr)
+library(janitor)
+library(stringr)
+library(glue)
+library(purrr)
+library(stringi)
+library(lubridate)
+
+knitr::opts_knit$set(encoding = "UTF-8")
+
+fix_utf8 <- function(x) {
+  if (!is.character(x)) return(x)
+  # convertit vers UTF-8 et remplace les octets invalides
+  x <- iconv(x, from = "", to = "UTF-8", sub = "")
+  enc2utf8(x)
+}
+to_utf8 <- function(x) fix_utf8(x)
+`%||%` <- function(a, b) if (!is.null(a)) a else b
+```
+
+# 1. Inputs
+
+```{r inputs}
+in_obs  <- "C:/Users/heddemic/Documents/Codes R/RMQS-biodiv/data/raw-data/1.faune/all_clean.csv"
+in_meta <- "C:/Users/heddemic/Documents/Codes R/RMQS-biodiv/data/raw-data/1.faune/station_metadata.csv"
+
+if (!file.exists(in_obs))  stop("Missing file: ", in_obs)
+if (!file.exists(in_meta)) stop("Missing file: ", in_meta)
+```
+
+# 2. Read data (UTF-8, ';' separated)
+
+```{r read-data}
+obs0 <- read_delim(
+  in_obs,
+  delim = ";",
+  show_col_types = FALSE,
+  locale = locale(encoding = "UTF-8")
+) %>%
+  clean_names() %>%
+  mutate(across(where(is.character), to_utf8))%>%
+  # Filtrer la bdd
+  filter(family == "Formicidae") %>%  #ou project=="RMQS"
+  select(-indet)
+
+meta0 <- read_delim(
+  in_meta,
+  delim = ";",
+  show_col_types = FALSE,
+  locale = locale(encoding = "UTF-8")
+) %>%
+  clean_names() %>%
+  mutate(across(where(is.character), to_utf8))
+
+needed_obs <- c("yr","city","station","method", "phylum", "class", "order","family","cd_nom","valid_name", "name",
+                "male","female","juv", "tot_abund", "determinateur")
+miss_obs <- setdiff(needed_obs, names(obs0))
+if (length(miss_obs) > 0) stop("Missing columns in obs: ", paste(miss_obs, collapse=", "))
+```
+
+# 3. Standardise keys + filter to species-level
+
+```{r standardise}
+norm_city <- function(x) {
+  x %>%
+    toupper() %>%
+    stringi::stri_trans_general("Latin-ASCII") %>%
+    str_replace_all("[^A-Z0-9]+", "-") %>%
+    str_replace_all("(^-|-$)", "")
+}
+
+obs <- obs0 %>%
+  mutate(
+    valid_name = na_if(valid_name, ""),
+    cd_nom = suppressWarnings(as.integer(cd_nom)),
+    genus   = word(name, 1),
+    species = word(name, 2),
+    is_binom = str_detect(name, "^[A-Z][a-z]+\\s[a-z-]+$"),
+    n_ind_row = rowSums(across(c(male, female, juv, tot_abund)), na.rm = TRUE),
+    yr2 = str_sub(as.character(yr), 3, 4),
+    city_norm = norm_city(city),
+  ) %>%
+  filter(is_binom, n_ind_row > 0, !is.na(name)) %>%
+  rename(order_tax = order) %>%
+  mutate(across(where(is.character), to_utf8))
+
+meta <- meta0 %>%
+  mutate(
+    city_norm = norm_city(city),
+  ) %>%
+  mutate(across(where(is.character), to_utf8))
+```
+
+# 4. Join metadata to observations (station key if possible; else city)
+
+```{r join-meta}
+use_station_key <- "nom_station" %in% names(meta) && any(!is.na(meta$nom_station)) &&
+                   "rmqs_station_key" %in% names(obs)
+
+obs2 <- if (use_station_key) {
+  obs %>% left_join(meta, by = c("rmqs_station_key" = "nom_station"), suffix = c("_obs","_meta"))
+} else {
+  message("Joining meta by city_norm (station key not available).")
+  obs %>% left_join(meta, by = c("city_norm" = "city_norm"), suffix = c("_obs","_meta"))
+}
+
+obs2 <- obs2 %>%
+  mutate(
+    pays   = if ("pays"   %in% names(.)) .data[["pays"]]   else NA_character_,
+    region = if ("region" %in% names(.)) .data[["region"]] else NA_character_,
+    num_dpt    = if ("num_dpt"    %in% names(.)) .data[["num_dpt"]]    else NA_character_
+  ) 
+```
+
+# 5. Helpers (methods, counts, month-year only)
+
+```{r helpers}
+norm_method <- function(x) {
+  recode(str_squish(as.character(x)),
+         "pitfall-trap" = "pitfall trap",
+         "xshape-trap"  = "X-shaped pitfall trap",
+         "soil-core"    = "soil core",
+         "hand-sorting" = "hand sorting",
+         "dvac"         = "D-vac",
+         .default = as.character(x))
+}
+
+# vectorised counts formatter
+fmt_counts_vec <- function(m, f, j) {
+  m <- suppressWarnings(as.integer(m))
+  f <- suppressWarnings(as.integer(f))
+  j <- suppressWarnings(as.integer(j))
+
+  out <- rep(NA_character_, length(m))
+  for (k in seq_along(m)) {
+    parts <- c(
+      if (!is.na(m[k]) && m[k] > 0) glue("{m[k]} ♂") else NA,
+      if (!is.na(f[k]) && f[k] > 0) glue("{f[k]} ♀") else NA,
+      if (!is.na(j[k]) && j[k] > 0) glue("{j[k]} juv.") else NA
+    )
+    parts <- parts[!is.na(parts)]
+    if (length(parts) > 0) out[k] <- paste(parts, collapse = ", ")
+  }
+  out
+}
+
+
+fmt_my <- function(x) {
+  x <- as.character(x)
+  x[x == ""] <- NA_character_
+  d <- suppressWarnings(as.Date(x))
+  miss <- is.na(d) & !is.na(x)
+  if (any(miss)) {
+    d2 <- suppressWarnings(lubridate::dmy(x[miss]))
+    d[miss] <- as.Date(d2)
+  }
+  out <- rep(NA_character_, length(x))
+  ok <- !is.na(d)
+  out[ok] <- paste0(as.character(as.roman(as.integer(format(d[ok], "%m")))), "-", format(d[ok], "%Y"))
+  out
+}
+
+fmt_geo <- function(x) {
+  x %>%
+    str_squish() %>%
+    str_to_lower(locale = "fr") %>%
+    stri_trans_totitle(locale = "fr_FR") %>%
+    # remettre en minuscules les particules fréquentes
+    str_replace_all("\\b(De|Du|Des|La|Le|Les|D'|L')\\b", ~ str_to_lower(.x, locale = "fr")) %>%
+    # gérer "d’" typographique si besoin
+    str_replace_all("D’", "d’") %>%
+    str_replace_all("L’", "l’")
+}
+
+collapse_safe <- function(x, sep = " • ", max_bytes = 20000) {
+  x <- x[!is.na(x) & nzchar(x)]
+  if (length(x) == 0) return(character(0))
+  out <- character()
+  cur <- ""
+  for (s in x) {
+    add <- if (cur == "") s else paste0(cur, sep, s)
+    if (nchar(add, type = "bytes") > max_bytes) {
+      out <- c(out, cur)
+      cur <- s
+    } else {
+      cur <- add
+    }
+  }
+  if (cur != "") out <- c(out, cur)
+  out
+}
+
+
+fmt_my <- function(x) {
+  x %>%
+    dmy() %>%                        # calendrier français
+    { ifelse(is.na(.), NA_character_,
+             paste0(
+               tolower(c("I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII")[month(.)]),
+               "-",
+               year(.)
+             )
+    )}
+}
+
+fmt_taxon_header <- function(valid_name, cd_nom) {
+  valid_name <- as.character(valid_name)
+
+  vapply(seq_along(valid_name), function(i) {
+    nm <- str_squish(valid_name[i])
+    if (is.na(nm) || nm == "") {
+      return(paste0("(TAXREF CD_NOM: ", cd_nom[i], ")."))
+    }
+
+    w <- str_split(nm, "\\s+")[[1]]
+    if (length(w) >= 2) {
+      binom <- paste(w[1], w[2])
+      rest  <- if (length(w) > 2) paste(w[-c(1,2)], collapse = " ") else ""
+      paste0("*", binom, "*", if (rest != "") paste0(" ", rest) else "",
+             " (TAXREF CD_NOM: ", cd_nom[i], ").")
+    } else {
+      paste0(nm, " (TAXREF CD_NOM: ", cd_nom[i], ").")
+    }
+  }, FUN.VALUE = character(1))
+}
+
+```
+
+# 6. Build lots
+
+```{r lots}
+lots0 <- obs2 %>%
+  mutate(method2 = norm_method(method)) %>%
+  group_by(
+    class, order_tax, family, valid_name, cd_nom,
+    pays, region, num_dpt, alt,
+    city_obs = city_norm, station, habitat,
+    date, method2, determinateur
+  ) %>%
+  summarise(
+    male   = sum(as.integer(male), na.rm = TRUE),
+    female = sum(as.integer(female), na.rm = TRUE),
+    juv    = sum(as.integer(juv), na.rm = TRUE),
+    nb     = sum(as.integer(tot_abund), na.rm = TRUE),
+    .groups = "drop"
+  )
+
+lots <- lots0 %>%
+  mutate(
+    counts   = fmt_counts_vec(male, female, juv),
+    my       = fmt_my(date),
+
+    pays_fmt    = fmt_geo(pays),
+    region_fmt  = fmt_geo(region),
+    num_dpt_fmt = fmt_geo(num_dpt),
+    city_fmt    = fmt_geo(city_obs)
+  ) %>%
+  # ---- NEW: total "ind." au niveau localité (toutes méthodes + det confondus)
+  group_by(class, order_tax, family, valid_name, cd_nom, region_fmt,
+           city_fmt, num_dpt_fmt, habitat, alt, my) %>%
+  mutate(n_ind_loc = sum(nb, na.rm = TRUE)) %>%
+  ungroup() %>%
+  mutate(
+    # clé de localité (sans méthode ni det) + total ind. ici
+    loc_key = paste(
+      paste0(city_fmt, " (", num_dpt_fmt, ")"),
+      habitat,
+      paste0(alt, " m asl"),
+      paste0(my, " (", n_ind_loc, " ind.)"),
+      sep = ", "
+    ),
+
+    # event = méthode + (♂/♀/juv) + det.
+    event = purrr::pmap_chr(
+      list(method2, counts, determinateur),
+      \(method2, counts, determinateur) {
+        base <- str_squish(paste(c(method2, counts), collapse = "; "))
+        det_txt <- if (!is.na(determinateur) && determinateur != "") {
+          paste0(" det. ", determinateur)
+        } else ""
+        paste0(base, det_txt)
+      }
+    )
+  ) %>%
+  filter(!is.na(loc_key), loc_key != "", !is.na(event), event != "") %>%
+  distinct(class, order_tax, family, valid_name, cd_nom, region_fmt, loc_key, event, .keep_all = TRUE) %>%
+  group_by(class, order_tax, family, valid_name, cd_nom, region_fmt, loc_key) %>%
+  summarise(
+    lot_line = paste0(loc_key, ": ", paste(unique(event), collapse = " ; ")),
+    .groups = "drop"
+  )
+
+class_levels <- c(
+  "Clitellata",
+  "Arachnida",
+  "Chilopoda",
+  "Diplopoda",
+  "Symphyla",
+  "Malacostraca",
+  "Entognatha",
+  "Insecta",
+  "Gastropoda"
+)
+
+lots_species_region <- lots %>%
+  mutate(lot_line = str_squish(lot_line)) %>%
+  group_by(class, order_tax, family, valid_name, cd_nom, region_fmt) %>%
+  summarise(
+    lot_lines = list(unique(lot_line)),
+    .groups = "drop"
+  ) %>%
+  mutate(class = factor(class, levels = class_levels)) %>%
+  arrange(class, order_tax, family, valid_name, region_fmt)
+
+
+```
+
+# 7. Species accounts (Zoosystema-style)
+
+```{r species-accounts, results='asis', echo=FALSE}
+# helper: construire le "Material examined" avec retours à la ligne entre régions
+make_material_by_region_inline <- function(regions, lines_by_region,
+                                           sep_within = " • ",
+                                           sep_between_regions = " ; ",
+                                           max_bytes = 20000) {
+  region_blocks <- purrr::map2_chr(regions, lines_by_region, \(r, x) {
+    x <- x[!is.na(x) & nzchar(x)]
+    if (length(x) == 0) return(NA_character_)
+
+    # Région en petites majuscules
+    paste0("<span style='font-variant: small-caps;'>", r, "</span>: ",
+       paste(x, collapse = sep_within))
+
+  })
+
+  region_blocks <- region_blocks[!is.na(region_blocks) & nzchar(region_blocks)]
+
+  # On reste sur une seule ligne : séparation par " ; "
+  collapse_safe(region_blocks, sep = sep_between_regions, max_bytes = max_bytes)
+}
+
+species_blocks <- lots_species_region %>%
+  group_by(class, order_tax, family, valid_name, cd_nom) %>%
+  summarise(
+      header = fmt_taxon_header(valid_name, cd_nom),
+      chunks = list(
+      make_material_by_region_inline(
+            regions = region_fmt,
+            lines_by_region = lot_lines,
+            sep_within = " • ",
+            sep_between_regions = " ; ",
+            max_bytes = 20000
+            )
+      ),
+      .groups = "drop"
+  ) %>%
+  unnest_longer(chunks, indices_to = "chunk_id") %>%
+  mutate(
+      material = if_else(
+      chunk_id == 1L,
+      paste0("Material examined —\n", chunks, "."),
+      paste0("Material examined (cont.) —\n", chunks, ".")
+      )
+  ) %>%
+  unique()
+
+
+for (cl in unique(species_blocks$class)) {
+
+  cat(fix_utf8(paste0("\n\n# Class ", cl, "\n\n")))
+
+  cc <- species_blocks %>%
+    filter(class == cl) %>%
+    arrange(order_tax, family, valid_name)
+
+  for (ord in unique(cc$order_tax)) {
+
+    cat(fix_utf8(paste0("\n\n## Order ", ord, "\n\n")))
+
+    oo <- cc %>%
+      filter(order_tax == ord) %>%
+      arrange(family, valid_name)
+
+    for (fam in unique(oo$family)) {
+
+      cat(fix_utf8(paste0("\n\n### Family ", fam, "\n\n")))
+
+      ff <- oo %>% filter(family == fam)
+
+      for (i in seq_len(nrow(ff))) {
+        cat(fix_utf8(paste0(ff$header[i], "\n")))
+        cat(fix_utf8(paste0(ff$material[i], "\n\n")))
+      }
+    }
+  }
+
+  cat("\n\\pagebreak\n")
+}
+
+```

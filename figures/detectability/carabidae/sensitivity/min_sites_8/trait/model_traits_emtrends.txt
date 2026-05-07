@@ -1,0 +1,9 @@
+ method   log_BL.trend    SE   df lower.CL upper.CL
+ Pitfall4        0.920 0.632 62.5   -0.343     2.18
+ Pitfall2        0.545 0.594 56.8   -0.644     1.73
+ Pitfall6        0.927 0.787 64.4   -0.645     2.50
+ Pitfall8        0.254 1.010 11.9   -1.943     2.45
+ GPD             1.088 0.603 59.0   -0.119     2.29
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
