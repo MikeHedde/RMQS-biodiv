@@ -96,61 +96,9 @@ tab_results <- contr_res %>%
 
 tab_results
 
-# Classification des espèces (Table S3)
-tab_wide <- tab_p %>%
-  select(species, method, p_hat) %>%
-  pivot_wider(names_from = method, values_from = p_hat)
-
-delta <- 0.10
-
-tab_class <- tab_wide %>%
-  mutate(
-    # Axe 1 : GPD vs Pitfall4
-    delta_gpd_p4 = GPD - Pitfall4,
-    
-    class_gpd = case_when(
-      delta_gpd_p4 >  delta ~ "GPD-favoured",
-      delta_gpd_p4 < -delta ~ "GPD-disfavoured",
-      TRUE                  ~ "No clear difference"
-    ),
-    
-    # Axe 2 : effort requis
-    high_effort_required =
-      Pitfall2 < 0.5 &
-      Pitfall4 < 0.5 &
-      Pitfall6 < 0.5 &
-      Pitfall8 >= 0.5,
-    
-    # Axe 3 : insensibilité globale
-    method_range = pmax(GPD, Pitfall10, Pitfall8, Pitfall6, Pitfall4, Pitfall2, na.rm = TRUE) -
-      pmin(GPD, Pitfall10, Pitfall8, Pitfall6, Pitfall4, Pitfall2, na.rm = TRUE),
-    
-    method_insensitive = method_range < delta
-  )
-
-tab_class <- tab_class %>%
-  mutate(
-    final_class = case_when(
-      method_insensitive                  ~ "Method-insensitive",
-      high_effort_required                ~ "High-effort required (≥8 pitfalls)",
-      class_gpd == "GPD-favoured"          ~ "GPD-favoured vs Pitfall4",
-      class_gpd == "GPD-disfavoured"       ~ "GPD-disfavoured vs Pitfall4",
-      TRUE                                ~ "Intermediate / mixed response"
-    )
-  )
-
-table_S3 <- tab_class %>%
-  select(
-    species,
-    final_class,
-    delta_gpd_p4,
-    Pitfall2, Pitfall4, Pitfall6, Pitfall8, Pitfall10, GPD
-  ) %>%
-  mutate(
-    across(where(is.numeric), ~ round(.x, 2))
-  ) %>%
-  arrange(final_class)
-
-readr::write_csv(table_S3,  file.path(out_dir, "sp_protocol_favored/table_S3.csv"))
-
-
+dir.create(
+  file.path(out_dir, "occ_model_output", "detection_stats"),
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+readr::write_csv(tab_results, file.path(out_dir, "occ_model_output/detection_stats/p_hat_by_method_unmarked_full.csv"))

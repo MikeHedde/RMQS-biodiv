@@ -18,7 +18,7 @@ if (nrow(tab_p) > 0) {
     labs(y = "p̂ (détectabilité, occupancy; effort médian par méthode)",
          x = NULL, title = "Détectabilité par méthode — ajustée pour l’effort") +
     theme_minimal()
-  ggsave(file.path(out_dir, "occ_model_output/p_by_method_unmarked_effort.png"), p_fig, width = 9, height = 5, dpi = 200)
+  ggsave(file.path(out_dir, "occ_model_output/figures/p_by_method_unmarked_effort.png"), p_fig, width = 9, height = 5, dpi = 200)
   
   readr::write_csv(comm_sum, file.path(out_dir, "community_detection_unmarked_effort_psi_cov.csv"))
 }
@@ -30,7 +30,14 @@ p <- ggplot(subset(tab_beta0, term=="DOY_z"), aes(x = estimate)) +
   labs(x = "Effect on occupancy (β)", y = "Density") +
   theme_minimal()
 
-ggsave(file.path(out_dir, "occ_model_output/psi_effects_covar_density.png"), p, width=6, height=4, dpi=200)
+
+dir.create(
+  file.path(out_dir, "occ_model_output", "figures"),
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+ggsave(file.path(out_dir, "occ_model_output/figures/psi_effects_covar_density.png"), p, width=6, height=4, dpi=200)
 
 # Violin simplifié ordonné
 if (nrow(tab_p) > 0) {
@@ -48,7 +55,7 @@ if (nrow(tab_p) > 0) {
     geom_point(data = comm_sum, aes(y = p_med), color = "red", size = 3) +
     theme_minimal()+
     theme(legend.position = "none")
-  ggsave(file.path(out_dir, "occ_model_output/p_by_method_unmarked_effort_psi_cov.png"), p_fig2, width = 8, height = 5, dpi = 200)
+  ggsave(file.path(out_dir, "occ_model_output/figures/p_by_method_unmarked_effort_psi_cov.png"), p_fig2, width = 8, height = 5, dpi = 200)
 
 tab_p2 <- tab_p %>% 
   left_join(comm_sum)%>%
@@ -67,6 +74,6 @@ tab_p2 <- tab_p %>%
     coord_flip()+
     theme_minimal()+
     theme(legend.position = "none")
-  ggsave(file.path(out_dir, "occ_model_output/p_by_method_unmarked_effort_psi_cov_sp.png"), p_fig2bis, width = 12, height = 12, dpi = 600)
+  ggsave(file.path(out_dir, "occ_model_output/figures/p_by_method_unmarked_effort_psi_cov_sp.png"), p_fig2bis, width = 12, height = 12, dpi = 600)
   }
 

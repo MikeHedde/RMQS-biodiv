@@ -57,6 +57,12 @@ if (length(missing_trait_cols) > 0) {
 # 2) Canonical species-name map from trait table
 # ------------------------------------------------------------
 
+dir.create(
+  file.path(out_dir, "trait", "reframed_trait_datasets"),
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
 message("Parsing trait-table species names...")
 
 tmp <- trait0 %>%
@@ -85,7 +91,7 @@ map_species <- tmp2 %>%
 bad_parsed <- tmp2 %>%
   dplyr::filter(purrr::map_lgl(canonical, ~ is.null(.x) || length(.x) == 0))
 
-readr::write_csv(map_species, file.path(trait_out_dir, "trait_species_name_map.csv"))
+readr::write_csv(map_species, file.path(trait_out_dir, "reframed_trait_datasets/trait_species_name_map.csv"))
 
 # ------------------------------------------------------------
 # 3) Body length and wing-development trait tables
@@ -130,9 +136,9 @@ trait_wing_gn <- trait_wing_sp %>%
     .groups = "drop"
   )
 
-readr::write_csv(BL, file.path(trait_out_dir, "trait_body_length_species.csv"))
-readr::write_csv(trait_wing_sp, file.path(trait_out_dir, "trait_wing_species.csv"))
-readr::write_csv(trait_wing_gn, file.path(trait_out_dir, "trait_wing_genus_imputation.csv"))
+readr::write_csv(BL, file.path(trait_out_dir, "reframed_trait_datasets/trait_body_length_species.csv"))
+readr::write_csv(trait_wing_sp, file.path(trait_out_dir, "reframed_trait_datasets/trait_wing_species.csv"))
+readr::write_csv(trait_wing_gn, file.path(trait_out_dir, "reframed_trait_datasets/trait_wing_genus_imputation.csv"))
 
 # ------------------------------------------------------------
 # 4) Build common analysis dataset
@@ -203,9 +209,9 @@ dat_wing <- dat_traits %>%
     full_wing = relevel(full_wing, ref = "not_fully_winged")
   )
 
-readr::write_csv(dat_traits, file.path(trait_out_dir, "traits_detectability_dataset_all.csv"))
-readr::write_csv(dat_BL, file.path(trait_out_dir, "traits_detectability_dataset_body_length.csv"))
-readr::write_csv(dat_wing, file.path(trait_out_dir, "traits_detectability_dataset_wing.csv"))
+readr::write_csv(dat_traits, file.path(trait_out_dir, "reframed_trait_datasets/traits_detectability_dataset_all.csv"))
+readr::write_csv(dat_BL, file.path(trait_out_dir, "reframed_trait_datasets/traits_detectability_dataset_body_length.csv"))
+readr::write_csv(dat_wing, file.path(trait_out_dir, "reframed_trait_datasets/traits_detectability_dataset_wing.csv"))
 
 summary_traits <- tibble::tibble(
   dataset = c("all_joined", "body_length", "wing"),
@@ -217,7 +223,7 @@ summary_traits <- tibble::tibble(
     dplyr::n_distinct(dat_wing$species[dat_wing$wing_imputed_genus], na.rm = TRUE)
   )
 )
-readr::write_csv(summary_traits, file.path(trait_out_dir, "traits_detectability_dataset_summary.csv"))
+readr::write_csv(summary_traits, file.path(trait_out_dir, "reframed_trait_datasets/traits_detectability_dataset_summary.csv"))
 print(summary_traits)
 
 # ------------------------------------------------------------
@@ -233,6 +239,14 @@ save_varcorr <- function(model, filename) {
   readr::write_csv(vc, file.path(trait_out_dir, filename))
   invisible(vc)
 }
+
+
+dir.create(
+  file.path(out_dir, "trait", "models"),
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
 
 # ------------------------------------------------------------
 # 6) Body-length models
@@ -267,7 +281,7 @@ save_txt(
   summary(m_BL_add),
   BL_anova_add,
   BL_model_LRT,
-  file = file.path(trait_out_dir, "model_BL_additive_summary.txt")
+  file = file.path(trait_out_dir, "models/BL_additive_summary.txt")
 )
 
 save_txt(
@@ -276,15 +290,15 @@ save_txt(
   BL_model_LRT,
   BL_trends,
   BL_trends_pairs,
-  file = file.path(trait_out_dir, "model_BL_method_interaction_summary.txt")
+  file = file.path(trait_out_dir, "models/BL_method_interaction_summary.txt")
 )
 
-readr::write_csv(as.data.frame(BL_model_LRT), file.path(trait_out_dir, "model_BL_additive_vs_interaction_LRT.csv"))
-readr::write_csv(as.data.frame(BL_anova_add), file.path(trait_out_dir, "model_BL_additive_Anova_typeIII.csv"))
-readr::write_csv(as.data.frame(BL_anova_int), file.path(trait_out_dir, "model_BL_interaction_Anova_typeIII.csv"))
-readr::write_csv(as.data.frame(BL_trends), file.path(trait_out_dir, "model_BL_emtrends_by_method.csv"))
-readr::write_csv(as.data.frame(BL_trends_pairs), file.path(trait_out_dir, "model_BL_emtrends_pairwise.csv"))
-save_varcorr(m_BL_int, "model_BL_interaction_random_effect_variance.csv")
+readr::write_csv(as.data.frame(BL_model_LRT), file.path(trait_out_dir, "models/BL_additive_vs_interaction_LRT.csv"))
+readr::write_csv(as.data.frame(BL_anova_add), file.path(trait_out_dir, "models/BL_additive_Anova_typeIII.csv"))
+readr::write_csv(as.data.frame(BL_anova_int), file.path(trait_out_dir, "models/BL_interaction_Anova_typeIII.csv"))
+readr::write_csv(as.data.frame(BL_trends), file.path(trait_out_dir, "models/BL_emtrends_by_method.csv"))
+readr::write_csv(as.data.frame(BL_trends_pairs), file.path(trait_out_dir, "models/BL_emtrends_pairwise.csv"))
+save_varcorr(m_BL_int, "models/BL_interaction_random_effect_variance.csv")
 
 # ------------------------------------------------------------
 # 7) Wing-development models
@@ -330,7 +344,7 @@ save_txt(
   summary(m_wing_add),
   wing_anova_add,
   wing_model_LRT,
-  file = file.path(trait_out_dir, "model_wing_additive_summary.txt")
+  file = file.path(trait_out_dir, "models/wing_additive_summary.txt")
 )
 
 save_txt(
@@ -339,16 +353,16 @@ save_txt(
   wing_model_LRT,
   wing_emm,
   wing_contrasts,
-  file = file.path(trait_out_dir, "model_wing_method_interaction_summary.txt")
+  file = file.path(trait_out_dir, "models/wing_method_interaction_summary.txt")
 )
 
-readr::write_csv(as.data.frame(wing_model_LRT), file.path(trait_out_dir, "model_wing_additive_vs_interaction_LRT.csv"))
-readr::write_csv(as.data.frame(wing_anova_add), file.path(trait_out_dir, "model_wing_additive_Anova_typeIII.csv"))
-readr::write_csv(as.data.frame(wing_anova_int), file.path(trait_out_dir, "model_wing_interaction_Anova_typeIII.csv"))
-readr::write_csv(as.data.frame(wing_emm), file.path(trait_out_dir, "model_wing_emmeans_by_method.csv"))
-readr::write_csv(as.data.frame(wing_contrasts), file.path(trait_out_dir, "model_wing_contrasts_by_method.csv"))
-readr::write_csv(wing_effect_by_method, file.path(trait_out_dir, "model_wing_effect_by_method.csv"))
-save_varcorr(m_wing_int, "model_wing_interaction_random_effect_variance.csv")
+readr::write_csv(as.data.frame(wing_model_LRT), file.path(trait_out_dir, "models/wing_additive_vs_interaction_LRT.csv"))
+readr::write_csv(as.data.frame(wing_anova_add), file.path(trait_out_dir, "models/wing_additive_Anova_typeIII.csv"))
+readr::write_csv(as.data.frame(wing_anova_int), file.path(trait_out_dir, "models/wing_interaction_Anova_typeIII.csv"))
+readr::write_csv(as.data.frame(wing_emm), file.path(trait_out_dir, "models/wing_emmeans_by_method.csv"))
+readr::write_csv(as.data.frame(wing_contrasts), file.path(trait_out_dir, "models/wing_contrasts_by_method.csv"))
+readr::write_csv(wing_effect_by_method, file.path(trait_out_dir, "models/wing_effect_by_method.csv"))
+save_varcorr(m_wing_int, "models/wing_interaction_random_effect_variance.csv")
 
 # ------------------------------------------------------------
 # 8) Optional cross-trait model: body length × wing development
@@ -383,12 +397,18 @@ save_txt(
   cross_model_LRT,
   cross_trends,
   cross_trends_pairs,
-  file = file.path(trait_out_dir, "model_cross_BL_by_wing_summary.txt")
+  file = file.path(trait_out_dir, "models/cross_BL_by_wing_summary.txt")
 )
-readr::write_csv(as.data.frame(cross_model_LRT), file.path(trait_out_dir, "model_cross_BL_by_wing_LRT.csv"))
-readr::write_csv(as.data.frame(cross_trends), file.path(trait_out_dir, "model_cross_BL_trends_by_wing.csv"))
-readr::write_csv(as.data.frame(cross_trends_pairs), file.path(trait_out_dir, "model_cross_BL_trends_by_wing_pairs.csv"))
+readr::write_csv(as.data.frame(cross_model_LRT), file.path(trait_out_dir, "models/cross_BL_by_wing_LRT.csv"))
+readr::write_csv(as.data.frame(cross_trends), file.path(trait_out_dir, "models/cross_BL_trends_by_wing.csv"))
+readr::write_csv(as.data.frame(cross_trends_pairs), file.path(trait_out_dir, "models/cross_BL_trends_by_wing_pairs.csv"))
 
+
+dir.create(
+  file.path(out_dir, "trait", "figures"),
+  recursive = TRUE,
+  showWarnings = FALSE
+)
 # ------------------------------------------------------------
 # 9) Figure A: body length effect by method
 #     Uses predictions from m_BL_int, i.e. same model as BL emtrends.
@@ -446,8 +466,8 @@ p_BL <- ggplot(dat_BL, aes(x = log_BL, y = p_clip)) +
 
 print(p_BL)
 
-ggsave(file.path(trait_out_dir, "Detectability_vs_BL_by_method.png"), p_BL, width = 9, height = 6, dpi = 200)
-ggsave(file.path(trait_out_dir, "Fig_trait_BL_detectability_by_method.png"), p_BL, width = 12, height = 5, dpi = 300)
+ggsave(file.path(trait_out_dir, "figures/Detectability_vs_BL_by_method.png"), p_BL, width = 9, height = 6, dpi = 200)
+ggsave(file.path(trait_out_dir, "figures/Fig_trait_BL_detectability_by_method.png"), p_BL, width = 12, height = 5, dpi = 300)
 
 # ------------------------------------------------------------
 # 10) Figure B: wing development by method
@@ -507,8 +527,8 @@ p_wing <- ggplot(dat_wing_plot, aes(x = full_wing_plot, y = p_clip)) +
 
 print(p_wing)
 
-ggsave(file.path(trait_out_dir, "detectability_vs_wing_by_method.png"), p_wing, width = 12, height = 6, dpi = 200)
-ggsave(file.path(trait_out_dir, "Fig_trait_wing_binary_detectability_by_method.png"), p_wing, width = 12, height = 5, dpi = 300)
+ggsave(file.path(trait_out_dir, "figures/detectability_vs_wing_by_method.png"), p_wing, width = 12, height = 6, dpi = 200)
+ggsave(file.path(trait_out_dir, "figures/Fig_trait_wing_binary_detectability_by_method.png"), p_wing, width = 12, height = 5, dpi = 300)
 
 # ------------------------------------------------------------
 # 11) Combined figure
@@ -527,7 +547,7 @@ p_traits <- cowplot::plot_grid(
 print(p_traits)
 
 ggsave(
-  file.path(trait_out_dir, "detectability_traits_by_method.png"),
+  file.path(trait_out_dir, "figures/detectability_traits_by_method.png"),
   p_traits,
   width = 28,
   height = 12,
@@ -535,7 +555,7 @@ ggsave(
 )
 
 ggsave(
-  file.path(trait_out_dir, "Fig_traits_detectability_combined.png"),
+  file.path(trait_out_dir, "figures/Fig_traits_detectability_combined.png"),
   p_traits,
   width = 12,
   height = 10,

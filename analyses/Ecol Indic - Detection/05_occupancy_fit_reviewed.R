@@ -1,17 +1,6 @@
 # ============================================================
 # 05_occupancy_fit_reviewed.R
 # Species-by-species single-season occupancy models
-# Reviewer-ready version for Pitfall + GPD analyses
-#
-# Key changes compared with the previous script:
-# 1. Species inclusion is based on the number of sites with >=1 detection,
-#    not on the number of sites with at least one available replicate.
-# 2. Models with missing/very large SEs or extreme coefficients are classified
-#    as "unstable" and are not used for p-hat prediction tables.
-# 3. Empty outputs are handled safely, avoiding crashes such as
-#    "object 'method' not found" when no stable model is available.
-# 4. The script reports available sites, detected sites, replicates and reasons
-#    for exclusion/failure for reviewer transparency.
 # ============================================================
 
 `%||%` <- function(x, y) if (is.null(x)) y else x
@@ -438,6 +427,12 @@ sp_freq <- rank_freq %>%
   dplyr::arrange(dplyr::desc(n_sites)) %>%
   dplyr::mutate(rank = dplyr::row_number())
 
+dir.create(
+  file.path(out_dir, "species_selection"),
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
 readr::write_csv(
   sp_freq,
   file.path(out_dir, "species_selection/species_frequency_model_status.csv")
@@ -452,23 +447,13 @@ readr::write_csv(
 )
 print(sp_freq_summary)
 
-# Figures only if ggplot2 is available and directories exist
-if (requireNamespace("ggplot2", quietly = TRUE)) {
-  p_rank_freq <- ggplot2::ggplot(sp_freq, ggplot2::aes(x = rank, y = n_sites, colour = model_status)) +
-    ggplot2::geom_point(alpha = 0.7, size = 2) +
-    ggplot2::geom_hline(yintercept = min_sites, linetype = "dashed") +
-    ggplot2::scale_y_continuous(trans = "log10", breaks = c(1, 2, 5, 10, 20, 50), name = "Number of sites occupied (log scale)") +
-    ggplot2::labs(x = "Species rank (by decreasing site frequency)", colour = "Species status") +
-    ggplot2::theme_minimal()
-  ggplot2::ggsave(file.path(out_dir, "species_selection/rang_freq_selection.png"), p_rank_freq, width = 12, height = 12, dpi = 600)
-
-  p_hist_sites <- ggplot2::ggplot(sp_freq, ggplot2::aes(x = n_sites, fill = model_status)) +
+p_hist_sites <- ggplot2::ggplot(sp_freq, ggplot2::aes(x = n_sites, fill = final_inclusion)) +
     ggplot2::geom_histogram(binwidth = 1, position = "identity", alpha = 0.6) +
     ggplot2::geom_vline(xintercept = min_sites, linetype = "dashed") +
     ggplot2::labs(x = "Number of sites occupied", y = "Number of species", fill = "Species status") +
     ggplot2::theme_minimal()
-  ggplot2::ggsave(file.path(out_dir, "species_selection/hist_sites_selection.png"), p_hist_sites, width = 12, height = 12, dpi = 600)
-}
+ggplot2::ggsave(file.path(out_dir, "species_selection/hist_sites_selection.png"), p_hist_sites, width = 12, height = 12, dpi = 600)
+
 
 # ------------------------------------------------------------
 # Extract outputs safely
@@ -506,6 +491,12 @@ if (nrow(res_unstable) > 0) {
   tab_beta_unstable <- tibble::tibble()
 }
 
+dir.create(
+  file.path(out_dir, "occ_model_output"),
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
 readr::write_csv(tab_p,    file.path(out_dir, "occ_model_output/p_hat_by_method_unmarked_full.csv"))
 readr::write_csv(tab_beta, file.path(out_dir, "occ_model_output/beta_by_method_unmarked_full.csv"))
 readr::write_csv(tab_psi,  file.path(out_dir, "occ_model_output/psi_hat_by_method_unmarked_full.csv"))
@@ -517,6 +508,12 @@ cat("Unstable fitted models excluded from p-hat tables:", nrow(res_unstable), "s
 # ------------------------------------------------------------
 # Optional gt annexes, safely skipped if no stable model is available
 # ------------------------------------------------------------
+
+dir.create(
+  file.path(out_dir, "occ_model_output", "html_summaries"),
+  recursive = TRUE,
+  showWarnings = FALSE
+)
 
 if (requireNamespace("gt", quietly = TRUE) && nrow(res_ok) > 0) {
   tab_status <- res_ok %>%
@@ -542,7 +539,7 @@ if (requireNamespace("gt", quietly = TRUE) && nrow(res_ok) > 0) {
       any_se_bad = "Unstable SE?",
       AIC = "AIC"
     )
-  gt::gtsave(gt_status, filename = file.path(out_dir, "occ_model_output/Annex_occu_status.html"))
+  gt::gtsave(gt_status, filename = file.path(out_dir, "occ_model_output/html_summaries/occu_status.html"))
 
   gt_p <- tab_p %>%
     dplyr::mutate(method = factor(method, levels = unique(method))) %>%
@@ -554,7 +551,7 @@ if (requireNamespace("gt", quietly = TRUE) && nrow(res_ok) > 0) {
     gt::fmt_number(columns = c(p_hat, lcl, ucl), decimals = 3) %>%
     gt::cols_label(method = "Method", p_hat = gt::html("p&#770;"), lcl = "LCL", ucl = "UCL") %>%
     gt::tab_options(row_group.as_column = TRUE)
-  gt::gtsave(gt_p, filename = file.path(out_dir, "occ_model_output/Annex_p_hat_by_method.html"))
+  gt::gtsave(gt_p, filename = file.path(out_dir, "occ_model_output/html_summaries/p_hat_by_method.html"))
 
   gt_beta <- tab_beta %>%
     gt::gt(groupname_col = "species") %>%
@@ -564,7 +561,7 @@ if (requireNamespace("gt", quietly = TRUE) && nrow(res_ok) > 0) {
     ) %>%
     gt::fmt_number(columns = c(estimate, se, z, p), decimals = 3) %>%
     gt::tab_options(row_group.as_column = TRUE)
-  gt::gtsave(gt_beta, filename = file.path(out_dir, "occ_model_output/Annex_occu_coefficients.html"))
+  gt::gtsave(gt_beta, filename = file.path(out_dir, "occ_model_output/html_summaries/occu_coefficients.html"))
 } else {
   cat("\nNo gt annex generated: either gt is not installed or no stable occupancy model is available.\n")
 }
@@ -573,6 +570,12 @@ if (requireNamespace("gt", quietly = TRUE) && nrow(res_ok) > 0) {
 # ------------------------------------------------------------
 # Missing data summary in the detection matrix
 # ------------------------------------------------------------
+
+dir.create(
+  file.path(out_dir, "occ_model_output", "missing_check"),
+  recursive = TRUE,
+  showWarnings = FALSE
+)
 
 missing_global <- tibble::tibble(
   n_cells_total   = length(Y),
@@ -585,7 +588,7 @@ print(missing_global)
 
 readr::write_csv(
   missing_global,
-  file.path(out_dir, "occ_model_output/missing_data_global_summary.csv")
+  file.path(out_dir, "occ_model_output/missing_check/missing_data_global_summary.csv")
 )
 
 missing_by_protocol <- tibble::tibble(
@@ -600,7 +603,7 @@ print(missing_by_protocol)
 
 readr::write_csv(
   missing_by_protocol,
-  file.path(out_dir, "occ_model_output/missing_data_by_protocol.csv")
+  file.path(out_dir, "occ_model_output/missing_check/missing_data_by_protocol.csv")
 )
 
 availability_site_protocol <- apply(Y, c(1, 2), function(x) any(!is.na(x)))
@@ -616,7 +619,7 @@ print(missing_site_protocol)
 
 readr::write_csv(
   missing_site_protocol,
-  file.path(out_dir, "occ_model_output/missing_site_protocol_summary.csv")
+  file.path(out_dir, "occ_model_output/missing_check/missing_site_protocol_summary.csv")
 )
 
 missing_site_protocol_by_protocol <- tibble::tibble(
@@ -631,9 +634,8 @@ print(missing_site_protocol_by_protocol)
 
 readr::write_csv(
   missing_site_protocol_by_protocol,
-  file.path(out_dir, "occ_model_output/missing_site_protocol_by_protocol.csv")
+  file.path(out_dir, "occ_model_output/missing_check/missing_site_protocol_by_protocol.csv")
 )
-
 
 
 tab_p %>%

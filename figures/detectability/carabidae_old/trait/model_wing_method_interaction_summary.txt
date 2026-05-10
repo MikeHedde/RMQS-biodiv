@@ -1,0 +1,170 @@
+Linear mixed model fit by REML. t-tests use
+  Satterthwaite's method [lmerModLmerTest]
+Formula: 
+logit_p ~ method * full_wing + log_BL + (1 | species)
+   Data: dat_wing
+Weights: weight
+
+REML criterion at convergence: 555.6
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-1.99632 -0.40321  0.07666  0.71039  2.14993 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ species  (Intercept) 0.4129   0.6426  
+ Residual             0.6768   0.8227  
+Number of obs: 210, groups:  species, 35
+
+Fixed effects:
+                                       Estimate
+(Intercept)                            -0.67488
+methodPitfall2                         -0.71533
+methodPitfall6                          0.75620
+methodPitfall8                          0.80487
+methodPitfall10                         1.28708
+methodGPD                               0.24845
+full_wingfully_winged                  -0.18543
+log_BL                                  1.22248
+methodPitfall2:full_wingfully_winged    0.01993
+methodPitfall6:full_wingfully_winged   -0.29592
+methodPitfall8:full_wingfully_winged    0.12569
+methodPitfall10:full_wingfully_winged   0.09277
+methodGPD:full_wingfully_winged         0.46528
+                                      Std. Error
+(Intercept)                              0.63790
+methodPitfall2                           0.25288
+methodPitfall6                           0.29377
+methodPitfall8                           0.31608
+methodPitfall10                          0.36509
+methodGPD                                0.25626
+full_wingfully_winged                    0.33077
+log_BL                                   0.61410
+methodPitfall2:full_wingfully_winged     0.29531
+methodPitfall6:full_wingfully_winged     0.33639
+methodPitfall8:full_wingfully_winged     0.36009
+methodPitfall10:full_wingfully_winged    0.41252
+methodGPD:full_wingfully_winged          0.30199
+                                             df t value
+(Intercept)                            30.11950  -1.058
+methodPitfall2                        165.97347  -2.829
+methodPitfall6                        162.82460   2.574
+methodPitfall8                        163.66715   2.546
+methodPitfall10                       163.41833   3.525
+methodGPD                             164.43125   0.970
+full_wingfully_winged                  67.96635  -0.561
+log_BL                                 28.09226   1.991
+methodPitfall2:full_wingfully_winged  165.01718   0.067
+methodPitfall6:full_wingfully_winged  162.65515  -0.880
+methodPitfall8:full_wingfully_winged  163.41902   0.349
+methodPitfall10:full_wingfully_winged 163.34971   0.225
+methodGPD:full_wingfully_winged       163.86261   1.541
+                                      Pr(>|t|)    
+(Intercept)                           0.298475    
+methodPitfall2                        0.005250 ** 
+methodPitfall6                        0.010941 *  
+methodPitfall8                        0.011806 *  
+methodPitfall10                       0.000549 ***
+methodGPD                             0.333712    
+full_wingfully_winged                 0.576921    
+log_BL                                0.056324 .  
+methodPitfall2:full_wingfully_winged  0.946288    
+methodPitfall6:full_wingfully_winged  0.380321    
+methodPitfall8:full_wingfully_winged  0.727487    
+methodPitfall10:full_wingfully_winged 0.822350    
+methodGPD:full_wingfully_winged       0.125316    
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Analysis of Deviance Table (Type III Wald chisquare tests)
+
+Response: logit_p
+                   Chisq Df Pr(>Chisq)    
+(Intercept)       1.1193  1    0.29006    
+method           52.7524  5  3.781e-10 ***
+full_wing         0.3143  1    0.57508    
+log_BL            3.9628  1    0.04652 *  
+method:full_wing  5.9021  5    0.31586    
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Data: dat_wing
+Models:
+m_wing_add_ML: logit_p ~ method + log_BL + full_wing + (1 | species)
+m_wing_int_ML: logit_p ~ method * full_wing + log_BL + (1 | species)
+              npar   AIC    BIC  logLik -2*log(L) Chisq
+m_wing_add_ML   10 564.5 597.97 -272.25     544.5      
+m_wing_int_ML   15 568.4 618.60 -269.20     538.4 6.103
+              Df Pr(>Chisq)
+m_wing_add_ML              
+m_wing_int_ML  5     0.2963
+method = Pitfall4:
+ full_wing        emmean    SE    df lower.CL upper.CL
+ not_fully_winged  0.395 0.281  85.4   -0.164    0.954
+ fully_winged      0.209 0.175  90.0   -0.138    0.556
+
+method = Pitfall2:
+ full_wing        emmean    SE    df lower.CL upper.CL
+ not_fully_winged -0.320 0.264  82.7   -0.846    0.205
+ fully_winged     -0.486 0.170  85.5   -0.823   -0.149
+
+method = Pitfall6:
+ full_wing        emmean    SE    df lower.CL upper.CL
+ not_fully_winged  1.151 0.308  90.4    0.540    1.762
+ fully_winged      0.670 0.180  94.1    0.313    1.027
+
+method = Pitfall8:
+ full_wing        emmean    SE    df lower.CL upper.CL
+ not_fully_winged  1.200 0.328  91.9    0.549    1.850
+ fully_winged      1.140 0.188  99.9    0.768    1.512
+
+method = Pitfall10:
+ full_wing        emmean    SE    df lower.CL upper.CL
+ not_fully_winged  1.682 0.373  76.4    0.938    2.425
+ fully_winged      1.589 0.206 107.2    1.181    1.997
+
+method = GPD:
+ full_wing        emmean    SE    df lower.CL upper.CL
+ not_fully_winged  0.643 0.269  81.9    0.109    1.178
+ fully_winged      0.923 0.176  92.0    0.574    1.272
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+method = Pitfall4:
+ contrast                        estimate    SE   df
+ not_fully_winged - fully_winged   0.1854 0.331 86.9
+ t.ratio p.value
+   0.560  0.5768
+
+method = Pitfall2:
+ contrast                        estimate    SE   df
+ not_fully_winged - fully_winged   0.1655 0.314 83.7
+ t.ratio p.value
+   0.527  0.5994
+
+method = Pitfall6:
+ contrast                        estimate    SE   df
+ not_fully_winged - fully_winged   0.4814 0.356 91.8
+ t.ratio p.value
+   1.351  0.1801
+
+method = Pitfall8:
+ contrast                        estimate    SE   df
+ not_fully_winged - fully_winged   0.0597 0.378 94.6
+ t.ratio p.value
+   0.158  0.8747
+
+method = Pitfall10:
+ contrast                        estimate    SE   df
+ not_fully_winged - fully_winged   0.0927 0.426 83.7
+ t.ratio p.value
+   0.217  0.8285
+
+method = GPD:
+ contrast                        estimate    SE   df
+ not_fully_winged - fully_winged  -0.2799 0.321 85.0
+ t.ratio p.value
+  -0.872  0.3858
+
+Degrees-of-freedom method: kenward-roger 

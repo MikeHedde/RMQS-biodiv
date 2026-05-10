@@ -1,0 +1,105 @@
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: logit_p ~ method * log_BL + (1 | species)
+   Data: dat_BL
+Weights: weight
+
+REML criterion at convergence: 423
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-1.5127 -0.4500  0.1114  0.6935  2.0283 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ species  (Intercept) 0.4186   0.6470  
+ Residual             0.7590   0.8712  
+Number of obs: 162, groups:  species, 27
+
+Fixed effects:
+                       Estimate Std. Error       df t value Pr(>|t|)  
+(Intercept)             -0.9779     0.7883  51.9767  -1.241   0.2203  
+methodPitfall2          -0.3795     0.7021 123.1065  -0.540   0.5899  
+methodPitfall6           0.8810     0.7940 121.7325   1.110   0.2694  
+methodPitfall8           1.5108     0.8470 122.0018   1.784   0.0770 .
+methodPitfall10          1.8709     0.9664 122.0770   1.936   0.0552 .
+methodGPD                0.9541     0.7107 122.3678   1.342   0.1819  
+log_BL                   1.5420     0.8584  55.2467   1.796   0.0779 .
+methodPitfall2:log_BL   -0.3393     0.7711 123.7238  -0.440   0.6607  
+methodPitfall6:log_BL   -0.3932     0.8789 121.7280  -0.447   0.6554  
+methodPitfall8:log_BL   -0.6539     0.9335 121.9228  -0.700   0.4850  
+methodPitfall10:log_BL  -0.6054     1.0762 122.0807  -0.563   0.5747  
+methodGPD:log_BL        -0.4819     0.7818 122.7054  -0.616   0.5388  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) mthdP2 mthdP6 mthdP8 mthP10 mthGPD log_BL mP2:_B mP6:_B mP8:_B
+methdPtfll2 -0.512                                                               
+methdPtfll6 -0.443  0.494                                                        
+methdPtfll8 -0.416  0.462  0.414                                                 
+mthdPtfll10 -0.361  0.405  0.364  0.345                                          
+methodGPD   -0.504  0.558  0.490  0.459  0.402                                   
+log_BL      -0.977  0.510  0.439  0.411  0.356  0.502                            
+mthdPt2:_BL  0.506 -0.978 -0.485 -0.454 -0.398 -0.549 -0.526                     
+mthdPt6:_BL  0.432 -0.481 -0.979 -0.402 -0.354 -0.477 -0.446  0.493              
+mthdPt8:_BL  0.407 -0.452 -0.404 -0.979 -0.336 -0.449 -0.420  0.464  0.411       
+mthdP10:_BL  0.348 -0.393 -0.352 -0.333 -0.979 -0.388 -0.359  0.403  0.358  0.339
+mthdGPD:_BL  0.497 -0.549 -0.480 -0.450 -0.393 -0.976 -0.516  0.564  0.488  0.460
+            mP10:_
+methdPtfll2       
+methdPtfll6       
+methdPtfll8       
+mthdPtfll10       
+methodGPD         
+log_BL            
+mthdPt2:_BL       
+mthdPt6:_BL       
+mthdPt8:_BL       
+mthdP10:_BL       
+mthdGPD:_BL  0.397
+Analysis of Deviance Table (Type III Wald chisquare tests)
+
+Response: logit_p
+                Chisq Df Pr(>Chisq)  
+(Intercept)    1.5390  1    0.21477  
+method        10.7455  5    0.05667 .
+log_BL         3.2266  1    0.07245 .
+method:log_BL  0.6749  5    0.98432  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Data: dat_BL
+Models:
+m_BL_add_ML: logit_p ~ method + log_BL + (1 | species)
+m_BL_int_ML: logit_p ~ method * log_BL + (1 | species)
+            npar    AIC    BIC  logLik -2*log(L)  Chisq Df Pr(>Chisq)
+m_BL_add_ML    9 436.59 464.38 -209.30    418.59                     
+m_BL_int_ML   14 445.87 489.09 -208.93    417.87 0.7259  5     0.9815
+ method    log_BL.trend    SE   df lower.CL upper.CL
+ Pitfall4         1.542 0.860 72.0   -0.173     3.26
+ Pitfall2         1.203 0.798 68.7   -0.390     2.80
+ Pitfall6         1.149 0.917 77.7   -0.676     2.97
+ Pitfall8         0.888 0.969 80.7   -1.040     2.82
+ Pitfall10        0.937 1.110 71.5   -1.273     3.15
+ GPD              1.060 0.811 69.7   -0.558     2.68
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+ contrast             estimate    SE  df t.ratio p.value
+ Pitfall4 - Pitfall2    0.3393 0.774 611   0.438  0.9980
+ Pitfall4 - Pitfall6    0.3932 0.882 357   0.446  0.9978
+ Pitfall4 - Pitfall8    0.6539 0.936 271   0.698  0.9820
+ Pitfall4 - Pitfall10   0.6054 1.070 127   0.563  0.9932
+ Pitfall4 - GPD         0.4819 0.785 580   0.614  0.9900
+ Pitfall2 - Pitfall6    0.0539 0.839 411   0.064  1.0000
+ Pitfall2 - Pitfall8    0.3146 0.896 297   0.351  0.9993
+ Pitfall2 - Pitfall10   0.2661 1.040 130   0.256  0.9998
+ Pitfall2 - GPD         0.1426 0.728 806   0.196  1.0000
+ Pitfall6 - Pitfall8    0.2607 0.987 229   0.264  0.9998
+ Pitfall6 - Pitfall10   0.2122 1.120 120   0.190  1.0000
+ Pitfall6 - GPD         0.0887 0.848 398   0.105  1.0000
+ Pitfall8 - Pitfall10  -0.0484 1.160 111  -0.042  1.0000
+ Pitfall8 - GPD        -0.1720 0.904 292  -0.190  1.0000
+ Pitfall10 - GPD       -0.1235 1.050 129  -0.118  1.0000
+
+Degrees-of-freedom method: kenward-roger 
+P value adjustment: tukey method for comparing a family of 6 estimates 

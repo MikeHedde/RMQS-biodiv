@@ -18,7 +18,6 @@ source("analyses/Ecol Indic - Detection/10_diversity_indices.R")
 source("analyses/Ecol Indic - Detection/11_diversity_stat.R")
 
 # Reviewer-requested tables and sensitivity analyses
-source("analyses/Ecol Indic - Detection/14_reviewer_analyses.R")
-source("analyses/Ecol Indic - Detection/14_sensitivity_to_min_sites.R")
+source("analyses/Ecol Indic - Detection/12_supplementary_reviewer_response_analyses.R")
 
 message("=== FIN WORKFLOW REVIEWED === Résultats : ", normalizePath(out_dir))

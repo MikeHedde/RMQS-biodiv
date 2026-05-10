@@ -1,0 +1,54 @@
+Linear mixed model fit by REML ['lmerMod']
+Formula: logit_p ~ method + log_BL + full_wing + (1 | species)
+   Data: dat_wing
+Weights: weight
+
+REML criterion at convergence: 558.6
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-1.7288 -0.4758  0.1008  0.7073  2.1701 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ species  (Intercept) 0.4039   0.6355  
+ Residual             0.6825   0.8261  
+Number of obs: 210, groups:  species, 35
+
+Fixed effects:
+                      Estimate Std. Error t value
+(Intercept)           -0.72319    0.61644  -1.173
+methodPitfall2        -0.69786    0.13115  -5.321
+methodPitfall6         0.52220    0.14364   3.636
+methodPitfall8         0.89845    0.15190   5.915
+methodPitfall10        1.35515    0.17048   7.949
+methodGPD              0.57646    0.13605   4.237
+log_BL                 1.20030    0.60855   1.972
+full_wingfully_winged -0.09467    0.26253  -0.361
+
+Correlation of Fixed Effects:
+            (Intr) mthdP2 mthdP6 mthdP8 mthP10 mthGPD log_BL
+methdPtfll2 -0.106                                          
+methdPtfll6 -0.108  0.493                                   
+methdPtfll8 -0.101  0.465  0.434                            
+mthdPtfll10 -0.099  0.414  0.388  0.372                     
+methodGPD   -0.109  0.529  0.476  0.451  0.400              
+log_BL      -0.924 -0.016  0.007  0.005  0.016 -0.009       
+fll_wngfll_ -0.428  0.012 -0.011 -0.012 -0.013  0.013  0.144
+Analysis of Deviance Table (Type III Wald chisquare tests)
+
+Response: logit_p
+               Chisq Df Pr(>Chisq)    
+(Intercept)   1.3763  1    0.24073    
+method      228.1460  5    < 2e-16 ***
+log_BL        3.8904  1    0.04856 *  
+full_wing     0.1300  1    0.71840    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Data: dat_wing
+Models:
+m_wing_add_ML: logit_p ~ method + log_BL + full_wing + (1 | species)
+m_wing_int_ML: logit_p ~ method * full_wing + log_BL + (1 | species)
+              npar   AIC    BIC  logLik -2*log(L) Chisq Df Pr(>Chisq)
+m_wing_add_ML   10 564.5 597.97 -272.25     544.5                    
+m_wing_int_ML   15 568.4 618.60 -269.20     538.4 6.103  5     0.2963

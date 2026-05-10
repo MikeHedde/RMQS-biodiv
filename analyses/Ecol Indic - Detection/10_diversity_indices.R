@@ -169,6 +169,12 @@ div_cov2 <- div_cov %>%
   mutate(id_station = as.numeric(id_station)) %>%
   left_join(hab)
 
+dir.create(
+  file.path(out_dir, "diversity"),
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
 write.csv(div_cov2, file.path(out_dir, "diversity/Hill_div_results.csv"))
 
 message("=== FIN 10_diversity_indices (accum_hill + segmentation Pitfall) ===  Résultats : ", normalizePath(out_dir))

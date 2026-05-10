@@ -1,0 +1,57 @@
+Linear mixed model fit by REML ['lmerMod']
+Formula: logit_p ~ method * log_BL + (1 | species)
+   Data: dat2_tr
+Weights: weight
+
+REML criterion at convergence: 759.1
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-2.15078 -0.52078  0.00126  0.70815  2.32149 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ species  (Intercept) 0.3799   0.6164  
+ Residual             0.3802   0.6166  
+Number of obs: 210, groups:  species, 35
+
+Fixed effects:
+                       Estimate Std. Error t value
+(Intercept)             -0.7738     0.5897  -1.312
+methodPitfall2          -0.4782     0.4336  -1.103
+methodPitfall6           0.6336     0.4890   1.296
+methodPitfall8           1.1918     0.5221   2.283
+methodPitfall10          1.3925     0.6103   2.282
+methodGPD                0.7457     0.4397   1.696
+log_BL                   1.1151     0.6477   1.722
+methodPitfall2:log_BL   -0.2003     0.4822  -0.415
+methodPitfall6:log_BL   -0.1856     0.5488  -0.338
+methodPitfall8:log_BL   -0.4015     0.5847  -0.687
+methodPitfall10:log_BL  -0.1808     0.6941  -0.261
+methodGPD:log_BL        -0.1893     0.4898  -0.386
+
+Correlation of Fixed Effects:
+            (Intr) mthdP2 mthdP6 mthdP8 mthP10 mthGPD log_BL mP2:_B
+methdPtfll2 -0.417                                                 
+methdPtfll6 -0.360  0.484                                          
+methdPtfll8 -0.340  0.452  0.411                                   
+mthdPtfll10 -0.288  0.387  0.354  0.338                            
+methodGPD   -0.408  0.547  0.480  0.452  0.384                     
+log_BL      -0.977  0.418  0.357  0.337  0.284  0.407              
+mthdPt2:_BL  0.413 -0.977 -0.474 -0.443 -0.379 -0.538 -0.432       
+mthdPt6:_BL  0.349 -0.470 -0.979 -0.399 -0.344 -0.467 -0.361  0.482
+mthdPt8:_BL  0.330 -0.440 -0.400 -0.979 -0.328 -0.440 -0.342  0.451
+mthdP10:_BL  0.274 -0.371 -0.340 -0.323 -0.979 -0.367 -0.283  0.380
+mthdGPD:_BL  0.402 -0.537 -0.470 -0.442 -0.374 -0.976 -0.419  0.553
+            mP6:_B mP8:_B mP10:_
+methdPtfll2                     
+methdPtfll6                     
+methdPtfll8                     
+mthdPtfll10                     
+methodGPD                       
+log_BL                          
+mthdPt2:_BL                     
+mthdPt6:_BL                     
+mthdPt8:_BL  0.406              
+mthdP10:_BL  0.346  0.328       
+mthdGPD:_BL  0.477  0.450  0.373

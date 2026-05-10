@@ -1,0 +1,5 @@
+occupancy_fit_status,final_inclusion,n_species
+skipped,Excluded,126
+stable,Included,26
+unstable,Excluded,3
+usable_unstable,Included,16

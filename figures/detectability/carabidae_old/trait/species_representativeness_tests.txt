@@ -1,0 +1,53 @@
+Representativeness of modelled species
+=====================================
+
+Number of species:
+
+    Modelled species Non-modelled species 
+                  42                  205 
+
+Contribution to total abundance:
+# A tibble: 2 × 3
+  modeled              n_species prop_total_abundance
+  <chr>                    <int>                <dbl>
+1 Modelled species            42                0.400
+2 Non-modelled species       205                0.600
+
+Body length comparison:
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  mean_BL by modeled
+W = 2151.5, p-value = 0.454
+alternative hypothesis: true location shift is not equal to 0
+
+
+Number of occupied sites comparison:
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  n_sites by modeled
+W = 8421, p-value < 2.2e-16
+alternative hypothesis: true location shift is not equal to 0
+
+
+Total abundance comparison:
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  total_abundance by modeled
+W = 8272.5, p-value < 2.2e-16
+alternative hypothesis: true location shift is not equal to 0
+
+
+Wing category comparison:
+                      
+                       fully winged not fully winged
+  Modelled species               23               11
+  Non-modelled species           64               50
+
+	Pearson's Chi-squared test with Yates' continuity correction
+
+data:  table(repr_dat$modeled, repr_dat$full_wing)
+X-squared = 0.99567, df = 1, p-value = 0.3184
+

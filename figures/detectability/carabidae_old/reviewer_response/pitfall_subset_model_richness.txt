@@ -1,0 +1,22 @@
+
+Call:
+stats::lm(formula = n_species ~ k + mean_pairwise_distance + 
+    convex_hull_area, data = pitfall_subset_sensitivity)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-13.277  -4.682  -1.036   3.872  21.476 
+
+Coefficients:
+                         Estimate Std. Error t value Pr(>|t|)    
+(Intercept)             5.0215058  0.3099146  16.203  < 2e-16 ***
+k                       0.7435260  0.0462318  16.083  < 2e-16 ***
+mean_pairwise_distance -0.0034162  0.0133392  -0.256  0.79787    
+convex_hull_area        0.0014933  0.0005023   2.973  0.00295 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 5.924 on 34233 degrees of freedom
+Multiple R-squared:  0.05028,	Adjusted R-squared:  0.0502 
+F-statistic: 604.2 on 3 and 34233 DF,  p-value: < 2.2e-16
+
