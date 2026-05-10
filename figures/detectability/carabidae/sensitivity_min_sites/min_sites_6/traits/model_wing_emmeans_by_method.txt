@@ -1,0 +1,57 @@
+method = Pitfall2:
+ full_wing         emmean    SE   df lower.CL upper.CL
+ fully_winged     -0.5254 0.154 77.2   -0.832   -0.219
+ not_fully_winged -0.1618 0.208 80.9   -0.576    0.252
+
+method = Pitfall4:
+ full_wing         emmean    SE   df lower.CL upper.CL
+ fully_winged      0.0847 0.153 76.2   -0.220    0.389
+ not_fully_winged  0.6306 0.208 80.3    0.217    1.044
+
+method = Pitfall6:
+ full_wing         emmean    SE   df lower.CL upper.CL
+ fully_winged      0.4289 0.153 77.0    0.123    0.734
+ not_fully_winged  1.3896 0.214 85.9    0.965    1.815
+
+method = Pitfall8:
+ full_wing         emmean    SE   df lower.CL upper.CL
+ fully_winged      0.8537 0.155 79.6    0.544    1.163
+ not_fully_winged  1.7131 0.220 90.8    1.275    2.151
+
+method = Pitfall10:
+ full_wing         emmean    SE   df lower.CL upper.CL
+ fully_winged      1.1802 0.160 84.5    0.863    1.498
+ not_fully_winged  1.8682 0.225 93.7    1.422    2.315
+
+method = GPD:
+ full_wing         emmean    SE   df lower.CL upper.CL
+ fully_winged      0.8699 0.155 79.4    0.561    1.179
+ not_fully_winged  0.9371 0.209 82.6    0.522    1.352
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+method = Pitfall2:
+ contrast                        estimate    SE   df t.ratio p.value
+ fully_winged - not_fully_winged  -0.3636 0.259 79.5  -1.404  0.1643
+
+method = Pitfall4:
+ contrast                        estimate    SE   df t.ratio p.value
+ fully_winged - not_fully_winged  -0.5459 0.258 78.9  -2.114  0.0376
+
+method = Pitfall6:
+ contrast                        estimate    SE   df t.ratio p.value
+ fully_winged - not_fully_winged  -0.9607 0.263 82.8  -3.647  0.0005
+
+method = Pitfall8:
+ contrast                        estimate    SE   df t.ratio p.value
+ fully_winged - not_fully_winged  -0.8594 0.270 86.9  -3.182  0.0020
+
+method = Pitfall10:
+ contrast                        estimate    SE   df t.ratio p.value
+ fully_winged - not_fully_winged  -0.6881 0.276 90.5  -2.492  0.0145
+
+method = GPD:
+ contrast                        estimate    SE   df t.ratio p.value
+ fully_winged - not_fully_winged  -0.0672 0.260 81.5  -0.258  0.7970
+
+Degrees-of-freedom method: kenward-roger 

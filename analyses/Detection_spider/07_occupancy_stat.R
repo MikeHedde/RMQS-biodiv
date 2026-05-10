@@ -153,6 +153,9 @@ table_S3 <- tab_class %>%
     delta_gpd_p4,
     Pitfall2, Pitfall4, Pitfall6, Pitfall8, Pitfall10, GPD
   ) %>%
+  mutate(
+    across(where(is.numeric), ~ round(.x, 2))
+  ) %>%
   arrange(final_class)
 
 readr::write_csv(table_S3,  file.path(out_dir, "sp_protocol_favored/table_S3.csv"))

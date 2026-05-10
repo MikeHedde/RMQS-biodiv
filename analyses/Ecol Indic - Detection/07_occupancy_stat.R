@@ -47,15 +47,7 @@ m0 <- lmer(logit_p ~ 1 + (1 | species),
 m1 <- lmer(logit_p ~ method + (1 | species),
            data = tab_p2, weights = weight)
 
-anova(m0, m1)  # LRT : effet global de la méthode
-#refitting model(s) with ML (instead of REML)
-#Data: tab_p2
-#Models:
-#  m0: logit_p ~ 1 + (1 | species)
-#m1: logit_p ~ method + (1 | species)
-#npar    AIC    BIC  logLik -2*log(L)  Chisq Df Pr(>Chisq)    
-#m0    3 3964.8 3976.7 -1979.4    3958.8                         
-#m1    8 3521.5 3553.3 -1752.8    3505.5 453.25  5  < 2.2e-16 ***
+anova(m0, m1) 
 
 ##Test de tendance Pitfall2 → Pitfall10
 m_trend <- lmer(logit_p ~ ntrap + (1 | species),
@@ -84,7 +76,8 @@ contr <- contrast(
     "Pitfall8 vs Pitfall6"   = c(0, 0, -1, 1, 0, 0),
     "Pitfall10 vs Pitfall8"  = c(0, 0, 0, -1, 1, 0),
     "GPD vs Pitfall4"        = c(0, -1, 0, 0, 0, 1),
-    "GPD vs Pitfall6"        = c(0, 0, -1, 0, 0, 1)
+    "GPD vs Pitfall6"        = c(0, 0, -1, 0, 0, 1),
+    "GPD vs Pitfall8"        = c(0, 0, 0, -1, 0, 1)
   )
 )
 
@@ -152,6 +145,9 @@ table_S3 <- tab_class %>%
     final_class,
     delta_gpd_p4,
     Pitfall2, Pitfall4, Pitfall6, Pitfall8, Pitfall10, GPD
+  ) %>%
+  mutate(
+    across(where(is.numeric), ~ round(.x, 2))
   ) %>%
   arrange(final_class)
 

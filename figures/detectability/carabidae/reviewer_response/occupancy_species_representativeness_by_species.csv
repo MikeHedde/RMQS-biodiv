@@ -1,6 +1,6 @@
 species,n_sites_detected,total_abundance,n_records,occupancy_modelled,family,subgenus,raw_trait_value,attribute_trait,trait_value,source_name,publication_date,edition_parameters,reference_author_name
 Abax ovalis,5,187,187,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Abax parallelepipedus,15,753,743,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Abax parallelepipedus,12,753,743,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Abax parallelus,2,12,12,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Acupalpus brunnipes,1,1,1,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Acupalpus dubius,2,2,2,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -47,7 +47,7 @@ Bembidion quadrimaculatum,14,176,166,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Bembidion tetracolum,3,8,8,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Brachinus crepitans,7,84,84,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Brachinus elegans,1,1,1,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Brachinus explodens,7,19,16,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Brachinus explodens,7,19,16,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Brachinus sclopeta,9,633,382,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Bradycellus harpalinus,1,1,1,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Calathus fuscipes,10,28,28,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -58,10 +58,10 @@ Carabus auratus,10,507,333,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Carabus auronitens,4,25,25,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Carabus cancellatus,3,19,19,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Carabus convexus,2,2,2,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Carabus granulatus,5,9,9,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Carabus granulatus,4,9,9,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Carabus hispanus,1,1,1,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Carabus monilis,2,10,10,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Carabus nemoralis,17,157,123,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Carabus nemoralis,16,157,123,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Carabus problematicus,5,28,28,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Carabus violaceus,1,1,1,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Carabus violaceus purpurascens,5,13,13,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -71,7 +71,7 @@ Chlaenius olivieri,1,2,2,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Chlaenius tibialis,1,1,1,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Cicindela campestris,3,35,33,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Clivina collaris,1,2,2,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Clivina fossor,8,28,28,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Clivina fossor,8,28,28,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Cychrus attenuatus,2,5,5,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Cylindera germanica,1,9,9,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Cymindis humeralis,1,1,1,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -105,22 +105,22 @@ Leistus spinibarbis,1,6,4,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Licinus hoffmannseggi,1,1,1,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Licinus punctatulus,3,4,4,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Licinus silphoides,1,2,2,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Loricera pilicornis,20,536,305,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Loricera pilicornis,19,536,305,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Microlestes,12,29,29,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Microlestes abeillei,1,1,1,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Microlestes luctuosus,2,2,2,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Microlestes maurus,4,6,6,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Microlestes minutulus,8,20,20,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Microlestes minutulus,8,20,20,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Molops piceus,5,8,8,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Nebria brevicollis,21,486,334,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Nebria salina,27,250,191,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Notiophilus aestuans,1,3,3,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Notiophilus aquaticus,1,3,3,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Notiophilus biguttatus,17,150,105,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Notiophilus biguttatus,16,148,103,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Notiophilus germinyi,2,3,3,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Notiophilus palustris,2,2,2,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Notiophilus quadripunctatus,26,417,299,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Notiophilus rufipes,8,42,40,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Notiophilus rufipes,8,42,40,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Notiophilus substriatus,20,191,157,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Ophonus ardosiacus,3,10,10,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Ophonus azureus,1,2,2,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -136,7 +136,7 @@ Parophonus maculicornis,14,110,104,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pedius longicollis,1,2,2,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Platyderus depressus,1,3,3,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Platynus assimilis,3,32,16,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Poecilus cupreus,40,13304,10983,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Poecilus cupreus,40,13304,10983,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Poecilus kugelanni,5,44,43,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Poecilus lepidus,1,8,8,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Poecilus lepidus gressorius,1,2,2,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -144,7 +144,7 @@ Poecilus purpurascens,3,26,18,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Poecilus sericeus,2,3,3,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Poecilus versicolor,13,581,454,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Polistichus connexus,1,1,1,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudoophonus rufipes,11,177,149,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Pseudoophonus rufipes,11,177,149,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pterostichus anthracinus,4,22,22,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pterostichus cristatus,1,30,30,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pterostichus diligens,2,3,3,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -152,21 +152,20 @@ Pterostichus funestes,1,6,6,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pterostichus madidus,16,278,270,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pterostichus melanarius,9,399,314,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pterostichus minor,1,2,1,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pterostichus multipunctatus,1,1,1,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pterostichus niger,3,5,5,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pterostichus nigrita,1,1,1,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pterostichus oblongopunctatus,3,3,3,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pterostichus pumilio,2,2,2,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pterostichus strenuus,8,15,13,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Pterostichus strenuus,8,15,13,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Pterostichus vernalis,8,22,22,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Semiophonus signaticornis,2,3,3,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Stenolophus teutonus,7,13,13,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Stomis pumicatus,2,3,3,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Syntomus foveatus,7,34,33,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Syntomus foveatus,7,34,33,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Syntomus obscuroguttatus,8,33,28,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Syntomus truncatellus,5,9,9,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Synuchus vivalis,1,1,1,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Tachys bistriatus,7,16,16,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tachys bistriatus,7,16,16,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Tachyura parvula,1,1,1,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Trechus obtusus,2,2,2,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA
 Trechus quadristriatus,25,266,239,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA

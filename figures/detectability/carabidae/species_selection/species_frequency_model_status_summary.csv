@@ -1,2 +1,5 @@
-n_species_total,n_modelled_stable,n_modelled_unstable,n_excluded,prop_modelled_stable,median_sites_all,median_sites_stable
-172,49,2,121,0.28488372093023256,2,14
+occupancy_fit_status,final_inclusion,n_species
+skipped,Excluded,126
+stable,Included,26
+unstable,Excluded,3
+usable_unstable,Included,16

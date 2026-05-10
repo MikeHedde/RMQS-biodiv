@@ -1,0 +1,29 @@
+ method    log_BL.trend    SE   df lower.CL upper.CL
+ Pitfall2          2.03 0.635 74.0   0.7634     3.29
+ Pitfall4          2.23 0.642 75.4   0.9548     3.51
+ Pitfall6          1.77 0.650 78.5   0.4764     3.06
+ Pitfall8          1.66 0.666 82.2   0.3399     2.99
+ Pitfall10         1.29 0.684 85.7  -0.0694     2.65
+ GPD               1.75 0.634 75.3   0.4914     3.02
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+ contrast             estimate    SE   df t.ratio p.value
+ Pitfall2 - Pitfall4   -0.2050 0.490 1192  -0.418  0.9984
+ Pitfall2 - Pitfall6    0.2572 0.508 1024   0.507  0.9959
+ Pitfall2 - Pitfall8    0.3632 0.528  853   0.687  0.9833
+ Pitfall2 - Pitfall10   0.7371 0.549  713   1.343  0.7607
+ Pitfall2 - GPD         0.2739 0.488 1212   0.561  0.9934
+ Pitfall4 - Pitfall6    0.4623 0.515  975   0.898  0.9471
+ Pitfall4 - Pitfall8    0.5683 0.535  819   1.062  0.8964
+ Pitfall4 - Pitfall10   0.9422 0.556  689   1.695  0.5356
+ Pitfall4 - GPD         0.4790 0.497 1130   0.965  0.9290
+ Pitfall6 - Pitfall8    0.1060 0.546  763   0.194  1.0000
+ Pitfall6 - Pitfall10   0.4799 0.567  648   0.846  0.9587
+ Pitfall6 - GPD         0.0167 0.511 1000   0.033  1.0000
+ Pitfall8 - Pitfall10   0.3739 0.585  582   0.639  0.9880
+ Pitfall8 - GPD        -0.0893 0.530  844  -0.169  1.0000
+ Pitfall10 - GPD       -0.4632 0.552  699  -0.839  0.9601
+
+Degrees-of-freedom method: kenward-roger 
+P value adjustment: tukey method for comparing a family of 6 estimates 

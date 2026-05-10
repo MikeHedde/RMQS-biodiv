@@ -137,10 +137,17 @@ fit_one_species_occu <- function(sp_name,
   
   # drop 1 méthode pour éviter la colinéarité avec l'intercept
   if (length(rep_names_k) >= 2) {
-    ref_method <- rep_names_k[1]              # ou fixe: "Pitfall" etc.
+    ref_method <- if ("Pitfall10" %in% rep_names_k) "Pitfall10" else rep_names_k[1]
     det_terms  <- setdiff(det_terms, ref_method)
   }
+  eff_var_ok <- stats::sd(as.vector(eff_sp), na.rm = TRUE) > 0
+  
+  det_terms <- c(rep_names_k, "eff_z")
+  if (!eff_var_ok) det_terms <- setdiff(det_terms, "eff_z")
+  
+  det_terms <- setdiff(det_terms, ref_method)
   det_rhs <- paste(det_terms, collapse = " + ")
+  
   form_occu <- as.formula(paste("~", det_rhs, "~", state_rhs))
   
   #--------------------------------------------------
@@ -192,7 +199,8 @@ fit_one_species_occu <- function(sp_name,
   eff_for <- function(m) if (m %in% names(eff_med_all)) eff_med_all[[m]] else 0
   
   mk_pred <- function(tag) {
-    nd <- data.frame(eff_z = eff_for(tag))
+    nd <- data.frame()
+    if ("eff_z" %in% det_terms) nd$eff_z <- eff_for(tag) else nd$eff_z <- NULL
     
     # indicateurs méthode
     for (nm in rep_names_k) nd[[nm]] <- as.numeric(nm == tag)

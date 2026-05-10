@@ -5,18 +5,18 @@ stats::lm(formula = n_species ~ k + mean_pairwise_distance +
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--11.644  -5.111  -1.136   4.261  22.905 
+-13.277  -4.682  -1.036   3.872  21.476 
 
 Coefficients:
                          Estimate Std. Error t value Pr(>|t|)    
-(Intercept)             4.3879834  0.3051522  14.380  < 2e-16 ***
-k                       0.6442949  0.0455214  14.154  < 2e-16 ***
-mean_pairwise_distance -0.0028190  0.0131343  -0.215  0.83006    
-convex_hull_area        0.0014617  0.0004946   2.955  0.00313 ** 
+(Intercept)             5.0215058  0.3099146  16.203  < 2e-16 ***
+k                       0.7435260  0.0462318  16.083  < 2e-16 ***
+mean_pairwise_distance -0.0034162  0.0133392  -0.256  0.79787    
+convex_hull_area        0.0014933  0.0005023   2.973  0.00295 ** 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 6.253 on 39343 degrees of freedom
-Multiple R-squared:  0.03574,	Adjusted R-squared:  0.03567 
-F-statistic: 486.1 on 3 and 39343 DF,  p-value: < 2.2e-16
+Residual standard error: 5.924 on 34233 degrees of freedom
+Multiple R-squared:  0.05028,	Adjusted R-squared:  0.0502 
+F-statistic: 604.2 on 3 and 34233 DF,  p-value: < 2.2e-16
 

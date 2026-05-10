@@ -1,0 +1,56 @@
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: logit_p ~ method + log_BL + full_wing + (1 | species)
+   Data: dat_wing
+Weights: weight
+
+REML criterion at convergence: 620.6
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.1430 -0.4572  0.1310  0.7236  2.1959 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ species  (Intercept) 0.4177   0.6463  
+ Residual             0.6985   0.8357  
+Number of obs: 228, groups:  species, 38
+
+Fixed effects:
+                       Estimate Std. Error        df t value Pr(>|t|)    
+(Intercept)            -0.96562    0.59929  31.14206  -1.611   0.1172    
+methodPitfall2         -0.67339    0.13051 183.88321  -5.160 6.37e-07 ***
+methodPitfall6          0.56716    0.14233 182.83390   3.985 9.75e-05 ***
+methodPitfall8          0.94231    0.15084 183.55959   6.247 2.84e-09 ***
+methodPitfall10         1.40562    0.16854 183.78392   8.340 1.72e-14 ***
+methodGPD               0.56330    0.13500 183.56684   4.173 4.64e-05 ***
+log_BL                  1.36717    0.60854  31.66959   2.247   0.0318 *  
+full_wingfully_winged  -0.06577    0.24997  33.06017  -0.263   0.7941    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) mthdP2 mthdP6 mthdP8 mthP10 mthGPD log_BL
+methdPtfll2 -0.107                                          
+methdPtfll6 -0.113  0.494                                   
+methdPtfll8 -0.102  0.466  0.437                            
+mthdPtfll10 -0.102  0.416  0.392  0.377                     
+methodGPD   -0.112  0.530  0.479  0.453  0.404              
+log_BL      -0.928 -0.017  0.008  0.005  0.016 -0.008       
+fll_wngfll_ -0.379  0.011 -0.011 -0.016 -0.016  0.014  0.105
+Analysis of Deviance Table (Type III Wald chisquare tests)
+
+Response: logit_p
+               Chisq Df Pr(>Chisq)    
+(Intercept)   2.5962  1    0.10712    
+method      235.9390  5    < 2e-16 ***
+log_BL        5.0473  1    0.02466 *  
+full_wing     0.0692  1    0.79245    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Data: dat_wing
+Models:
+m_wing_add_ML: logit_p ~ method + log_BL + full_wing + (1 | species)
+m_wing_int_ML: logit_p ~ method * full_wing + log_BL + (1 | species)
+              npar    AIC    BIC  logLik -2*log(L)  Chisq Df Pr(>Chisq)
+m_wing_add_ML   10 626.35 660.64 -303.18    606.35                     
+m_wing_int_ML   15 629.27 680.71 -299.63    599.27 7.0833  5     0.2145

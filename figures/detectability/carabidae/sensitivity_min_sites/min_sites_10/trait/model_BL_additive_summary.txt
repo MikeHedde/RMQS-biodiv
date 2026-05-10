@@ -1,0 +1,53 @@
+Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: logit_p ~ method + log_BL + (1 | species)
+   Data: dat_BL
+Weights: weight
+
+REML criterion at convergence: 353.3
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-1.6461 -0.4769  0.1365  0.7305  2.0381 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ species  (Intercept) 0.3842   0.6198  
+ Residual             0.6776   0.8232  
+Number of obs: 144, groups:  species, 24
+
+Fixed effects:
+                Estimate Std. Error       df t value Pr(>|t|)    
+(Intercept)      -0.7579     0.6244  20.9294  -1.214 0.238294    
+methodPitfall2   -0.6513     0.1415 113.5771  -4.602 1.09e-05 ***
+methodPitfall6    0.5411     0.1573 112.9589   3.439 0.000818 ***
+methodPitfall8    0.9401     0.1680 113.3633   5.595 1.56e-07 ***
+methodPitfall10   1.3284     0.1907 113.5137   6.964 2.28e-10 ***
+methodGPD         0.5227     0.1479 113.1447   3.533 0.000595 ***
+log_BL            1.3439     0.6677  20.4811   2.013 0.057481 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) mthdP2 mthdP6 mthdP8 mthP10 mthGPD
+methdPtfll2 -0.114                                   
+methdPtfll6 -0.118  0.497                            
+methdPtfll8 -0.107  0.465  0.426                     
+mthdPtfll10 -0.105  0.409  0.376  0.358              
+methodGPD   -0.118  0.535  0.476  0.447  0.392       
+log_BL      -0.964 -0.015  0.005  0.001  0.013 -0.004
+Analysis of Deviance Table (Type III Wald chisquare tests)
+
+Response: logit_p
+               Chisq Df Pr(>Chisq)    
+(Intercept)   1.4736  1    0.22477    
+method      181.3872  5    < 2e-16 ***
+log_BL        4.0509  1    0.04415 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Data: dat_BL
+Models:
+m_BL_add_ML: logit_p ~ method + log_BL + (1 | species)
+m_BL_int_ML: logit_p ~ method * log_BL + (1 | species)
+            npar    AIC    BIC  logLik -2*log(L)  Chisq Df Pr(>Chisq)
+m_BL_add_ML    9 359.54 386.27 -170.77    341.54                     
+m_BL_int_ML   14 368.81 410.38 -170.40    340.81 0.7335  5     0.9811

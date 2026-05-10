@@ -11,16 +11,14 @@ source("analyses/Ecol Indic - Detection/05_occupancy_fit_reviewed.R")
 # Occupancy outputs and stats
 source("analyses/Ecol Indic - Detection/06_occupancy_figs.R")
 source("analyses/Ecol Indic - Detection/07_occupancy_stat.R")
-source("analyses/Ecol Indic - Detection/08_DARMHa checks.R")
-source("analyses/Ecol Indic - Detection/09_traits_detectability.R")
+source("analyses/Ecol Indic - Detection/09_traits_detectability_reviewed.R")
 
 # Diversity
 source("analyses/Ecol Indic - Detection/10_diversity_indices.R")
 source("analyses/Ecol Indic - Detection/11_diversity_stat.R")
-source("analyses/Ecol Indic - Detection/12_composition_beta.R")
-source("analyses/Ecol Indic - Detection/13_accumulation_curves.R")
 
 # Reviewer-requested tables and sensitivity analyses
 source("analyses/Ecol Indic - Detection/14_reviewer_analyses.R")
+source("analyses/Ecol Indic - Detection/14_sensitivity_to_min_sites.R")
 
 message("=== FIN WORKFLOW REVIEWED === Résultats : ", normalizePath(out_dir))

@@ -4,158 +4,21 @@ Representativeness of modelled species
 Number of species:
 
     Modelled species Non-modelled species 
-                  49                  198 
+                  42                  205 
 
 Contribution to total abundance:
 # A tibble: 2 × 3
   modeled              n_species prop_total_abundance
   <chr>                    <int>                <dbl>
-1 Modelled species            49               0.914 
-2 Non-modelled species       198               0.0858
-  [1] "Non-modelled species" "Modelled species"     "Non-modelled species"
-  [4] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-  [7] "Non-modelled species" "Non-modelled species" "Non-modelled species"
- [10] "Non-modelled species" "Non-modelled species" "Modelled species"    
- [13] "Non-modelled species" "Non-modelled species" "Non-modelled species"
- [16] "Modelled species"     "Non-modelled species" "Non-modelled species"
- [19] "Modelled species"     "Non-modelled species" "Modelled species"    
- [22] "Non-modelled species" "Non-modelled species" "Non-modelled species"
- [25] "Modelled species"     "Non-modelled species" "Non-modelled species"
- [28] "Non-modelled species" "Modelled species"     "Non-modelled species"
- [31] "Non-modelled species" "Non-modelled species" "Non-modelled species"
- [34] "Non-modelled species" "Non-modelled species" "Non-modelled species"
- [37] "Modelled species"     "Non-modelled species" "Non-modelled species"
- [40] "Non-modelled species" "Modelled species"     "Modelled species"    
- [43] "Non-modelled species" "Non-modelled species" "Non-modelled species"
- [46] "Non-modelled species" "Non-modelled species" "Modelled species"    
- [49] "Modelled species"     "Non-modelled species" "Non-modelled species"
- [52] "Non-modelled species" "Non-modelled species" "Non-modelled species"
- [55] "Non-modelled species" "Non-modelled species" "Non-modelled species"
- [58] "Non-modelled species" "Non-modelled species" "Non-modelled species"
- [61] "Non-modelled species" "Modelled species"     "Non-modelled species"
- [64] "Modelled species"     "Modelled species"     "Modelled species"    
- [67] "Non-modelled species" "Non-modelled species" "Modelled species"    
- [70] "Non-modelled species" "Non-modelled species" "Modelled species"    
- [73] "Non-modelled species" "Modelled species"     "Non-modelled species"
- [76] "Modelled species"     "Non-modelled species" "Non-modelled species"
- [79] "Non-modelled species" "Non-modelled species" "Non-modelled species"
- [82] "Modelled species"     "Non-modelled species" "Non-modelled species"
- [85] "Non-modelled species" "Non-modelled species" "Non-modelled species"
- [88] "Non-modelled species" "Non-modelled species" "Non-modelled species"
- [91] "Non-modelled species" "Non-modelled species" "Non-modelled species"
- [94] "Non-modelled species" "Non-modelled species" "Non-modelled species"
- [97] "Non-modelled species" "Non-modelled species" "Modelled species"    
-[100] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[103] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[106] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[109] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[112] "Modelled species"     "Non-modelled species" "Non-modelled species"
-[115] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[118] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[121] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[124] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[127] "Non-modelled species" "Non-modelled species" "Modelled species"    
-[130] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[133] "Non-modelled species" "Non-modelled species" "Modelled species"    
-[136] "Non-modelled species" "Modelled species"     "Non-modelled species"
-[139] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[142] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[145] "Non-modelled species" "Non-modelled species" "Modelled species"    
-[148] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[151] "Non-modelled species" "Modelled species"     "Non-modelled species"
-[154] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[157] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[160] "Non-modelled species" "Non-modelled species" "Modelled species"    
-[163] "Modelled species"     "Non-modelled species" "Non-modelled species"
-[166] "Non-modelled species" "Non-modelled species" "Modelled species"    
-[169] "Non-modelled species" "Non-modelled species" "Modelled species"    
-[172] "Non-modelled species" "Modelled species"     "Non-modelled species"
-[175] "Non-modelled species" "Modelled species"     "Non-modelled species"
-[178] "Non-modelled species" "Modelled species"     "Modelled species"    
-[181] "Modelled species"     "Non-modelled species" "Non-modelled species"
-[184] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[187] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[190] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[193] "Non-modelled species" "Modelled species"     "Non-modelled species"
-[196] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[199] "Modelled species"     "Non-modelled species" "Non-modelled species"
-[202] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[205] "Non-modelled species" "Modelled species"     "Non-modelled species"
-[208] "Non-modelled species" "Non-modelled species" "Modelled species"    
-[211] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[214] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[217] "Non-modelled species" "Non-modelled species" "Modelled species"    
-[220] "Modelled species"     "Non-modelled species" "Non-modelled species"
-[223] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[226] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[229] "Non-modelled species" "Modelled species"     "Non-modelled species"
-[232] "Modelled species"     "Non-modelled species" "Non-modelled species"
-[235] "Non-modelled species" "Modelled species"     "Non-modelled species"
-[238] "Modelled species"     "Modelled species"     "Non-modelled species"
-[241] "Non-modelled species" "Non-modelled species" "Non-modelled species"
-[244] "Non-modelled species" "Modelled species"     "Non-modelled species"
-[247] "Non-modelled species"
-# A tibble: 247 × 10
-   species               n_sites total_abundance mean_BL pct_winged modeled
-   <chr>                   <int>           <dbl>   <dbl>      <dbl> <chr>  
- 1 Abax ovalis                 9             201   13.5          NA Non-mo…
- 2 Abax parallelepipedus      37            1013   18.5           0 Modell…
- 3 Abax parallelus             8              39   15.3           0 Non-mo…
- 4 Acupalpus                   3               9   NA            NA Non-mo…
- 5 Acupalpus brunnipes         1               3    3.25         NA Non-mo…
- 6 Acupalpus dubius            2               2    2.9           1 Non-mo…
- 7 Acupalpus flavicollis       1               1    3.2           1 Non-mo…
- 8 Acupalpus meridianus        9              21    3.62          1 Non-mo…
- 9 Acupalpus notatus           1               2    3.25         NA Non-mo…
-10 Acupalpus parvulus          2               2   NA             1 Non-mo…
-# ℹ 237 more rows
-# ℹ 4 more variables: log_total_abundance <dbl>, log_n_sites <dbl>,
-#   log_BL <dbl>, full_wing <chr>
-# ℹ Use `print(n = ...)` to see more rows
-
-function (..., file = "", sep = " ", fill = FALSE, labels = NULL, 
-    append = FALSE) 
-{
-    if (is.character(file)) 
-        if (file == "") 
-            file <- stdout()
-        else if (startsWith(file, "|")) {
-            file <- pipe(substring(file, 2L), "w")
-            on.exit(close(file))
-        }
-        else {
-            file <- file(file, ifelse(append, "a", "w"))
-            on.exit(close(file))
-        }
-    .Internal(cat(list(...), file, sep, fill, labels, append))
-}
-<bytecode: 0x0000022609e2d288>
-<environment: namespace:base>
-function (..., file = "", sep = " ", fill = FALSE, labels = NULL, 
-    append = FALSE) 
-{
-    if (is.character(file)) 
-        if (file == "") 
-            file <- stdout()
-        else if (startsWith(file, "|")) {
-            file <- pipe(substring(file, 2L), "w")
-            on.exit(close(file))
-        }
-        else {
-            file <- file(file, ifelse(append, "a", "w"))
-            on.exit(close(file))
-        }
-    .Internal(cat(list(...), file, sep, fill, labels, append))
-}
-<bytecode: 0x0000022609e2d288>
-<environment: namespace:base>
+1 Modelled species            42                0.400
+2 Non-modelled species       205                0.600
 
 Body length comparison:
 
 	Wilcoxon rank sum test with continuity correction
 
 data:  mean_BL by modeled
-W = 2283, p-value = 0.1246
+W = 2151.5, p-value = 0.454
 alternative hypothesis: true location shift is not equal to 0
 
 
@@ -164,7 +27,7 @@ Number of occupied sites comparison:
 	Wilcoxon rank sum test with continuity correction
 
 data:  n_sites by modeled
-W = 9582.5, p-value < 2.2e-16
+W = 8421, p-value < 2.2e-16
 alternative hypothesis: true location shift is not equal to 0
 
 
@@ -173,18 +36,18 @@ Total abundance comparison:
 	Wilcoxon rank sum test with continuity correction
 
 data:  total_abundance by modeled
-W = 9404.5, p-value < 2.2e-16
+W = 8272.5, p-value < 2.2e-16
 alternative hypothesis: true location shift is not equal to 0
 
 
 Wing category comparison:
                       
                        fully winged not fully winged
-  Modelled species               26               16
-  Non-modelled species           61               45
+  Modelled species               23               11
+  Non-modelled species           64               50
 
 	Pearson's Chi-squared test with Yates' continuity correction
 
 data:  table(repr_dat$modeled, repr_dat$full_wing)
-X-squared = 0.090203, df = 1, p-value = 0.7639
+X-squared = 0.99567, df = 1, p-value = 0.3184
 

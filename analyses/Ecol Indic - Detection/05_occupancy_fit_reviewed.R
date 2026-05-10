@@ -48,26 +48,57 @@ check_unstable_fit <- function(fm,
                                se_max = get0("unstable_se_max", ifnotfound = 50),
                                coef_abs_max = get0("unstable_coef_abs_max", ifnotfound = 25)) {
   sumobj <- tryCatch(suppressWarnings(summary(fm)), error = function(e) NULL)
+  
   if (is.null(sumobj)) {
-    return(list(unstable = TRUE, reason = "summary_failed"))
+    return(list(
+      usable_for_prediction = FALSE,
+      fit_quality = "failed_summary",
+      reason = "summary_failed"
+    ))
   }
-
+  
   se_state <- suppressWarnings(as.numeric(sumobj$state[, "SE"]))
   se_det   <- suppressWarnings(as.numeric(sumobj$det[, "SE"]))
   est_state <- suppressWarnings(as.numeric(sumobj$state[, "Estimate"]))
   est_det   <- suppressWarnings(as.numeric(sumobj$det[, "Estimate"]))
-
+  
   se_all  <- c(se_state, se_det)
   est_all <- c(est_state, est_det)
-
+  
   bad_se <- any(!is.finite(se_all) | is.na(se_all) | se_all > se_max)
   bad_coef <- any(!is.finite(est_all) | is.na(est_all) | abs(est_all) > coef_abs_max)
-
-  if (bad_se && bad_coef) return(list(unstable = TRUE, reason = "large_or_missing_se_and_extreme_coef"))
-  if (bad_se)             return(list(unstable = TRUE, reason = "large_or_missing_se"))
-  if (bad_coef)           return(list(unstable = TRUE, reason = "extreme_coef"))
-  list(unstable = FALSE, reason = NA_character_)
+  
+  if (bad_se && bad_coef) {
+    return(list(
+      usable_for_prediction = FALSE,
+      fit_quality = "failed_unstable",
+      reason = "large_or_missing_se_and_extreme_coef"
+    ))
+  }
+  
+  if (bad_se) {
+    return(list(
+      usable_for_prediction = TRUE,
+      fit_quality = "usable_large_se",
+      reason = "large_or_missing_se"
+    ))
+  }
+  
+  if (bad_coef) {
+    return(list(
+      usable_for_prediction = TRUE,
+      fit_quality = "usable_extreme_coef",
+      reason = "extreme_coef"
+    ))
+  }
+  
+  list(
+    usable_for_prediction = TRUE,
+    fit_quality = "stable",
+    reason = NA_character_
+  )
 }
+
 
 # ------------------------------------------------------------
 # Core fitting function
@@ -221,10 +252,12 @@ fit_one_species_occu <- function(sp_name,
   }
 
   AIC_fm <- tryCatch(stats::AIC(fm), error = function(e) NA_real_)
+  
   fit_check <- check_unstable_fit(fm)
-
+  
   sumobj <- tryCatch(suppressWarnings(summary(fm)), error = function(e) NULL)
   beta_tab <- tibble::tibble()
+  
   if (!is.null(sumobj)) {
     beta_tab <- dplyr::bind_rows(
       tidy_unmarked_mat(sumobj$state, component = "state"),
@@ -234,16 +267,20 @@ fit_one_species_occu <- function(sp_name,
       dplyr::rename(p = p_value) %>%
       dplyr::relocate(species, component, term, estimate, se, z, p)
   }
-
-  if (isTRUE(fit_check$unstable)) {
-    return(list(status = "unstable", species = sp_name,
-                n_sites_available = n_sites_available,
-                n_sites_detected = n_sites_detected,
-                n_rep = n_rep,
-                AIC = AIC_fm,
-                reason = fit_check$reason,
-                beta = beta_tab,
-                fit = fm))
+  
+  if (!isTRUE(fit_check$usable_for_prediction)) {
+    return(list(
+      status = "unstable",
+      species = sp_name,
+      n_sites_available = n_sites_available,
+      n_sites_detected = n_sites_detected,
+      n_rep = n_rep,
+      AIC = AIC_fm,
+      reason = fit_check$reason,
+      fit_quality = fit_check$fit_quality,
+      beta = beta_tab,
+      fit = fm
+    ))
   }
 
   # ----------------------------------------------------------
@@ -313,13 +350,15 @@ fit_one_species_occu <- function(sp_name,
   }
 
   list(
-    status     = "ok",
+    status     = ifelse(fit_check$fit_quality == "stable", "ok", "usable_unstable"),
     species    = sp_name,
     n_sites_available = n_sites_available,
     n_sites_detected  = n_sites_detected,
     n_rep      = n_rep,
     AIC        = AIC_fm,
-    any_se_bad = FALSE,
+    reason     = fit_check$reason,
+    fit_quality = fit_check$fit_quality,
+    any_se_bad = fit_check$fit_quality != "stable",
     p_table    = tab_p,
     beta       = beta_tab,
     psi_hat    = psi_tab,
@@ -379,30 +418,38 @@ sp_freq <- rank_freq %>%
     total_abundance = sum(sumAb, na.rm = TRUE),
     .groups = "drop"
   ) %>%
-  dplyr::left_join(res %>% dplyr::select(species, status), by = "species") %>%
+  dplyr::left_join(
+    res %>% dplyr::select(species, status, reason),
+    by = "species"
+  ) %>%
   dplyr::mutate(
-    model_status = dplyr::case_when(
-      status == "ok"       ~ "Modelled_stable",
-      status == "unstable" ~ "Modelled_unstable",
-      TRUE                 ~ "Excluded"
+    occupancy_fit_status = dplyr::case_when(
+      status == "ok"              ~ "stable",
+      status == "usable_unstable" ~ "usable_unstable",
+      status == "unstable"        ~ "unstable",
+      status == "skip"            ~ "skipped",
+      TRUE                        ~ "not_modelled"
+    ),
+    final_inclusion = dplyr::case_when(
+      status %in% c("ok", "usable_unstable") ~ "Included",
+      TRUE                                   ~ "Excluded"
     )
   ) %>%
   dplyr::arrange(dplyr::desc(n_sites)) %>%
   dplyr::mutate(rank = dplyr::row_number())
 
-readr::write_csv(sp_freq, file.path(out_dir, "species_selection/species_frequency_model_status.csv"))
+readr::write_csv(
+  sp_freq,
+  file.path(out_dir, "species_selection/species_frequency_model_status.csv")
+)
 
 sp_freq_summary <- sp_freq %>%
-  dplyr::summarise(
-    n_species_total = dplyr::n(),
-    n_modelled_stable = sum(model_status == "Modelled_stable"),
-    n_modelled_unstable = sum(model_status == "Modelled_unstable"),
-    n_excluded = sum(model_status == "Excluded"),
-    prop_modelled_stable = mean(model_status == "Modelled_stable"),
-    median_sites_all = stats::median(n_sites, na.rm = TRUE),
-    median_sites_stable = stats::median(n_sites[model_status == "Modelled_stable"], na.rm = TRUE)
-  )
-readr::write_csv(sp_freq_summary, file.path(out_dir, "species_selection/species_frequency_model_status_summary.csv"))
+  dplyr::count(occupancy_fit_status, final_inclusion, name = "n_species")
+
+readr::write_csv(
+  sp_freq_summary,
+  file.path(out_dir, "species_selection/species_frequency_model_status_summary.csv")
+)
 print(sp_freq_summary)
 
 # Figures only if ggplot2 is available and directories exist
@@ -427,8 +474,11 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
 # Extract outputs safely
 # ------------------------------------------------------------
 
-res_ok <- res %>% dplyr::filter(status == "ok")
-res_unstable <- res %>% dplyr::filter(status == "unstable")
+res_ok <- res %>%
+  dplyr::filter(status %in% c("ok", "usable_unstable"))
+
+res_unstable <- res %>%
+  dplyr::filter(status == "unstable")
 
 if (nrow(res_ok) > 0) {
   tab_p <- res_ok %>%
@@ -518,3 +568,81 @@ if (requireNamespace("gt", quietly = TRUE) && nrow(res_ok) > 0) {
 } else {
   cat("\nNo gt annex generated: either gt is not installed or no stable occupancy model is available.\n")
 }
+
+
+# ------------------------------------------------------------
+# Missing data summary in the detection matrix
+# ------------------------------------------------------------
+
+missing_global <- tibble::tibble(
+  n_cells_total   = length(Y),
+  n_cells_missing = sum(is.na(Y)),
+  prop_missing    = mean(is.na(Y)),
+  perc_missing    = 100 * mean(is.na(Y))
+)
+
+print(missing_global)
+
+readr::write_csv(
+  missing_global,
+  file.path(out_dir, "occ_model_output/missing_data_global_summary.csv")
+)
+
+missing_by_protocol <- tibble::tibble(
+  protocol = dimnames(Y)[[2]],
+  n_cells_total = apply(Y, 2, length),
+  n_cells_missing = apply(Y, 2, function(x) sum(is.na(x))),
+  prop_missing = apply(Y, 2, function(x) mean(is.na(x))),
+  perc_missing = 100 * prop_missing
+)
+
+print(missing_by_protocol)
+
+readr::write_csv(
+  missing_by_protocol,
+  file.path(out_dir, "occ_model_output/missing_data_by_protocol.csv")
+)
+
+availability_site_protocol <- apply(Y, c(1, 2), function(x) any(!is.na(x)))
+
+missing_site_protocol <- tibble::tibble(
+  n_site_protocol_total = length(availability_site_protocol),
+  n_site_protocol_missing = sum(!availability_site_protocol),
+  prop_missing = mean(!availability_site_protocol),
+  perc_missing = 100 * mean(!availability_site_protocol)
+)
+
+print(missing_site_protocol)
+
+readr::write_csv(
+  missing_site_protocol,
+  file.path(out_dir, "occ_model_output/missing_site_protocol_summary.csv")
+)
+
+missing_site_protocol_by_protocol <- tibble::tibble(
+  protocol = dimnames(Y)[[2]],
+  n_sites_total = nrow(availability_site_protocol),
+  n_sites_missing = colSums(!availability_site_protocol),
+  prop_missing = n_sites_missing / n_sites_total,
+  perc_missing = 100 * prop_missing
+)
+
+print(missing_site_protocol_by_protocol)
+
+readr::write_csv(
+  missing_site_protocol_by_protocol,
+  file.path(out_dir, "occ_model_output/missing_site_protocol_by_protocol.csv")
+)
+
+
+
+tab_p %>%
+  dplyr::group_by(method) %>%
+  dplyr::summarise(
+    median_p = median(p_hat, na.rm = TRUE),
+    q25 = quantile(p_hat, 0.25, na.rm = TRUE),
+    q75 = quantile(p_hat, 0.75, na.rm = TRUE),
+    min_p = min(p_hat, na.rm = TRUE),
+    max_p = max(p_hat, na.rm = TRUE),
+    .groups = "drop"
+  )

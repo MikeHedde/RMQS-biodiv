@@ -20,7 +20,7 @@
 if (!exists("pit_reps")) pit_reps <- c(10, 8, 6, 4, 2)
 if (!exists("pit_circ_m")) pit_circ_m <- pi * 0.05
 if (!exists("gpd_fence_length_m")) gpd_fence_length_m <- 1.0
-if (!exists("require_complete_pitfall_subsets")) require_complete_pitfall_subsets <- FALSE
+if (!exists("require_complete_pitfall_subsets")) require_complete_pitfall_subsets <- TRUE
 if (!exists("reviewer_out_dir")) reviewer_out_dir <- file.path(out_dir, "reviewer_response")
 dir.create(reviewer_out_dir, showWarnings = FALSE, recursive = TRUE)
 

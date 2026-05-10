@@ -3,46 +3,46 @@ Formula: logit_p ~ method * log_BL + (1 | species)
    Data: dat2_tr
 Weights: weight
 
-REML criterion at convergence: 504.9
+REML criterion at convergence: 759.1
 
 Scaled residuals: 
      Min       1Q   Median       3Q      Max 
--3.03258 -0.56185  0.07241  0.62204  2.38218 
+-2.15078 -0.52078  0.00126  0.70815  2.32149 
 
 Random effects:
  Groups   Name        Variance Std.Dev.
- species  (Intercept) 0.4997   0.7069  
- Residual             0.4785   0.6917  
-Number of obs: 258, groups:  species, 43
+ species  (Intercept) 0.3799   0.6164  
+ Residual             0.3802   0.6166  
+Number of obs: 210, groups:  species, 35
 
 Fixed effects:
                        Estimate Std. Error t value
-(Intercept)            -1.37511    0.55706  -2.468
-methodPitfall2         -0.63243    0.40396  -1.566
-methodPitfall6          0.72447    0.42451   1.707
-methodPitfall8          1.21146    0.44521   2.721
-methodPitfall10         1.70724    0.46769   3.650
-methodGPD               0.74952    0.40305   1.860
-log_BL                  1.85768    0.61832   3.004
-methodPitfall2:log_BL  -0.01723    0.44513  -0.039
-methodPitfall6:log_BL  -0.31602    0.47589  -0.664
-methodPitfall8:log_BL  -0.45203    0.50191  -0.901
-methodPitfall10:log_BL -0.67835    0.52359  -1.296
-methodGPD:log_BL       -0.15894    0.45169  -0.352
+(Intercept)             -0.7738     0.5897  -1.312
+methodPitfall2          -0.4782     0.4336  -1.103
+methodPitfall6           0.6336     0.4890   1.296
+methodPitfall8           1.1918     0.5221   2.283
+methodPitfall10          1.3925     0.6103   2.282
+methodGPD                0.7457     0.4397   1.696
+log_BL                   1.1151     0.6477   1.722
+methodPitfall2:log_BL   -0.2003     0.4822  -0.415
+methodPitfall6:log_BL   -0.1856     0.5488  -0.338
+methodPitfall8:log_BL   -0.4015     0.5847  -0.687
+methodPitfall10:log_BL  -0.1808     0.6941  -0.261
+methodGPD:log_BL        -0.1893     0.4898  -0.386
 
 Correlation of Fixed Effects:
             (Intr) mthdP2 mthdP6 mthdP8 mthP10 mthGPD log_BL mP2:_B
-methdPtfll2 -0.368                                                 
-methdPtfll6 -0.362  0.480                                          
-methdPtfll8 -0.348  0.458  0.459                                   
-mthdPtfll10 -0.329  0.437  0.433  0.418                            
-methodGPD   -0.388  0.510  0.496  0.478  0.452                     
-log_BL      -0.975  0.362  0.354  0.340  0.321  0.381              
-mthdPt2:_BL  0.365 -0.977 -0.474 -0.452 -0.432 -0.504 -0.375       
-mthdPt6:_BL  0.351 -0.466 -0.979 -0.445 -0.421 -0.481 -0.358  0.481
-mthdPt8:_BL  0.335 -0.442 -0.443 -0.979 -0.403 -0.462 -0.342  0.456
-mthdP10:_BL  0.319 -0.425 -0.421 -0.406 -0.978 -0.438 -0.324  0.438
-mthdGPD:_BL  0.378 -0.496 -0.481 -0.464 -0.437 -0.976 -0.388  0.513
+methdPtfll2 -0.417                                                 
+methdPtfll6 -0.360  0.484                                          
+methdPtfll8 -0.340  0.452  0.411                                   
+mthdPtfll10 -0.288  0.387  0.354  0.338                            
+methodGPD   -0.408  0.547  0.480  0.452  0.384                     
+log_BL      -0.977  0.418  0.357  0.337  0.284  0.407              
+mthdPt2:_BL  0.413 -0.977 -0.474 -0.443 -0.379 -0.538 -0.432       
+mthdPt6:_BL  0.349 -0.470 -0.979 -0.399 -0.344 -0.467 -0.361  0.482
+mthdPt8:_BL  0.330 -0.440 -0.400 -0.979 -0.328 -0.440 -0.342  0.451
+mthdP10:_BL  0.274 -0.371 -0.340 -0.323 -0.979 -0.367 -0.283  0.380
+mthdGPD:_BL  0.402 -0.537 -0.470 -0.442 -0.374 -0.976 -0.419  0.553
             mP6:_B mP8:_B mP10:_
 methdPtfll2                     
 methdPtfll6                     
@@ -52,6 +52,6 @@ methodGPD
 log_BL                          
 mthdPt2:_BL                     
 mthdPt6:_BL                     
-mthdPt8:_BL  0.449              
-mthdP10:_BL  0.426  0.409       
-mthdGPD:_BL  0.487  0.467  0.443
+mthdPt8:_BL  0.406              
+mthdP10:_BL  0.346  0.328       
+mthdGPD:_BL  0.477  0.450  0.373

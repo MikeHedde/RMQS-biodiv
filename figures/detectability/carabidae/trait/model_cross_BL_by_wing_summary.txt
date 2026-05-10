@@ -1,0 +1,102 @@
+Linear mixed model fit by REML. t-tests use
+  Satterthwaite's method [lmerModLmerTest]
+Formula: 
+logit_p ~ method + log_BL * full_wing + (1 | species)
+   Data: dat_wing
+Weights: weight
+
+REML criterion at convergence: 556.1
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-1.74408 -0.46882  0.09759  0.69478  2.17586 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ species  (Intercept) 0.4177   0.6463  
+ Residual             0.6822   0.8259  
+Number of obs: 210, groups:  species, 35
+
+Fixed effects:
+                             Estimate Std. Error       df
+(Intercept)                   -0.4969     0.8069  26.2455
+methodPitfall2                -0.6978     0.1311 168.4572
+methodPitfall6                 0.5227     0.1436 167.4235
+methodPitfall8                 0.8997     0.1519 168.0110
+methodPitfall10                1.3566     0.1705 168.1917
+methodGPD                      0.5768     0.1360 168.1432
+log_BL                         0.9582     0.8231  28.0102
+full_wingfully_winged         -0.5981     1.1530  26.1432
+log_BL:full_wingfully_winged   0.5587     1.2434  27.0116
+                             t value Pr(>|t|)    
+(Intercept)                   -0.616 0.543305    
+methodPitfall2                -5.322 3.24e-07 ***
+methodPitfall6                 3.640 0.000363 ***
+methodPitfall8                 5.924 1.73e-08 ***
+methodPitfall10                7.959 2.46e-13 ***
+methodGPD                      4.240 3.68e-05 ***
+log_BL                         1.164 0.254189    
+full_wingfully_winged         -0.519 0.608296    
+log_BL:full_wingfully_winged   0.449 0.656792    
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) mthdP2 mthdP6 mthdP8 mthP10 mthGPD
+methdPtfll2 -0.075                                   
+methdPtfll6 -0.081  0.493                            
+methdPtfll8 -0.073  0.465  0.434                     
+mthdPtfll10 -0.071  0.414  0.388  0.372              
+methodGPD   -0.078  0.529  0.476  0.451  0.400       
+log_BL      -0.956 -0.018  0.003 -0.001  0.007 -0.012
+fll_wngfll_ -0.692 -0.006 -0.005 -0.009 -0.009 -0.004
+lg_BL:fll__  0.632  0.009  0.002  0.007  0.006  0.007
+            log_BL fll_w_
+methdPtfll2              
+methdPtfll6              
+methdPtfll8              
+mthdPtfll10              
+methodGPD                
+log_BL                   
+fll_wngfll_  0.669       
+lg_BL:fll__ -0.662 -0.973
+Analysis of Deviance Table (Type III Wald chisquare tests)
+
+Response: logit_p
+                    Chisq Df Pr(>Chisq)    
+(Intercept)        0.3793  1     0.5380    
+method           228.5159  5     <2e-16 ***
+log_BL             1.3552  1     0.2444    
+full_wing          0.2691  1     0.6039    
+log_BL:full_wing   0.2019  1     0.6532    
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Data: dat_wing
+Models:
+m_cross_add_ML: logit_p ~ method + log_BL + full_wing + (1 | species)
+m_cross_int_ML: logit_p ~ method + log_BL * full_wing + (1 | species)
+               npar    AIC    BIC  logLik -2*log(L) Chisq
+m_cross_add_ML   10 564.50 597.97 -272.25    544.50      
+m_cross_int_ML   11 566.27 603.09 -272.13    544.27 0.232
+               Df Pr(>Chisq)
+m_cross_add_ML              
+m_cross_int_ML  1       0.63
+ full_wing        log_BL.trend    SE   df lower.CL
+ not_fully_winged        0.958 0.824 33.5   -0.718
+ fully_winged            1.517 0.937 36.9   -0.382
+ upper.CL
+     2.63
+     3.42
+
+Results are averaged over the levels of: method 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+ contrast                        estimate   SE   df
+ not_fully_winged - fully_winged   -0.559 1.25 35.4
+ t.ratio p.value
+  -0.448  0.6571
+
+Results are averaged over the levels of: method 
+Degrees-of-freedom method: kenward-roger 

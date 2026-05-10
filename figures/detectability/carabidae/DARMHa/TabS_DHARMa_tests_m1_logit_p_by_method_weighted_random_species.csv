@@ -1,4 +1,0 @@
-model,test,statistic,p.value
-m1_logit_p_by_method_weighted_random_species,uniformity,0.058503401360544216,0.26666556345973
-m1_logit_p_by_method_weighted_random_species,dispersion,1.3071809285556246,0.03
-m1_logit_p_by_method_weighted_random_species,outliers,6,3.317243438741206e-5

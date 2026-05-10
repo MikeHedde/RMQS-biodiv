@@ -12,13 +12,13 @@ source("analyses/Ecol Indic - Detection/05_occupancy_fit.R")
 # stat detection
 source("analyses/Ecol Indic - Detection/06_occupancy_figs.R")
 source("analyses/Ecol Indic - Detection/07_occupancy_stat.R")
-source("analyses/Ecol Indic - Detection/08_DARMHa checks.R")
+#source("analyses/Ecol Indic - Detection/08_DARMHa checks.R")
 source("analyses/Ecol Indic - Detection/09_traits_detectability.R")
+source("analyses/Ecol Indic - Detection/14_sensitivity_to_min_sites.R")
 
 # diversité
 source("analyses/Ecol Indic - Detection/10_diversity_indices.R")
 source("analyses/Ecol Indic - Detection/11_diversity_stat.R")
-source("analyses/Occupancy/12_composition_beta.R")
 
 source("analyses/Ecol Indic - Detection//13_accumulation_curves.R")
 #message("=== FIN WORKFLOW ===  Résultats : ", normalizePath(out_dir))

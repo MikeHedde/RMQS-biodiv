@@ -1,3 +1,3 @@
 occupancy_modelled,n_species,median_sites_detected,q1_sites_detected,q3_sites_detected,median_total_abundance,q1_total_abundance,q3_total_abundance
-FALSE,123,2,1,3,3,1,9
-TRUE,49,14,9,20,150,33,334
+FALSE,129,2,1,3,3,1,10
+TRUE,42,14,10,20.75,166.5,50,382.75

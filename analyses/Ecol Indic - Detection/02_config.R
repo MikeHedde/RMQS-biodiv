@@ -11,7 +11,7 @@ require_contrast <- TRUE
 
 # Méthodes analysées
 methods_use <- c("Pitfall", "GPD")   # parmi "Pitfall","GPD","DVAC","TRI"
-require_complete_pitfall_subsets <- FALSE
+require_complete_pitfall_subsets <- TRUE
 
 # Réplicats Pitfall
 pit_reps <- c(10, 8, 6, 4, 2)

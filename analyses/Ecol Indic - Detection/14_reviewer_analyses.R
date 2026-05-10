@@ -211,6 +211,8 @@ if (exists("trap_coord_path") && file.exists(trap_coord_path)) {
       dplyr::group_by(site_id, trap, species) %>%
       dplyr::summarise(abund = sum(as.numeric(abund), na.rm = TRUE), .groups = "drop")
 
+    ks <- c(2, 4, 6, 8, 10)
+    
     draw_one_site <- function(site) {
       traps_site <- trap_xy %>% dplyr::filter(site_id == site, trap %in% 1:10) %>% dplyr::distinct(trap, .keep_all = TRUE)
       if (nrow(traps_site) == 0) return(tibble::tibble())
@@ -332,6 +334,15 @@ spatial_cor
 library(ggplot2)
 library(dplyr)
 
+df_site <- pitfall_subset_sensitivity %>%
+  dplyr::group_by(site_id, k) %>%
+  dplyr::summarise(
+    richness_mean = mean(n_species, na.rm = TRUE),
+    richness_sd   = sd(n_species, na.rm = TRUE),
+    coverage_mean = mean(coverage, na.rm = TRUE),
+    .groups = "drop"
+  )
+
 df_k <- df_site %>%
   dplyr::group_by(k) %>%
   dplyr::summarise(
@@ -352,7 +363,7 @@ nested_labels <- tibble::tibble(
   )
 )
 
-nested_site <- df %>%
+nested_site <- pitfall_subset_sensitivity %>%
   dplyr::inner_join(nested_labels, by = c("k", "trap_set")) %>%
   dplyr::transmute(
     site_id,
@@ -416,19 +427,9 @@ library(patchwork)
 # df = pitfall_subset_spatial_sensitivity_draws.csv
 # colonnes attendues : site_id, k, trap_set, n_species, coverage
 
-nested_labels <- tibble::tibble(
-  k = c(2, 4, 6, 8, 10),
-  trap_set = c(
-    "1,2",
-    "1,2,3,4",
-    "1,2,3,4,5,6",
-    "1,2,3,4,5,6,7,8",
-    "1,2,3,4,5,6,7,8,9,10"
-  )
-)
 
 # --- Résumés par station ---
-df_site_k <- df %>%
+df_site_k <- pitfall_subset_sensitivity %>%
   mutate(
     k = as.numeric(k),
     site_lab = str_extract(site_id, "[^_]+$")
@@ -441,7 +442,7 @@ df_site_k <- df %>%
     .groups = "drop"
   )
 
-nested_site <- df %>%
+nested_site <- pitfall_subset_sensitivity %>%
   mutate(
     k = as.numeric(k),
     site_lab = str_extract(site_id, "[^_]+$")
@@ -573,21 +574,37 @@ p_final <- p_global / p_sites +
   plot_layout(heights = c(1, 3))
 
 p_final
+ggsave(
+  file.path(out_dir, "reviewer_response/FigS_random_species_richness.png"),
+  p_final,
+  width = 9,
+  height = 10,
+  dpi = 300
+)
 
-p1 <- ggplot(df, aes(x = factor(k), y = n_species)) +
+
+p1 <- ggplot(pitfall_subset_sensitivity, aes(x = factor(k), y = n_species)) +
   geom_violin(fill = "grey85", color = NA) +
   stat_summary(fun = mean, geom = "point", color = "red", size = 3) +
   labs(y = "Richness", x = "k") +
   theme_minimal()
 
-p2 <- ggplot(df, aes(x = factor(k), y = coverage)) +
+p2 <- ggplot(pitfall_subset_sensitivity, aes(x = factor(k), y = coverage)) +
   geom_violin(fill = "grey85", color = NA) +
   stat_summary(fun = mean, geom = "point", color = "blue", size = 3) +
   labs(y = "Coverage", x = "k") +
   theme_minimal()
 
 library(patchwork)
-p1 + p2
+p3 <- p1 + p2
+
+ggsave(
+  file.path(out_dir, "reviewer_response/FigS_random_coverage.png"),
+  p3,
+  width = 9,
+  height = 10,
+  dpi = 300
+)
 
 #Coverage 95%
 library(scales)
@@ -618,7 +635,7 @@ coverage_by_habitat1 <- coverage_by_habitat %>%
   ) %>%
   filter(!is.na(habitat))
 
-ggplot(coverage_by_habitat1, aes(x = method, y = pct_reached_095, fill = method)) +
+cov_by_habitat <- ggplot(coverage_by_habitat1, aes(x = method, y = pct_reached_095, fill = method)) +
   geom_col(width = 0.75, alpha = 0.9) +
   facet_wrap(~ habitat_lab, ncol = 2) +
   scale_y_continuous(,
@@ -648,6 +665,13 @@ ggplot(coverage_by_habitat1, aes(x = method, y = pct_reached_095, fill = method)
     strip.text = element_text(face = "bold")
   )
 
+ggsave(
+  file.path(out_dir, "reviewer_response/FigS_random_coverage_by_habitat.png"),
+  cov_by_habitat,
+  width = 9,
+  height = 10,
+  dpi = 300
+)
 
 # ============================================================
 # APPENDIX — REPRESENTATIVENESS OF MODELED SPECIES

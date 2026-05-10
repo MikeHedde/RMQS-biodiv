@@ -1,0 +1,156 @@
+TRAIT-DETECTABILITY ANALYSIS
+============================
+
+Dataset summary
+# A tibble: 3 × 4
+  dataset     n_rows n_species n_species_with_genus_wing_imputation
+  <chr>        <int>     <int>                                <int>
+1 all_joined     174        29                                    5
+2 body_length    144        24                                    0
+3 wing           144        24                                    0
+
+Body length: additive vs method interaction LRT
+Data: dat_BL
+Models:
+m_BL_add_ML: logit_p ~ method + log_BL + (1 | species)
+m_BL_int_ML: logit_p ~ method * log_BL + (1 | species)
+            npar    AIC    BIC  logLik -2*log(L)  Chisq Df Pr(>Chisq)
+m_BL_add_ML    9 359.54 386.27 -170.77    341.54                     
+m_BL_int_ML   14 368.81 410.38 -170.40    340.81 0.7335  5     0.9811
+
+Body length: Type III Anova for interaction model
+Analysis of Deviance Table (Type III Wald chisquare tests)
+
+Response: logit_p
+                Chisq Df Pr(>Chisq)  
+(Intercept)    1.8400  1    0.17496  
+method        11.3776  5    0.04439 *
+log_BL         3.9282  1    0.04748 *
+method:log_BL  0.6751  5    0.98431  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Body length: method-specific slopes
+ method    log_BL.trend    SE   df lower.CL upper.CL
+ Pitfall4          1.67 0.846 65.7  -0.0192     3.36
+ Pitfall2          1.42 0.792 62.2  -0.1616     3.01
+ Pitfall6          1.24 0.900 71.4  -0.5505     3.04
+ Pitfall8          1.02 0.951 74.7  -0.8704     2.92
+ Pitfall10         1.10 1.090 68.6  -1.0715     3.27
+ GPD               1.27 0.808 62.6  -0.3413     2.89
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+Body length: pairwise slope contrasts
+ contrast             estimate    SE  df t.ratio p.value
+ Pitfall4 - Pitfall2    0.2473 0.755 633   0.327  0.9995
+ Pitfall4 - Pitfall6    0.4251 0.859 374   0.495  0.9963
+ Pitfall4 - Pitfall8    0.6446 0.912 283   0.707  0.9810
+ Pitfall4 - Pitfall10   0.5716 1.050 134   0.546  0.9941
+ Pitfall4 - GPD         0.3954 0.767 599   0.516  0.9956
+ Pitfall2 - Pitfall6    0.1778 0.818 429   0.217  0.9999
+ Pitfall2 - Pitfall8    0.3973 0.875 309   0.454  0.9976
+ Pitfall2 - Pitfall10   0.3242 1.010 137   0.319  0.9995
+ Pitfall2 - GPD         0.1481 0.717 791   0.206  0.9999
+ Pitfall6 - Pitfall8    0.2195 0.962 240   0.228  0.9999
+ Pitfall6 - Pitfall10   0.1465 1.090 126   0.135  1.0000
+ Pitfall6 - GPD        -0.0297 0.828 415  -0.036  1.0000
+ Pitfall8 - Pitfall10  -0.0730 1.130 116  -0.065  1.0000
+ Pitfall8 - GPD        -0.2492 0.883 303  -0.282  0.9998
+ Pitfall10 - GPD       -0.1761 1.020 135  -0.172  1.0000
+
+Degrees-of-freedom method: kenward-roger 
+P value adjustment: tukey method for comparing a family of 6 estimates 
+
+Wing development: additive vs method interaction LRT
+Data: dat_wing
+Models:
+m_wing_add_ML: logit_p ~ method + log_BL + full_wing + (1 | species)
+m_wing_int_ML: logit_p ~ method * full_wing + log_BL + (1 | species)
+              npar    AIC    BIC  logLik -2*log(L)  Chisq Df Pr(>Chisq)
+m_wing_add_ML   10 361.17 390.87 -170.58    341.17                     
+m_wing_int_ML   15 363.76 408.31 -166.88    333.76 7.4088  5      0.192
+
+Wing development: Type III Anova for interaction model
+Analysis of Deviance Table (Type III Wald chisquare tests)
+
+Response: logit_p
+                   Chisq Df Pr(>Chisq)    
+(Intercept)       0.7008  1    0.40253    
+method           35.3248  5  1.296e-06 ***
+full_wing         0.3929  1    0.53076    
+log_BL            3.8655  1    0.04929 *  
+method:full_wing  7.0200  5    0.21915    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Wing development: estimated means by method at median body length
+method = Pitfall4:
+ full_wing         emmean    SE   df lower.CL upper.CL
+ not_fully_winged  0.5930 0.324 55.9  -0.0559   1.2420
+ fully_winged      0.3561 0.199 56.2  -0.0434   0.7555
+
+method = Pitfall2:
+ full_wing         emmean    SE   df lower.CL upper.CL
+ not_fully_winged  0.0585 0.301 52.9  -0.5457   0.6627
+ fully_winged     -0.3441 0.192 52.5  -0.7299   0.0416
+
+method = Pitfall6:
+ full_wing         emmean    SE   df lower.CL upper.CL
+ not_fully_winged  1.3552 0.347 61.4   0.6618   2.0486
+ fully_winged      0.8325 0.206 59.3   0.4199   1.2452
+
+method = Pitfall8:
+ full_wing         emmean    SE   df lower.CL upper.CL
+ not_fully_winged  1.3251 0.367 65.3   0.5915   2.0588
+ fully_winged      1.3621 0.217 63.6   0.9283   1.7959
+
+method = Pitfall10:
+ full_wing         emmean    SE   df lower.CL upper.CL
+ not_fully_winged  1.8143 0.421 62.6   0.9731   2.6555
+ fully_winged      1.7182 0.239 69.6   1.2415   2.1948
+
+method = GPD:
+ full_wing         emmean    SE   df lower.CL upper.CL
+ not_fully_winged  0.7810 0.309 52.0   0.1618   1.4002
+ fully_winged      1.0250 0.200 57.5   0.6243   1.4258
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+Wing development: contrasts within method
+method = Pitfall4:
+ contrast                        estimate    SE   df t.ratio p.value
+ not_fully_winged - fully_winged   0.2370 0.380 55.5   0.624  0.5350
+
+method = Pitfall2:
+ contrast                        estimate    SE   df t.ratio p.value
+ not_fully_winged - fully_winged   0.4027 0.356 52.4   1.131  0.2634
+
+method = Pitfall6:
+ contrast                        estimate    SE   df t.ratio p.value
+ not_fully_winged - fully_winged   0.5227 0.403 60.4   1.298  0.1993
+
+method = Pitfall8:
+ contrast                        estimate    SE   df t.ratio p.value
+ not_fully_winged - fully_winged  -0.0370 0.426 64.6  -0.087  0.9311
+
+method = Pitfall10:
+ contrast                        estimate    SE   df t.ratio p.value
+ not_fully_winged - fully_winged   0.0961 0.484 64.2   0.199  0.8431
+
+method = GPD:
+ contrast                        estimate    SE   df t.ratio p.value
+ not_fully_winged - fully_winged  -0.2441 0.367 53.1  -0.665  0.5088
+
+Degrees-of-freedom method: kenward-roger 
+
+Cross-trait model: log_BL * full_wing LRT
+Data: dat_wing
+Models:
+m_cross_add_ML: logit_p ~ method + log_BL + full_wing + (1 | species)
+m_cross_int_ML: logit_p ~ method + log_BL * full_wing + (1 | species)
+               npar    AIC    BIC  logLik -2*log(L)  Chisq Df Pr(>Chisq)
+m_cross_add_ML   10 361.17 390.87 -170.58    341.17                     
+m_cross_int_ML   11 362.85 395.51 -170.42    340.85 0.3215  1     0.5707

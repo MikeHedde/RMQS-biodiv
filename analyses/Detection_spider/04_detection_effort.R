@@ -76,8 +76,7 @@ if ("TRI" %in% methods_use) {
   effort_parts$tm <- dat0 %>% filter(method == "TRI") %>% distinct(site_id) %>% mutate(eff_tm = 6 * tm_unit)
 }
 
-effort_wide <- reduce(effort_parts, ~left_join(.x, .y, by = "site_id")) %>%
-  mutate(across(where(is.numeric), ~ tidyr::replace_na(., 0)))
+effort_wide <- reduce(effort_parts, ~left_join(.x, .y, by="site_id"))
 
 sampling_map <- dat0 %>%
   distinct(site_id, method) %>%
@@ -108,10 +107,12 @@ det_wide <- det_wide %>% select(site_id, species, all_of(det_cols))
 # 4.3 Y & Effort standardisé
 sites <- sort(unique(det_wide$site_id))
 spp   <- sort(unique(det_wide$species))
-Rnames <- det_cols
+Rnames <- intersect(dimnames(Y)$rep, c("Pitfall10","GPD","DVAC","TM"))
 
 Y <- array(NA_integer_, dim = c(length(sites), length(Rnames), length(spp)),
            dimnames = list(site = sites, rep = Rnames, species = spp))
+
+eff_z <- eff_z[, Rnames, drop = FALSE]  # après correction NA/0 ci-dessus
 
 det_long <- det_wide %>%
   mutate(site_id = factor(site_id, levels = sites),
@@ -136,8 +137,8 @@ for (rn in Rnames) {
 eff_vec <- as.vector(eff_mat); eff_log <- log1p(eff_vec)
 eff_mean <- mean(eff_log, na.rm = TRUE); eff_sd <- sd(eff_log, na.rm = TRUE); if (!is.finite(eff_sd) || eff_sd==0) eff_sd <- 1
 eff_z <- matrix((eff_log - eff_mean)/eff_sd, nrow = length(sites), ncol = length(Rnames), byrow = FALSE, dimnames = dimnames(eff_mat))
-mask_allNA_sr <- apply(Y, c(1,2), function(a) all(is.na(a)))
-eff_z[mask_allNA_sr] <- NA
+mask_vis <- !is.na(Y[, , 1])     # TRUE si visite existante
+eff_mat[!mask_vis] <- NA_real_
 
 # 4.4 Covariables site
 site_alt <- dat0 %>% group_by(site_id) %>% summarise(ALTITUDE = median(ALTITUDE, na.rm=TRUE), .groups="drop")
