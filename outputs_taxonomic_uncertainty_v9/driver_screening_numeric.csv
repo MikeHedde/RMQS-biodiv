@@ -1,0 +1,4 @@
+variable,missing_prop,sd,n_unique,keep_missing,keep_variance,keep_prelim,reason
+t360_mean,0,2.013640139549609,67,TRUE,TRUE,TRUE,kept_a_priori
+mos,0,45.48759156054753,64,TRUE,TRUE,TRUE,kept_a_priori
+ph,0,1.152794669282046,58,TRUE,TRUE,TRUE,kept_a_priori

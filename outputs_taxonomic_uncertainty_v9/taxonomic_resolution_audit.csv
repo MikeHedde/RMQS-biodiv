@@ -1,0 +1,5 @@
+taxo_level,n_rows,total_abundance,n_lb_nom,n_species_binomial
+species,550,2352,51,51
+genus,152,688,16,0
+family,6,15,2,0
+order,8,11,2,0
