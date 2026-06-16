@@ -1,0 +1,52 @@
+species_key,species_cd_ref,species_label,binomial,genus,famille,total_abundance,n_rows
+cdref:216346,216346,Arrhopalites caecus,Arrhopalites caecus,Arrhopalites,Arrhopalitidae,10,5
+cdref:216361,216361,Bourletiella arvalis,Bourletiella arvalis,Bourletiella,Bourletiellidae,12,7
+name_fallback:Bourletiella hortensis,NA,Bourletiella hortensis,Bourletiella hortensis,Bourletiella,Bourletiellidae,5,2
+cdref:215873,215873,Brachystomella parvula,Brachystomella parvula,Brachystomella,Brachystomellidae,11,7
+cdref:215800,215800,Ceratophysella bengtssoni,Ceratophysella bengtssoni,Ceratophysella,Hypogastruridae,16,7
+cdref:215802,215802,Ceratophysella denticulata,Ceratophysella denticulata,Ceratophysella,Hypogastruridae,18,7
+name_fallback:Ceratophysella gibbosa,NA,Ceratophysella gibbosa,Ceratophysella gibbosa,Ceratophysella,Hypogastruridae,47,7
+cdref:216313,216313,Cyphoderus bidenticulatus,Cyphoderus bidenticulatus,Cyphoderus,Cyphoderidae,1,1
+cdref:216387,216387,Dicyrtomina minuta,Dicyrtomina minuta,Dicyrtomina,Dicyrtomidae,1,1
+cdref:216302,216302,Entomobrya lanuginosa,Entomobrya lanuginosa,Entomobrya,Entomobryidae,60,12
+cdref:28893,28893,Folsomia candida,Folsomia candida,Folsomia,Isotomidae,38,4
+cdref:216107,216107,Folsomia quadrioculata,Folsomia quadrioculata,Folsomia,Isotomidae,145,36
+name_fallback:Folsomides parvulus,NA,Folsomides parvulus,Folsomides parvulus,Folsomides,Isotomidae,21,10
+cdref:215945,215945,Friesea truncata,Friesea truncata,Friesea,Neanuridae,15,13
+name_fallback:Hemisotoma thermophila,NA,Hemisotoma thermophila,Hemisotoma thermophila,Hemisotoma,Isotomidae,179,17
+cdref:216289,216289,Heteromurus major,Heteromurus major,Heteromurus,Entomobryidae,135,15
+cdref:216290,216290,Heteromurus nitidus,Heteromurus nitidus,Heteromurus,Entomobryidae,11,8
+cdref:215819,215819,Hypogastrura manubrialis,Hypogastrura manubrialis,Hypogastrura,Hypogastruridae,4,3
+cdref:215824,215824,Hypogastrura vernalis,Hypogastrura vernalis,Hypogastrura,Hypogastruridae,59,10
+cdref:28898,28898,Isotoma viridis,Isotoma viridis,Isotoma,Isotomidae,106,29
+cdref:216125,216125,Isotomiella minor,Isotomiella minor,Isotomiella,Isotomidae,167,52
+cdref:216130,216130,Isotomodes productus,Isotomodes productus,Isotomodes,Isotomidae,1,1
+cdref:215889,215889,Lathriopyga longiseta,Lathriopyga longiseta,Lathriopyga,Neanuridae,12,6
+cdref:216269,216269,Lepidocyrtus cyaneus,Lepidocyrtus cyaneus,Lepidocyrtus,Entomobryidae,19,10
+cdref:216271,216271,Lepidocyrtus lanuginosus,Lepidocyrtus lanuginosus,Lepidocyrtus,Entomobryidae,97,35
+cdref:28902,28902,Lepidocyrtus lignorum,Lepidocyrtus lignorum,Lepidocyrtus,Entomobryidae,5,2
+cdref:216341,216341,Megalothorax minimus,Megalothorax minimus,Megalothorax,Neelidae,6,5
+cdref:216006,216006,Metaphorura affinis,Metaphorura affinis,Metaphorura,Tullbergiidae,4,2
+cdref:215877,215877,Neanura muscorum,Neanura muscorum,Neanura,Neanuridae,2,2
+name_fallback:Neelus murinus,NA,Neelus murinus,Neelus murinus,Neelus,Neelidae,1,1
+cdref:216150,216150,Parisotoma notabilis,Parisotoma notabilis,Parisotoma,Isotomidae,402,77
+cdref:216154,216154,Proisotoma minima,Proisotoma minima,Proisotoma,Isotomidae,1,1
+cdref:216155,216155,Proisotoma minuta,Proisotoma minuta,Proisotoma,Isotomidae,4,3
+name_fallback:Proisotomodes debilis,NA,Proisotomodes debilis,Proisotomodes debilis,Proisotomodes,Isotomidae,20,3
+cdref:216206,216206,Pseudosinella alba,Pseudosinella alba,Pseudosinella,Entomobryidae,107,32
+cdref:216236,216236,Pseudosinella immaculata,Pseudosinella immaculata,Pseudosinella,Entomobryidae,1,1
+cdref:216246,216246,Pseudosinella octopunctata,Pseudosinella octopunctata,Pseudosinella,Entomobryidae,1,1
+cdref:216421,216421,Sminthurides parvulus,Sminthurides parvulus,Sminthurides,Sminthurididae,56,11
+name_fallback:Sminthurides pseudassimilis,NA,Sminthurides pseudassimilis,Sminthurides pseudassimilis,Sminthurides,Sminthurididae,1,1
+cdref:216395,216395,Sminthurinus aureus,Sminthurinus aureus,Sminthurinus,Katiannidae,115,40
+cdref:216396,216396,Sminthurinus elegans,Sminthurinus elegans,Sminthurinus,Katiannidae,21,12
+cdref:216409,216409,Sminthurus viridis,Sminthurus viridis,Sminthurus,Sminthuridae,18,8
+cdref:216426,216426,Sphaeridia pumilis,Sphaeridia pumilis,Sphaeridia,Sminthurididae,55,26
+name_fallback:Stenaphorura denisi,NA,Stenaphorura denisi,Stenaphorura denisi,Stenaphorura,Tullbergiidae,6,4
+cdref:216181,216181,Tetracanthella perezi,Tetracanthella perezi,Tetracanthella,Isotomidae,3,2
+cdref:216329,216329,Tomocerina minuta,Tomocerina minuta,Tomocerina,Tomoceridae,4,3
+cdref:215856,215856,Triacanthella perfecta,Triacanthella perfecta,Triacanthella,Hypogastruridae,3,1
+name_fallback:Willemia intermedia,NA,Willemia intermedia,Willemia intermedia,Willemia,Hypogastruridae,1,1
+cdref:215867,215867,Xenylla tullbergi,Xenylla tullbergi,Xenylla,Hypogastruridae,1,1
+name_fallback:Xenylla welchi,NA,Xenylla welchi,Xenylla welchi,Xenylla,Hypogastruridae,19,2
+cdref:215868,215868,Xenylla xavieri,Xenylla xavieri,Xenylla,Hypogastruridae,305,3

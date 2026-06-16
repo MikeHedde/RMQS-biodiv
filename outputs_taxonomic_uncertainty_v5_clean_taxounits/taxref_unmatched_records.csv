@@ -1,0 +1,13 @@
+cd_nom,lb_nom,nom_valide,rank,taxo_level,binomial,species_key,species_label
+184581,Poduromorpha,"Poduromorpha Börner, 1913",O,order,NA,NA,NA
+184590,Symphypleona,"Symphypleona Börner, 1901",O,order,NA,NA,NA
+837805,Bourletiella hortensis,"Bourletiella hortensis (Fitch, 1863)",S,species,Bourletiella hortensis,name_fallback:Bourletiella hortensis,Bourletiella hortensis
+837807,Ceratophysella gibbosa,"Ceratophysella gibbosa (Bagnall, 1940)",S,species,Ceratophysella gibbosa,name_fallback:Ceratophysella gibbosa,Ceratophysella gibbosa
+255221,Folsomides parvulus,"Folsomides parvulus Stach, 1922",S,species,Folsomides parvulus,name_fallback:Folsomides parvulus,Folsomides parvulus
+655839,Hemisotoma thermophila,"Hemisotoma thermophila (Axelson, 1900)",S,species,Hemisotoma thermophila,name_fallback:Hemisotoma thermophila,Hemisotoma thermophila
+884837,Neelus murinus,"Neelus murinus Folsom, 1896",S,species,Neelus murinus,name_fallback:Neelus murinus,Neelus murinus
+884697,Proisotomodes debilis,"Proisotomodes debilis (Cassagnau, 1959)",S,species,Proisotomodes debilis,name_fallback:Proisotomodes debilis,Proisotomodes debilis
+884828,Sminthurides pseudassimilis,"Sminthurides pseudassimilis Stach, 1956",S,species,Sminthurides pseudassimilis,name_fallback:Sminthurides pseudassimilis,Sminthurides pseudassimilis
+884524,Stenaphorura denisi,"Stenaphorura denisi Bagnall, 1935",S,species,Stenaphorura denisi,name_fallback:Stenaphorura denisi,Stenaphorura denisi
+254524,Willemia intermedia,"Willemia intermedia Mills, 1934",S,species,Willemia intermedia,name_fallback:Willemia intermedia,Willemia intermedia
+254543,Xenylla welchi,"Xenylla welchi Folsom, 1916",S,species,Xenylla welchi,name_fallback:Xenylla welchi,Xenylla welchi
