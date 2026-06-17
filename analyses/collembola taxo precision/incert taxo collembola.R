@@ -31,19 +31,19 @@ PATH_COLLEMBOLA <- "data/raw-data/1.faune/collembola.csv"
 PATH_ENV        <- "data/derived-data/all_env_variables.csv"
 PATH_TAXREF     <- "data/raw-data/taxref_collembola.csv"
 
-OUT_DIR <- "outputs_taxonomic_uncertainty_v5_clean_taxounits"
+OUT_DIR <- "outputs_taxonomic_uncertainty_v9"
 dir.create(OUT_DIR, showWarnings = FALSE, recursive = TRUE)
 
 
 set.seed(123)
 
 ANALYSIS_UNIT <- "station"   # recommandé avec drivers environnementaux stationnels
-N_SIM <- 50
+N_SIM <- 10
 
 # PERMANOVA rapide, univariée par driver
 RUN_DRIVER_BLOCK <- TRUE
-PERMANOVA_N_PERM <- 199
-PERMANOVA_MAX_STOCHASTIC_ITER <- 20
+PERMANOVA_N_PERM <- 99
+PERMANOVA_MAX_STOCHASTIC_ITER <- 10
 PERMANOVA_MAX_NUMERIC_DRIVERS <- 3
 
 # Scénarios d'erreur entre espèces congénériques
@@ -1012,6 +1012,7 @@ scenario_definitions <- scenario_data %>%
   arrange(scenario_family, scenario)
 readr::write_csv(scenario_definitions, file.path(OUT_DIR, "scenario_definitions.csv"))
 
+readr::write_csv(scenario_definitions, file.path(OUT_DIR, "scenario_definitions.csv"))
 message("Scénarios construits : ", n_distinct(scenario_data$scenario))
 print(scenario_definitions)
 

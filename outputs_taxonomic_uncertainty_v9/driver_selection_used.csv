@@ -1,4 +1,4 @@
 variable,type,ecological_role
 t360_mean,numeric_a_priori,previous-year mean temperature
 mos,numeric_a_priori,soil organic matter
-ph,numeric_a_priori,soil pH
+p_h,numeric_a_priori,a priori driver
