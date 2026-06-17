@@ -19,6 +19,10 @@ source(file.path(WORKFLOW_DIR, "05_compute_alpha_metrics.R"))
 source(file.path(WORKFLOW_DIR, "06_compute_stability.R"))
 source(file.path(WORKFLOW_DIR, "07_compute_drivers.R"))
 source(file.path(WORKFLOW_DIR, "08_rare_and_inventory_audits.R"))
+source(file.path(WORKFLOW_DIR, "09_appendix_error_gradient_analysis.R"))
+source(file.path(WORKFLOW_DIR, "10_gbif_regional_error_gradient.R"))
 source(file.path(WORKFLOW_DIR, "figures.R"))
+source(file.path(WORKFLOW_DIR, "appendix_figures_error_gradient.R"))
+
 
 message("Workflow terminé.")

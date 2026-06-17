@@ -107,3 +107,11 @@ load_required_step <- function(step_id, envir = parent.frame()) {
   }
   invisible(TRUE)
 }
+
+options(
+  taxo.gbif_mode = "download", # ou "auto" / "search"
+  taxo.gbif_buffer_km = 250,
+  taxo.gbif_n_sim = 20,
+  taxo.gbif_pool_strategy = "buffer_then_region_fallback",
+  taxo.gbif_weighted_shuffling = TRUE
+)

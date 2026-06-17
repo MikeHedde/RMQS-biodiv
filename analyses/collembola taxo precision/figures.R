@@ -5,7 +5,7 @@
 # ============================================================
 
 .workflow_file <- tryCatch(normalizePath(sys.frame(1)$ofile), error = function(e) NA_character_)
-WORKFLOW_DIR <- "C:/Users/Hedde/Documents/R/RMQS-biodiv/analyses/collembola taxo precision"
+WORKFLOW_DIR <- "analyses/collembola taxo precision"
 source(file.path(WORKFLOW_DIR,  "00_config.R"))
 source(file.path(WORKFLOW_DIR, "functions_taxonomic_uncertainty.R"))
 

@@ -4,8 +4,8 @@
 
 .workflow_file <- tryCatch(normalizePath(sys.frame(1)$ofile), error = function(e) NA_character_)
 WORKFLOW_DIR <- if (!is.na(.workflow_file)) dirname(.workflow_file) else getwd()
-source(file.path(WORKFLOW_DIR, "R", "00_config.R"))
-source(file.path(WORKFLOW_DIR, "R", "functions_taxonomic_uncertainty.R"))
+source(file.path(WORKFLOW_DIR,  "00_config.R"))
+source(file.path(WORKFLOW_DIR, "functions_taxonomic_uncertainty.R"))
 
 load_required_step("09_appendix_error_gradient_analysis")
 

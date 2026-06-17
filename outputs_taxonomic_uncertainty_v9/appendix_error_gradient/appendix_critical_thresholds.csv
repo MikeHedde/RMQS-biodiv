@@ -1,0 +1,14 @@
+threshold_type,metric,metric_label,critical_definition,critical_error_pct
+relative_change,gamma_taxon_units,Gamma richness,|relative change| >= 5%,NA
+relative_change,mean_coverage_chao,Mean sample coverage,|relative change| >= 5%,NA
+relative_change,mean_local_q0,Alpha q0 richness,|relative change| >= 5%,3
+relative_change,mean_local_q1,Alpha Hill q1,|relative change| >= 5%,6
+relative_change,mean_local_q2,Alpha Hill q2,|relative change| >= 5%,8
+stability,bray_curtis_cor,Bray-Curtis,mean stability <= 0.95,NA
+stability,coverage_chao_cor,Mean sample coverage,mean stability <= 0.95,12
+stability,jaccard_pa_cor,Jaccard,mean stability <= 0.95,8
+stability,procrustes_r2,Ordination (Procrustes R2),mean stability <= 0.95,NA
+stability,q0_cor,Alpha q0 richness,mean stability <= 0.95,NA
+stability,q1_cor,Alpha Hill q1,mean stability <= 0.95,18
+stability,q2_cor,Alpha Hill q2,mean stability <= 0.95,17
+stability,sorensen_pa_cor,Sørensen,mean stability <= 0.95,9
