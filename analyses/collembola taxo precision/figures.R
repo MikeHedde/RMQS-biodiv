@@ -1,81 +1,26 @@
 # ============================================================
-# PUBLICATION-READY FIGURES
-# Adapté au script actuel : stability_long, stability_by_iter,
-# alpha_driver_by_iter, scenario_definitions
+# figures.R
+# Figures publication-ready uniquement.
+# Ce script ne recalcule pas les analyses lourdes : il recharge les caches RDS.
 # ============================================================
 
-library(tidyverse)
-library(forcats)
-library(patchwork)
+.workflow_file <- tryCatch(normalizePath(sys.frame(1)$ofile), error = function(e) NA_character_)
+WORKFLOW_DIR <- "C:/Users/Hedde/Documents/R/RMQS-biodiv/analyses/collembola taxo precision"
+source(file.path(WORKFLOW_DIR,  "00_config.R"))
+source(file.path(WORKFLOW_DIR, "functions_taxonomic_uncertainty.R"))
 
-PUB_DIR <- file.path(OUT_DIR, "figures_publication_ready")
-dir.create(PUB_DIR, showWarnings = FALSE, recursive = TRUE)
+load_required_step("01_import_clean")
+load_required_step("04_build_scenarios")
+load_required_step("06_compute_stability")
+load_required_step("07_compute_drivers")
+load_required_step("08_rare_and_inventory_audits")
 
-# ------------------------------------------------------------
-# 0. Recharge les objets nécessaires si absents de la session
-# ------------------------------------------------------------
+if (!exists("alpha_driver_by_iter", inherits = FALSE)) alpha_driver_by_iter <- tibble()
+if (!exists("scenario_inventory_change", inherits = FALSE)) scenario_inventory_change <- tibble()
 
-if (!exists("OUT_DIR")) {
-  OUT_DIR <- "outputs_taxonomic_uncertainty_v9"
-}
+theme_set(theme_bw(base_size = 12))
+message_header("Figures publication-ready")
 
-if (!exists("scenario_definitions")) {
-  path_scen <- file.path(OUT_DIR, "scenario_definitions.csv")
-  if (file.exists(path_scen)) {
-    scenario_definitions <- readr::read_csv(path_scen, show_col_types = FALSE)
-  } else if (exists("stability_by_iter")) {
-    scenario_definitions <- stability_by_iter %>%
-      distinct(scenario_family, scenario, baseline_scenario, unit_type)
-  } else {
-    stop("scenario_definitions introuvable : relance le script principal ou vérifie OUT_DIR.")
-  }
-}
-
-if (!exists("stability_long")) {
-  path_stab_long <- file.path(OUT_DIR, "stability_long.csv")
-  if (file.exists(path_stab_long)) {
-    stability_long <- readr::read_csv(path_stab_long, show_col_types = FALSE)
-  } else {
-    stop("stability_long introuvable : relance le script principal ou vérifie OUT_DIR.")
-  }
-}
-
-if (!exists("stability_by_iter")) {
-  path_stab_iter <- file.path(OUT_DIR, "stability_by_iter.csv")
-  if (file.exists(path_stab_iter)) {
-    stability_by_iter <- readr::read_csv(path_stab_iter, show_col_types = FALSE)
-  } else {
-    stop("stability_by_iter introuvable : relance le script principal ou vérifie OUT_DIR.")
-  }
-}
-
-if (!exists("alpha_driver_by_iter")) {
-  path_alpha <- file.path(OUT_DIR, "alpha_driver_by_iter.csv")
-  if (file.exists(path_alpha)) {
-    alpha_driver_by_iter <- readr::read_csv(path_alpha, show_col_types = FALSE)
-  } else {
-    warning("alpha_driver_by_iter introuvable : la figure drivers alpha ne pourra pas être produite.")
-    alpha_driver_by_iter <- tibble()
-  }
-}
-
-# Recrée aussi scenario_order si absent
-if (!exists("scenario_order")) {
-  scenario_order <- scenario_definitions %>%
-    mutate(order_key = case_when(
-      scenario == baseline_scenario ~ 0,
-      scenario_family == "workflow_filtering" ~ 1,
-      scenario_family == "resolution_genus" ~ 2,
-      scenario_family == "resolution_family" ~ 3,
-      scenario_family == "species_error_strict" ~ 4,
-      TRUE ~ 5
-    )) %>%
-    arrange(order_key, scenario_family, scenario) %>%
-    pull(scenario) %>%
-    unique()
-}
-
-# ------------------------------------------------------------
 # 1. Baselines à retirer des figures principales
 # ------------------------------------------------------------
 
@@ -620,122 +565,126 @@ ggsave(
 # 6. FIGURE 4 — Change in alpha-diversity driver coefficients
 # ------------------------------------------------------------
 
-driver_label_key <- c(
-  "t360_mean" = "Temperature",
-  "mos" = "Soil organic matter",
-  "p_h" = "pH",
-  "ph" = "pH"
-)
-
-alpha_metric_key <- tribble(
-  ~alpha_metric, ~alpha_metric_label, ~alpha_metric_order,
-  "q0", "q0 richness", 1,
-  "q1", "Hill q1", 2,
-  "q2", "Hill q2", 3,
-  "coverage_chao", "Sample coverage", 4
-)
-
-alpha_driver_delta_pub <- alpha_driver_by_iter %>%
-  filter(alpha_metric %in% alpha_metric_key$alpha_metric) %>%
-  mutate(
-    driver_label = recode(term, !!!driver_label_key),
-    driver_label = if_else(is.na(driver_label), term, driver_label)
+if (nrow(alpha_driver_by_iter) > 0 && all(c("alpha_metric", "term", "estimate") %in% names(alpha_driver_by_iter))) {
+  driver_label_key <- c(
+    "t360_mean" = "Temperature",
+    "mos" = "Soil organic matter",
+    "p_h" = "pH",
+    "ph" = "pH"
   )
 
-baseline_alpha_coeff <- alpha_driver_delta_pub %>%
-  filter(scenario == baseline_scenario) %>%
-  select(
-    scenario_family,
-    baseline_scenario,
-    alpha_metric,
-    term,
-    baseline_estimate = estimate
+  alpha_metric_key <- tribble(
+    ~alpha_metric, ~alpha_metric_label, ~alpha_metric_order,
+    "q0", "q0 richness", 1,
+    "q1", "Hill q1", 2,
+    "q2", "Hill q2", 3,
+    "coverage_chao", "Sample coverage", 4
   )
 
-alpha_driver_delta_pub <- alpha_driver_delta_pub %>%
-  filter(!scenario %in% baseline_scenarios) %>%
-  inner_join(
-    baseline_alpha_coeff,
-    by = c("scenario_family", "baseline_scenario", "alpha_metric", "term")
-  ) %>%
-  inner_join(scenario_key_main, by = "scenario") %>%
-  inner_join(alpha_metric_key, by = "alpha_metric") %>%
-  mutate(
-    delta_estimate = estimate - baseline_estimate,
-    scenario_label = factor(
-      scenario_label,
-      levels = scenario_key_main %>%
-        arrange(scenario_order) %>%
-        pull(scenario_label) %>%
-        unique()
-    ),
-    scenario_family_label = factor(
-      scenario_family_label,
-      levels = c("Species-level error", "Workflow decision", "Taxonomic coarsening")
-    ),
-    alpha_metric_label = factor(
-      alpha_metric_label,
-      levels = alpha_metric_key %>%
-        arrange(alpha_metric_order) %>%
-        pull(alpha_metric_label)
-    ),
-    driver_label = factor(
-      driver_label,
-      levels = c("Temperature", "Soil organic matter", "pH")
+  alpha_driver_delta_pub <- alpha_driver_by_iter %>%
+    filter(alpha_metric %in% alpha_metric_key$alpha_metric) %>%
+    mutate(
+      driver_label = recode(term, !!!driver_label_key),
+      driver_label = if_else(is.na(driver_label), term, driver_label)
     )
-  ) %>%
-  group_by(
-    scenario,
-    scenario_label,
-    scenario_family_label,
-    scenario_order,
-    alpha_metric_label,
-    driver_label
-  ) %>%
-  summarise(
-    delta_mean = mean(delta_estimate, na.rm = TRUE),
-    delta_p10 = quantile(delta_estimate, 0.10, na.rm = TRUE, names = FALSE),
-    delta_p90 = quantile(delta_estimate, 0.90, na.rm = TRUE, names = FALSE),
-    n_iter = n(),
-    .groups = "drop"
+
+  baseline_alpha_coeff <- alpha_driver_delta_pub %>%
+    filter(scenario == baseline_scenario) %>%
+    select(
+      scenario_family,
+      baseline_scenario,
+      alpha_metric,
+      term,
+      baseline_estimate = estimate
+    )
+
+  alpha_driver_delta_pub <- alpha_driver_delta_pub %>%
+    filter(!scenario %in% baseline_scenarios) %>%
+    inner_join(
+      baseline_alpha_coeff,
+      by = c("scenario_family", "baseline_scenario", "alpha_metric", "term")
+    ) %>%
+    inner_join(scenario_key_main, by = "scenario") %>%
+    inner_join(alpha_metric_key, by = "alpha_metric") %>%
+    mutate(
+      delta_estimate = estimate - baseline_estimate,
+      scenario_label = factor(
+        scenario_label,
+        levels = scenario_key_main %>%
+          arrange(scenario_order) %>%
+          pull(scenario_label) %>%
+          unique()
+      ),
+      scenario_family_label = factor(
+        scenario_family_label,
+        levels = c("Species-level error", "Workflow decision", "Taxonomic coarsening")
+      ),
+      alpha_metric_label = factor(
+        alpha_metric_label,
+        levels = alpha_metric_key %>%
+          arrange(alpha_metric_order) %>%
+          pull(alpha_metric_label)
+      ),
+      driver_label = factor(
+        driver_label,
+        levels = c("Temperature", "Soil organic matter", "pH")
+      )
+    ) %>%
+    group_by(
+      scenario,
+      scenario_label,
+      scenario_family_label,
+      scenario_order,
+      alpha_metric_label,
+      driver_label
+    ) %>%
+    summarise(
+      delta_mean = mean(delta_estimate, na.rm = TRUE),
+      delta_p10 = quantile(delta_estimate, 0.10, na.rm = TRUE, names = FALSE),
+      delta_p90 = quantile(delta_estimate, 0.90, na.rm = TRUE, names = FALSE),
+      n_iter = n(),
+      .groups = "drop"
+    )
+
+  p_alpha_drivers_main <- alpha_driver_delta_pub %>%
+    ggplot(aes(x = scenario_label, y = delta_mean, shape = driver_label)) +
+    geom_hline(yintercept = 0, linewidth = 0.35, linetype = "dashed") +
+    geom_errorbar(aes(ymin = delta_p10, ymax = delta_p90), width = 0.12, na.rm = TRUE) +
+    geom_point(size = 2.2, na.rm = TRUE) +
+    facet_grid(alpha_metric_label ~ scenario_family_label, scales = "free_x", space = "free_x") +
+    labs(
+      title = "Taxonomic uncertainty can alter environment–diversity relationships",
+      subtitle = "Difference in standardised coefficients relative to the appropriate baseline",
+      x = NULL,
+      y = expression(Delta * " standardised coefficient"),
+      shape = "Driver"
+    ) +
+    theme_classic(base_size = 10.5) +
+    theme(
+      strip.background = element_rect(fill = "grey92", color = NA),
+      strip.text = element_text(face = "bold", size = 9),
+      axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),
+      legend.position = "right",
+      plot.title = element_text(face = "bold")
+    )
+
+  ggsave(
+    file.path(PUB_DIR, "Fig4_main_alpha_driver_delta_coefficients.png"),
+    p_alpha_drivers_main,
+    width = 10.5,
+    height = 6.8,
+    dpi = 600
   )
 
-p_alpha_drivers_main <- alpha_driver_delta_pub %>%
-  ggplot(aes(x = scenario_label, y = delta_mean, shape = driver_label)) +
-  geom_hline(yintercept = 0, linewidth = 0.35, linetype = "dashed") +
-  geom_errorbar(aes(ymin = delta_p10, ymax = delta_p90), width = 0.12, na.rm = TRUE) +
-  geom_point(size = 2.2, na.rm = TRUE) +
-  facet_grid(alpha_metric_label ~ scenario_family_label, scales = "free_x", space = "free_x") +
-  labs(
-    title = "Taxonomic uncertainty can alter environment–diversity relationships",
-    subtitle = "Difference in standardised coefficients relative to the appropriate baseline",
-    x = NULL,
-    y = expression(Delta * " standardised coefficient"),
-    shape = "Driver"
-  ) +
-  theme_classic(base_size = 10.5) +
-  theme(
-    strip.background = element_rect(fill = "grey92", color = NA),
-    strip.text = element_text(face = "bold", size = 9),
-    axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),
-    legend.position = "right",
-    plot.title = element_text(face = "bold")
+  ggsave(
+    file.path(PUB_DIR, "Fig4_main_alpha_driver_delta_coefficients.pdf"),
+    p_alpha_drivers_main,
+    width = 10.5,
+    height = 6.8
   )
-
-ggsave(
-  file.path(PUB_DIR, "Fig4_main_alpha_driver_delta_coefficients.png"),
-  p_alpha_drivers_main,
-  width = 10.5,
-  height = 6.8,
-  dpi = 600
-)
-
-ggsave(
-  file.path(PUB_DIR, "Fig4_main_alpha_driver_delta_coefficients.pdf"),
-  p_alpha_drivers_main,
-  width = 10.5,
-  height = 6.8
-)
+} else {
+  warning("alpha_driver_by_iter vide ou incomplet : Fig4 drivers alpha non produite.")
+}
 
 # ------------------------------------------------------------
 # 7. Supplementary full heatmap
@@ -795,100 +744,91 @@ ggsave(
 
 
 # ============================================================
+
+
+# ============================================================
 # FIGURE 5 — Consequences for taxonomic inventories
 # Gamma diversity and species-list alteration
 # ============================================================
-# -----------------------------
-# 5b. INVENTAIRES TAXONOMIQUES PAR SCENARIO
-# -----------------------------
 
-scenario_inventory_by_iter <- scenario_data %>%
-  distinct(
-    scenario_family,
-    scenario,
-    baseline_scenario,
-    unit_type,
-    iter,
-    taxon_unit
-  ) %>%
-  arrange(scenario_family, scenario, iter, taxon_unit)
-
-readr::write_csv(
-  scenario_inventory_by_iter,
-  file.path(OUT_DIR, "scenario_inventory_by_iter.csv")
-)
-
-# Changements d'inventaire par rapport à la baseline propre à chaque famille.
-# Pour chaque scénario, on mesure :
-# - unités retenues depuis la baseline
-# - unités perdues par rapport à la baseline
-# - unités ajoutées par rapport à la baseline
-
-baseline_inventory <- scenario_inventory_by_iter %>%
-  filter(scenario == baseline_scenario) %>%
-  group_by(scenario_family, baseline_scenario) %>%
-  summarise(
-    baseline_units = list(unique(taxon_unit)),
-    gamma_baseline = n_distinct(taxon_unit),
-    .groups = "drop"
+if (exists("scenario_inventory_change") && nrow(scenario_inventory_change) > 0 && nrow(scenario_key_main) > 0) {
+  inventory_pub <- scenario_inventory_change %>%
+    inner_join(scenario_key_main, by = "scenario") %>%
+    pivot_longer(
+      cols = c(gamma_change_pct, lost_pct, gained_pct),
+      names_to = "inventory_metric",
+      values_to = "percent"
+    ) %>%
+    mutate(
+      inventory_metric = recode(
+        inventory_metric,
+        gamma_change_pct = "Gamma change",
+        lost_pct = "Baseline units lost",
+        gained_pct = "Units gained"
+      ),
+      inventory_metric = factor(
+        inventory_metric,
+        levels = c("Gamma change", "Baseline units lost", "Units gained")
+      ),
+      scenario_label = factor(
+        scenario_label,
+        levels = scenario_key_main %>%
+          arrange(scenario_order) %>%
+          pull(scenario_label) %>%
+          unique()
+      ),
+      scenario_family_label = factor(
+        scenario_family_label,
+        levels = c("Species-level error", "Workflow decision", "Taxonomic coarsening")
+      )
+    ) %>%
+    group_by(scenario, scenario_label, scenario_family_label, scenario_order, inventory_metric) %>%
+    summarise(
+      mean_percent = mean(percent, na.rm = TRUE),
+      p10 = quantile(percent, 0.10, na.rm = TRUE, names = FALSE),
+      p90 = quantile(percent, 0.90, na.rm = TRUE, names = FALSE),
+      n_iter = n(),
+      .groups = "drop"
+    )
+  
+  p_inventory_main <- inventory_pub %>%
+    ggplot(aes(x = scenario_label, y = mean_percent, shape = inventory_metric)) +
+    geom_hline(yintercept = 0, linewidth = 0.35, linetype = "dashed") +
+    geom_errorbar(aes(ymin = p10, ymax = p90), width = 0.12, na.rm = TRUE) +
+    geom_point(size = 2.3, na.rm = TRUE) +
+    facet_grid(. ~ scenario_family_label, scales = "free_x", space = "free_x") +
+    labs(
+      title = "Taxonomic uncertainty reshapes taxonomic inventories",
+      subtitle = "Changes in gamma diversity and species-list composition relative to the appropriate baseline",
+      x = NULL,
+      y = "Change relative to baseline (%)",
+      shape = "Inventory metric"
+    ) +
+    theme_classic(base_size = 11) +
+    theme(
+      strip.background = element_rect(fill = "grey92", color = NA),
+      strip.text = element_text(face = "bold"),
+      axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),
+      legend.position = "right",
+      plot.title = element_text(face = "bold")
+    )
+  
+  ggsave(
+    file.path(PUB_DIR, "Fig5_inventory_gamma_change.png"),
+    p_inventory_main,
+    width = 10,
+    height = 4.5,
+    dpi = 600
   )
-
-scenario_inventory_change <- scenario_inventory_by_iter %>%
-  filter(scenario != baseline_scenario) %>%
-  group_by(scenario_family, scenario, baseline_scenario, unit_type, iter) %>%
-  summarise(
-    scenario_units = list(unique(taxon_unit)),
-    gamma_scenario = n_distinct(taxon_unit),
-    .groups = "drop"
-  ) %>%
-  left_join(
-    baseline_inventory,
-    by = c("scenario_family", "baseline_scenario")
-  ) %>%
-  mutate(
-    n_retained = purrr::map2_int(
-      scenario_units,
-      baseline_units,
-      ~ length(intersect(.x, .y))
-    ),
-    n_lost = purrr::map2_int(
-      baseline_units,
-      scenario_units,
-      ~ length(setdiff(.x, .y))
-    ),
-    n_gained = purrr::map2_int(
-      scenario_units,
-      baseline_units,
-      ~ length(setdiff(.x, .y))
-    ),
-    gamma_change = gamma_scenario - gamma_baseline,
-    gamma_change_pct = 100 * gamma_change / gamma_baseline,
-    lost_pct = 100 * n_lost / gamma_baseline,
-    gained_pct = 100 * n_gained / gamma_baseline
-  ) %>%
-  select(
-    scenario_family,
-    scenario,
-    baseline_scenario,
-    unit_type,
-    iter,
-    gamma_baseline,
-    gamma_scenario,
-    gamma_change,
-    gamma_change_pct,
-    n_retained,
-    n_lost,
-    n_gained,
-    lost_pct,
-    gained_pct
+  
+  ggsave(
+    file.path(PUB_DIR, "Fig5_inventory_gamma_change.pdf"),
+    p_inventory_main,
+    width = 10,
+    height = 4.5
   )
-
-readr::write_csv(
-  scenario_inventory_change,
-  file.path(OUT_DIR, "scenario_inventory_change.csv")
-)
-
-message("Inventaire par scénario écrit : scenario_inventory_by_iter.csv")
-message("Changements d'inventaire écrits : scenario_inventory_change.csv")
+} else {
+  warning("scenario_inventory_change absent ou aucun scénario principal : Fig5 inventaire non produite.")
+}
 
 message("Publication-ready figures saved in: ", PUB_DIR)
