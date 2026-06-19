@@ -13,6 +13,13 @@ WORKFLOW_DIR <- if (!is.na(.workflow_file)) dirname(.workflow_file) else getwd()
 
 source(file.path(WORKFLOW_DIR, "01_import_clean.R"))
 source(file.path(WORKFLOW_DIR, "02_prepare_taxonomy_pools.R"))
+
+options(
+  taxo.profile_export_dir = file.path(WORKFLOW_DIR, "/taxonomic_uncertainty_theory/inputs")
+)
+source(file.path(WORKFLOW_DIR, "taxonomic_uncertainty_theory/bridge_from_empirical_workflow/export_collembola_profile_inputs.R")
+)
+
 source(file.path(WORKFLOW_DIR, "03_prepare_environment_drivers.R"))
 source(file.path(WORKFLOW_DIR, "04_build_scenarios.R"))
 source(file.path(WORKFLOW_DIR, "05_compute_alpha_metrics.R"))

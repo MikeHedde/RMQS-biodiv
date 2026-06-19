@@ -1,0 +1,25 @@
+scenario,outcome,predictor,n,spearman_rho,spearman_p,predictor_label,abs_rho,screen_label
+family_level,delta_gamma_med,taxonomic_compression_family,60,-0.9094874894944045,8.896003648087586e-24,Species per family,0.9094874894944045,Family coarsening: change in gamma richness
+family_level,delta_gamma_med,n_eligible_source_species,60,-0.7576364282744664,2.433146427040628e-12,Eligible source species,0.7576364282744664,Family coarsening: change in gamma richness
+family_level,delta_gamma_med,log_mean_species_per_genus,60,-0.705262743632651,3.151580488274245e-10,Mean species per genus (log10),0.705262743632651,Family coarsening: change in gamma richness
+family_level,delta_gamma_med,log_mean_genera_per_family,60,-0.6677318069410099,5.62342388640071e-9,Mean genera per family (log10),0.6677318069410099,Family coarsening: change in gamma richness
+family_level,delta_gamma_med,true_gamma,60,-0.6365126785661114,4.5955170228983073e-8,True gamma richness,0.6365126785661114,Family coarsening: change in gamma richness
+family_level,delta_gamma_med,prop_monotypic_genera,60,0.6215576996286335,1.1589395044780968e-7,Proportion of monotypic genera,0.6215576996286335,Family coarsening: change in gamma richness
+family_level,delta_occupancy_med,taxonomic_compression_family,60,0.5785495971103085,1.287550306359447e-6,Species per family,0.5785495971103085,Family coarsening: change in mean occupancy
+family_level,delta_occupancy_med,log_mean_genera_per_family,60,0.5444643577124176,6.891402719670402e-6,Mean genera per family (log10),0.5444643577124176,Family coarsening: change in mean occupancy
+family_level,delta_occupancy_med,occupancy_mean,60,-0.4766323978883024,1.1818153335716082e-4,Input mean occupancy,0.4766323978883024,Family coarsening: change in mean occupancy
+family_level,delta_occupancy_med,true_mean_occupancy,60,-0.46218393998332885,2.0111815068647187e-4,Realised mean occupancy,0.46218393998332885,Family coarsening: change in mean occupancy
+family_level,delta_occupancy_med,n_eligible_source_species,60,0.31214998758326323,0.015180352888263107,Eligible source species,0.31214998758326323,Family coarsening: change in mean occupancy
+family_level,delta_occupancy_med,true_gamma,60,0.29859953363883507,0.020480293235898755,True gamma richness,0.29859953363883507,Family coarsening: change in mean occupancy
+regional_congeneric_error,delta_gamma_med,prop_monotypic_genera,60,-0.8694526199280248,2.059667109400336e-19,Proportion of monotypic genera,0.8694526199280248,Regional-pool error: change in gamma richness
+regional_congeneric_error,delta_gamma_med,log_mean_species_per_genus,60,0.8484848484848483,1.1424143788476519e-17,Mean species per genus (log10),0.8484848484848483,Regional-pool error: change in gamma richness
+regional_congeneric_error,delta_gamma_med,realised_mean_error,60,0.8437586877953848,2.5986747133340617e-17,Realised identification-error rate,0.8437586877953848,Regional-pool error: change in gamma richness
+regional_congeneric_error,delta_gamma_med,taxonomic_compression_family,60,0.6186770666968138,1.3773143379011682e-7,Species per family,0.6186770666968138,Regional-pool error: change in gamma richness
+regional_congeneric_error,delta_gamma_med,log_regional_to_observed,60,0.6024458264923691,3.5296638184119866e-7,Regional / observed species ratio (log10),0.6024458264923691,Regional-pool error: change in gamma richness
+regional_congeneric_error,delta_gamma_med,cv_genera_per_family,60,0.28354642562627563,0.028134059856650153,CV of genera per family,0.28354642562627563,Regional-pool error: change in gamma richness
+regional_congeneric_error,delta_occupancy_med,log_regional_to_observed,60,-0.5772651695998573,1.3763183466864958e-6,Regional / observed species ratio (log10),0.5772651695998573,Regional-pool error: change in mean occupancy
+regional_congeneric_error,delta_occupancy_med,true_gamma,60,0.3448774336190221,0.006964230750657265,True gamma richness,0.3448774336190221,Regional-pool error: change in mean occupancy
+regional_congeneric_error,delta_occupancy_med,occupancy_mean,60,-0.3001111844650582,0.01982026037742193,Input mean occupancy,0.3001111844650582,Regional-pool error: change in mean occupancy
+regional_congeneric_error,delta_occupancy_med,prop_monotypic_genera,60,0.2843223127751308,0.027687929747562623,Proportion of monotypic genera,0.2843223127751308,Regional-pool error: change in mean occupancy
+regional_congeneric_error,delta_occupancy_med,log_mean_species_per_genus,60,-0.2658882402001667,0.0400378258749854,Mean species per genus (log10),0.2658882402001667,Regional-pool error: change in mean occupancy
+regional_congeneric_error,delta_occupancy_med,realised_mean_error,60,-0.25143174867945506,0.05263927441530606,Realised identification-error rate,0.25143174867945506,Regional-pool error: change in mean occupancy
