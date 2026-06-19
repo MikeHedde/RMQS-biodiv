@@ -5,6 +5,7 @@
 
 .workflow_file <- tryCatch(normalizePath(sys.frame(1)$ofile), error = function(e) NA_character_)
 WORKFLOW_DIR <- if (!is.na(.workflow_file)) dirname(.workflow_file) else getwd()
+WORKFLOW_DIR <- file.path(WORKFLOW_DIR, "/analyses/collembola taxo precision")
 
 # Pour forcer le recalcul complet :
 # options(taxo.force_rebuild = TRUE)

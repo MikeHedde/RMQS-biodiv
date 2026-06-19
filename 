@@ -1,0 +1,37 @@
+ analyses/collembola taxo precision/000_run_all.R                                                         |    4 [32m+[m
+ analyses/collembola taxo precision/00_config.R                                                           |    8 [32m+[m
+ analyses/collembola taxo precision/04_build_scenarios.R                                                  |    2 [32m+[m[31m-[m
+ analyses/collembola taxo precision/05_compute_alpha_metrics.R                                            |    2 [32m+[m[31m-[m
+ analyses/collembola taxo precision/06_compute_stability.R                                                |    2 [32m+[m[31m-[m
+ analyses/collembola taxo precision/07_compute_drivers.R                                                  |    2 [32m+[m[31m-[m
+ analyses/collembola taxo precision/08_rare_and_inventory_audits.R                                        |    2 [32m+[m[31m-[m
+ analyses/collembola taxo precision/09_appendix_error_gradient_analysis.R                                 |    2 [32m+[m[31m-[m
+ analyses/collembola taxo precision/10_gbif_regional_error_gradient.R                                     | 1212 [32m+++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ analyses/collembola taxo precision/appendix_figures_error_gradient.R                                     |    4 [32m+[m[31m-[m
+ analyses/collembola taxo precision/figures.R                                                             |    2 [32m+[m[31m-[m
+ outputs_taxonomic_uncertainty_v9/_rds_cache/09_appendix_error_gradient_analysis.rds                      |  Bin [31m0[m -> [32m627702[m bytes
+ outputs_taxonomic_uncertainty_v9/appendix_error_gradient/appendix_alpha_diversity_by_unit.csv            |   12 [32m+[m[31m-[m
+ outputs_taxonomic_uncertainty_v9/appendix_error_gradient/appendix_critical_thresholds.csv                |   14 [32m+[m
+ outputs_taxonomic_uncertainty_v9/appendix_error_gradient/appendix_stability_by_iter.csv                  |  202 [32m+++++++++[m
+ outputs_taxonomic_uncertainty_v9/appendix_error_gradient/appendix_stability_curve_summary.csv            |  161 [32m+++++++[m
+ outputs_taxonomic_uncertainty_v9/figures_publication_ready/Fig1_taxonomic_uncertainty_structure.pdf      |  Bin [31m5976[m -> [32m6161[m bytes
+ outputs_taxonomic_uncertainty_v9/figures_publication_ready/Fig1_taxonomic_uncertainty_structure.png      |  Bin [31m653347[m -> [32m656102[m bytes
+ outputs_taxonomic_uncertainty_v9/figures_publication_ready/Fig2_main_robustness_heatmap.pdf              |  Bin [31m7086[m -> [32m7249[m bytes
+ outputs_taxonomic_uncertainty_v9/figures_publication_ready/Fig2_main_robustness_heatmap.png              |  Bin [31m428991[m -> [32m429111[m bytes
+ outputs_taxonomic_uncertainty_v9/figures_publication_ready/Fig3_main_homogenisation.pdf                  |  Bin [31m6493[m -> [32m6656[m bytes
+ outputs_taxonomic_uncertainty_v9/figures_publication_ready/Fig3_main_homogenisation.png                  |  Bin [31m423916[m -> [32m424789[m bytes
+ outputs_taxonomic_uncertainty_v9/figures_publication_ready/Fig4_main_alpha_driver_delta_coefficients.pdf |  Bin [31m9962[m -> [32m10123[m bytes
+ outputs_taxonomic_uncertainty_v9/figures_publication_ready/Fig4_main_alpha_driver_delta_coefficients.png |  Bin [31m515880[m -> [32m522986[m bytes
+ outputs_taxonomic_uncertainty_v9/figures_publication_ready/Fig5_inventory_gamma_change.pdf               |  Bin [31m6393[m -> [32m6556[m bytes
+ outputs_taxonomic_uncertainty_v9/figures_publication_ready/Fig5_inventory_gamma_change.png               |  Bin [31m436626[m -> [32m436728[m bytes
+ outputs_taxonomic_uncertainty_v9/figures_publication_ready/FigS_full_robustness_heatmap.pdf              |  Bin [31m7485[m -> [32m7648[m bytes
+ outputs_taxonomic_uncertainty_v9/figures_publication_ready/FigS_full_robustness_heatmap.png              |  Bin [31m693862[m -> [32m730985[m bytes
+ .../figures_publication_ready/appendix_error_gradient/FigA1_biodiversity_response_curves.pdf             |  Bin [31m0[m -> [32m13064[m bytes
+ .../figures_publication_ready/appendix_error_gradient/FigA1_biodiversity_response_curves.png             |  Bin [31m0[m -> [32m576659[m bytes
+ .../figures_publication_ready/appendix_error_gradient/FigA2_stability_response_curves.pdf                |  Bin [31m0[m -> [32m17974[m bytes
+ .../figures_publication_ready/appendix_error_gradient/FigA2_stability_response_curves.png                |  Bin [31m0[m -> [32m1042564[m bytes
+ .../figures_publication_ready/appendix_error_gradient/FigA3_critical_error_thresholds.pdf                |  Bin [31m0[m -> [32m5648[m bytes
+ .../figures_publication_ready/appendix_error_gradient/FigA3_critical_error_thresholds.png                |  Bin [31m0[m -> [32m237100[m bytes
+ outputs_taxonomic_uncertainty_v9/gbif_regional_shuffling/candidate_taxonomic_pool.csv                    |  655 [32m++++++++++++++++++++++++++++[m
+ outputs_taxonomic_uncertainty_v9/gbif_regional_shuffling/gbif_name_matching.csv                          |  655 [32m++++++++++++++++++++++++++++[m
+ 36 files changed, 2926 insertions(+), 15 deletions(-)

@@ -1,0 +1,169 @@
+assemblage_id,assemblage_label,scenario,scenario_label,distance,median,p10,p90,n_iter
+araneae_pitfall,"Araneae
+pitfall traps",rtu_family_level,"Family-level
+resolution",Bray-Curtis GDM,0.14243392493032114,0.14243392493032114,0.14243392493032114,1
+araneae_pitfall,"Araneae
+pitfall traps",rtu_family_level,"Family-level
+resolution",Sørensen GDM,0.029143944581234593,0.029143944581234593,0.029143944581234593,1
+araneae_pitfall,"Araneae
+pitfall traps",rtu_genus_level,"Genus-level
+resolution",Bray-Curtis GDM,0.10787358164820948,0.10787358164820948,0.10787358164820948,1
+araneae_pitfall,"Araneae
+pitfall traps",rtu_genus_level,"Genus-level
+resolution",Sørensen GDM,0.030184671967468768,0.030184671967468768,0.030184671967468768,1
+araneae_pitfall,"Araneae
+pitfall traps",rtu_rare_species_to_genus,"Rare taxa
+reported at genus",Bray-Curtis GDM,2.4176261562158796e-4,2.4176261562158796e-4,2.4176261562158796e-4,1
+araneae_pitfall,"Araneae
+pitfall traps",rtu_rare_species_to_genus,"Rare taxa
+reported at genus",Sørensen GDM,8.129491310655546e-4,8.129491310655546e-4,8.129491310655546e-4,1
+araneae_pitfall,"Araneae
+pitfall traps",rtu_species_only_drop_unresolved,"Drop unresolved
+records",Bray-Curtis GDM,0.04944656363445421,0.04944656363445421,0.04944656363445421,1
+araneae_pitfall,"Araneae
+pitfall traps",rtu_species_only_drop_unresolved,"Drop unresolved
+records",Sørensen GDM,0.022043707267157764,0.022043707267157764,0.022043707267157764,1
+araneae_pitfall,"Araneae
+pitfall traps",species_observed_congeneric_10pct,"Observed-pool
+error 10%",Bray-Curtis GDM,0.0014263134217485929,7.937205354314969e-4,0.0017224842272897554,8
+araneae_pitfall,"Araneae
+pitfall traps",species_observed_congeneric_10pct,"Observed-pool
+error 10%",Sørensen GDM,0.0030329053454957733,0.001228350511147469,0.004969087322523336,8
+araneae_pitfall,"Araneae
+pitfall traps",species_observed_rare_weighted_10pct,"Rare-weighted
+error 10%",Bray-Curtis GDM,0.0019550467952679784,0.001282848045222129,0.003018055280189058,8
+araneae_pitfall,"Araneae
+pitfall traps",species_observed_rare_weighted_10pct,"Rare-weighted
+error 10%",Sørensen GDM,0.004182373902460568,0.0030346684923812876,0.008813510559065763,8
+carabidae_pitfall,"Carabidae
+pitfall traps",rtu_genus_level,"Genus-level
+resolution",Bray-Curtis GDM,0.11013649729230257,0.11013649729230257,0.11013649729230257,1
+carabidae_pitfall,"Carabidae
+pitfall traps",rtu_genus_level,"Genus-level
+resolution",Sørensen GDM,0.05267819864624801,0.05267819864624801,0.05267819864624801,1
+carabidae_pitfall,"Carabidae
+pitfall traps",rtu_rare_species_to_genus,"Rare taxa
+reported at genus",Bray-Curtis GDM,5.02831335539411e-4,5.02831335539411e-4,5.02831335539411e-4,1
+carabidae_pitfall,"Carabidae
+pitfall traps",rtu_rare_species_to_genus,"Rare taxa
+reported at genus",Sørensen GDM,0.0012735513024519918,0.0012735513024519918,0.0012735513024519918,1
+carabidae_pitfall,"Carabidae
+pitfall traps",rtu_species_only_drop_unresolved,"Drop unresolved
+records",Bray-Curtis GDM,1.1487152534406242e-5,1.1487152534406242e-5,1.1487152534406242e-5,1
+carabidae_pitfall,"Carabidae
+pitfall traps",rtu_species_only_drop_unresolved,"Drop unresolved
+records",Sørensen GDM,1.267011806530549e-4,1.267011806530549e-4,1.267011806530549e-4,1
+carabidae_pitfall,"Carabidae
+pitfall traps",species_observed_congeneric_10pct,"Observed-pool
+error 10%",Bray-Curtis GDM,0.002473660605201544,0.0016964792259024585,0.0027220824793167007,8
+carabidae_pitfall,"Carabidae
+pitfall traps",species_observed_congeneric_10pct,"Observed-pool
+error 10%",Sørensen GDM,0.007216609702067001,0.0035247407409299773,0.010916526236093793,8
+carabidae_pitfall,"Carabidae
+pitfall traps",species_observed_rare_weighted_10pct,"Rare-weighted
+error 10%",Bray-Curtis GDM,0.0029776072930302044,0.0019311124353366903,0.005706676119033149,8
+carabidae_pitfall,"Carabidae
+pitfall traps",species_observed_rare_weighted_10pct,"Rare-weighted
+error 10%",Sørensen GDM,0.009991788096764986,0.0025547679234049327,0.024042111940233934,8
+collembola_soil_core,"Collembola
+soil cores",rtu_family_level,"Family-level
+resolution",Bray-Curtis GDM,0.16096659492181864,0.16096659492181864,0.16096659492181864,1
+collembola_soil_core,"Collembola
+soil cores",rtu_family_level,"Family-level
+resolution",Sørensen GDM,0.16235301174184325,0.16235301174184325,0.16235301174184325,1
+collembola_soil_core,"Collembola
+soil cores",rtu_genus_level,"Genus-level
+resolution",Bray-Curtis GDM,0.0055541773954022045,0.0055541773954022045,0.0055541773954022045,1
+collembola_soil_core,"Collembola
+soil cores",rtu_genus_level,"Genus-level
+resolution",Sørensen GDM,0.009950091499241975,0.009950091499241975,0.009950091499241975,1
+collembola_soil_core,"Collembola
+soil cores",rtu_rare_species_to_genus,"Rare taxa
+reported at genus",Bray-Curtis GDM,1.2584611143395819e-5,1.2584611143395819e-5,1.2584611143395819e-5,1
+collembola_soil_core,"Collembola
+soil cores",rtu_rare_species_to_genus,"Rare taxa
+reported at genus",Sørensen GDM,3.635919101685481e-5,3.635919101685481e-5,3.635919101685481e-5,1
+collembola_soil_core,"Collembola
+soil cores",rtu_species_only_drop_unresolved,"Drop unresolved
+records",Bray-Curtis GDM,0.10232587810431337,0.10232587810431337,0.10232587810431337,1
+collembola_soil_core,"Collembola
+soil cores",rtu_species_only_drop_unresolved,"Drop unresolved
+records",Sørensen GDM,0.05531195706826164,0.05531195706826164,0.05531195706826164,1
+collembola_soil_core,"Collembola
+soil cores",species_observed_congeneric_10pct,"Observed-pool
+error 10%",Bray-Curtis GDM,0.008604659170793894,0.0027659129550534293,0.02108572911905366,8
+collembola_soil_core,"Collembola
+soil cores",species_observed_congeneric_10pct,"Observed-pool
+error 10%",Sørensen GDM,0.01688123266545788,0.009959762560122654,0.043322658583852494,8
+collembola_soil_core,"Collembola
+soil cores",species_observed_rare_weighted_10pct,"Rare-weighted
+error 10%",Bray-Curtis GDM,0.005864454326883428,0.003261474028329381,0.01032150313416389,8
+collembola_soil_core,"Collembola
+soil cores",species_observed_rare_weighted_10pct,"Rare-weighted
+error 10%",Sørensen GDM,0.018578501539772585,0.009742263394476449,0.028952047573380345,8
+formicidae_pitfall,"Formicidae
+pitfall traps",rtu_genus_level,"Genus-level
+resolution",Bray-Curtis GDM,0.03405356724340902,0.03405356724340902,0.03405356724340902,1
+formicidae_pitfall,"Formicidae
+pitfall traps",rtu_genus_level,"Genus-level
+resolution",Sørensen GDM,0.12457615348912177,0.12457615348912177,0.12457615348912177,1
+formicidae_pitfall,"Formicidae
+pitfall traps",rtu_rare_species_to_genus,"Rare taxa
+reported at genus",Bray-Curtis GDM,5.297382780844462e-4,5.297382780844462e-4,5.297382780844462e-4,1
+formicidae_pitfall,"Formicidae
+pitfall traps",rtu_rare_species_to_genus,"Rare taxa
+reported at genus",Sørensen GDM,1.2054414071205333e-4,1.2054414071205333e-4,1.2054414071205333e-4,1
+formicidae_pitfall,"Formicidae
+pitfall traps",rtu_species_only_drop_unresolved,"Drop unresolved
+records",Bray-Curtis GDM,0.0029503184312924535,0.0029503184312924535,0.0029503184312924535,1
+formicidae_pitfall,"Formicidae
+pitfall traps",rtu_species_only_drop_unresolved,"Drop unresolved
+records",Sørensen GDM,0.021091155000775186,0.021091155000775186,0.021091155000775186,1
+formicidae_pitfall,"Formicidae
+pitfall traps",species_observed_congeneric_10pct,"Observed-pool
+error 10%",Bray-Curtis GDM,0.0018020681687889173,7.729650544014311e-4,0.005063932997737974,8
+formicidae_pitfall,"Formicidae
+pitfall traps",species_observed_congeneric_10pct,"Observed-pool
+error 10%",Sørensen GDM,0.014261875663478862,0.008753830031500232,0.02209535198089999,8
+formicidae_pitfall,"Formicidae
+pitfall traps",species_observed_rare_weighted_10pct,"Rare-weighted
+error 10%",Bray-Curtis GDM,0.012106764688749105,0.004169962346582046,0.017484737248121305,8
+formicidae_pitfall,"Formicidae
+pitfall traps",species_observed_rare_weighted_10pct,"Rare-weighted
+error 10%",Sørensen GDM,0.030139382160065287,0.01899085643801235,0.05511876560157015,8
+isopoda_pitfall,"Isopoda
+pitfall traps",rtu_family_level,"Family-level
+resolution",Bray-Curtis GDM,0.09397174364279637,0.09397174364279637,0.09397174364279637,1
+isopoda_pitfall,"Isopoda
+pitfall traps",rtu_family_level,"Family-level
+resolution",Sørensen GDM,0.049835743914691366,0.049835743914691366,0.049835743914691366,1
+isopoda_pitfall,"Isopoda
+pitfall traps",rtu_genus_level,"Genus-level
+resolution",Bray-Curtis GDM,0.047241826847089996,0.047241826847089996,0.047241826847089996,1
+isopoda_pitfall,"Isopoda
+pitfall traps",rtu_genus_level,"Genus-level
+resolution",Sørensen GDM,0.05462920594499565,0.05462920594499565,0.05462920594499565,1
+isopoda_pitfall,"Isopoda
+pitfall traps",rtu_rare_species_to_genus,"Rare taxa
+reported at genus",Bray-Curtis GDM,2.220446049250313e-16,2.220446049250313e-16,2.220446049250313e-16,1
+isopoda_pitfall,"Isopoda
+pitfall traps",rtu_rare_species_to_genus,"Rare taxa
+reported at genus",Sørensen GDM,2.220446049250313e-16,2.220446049250313e-16,2.220446049250313e-16,1
+isopoda_pitfall,"Isopoda
+pitfall traps",rtu_species_only_drop_unresolved,"Drop unresolved
+records",Bray-Curtis GDM,9.346266454499652e-4,9.346266454499652e-4,9.346266454499652e-4,1
+isopoda_pitfall,"Isopoda
+pitfall traps",rtu_species_only_drop_unresolved,"Drop unresolved
+records",Sørensen GDM,0.01017843210441316,0.01017843210441316,0.01017843210441316,1
+isopoda_pitfall,"Isopoda
+pitfall traps",species_observed_congeneric_10pct,"Observed-pool
+error 10%",Bray-Curtis GDM,0.002770574113913349,8.09288293207422e-4,0.006200440342325164,8
+isopoda_pitfall,"Isopoda
+pitfall traps",species_observed_congeneric_10pct,"Observed-pool
+error 10%",Sørensen GDM,0.029727678110264222,0.004718523208315395,0.03707971285485968,8
+isopoda_pitfall,"Isopoda
+pitfall traps",species_observed_rare_weighted_10pct,"Rare-weighted
+error 10%",Bray-Curtis GDM,0.004066021834270017,0.0014016376242534823,0.00951129344529179,8
+isopoda_pitfall,"Isopoda
+pitfall traps",species_observed_rare_weighted_10pct,"Rare-weighted
+error 10%",Sørensen GDM,0.021969269139959946,0.014462103169104236,0.05121006795659527,8
