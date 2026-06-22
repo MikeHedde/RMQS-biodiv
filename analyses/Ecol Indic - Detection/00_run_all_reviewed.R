@@ -7,6 +7,7 @@ source("analyses/Ecol Indic - Detection/03_read_parse.R")
 # Detection / occupancy
 source("analyses/Ecol Indic - Detection/04_detection_effort_reviewed.R")
 source("analyses/Ecol Indic - Detection/05_occupancy_fit_reviewed.R")
+source("analyses/Ecol Indic - Detection/15_gpd_IL_sensitivity_refit.R")
 
 # Occupancy outputs and stats
 source("analyses/Ecol Indic - Detection/06_occupancy_figs.R")

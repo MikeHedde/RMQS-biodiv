@@ -32,7 +32,7 @@ Anisodactylus signatus,skip,n_detected_sites<7,64,3,NA
 Apotomus rufus,skip,n_detected_sites<7,64,1,NA
 Asaphidion curtum,skip,n_detected_sites<7,64,1,NA
 Asaphidion flavipes,skip,n_detected_sites<7,64,1,NA
-Asaphidion stierlini,usable_unstable,large_or_missing_se,64,13,6
+Asaphidion stierlini,ok,NA,64,13,6
 Badister bullatus,usable_unstable,extreme_coef,64,11,6
 Badister lacertosus,skip,n_detected_sites<7,64,0,NA
 Badister sodalis,skip,n_detected_sites<7,64,1,NA
@@ -54,7 +54,7 @@ Calathus fuscipes,usable_unstable,large_or_missing_se,64,8,6
 Calathus melanocephalus,skip,n_detected_sites<7,64,2,NA
 Calathus rotundicollis,skip,n_detected_sites<7,64,1,NA
 Callistus lunatus,skip,n_detected_sites<7,64,1,NA
-Carabus auratus,unstable,summary_failed,64,9,6
+Carabus auratus,usable_unstable,large_or_missing_se,64,9,6
 Carabus auronitens,skip,n_detected_sites<7,64,2,NA
 Carabus cancellatus,skip,n_detected_sites<7,64,2,NA
 Carabus convexus,skip,n_detected_sites<7,64,2,NA
@@ -83,7 +83,7 @@ Dyschirius globosus,skip,n_detected_sites<7,64,1,NA
 Dyschirius tristis,skip,n_detected_sites<7,64,0,NA
 Gynandromorphus etruscus,skip,n_detected_sites<7,64,1,NA
 Harpalus,skip,n_detected_sites<7,64,0,NA
-Harpalus affinis,usable_unstable,large_or_missing_se,64,26,6
+Harpalus affinis,ok,NA,64,26,6
 Harpalus anxius,skip,n_detected_sites<7,64,6,NA
 Harpalus atratus,skip,n_detected_sites<7,64,1,NA
 Harpalus cupreus,skip,n_detected_sites<7,64,3,NA
@@ -132,11 +132,11 @@ Panagaeus bipustulatus,skip,n_detected_sites<7,64,2,NA
 Pangus scaritides,skip,n_detected_sites<7,64,0,NA
 Paradromius linearis,skip,n_detected_sites<7,64,3,NA
 Paranchus albipes,skip,n_detected_sites<7,64,1,NA
-Parophonus maculicornis,usable_unstable,extreme_coef,64,13,6
+Parophonus maculicornis,ok,NA,64,13,6
 Pedius longicollis,skip,n_detected_sites<7,64,1,NA
 Platyderus depressus,skip,n_detected_sites<7,64,1,NA
 Platynus assimilis,skip,n_detected_sites<7,64,3,NA
-Poecilus cupreus,unstable,large_or_missing_se_and_extreme_coef,64,38,6
+Poecilus cupreus,unstable,summary_failed,64,38,6
 Poecilus kugelanni,skip,n_detected_sites<7,64,5,NA
 Poecilus lepidus,skip,n_detected_sites<7,64,1,NA
 Poecilus lepidus gressorius,skip,n_detected_sites<7,64,1,NA

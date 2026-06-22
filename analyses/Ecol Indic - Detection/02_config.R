@@ -25,4 +25,10 @@ gpd_cross_m        <- gpd_fence_length_m
 gpd_unit_intensity <- gpd_open_circ_m + gpd_cross_m
 tm_unit            <- 0.0625
 
+# GPD: interception length proxy per active sub-unit
+gpd_il_per_unit_m <- gpd_fence_length_m + pit_circ_m  # 1 + pi * 0.05 = 1.157 m
+
+# Sensitivity range: effective interception proxy, not literal fence length
+gpd_il_sensitivity_m <- seq(0.8, 1.2, by = 0.05)
+
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)

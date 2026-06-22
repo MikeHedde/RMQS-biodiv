@@ -22,6 +22,10 @@ if (!exists("pit_circ_m")) pit_circ_m <- pi * 0.05
 if (!exists("gpd_fence_length_m")) gpd_fence_length_m <- 1.0
 if (!exists("require_complete_pitfall_subsets")) require_complete_pitfall_subsets <- TRUE
 if (!exists("reviewer_out_dir")) reviewer_out_dir <- file.path(out_dir, "reviewer_response")
+if (!exists("gpd_il_per_unit_m")) {
+  gpd_il_per_unit_m <- gpd_fence_length_m + pit_circ_m
+}
+
 dir.create(reviewer_out_dir, showWarnings = FALSE, recursive = TRUE)
 
 # Recommandé dans 02_config.R pour ce manuscrit:
@@ -138,14 +142,16 @@ if ("GPD" %in% methods_use) {
     dplyr::mutate(
       days_gpd = tidyr::replace_na(days_gpd, 1),
       visit_available = n_gpd_eff > 0,
-      IL_effective_m = dplyr::if_else(visit_available,
-                                      gpd_fence_length_m + n_gpd_eff * pit_circ_m,
-                                      NA_real_),
+      # E = IL per active GPD sub-unit × number of active sub-units × trapping days
+      IL_effective_m = dplyr::if_else(
+                  visit_available,
+                  n_gpd_eff * gpd_il_per_unit_m,
+                  NA_real_),
       eff_gpd = IL_effective_m * days_gpd,
-      GPD = as.integer(visit_available)
-    )
+      GPD = as.integer(visit_available)    )
 
-  effort_tabs$gpd <- gpd_avail_site %>% dplyr::select(site_id, eff_gpd, n_gpd_eff, IL_effective_m)
+  effort_tabs$gpd <- gpd_avail_site %>%
+    dplyr::select(site_id, eff_gpd, n_gpd_eff, days_gpd, IL_effective_m)
   avail_tabs$gpd <- gpd_avail_site %>% dplyr::select(site_id, GPD)
 
   det_tabs$GPD <- gpd_dat %>%

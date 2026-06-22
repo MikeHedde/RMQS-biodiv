@@ -101,7 +101,9 @@ fit_one_species_occu <- function(sp_name,
                                  min_sites = min_sites,
                                  require_contrast = TRUE,
                                  quiet = TRUE,
-                                 maxit = 400) {
+                                 maxit = 400,
+                                 pred_eff_z = NULL) {
+  
 
   k <- which(dimnames(Y)$species == sp_name)
   if (length(k) != 1) {
@@ -273,11 +275,21 @@ fit_one_species_occu <- function(sp_name,
   }
 
   # ----------------------------------------------------------
-  # Detection predictions by method at method-specific median effort
+  # Detection predictions by method
+  # Default: each method's observed median effort (main analysis).
+  # Optional: common standardized effort, used only in IL sensitivity.
   # ----------------------------------------------------------
+  if (!is.null(pred_eff_z) &&
+      (!is.numeric(pred_eff_z) || length(pred_eff_z) != 1 || !is.finite(pred_eff_z))) {
+    stop("pred_eff_z must be NULL or one finite numeric value.")
+  }
+  
   eff_med_all <- method_eff_medians(eff_z)
-  eff_for <- function(m) if (m %in% names(eff_med_all)) eff_med_all[[m]] else 0
-
+  eff_for <- function(m) {
+    if (!is.null(pred_eff_z)) return(as.numeric(pred_eff_z))
+    if (m %in% names(eff_med_all)) eff_med_all[[m]] else 0
+  }
+  
   mk_pred <- function(tag) {
     nd <- data.frame(row_id = 1)
 
@@ -312,6 +324,7 @@ fit_one_species_occu <- function(sp_name,
   tab_p <- tibble::tibble(
     species = sp_name,
     method  = rep_names_k,
+    prediction_eff_z = vapply(rep_names_k, eff_for, numeric(1)),
     p_hat   = vapply(pred_list, function(z) z$Predicted, numeric(1)),
     lcl     = vapply(pred_list, function(z) z$lower,     numeric(1)),
     ucl     = vapply(pred_list, function(z) z$upper,     numeric(1)),

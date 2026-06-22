@@ -1,9 +1,9 @@
 species,n_sites,total_abundance,status,reason,occupancy_fit_status,final_inclusion,rank
-Poecilus cupreus,40,13304,unstable,large_or_missing_se_and_extreme_coef,unstable,Excluded,1
+Poecilus cupreus,40,13304,unstable,summary_failed,unstable,Excluded,1
 Amara aenea,32,218,ok,NA,stable,Included,2
 Anchomenus dorsalis,29,646,usable_unstable,extreme_coef,usable_unstable,Included,3
 Bembidion properans,27,447,usable_unstable,large_or_missing_se,usable_unstable,Included,4
-Harpalus affinis,27,1350,usable_unstable,large_or_missing_se,usable_unstable,Included,5
+Harpalus affinis,27,1350,ok,NA,stable,Included,5
 Nebria salina,27,250,ok,NA,stable,Included,6
 Notiophilus quadripunctatus,26,417,usable_unstable,large_or_missing_se,usable_unstable,Included,7
 Bembidion lampros,25,544,ok,NA,stable,Included,8
@@ -19,10 +19,10 @@ Carabus nemoralis,16,157,ok,NA,stable,Included,17
 Notiophilus biguttatus,16,148,ok,NA,stable,Included,18
 Pterostichus madidus,16,278,usable_unstable,large_or_missing_se,usable_unstable,Included,19
 Amara similata,15,64,ok,NA,stable,Included,20
-Asaphidion stierlini,14,87,usable_unstable,large_or_missing_se,usable_unstable,Included,21
+Asaphidion stierlini,14,87,ok,NA,stable,Included,21
 Bembidion lunulatum,14,56,usable_unstable,large_or_missing_se,usable_unstable,Included,22
 Bembidion quadrimaculatum,14,176,ok,NA,stable,Included,23
-Parophonus maculicornis,14,110,usable_unstable,extreme_coef,usable_unstable,Included,24
+Parophonus maculicornis,14,110,ok,NA,stable,Included,24
 Bembidion obtusum,13,32,ok,NA,stable,Included,25
 Poecilus versicolor,13,581,usable_unstable,large_or_missing_se,usable_unstable,Included,26
 Abax parallelepipedus,12,753,ok,NA,stable,Included,27
@@ -33,7 +33,7 @@ Pseudoophonus rufipes,11,177,unstable,summary_failed,unstable,Excluded,31
 Amara familiaris,10,17,usable_unstable,extreme_coef,usable_unstable,Included,32
 Amara lunicollis,10,30,ok,NA,stable,Included,33
 Calathus fuscipes,10,28,usable_unstable,large_or_missing_se,usable_unstable,Included,34
-Carabus auratus,10,507,unstable,summary_failed,unstable,Excluded,35
+Carabus auratus,10,507,usable_unstable,large_or_missing_se,usable_unstable,Included,35
 Harpalus tardus,10,48,usable_unstable,extreme_coef,usable_unstable,Included,36
 Anisodactylus binotatus,9,62,ok,NA,stable,Included,37
 Brachinus sclopeta,9,633,ok,NA,stable,Included,38
