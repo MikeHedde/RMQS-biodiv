@@ -1,9 +1,0 @@
-method_level,nominal_unit,effort_formula,pitfall_opening_circumference_m,gpd_fence_length_m
-Pitfall10,nested nominal pitfall subset,n_effective_pots_in_subset × pitfall opening circumference × trapping duration,0.15707963267948966,NA
-Pitfall8,nested nominal pitfall subset,n_effective_pots_in_subset × pitfall opening circumference × trapping duration,0.15707963267948966,NA
-Pitfall6,nested nominal pitfall subset,n_effective_pots_in_subset × pitfall opening circumference × trapping duration,0.15707963267948966,NA
-Pitfall4,nested nominal pitfall subset,n_effective_pots_in_subset × pitfall opening circumference × trapping duration,0.15707963267948966,NA
-Pitfall2,nested nominal pitfall subset,n_effective_pots_in_subset × pitfall opening circumference × trapping duration,0.15707963267948966,NA
-GPD,one X-shaped directional pitfall device,(drift-fence length + n_effective_pots × pitfall opening circumference) × trapping duration,0.15707963267948966,1
-DVAC,other,constant nominal effort,0.15707963267948966,NA
-TM,other,6 monoliths × 0.0625 m²,0.15707963267948966,NA
