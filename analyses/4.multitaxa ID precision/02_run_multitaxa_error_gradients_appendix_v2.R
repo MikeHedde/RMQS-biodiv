@@ -1,5 +1,5 @@
 # =============================================================================
-# 02_run_multitaxa_error_gradients_appendix.R
+# 02_run_multitaxa_error_gradients_appendix_v2.R
 # Appendix: response curves from 1% to 20% taxonomic-identification error.
 #
 # This script is deliberately separate from the main analysis:
@@ -147,12 +147,37 @@ species_meta_from_lookup <- function(lookup) {
 read_regional_pool <- function(assemblage_id) {
   path <- file.path(REGIONAL_POOL_DIR, paste0(assemblage_id, "__regional_pool.csv"))
   if (!file.exists(path)) return(NULL)
-  
-  readr::read_csv(path, show_col_types = FALSE) %>%
-    janitor::clean_names() %>%
-    select(taxon_unit, genus) %>%
+
+  pool <- readr::read_csv(path, show_col_types = FALSE) %>%
+    janitor::clean_names()
+  if (!all(c("taxon_unit", "genus") %in% names(pool))) return(NULL)
+
+  pool %>%
+    transmute(
+      taxon_unit = as.character(taxon_unit),
+      genus = as.character(genus),
+      cd_ref = if ("cd_ref" %in% names(pool)) as.character(cd_ref) else NA_character_
+    ) %>%
     filter(!is.na(taxon_unit), !is.na(genus)) %>%
     distinct()
+}
+
+read_regional_source_audit <- function(assemblage_id) {
+  path <- file.path(REGIONAL_POOL_DIR, paste0(assemblage_id, "__observed_taxref_match_audit.csv"))
+  if (!file.exists(path)) return(tibble(taxon_unit = character(), cd_ref = character()))
+
+  audit <- readr::read_csv(path, show_col_types = FALSE) %>% janitor::clean_names()
+  if (!all(c("observed_taxon_unit", "cd_ref") %in% names(audit))) {
+    return(tibble(taxon_unit = character(), cd_ref = character()))
+  }
+
+  audit %>%
+    transmute(
+      taxon_unit = as.character(observed_taxon_unit),
+      cd_ref = as.character(cd_ref)
+    ) %>%
+    filter(!is.na(taxon_unit)) %>%
+    distinct(taxon_unit, .keep_all = TRUE)
 }
 
 read_expert_map <- function(assemblage_id) {
@@ -190,24 +215,42 @@ make_rare_probs <- function(species_long, rate) {
 
 make_coherent_map <- function(source_meta, candidate_pool, seed) {
   set.seed(seed)
-  
+
+  if (!"cd_ref" %in% names(source_meta)) source_meta$cd_ref <- NA_character_
+  if (!"cd_ref" %in% names(candidate_pool)) candidate_pool$cd_ref <- NA_character_
+
   src <- source_meta %>%
-    transmute(source_taxon_unit = taxon_unit, source_genus = genus) %>%
+    transmute(
+      source_taxon_unit = taxon_unit,
+      source_genus = genus,
+      source_cd_ref = as.character(cd_ref)
+    ) %>%
     distinct()
-  
+
   cand <- candidate_pool %>%
-    transmute(target_taxon_unit = taxon_unit, target_genus = genus) %>%
+    transmute(
+      target_taxon_unit = taxon_unit,
+      target_genus = genus,
+      target_cd_ref = as.character(cd_ref)
+    ) %>%
     distinct()
-  
+
   purrr::map_dfr(seq_len(nrow(src)), function(i) {
     x <- src[i, , drop = FALSE]
     available <- cand %>%
-      filter(target_genus == x$source_genus, target_taxon_unit != x$source_taxon_unit)
-    
+      filter(
+        target_genus == x$source_genus,
+        target_taxon_unit != x$source_taxon_unit,
+        is.na(x$source_cd_ref) | is.na(target_cd_ref) | target_cd_ref != x$source_cd_ref
+      )
+
     if (!nrow(available)) {
-      return(tibble(source_taxon_unit = x$source_taxon_unit, target_taxon_unit = NA_character_))
+      return(tibble(
+        source_taxon_unit = x$source_taxon_unit,
+        target_taxon_unit = NA_character_
+      ))
     }
-    
+
     tibble(
       source_taxon_unit = x$source_taxon_unit,
       target_taxon_unit = sample(available$target_taxon_unit, 1L)
@@ -259,12 +302,44 @@ simulate_map <- function(species_long, map, probs, seed) {
     summarise(abundance = sum(abundance), .groups = "drop")
 }
 
+
+map_diagnostics <- function(species_long, map, probs) {
+  source_abundance <- species_long %>%
+    group_by(taxon_unit) %>%
+    summarise(source_total_abundance = sum(abundance), .groups = "drop")
+
+  total_abundance <- sum(source_abundance$source_total_abundance)
+
+  diag <- source_abundance %>%
+    left_join(
+      map %>% select(source_taxon_unit, target_taxon_unit),
+      by = c("taxon_unit" = "source_taxon_unit")
+    ) %>%
+    left_join(probs, by = "taxon_unit") %>%
+    mutate(
+      p_error = coalesce(p_error, 0),
+      eligible = !is.na(target_taxon_unit) & p_error > 0
+    )
+
+  tibble(
+    eligible_individual_share = if (total_abundance > 0) {
+      sum(diag$source_total_abundance[diag$eligible]) / total_abundance
+    } else NA_real_,
+    expected_reassigned_pct = if (total_abundance > 0) {
+      100 * sum(diag$source_total_abundance * diag$p_error * diag$eligible) / total_abundance
+    } else NA_real_,
+    n_eligible_source_species = sum(diag$eligible),
+    n_source_species = nrow(diag)
+  )
+}
+
 summarise_gradient <- function(data) {
   data %>%
     group_by(assemblage_id, mechanism, error_rate) %>%
     summarise(
       across(
         c(
+          eligible_individual_share, expected_reassigned_pct,
           gamma_change_pct, mean_q0_change_pct, mean_q1_change_pct,
           mean_q2_change_pct, bray_mean_change_pct, sorensen_mean_change_pct,
           q0_stability, bray_stability, sorensen_stability
@@ -312,13 +387,15 @@ for (assemblage_id in manifest$assemblage_id) {
   base_sor <- mean_dissimilarity(base_mat, "sorensen")
   
   regional_pool <- read_regional_pool(assemblage_id)
+  regional_meta <- meta %>%
+    left_join(read_regional_source_audit(assemblage_id), by = "taxon_unit")
   expert_map <- read_expert_map(assemblage_id)
   
   for (iter_i in seq_len(N_SIM)) {
     # Crucial design: maps are drawn once per iteration and reused at every rate.
     observed_map <- make_coherent_map(meta, meta, seed = 100000L + iter_i)
     regional_map <- if (!is.null(regional_pool) && nrow(regional_pool)) {
-      make_coherent_map(meta, regional_pool, seed = 200000L + iter_i)
+      make_coherent_map(regional_meta, regional_pool, seed = 200000L + iter_i)
     } else NULL
     coherent_expert_map <- make_expert_map(meta, expert_map, seed = 300000L + iter_i)
     
@@ -337,6 +414,12 @@ for (assemblage_id in manifest$assemblage_id) {
           meta %>% transmute(taxon_unit, p_error = rate)
         }
         
+        map_diag <- map_diagnostics(
+          dat$species,
+          mechanisms[[mechanism]],
+          probs
+        )
+
         scen_long <- simulate_map(
           dat$species, mechanisms[[mechanism]], probs,
           seed = 400000L + iter_i * 1000L + round(rate * 100) * 10L + match(mechanism, names(mechanisms))
@@ -354,6 +437,10 @@ for (assemblage_id in manifest$assemblage_id) {
           mechanism = mechanism,
           error_rate = rate,
           iter = iter_i,
+          eligible_individual_share = map_diag$eligible_individual_share,
+          expected_reassigned_pct = map_diag$expected_reassigned_pct,
+          n_eligible_source_species = map_diag$n_eligible_source_species,
+          n_source_species = map_diag$n_source_species,
           gamma_change_pct = 100 * (scen_gamma / base_gamma - 1),
           mean_q0_change_pct = 100 * (mean(a1$q0) / mean(a0$q0) - 1),
           mean_q1_change_pct = 100 * (mean(a1$q1) / mean(a0$q1) - 1),
@@ -377,6 +464,18 @@ gradient_summary <- summarise_gradient(gradient_by_iter)
 
 readr::write_csv(gradient_by_iter, file.path(OUT_DIR, "error_gradient_by_iter.csv"))
 readr::write_csv(gradient_summary, file.path(OUT_DIR, "error_gradient_summary.csv"))
+
+eligibility_summary <- gradient_summary %>%
+  select(
+    assemblage_id, mechanism, error_rate,
+    eligible_individual_share_median, eligible_individual_share_p10, eligible_individual_share_p90,
+    expected_reassigned_pct_median, expected_reassigned_pct_p10, expected_reassigned_pct_p90,
+    n_eligible_source_species_median, n_source_species_median
+  )
+readr::write_csv(
+  eligibility_summary,
+  file.path(OUT_DIR, "error_gradient_eligibility_audit.csv")
+)
 
 # ---- 3. Appendix figures -----------------------------------------------------
 assemblage_labels <- c(
@@ -453,7 +552,7 @@ p_state <- ggplot(
   scale_x_continuous(breaks = c(1, 5, 10, 15, 20)) +
   labs(
     title = "Response of inventory and beta diversity to error rates from 1% to 20%",
-    subtitle = "Shaded bands show 10th–90th percentiles; a source→target map is fixed within each iteration across the full gradient.",
+    subtitle = "Shaded bands show 10th–90th percentiles; each source→target map is fixed within an iteration across the full gradient.",
     x = "Identification-error rate (%)",
     y = "Change relative to the species baseline (%)"
   ) +
@@ -515,3 +614,4 @@ ggsave(file.path(OUT_DIR, "figures", "FigS_error_gradient_stability.png"),
 message("\nDone.")
 message("Tables: ", OUT_DIR)
 message("Figures: ", file.path(OUT_DIR, "figures"))
+message("Eligibility audit: ", file.path(OUT_DIR, "error_gradient_eligibility_audit.csv"))

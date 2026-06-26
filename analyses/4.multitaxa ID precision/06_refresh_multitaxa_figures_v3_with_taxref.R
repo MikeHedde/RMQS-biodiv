@@ -1,10 +1,10 @@
 # =============================================================================
-# 06_refresh_multitaxa_figures_v2_with_taxref.R
-# Regenerate manuscript Figures 2–5 after running the coherent-confusion v2
+# 06_refresh_multitaxa_figures_v3_with_taxref.R
+# Regenerate manuscript Figures 2–5 after running the coherent-confusion v3
 # pipeline, including regional TAXREF and curated expert-confusion scenarios.
 #
 # Prerequisite:
-#   01_run_multitaxa_uncertainty_2024_v2_coherent_confusion.R
+#   01_run_multitaxa_uncertainty_2024_v3_taxref_coherent_confusion.R
 #
 # This script reads results only. It does not rerun simulations or GDMs.
 # =============================================================================
@@ -22,7 +22,7 @@ suppressPackageStartupMessages({
 # ---- paths -------------------------------------------------------------------
 INPUT_DIR <- "outputs_multitaxa_2024"
 RESULT_DIR <- file.path(INPUT_DIR, "uncertainty_results")
-FIG_DIR <- file.path(RESULT_DIR, "publication_figures_v2")
+FIG_DIR <- file.path(RESULT_DIR, "publication_figures_v3")
 MAIN_DIR <- file.path(FIG_DIR, "main_text")
 SUPP_DIR <- file.path(FIG_DIR, "supplement")
 dir.create(MAIN_DIR, recursive = TRUE, showWarnings = FALSE)
@@ -217,7 +217,7 @@ p2 <- ggplot(grid, aes(x = scenario_label, y = metric_label, fill = loss)) +
   theme(axis.text.x = element_text(angle = 40, hjust = 1),
         panel.spacing = grid::unit(1.4, "mm"))
 
-save_main(p2, "Fig2_cross_taxon_robustness_v2", 210, 155)
+save_main(p2, "Fig2_cross_taxon_robustness_v3", 210, 155)
 
 # =============================================================================
 # Fig 3: directional effects by process family
@@ -246,24 +246,44 @@ directional <- raw_contrasts %>%
     scenario_label = factor(scenario_label, levels = scenario_info$scenario_label)
   )
 
-p3 <- ggplot(directional, aes(x = scenario_label, y = median, colour = assemblage_label)) +
-  geom_hline(yintercept = 0, colour = "grey35", linewidth = .35) +
-  geom_errorbar(aes(ymin = p10, ymax = p90), width = 0, linewidth = .38, na.rm = TRUE) +
-  geom_point(size = 2.0, na.rm = TRUE) +
-  facet_grid(response ~ scenario_family_display, scales = "free_y", space = "free_x") +
+p3 <- ggplot(
+  directional,
+  aes(x = scenario_label, y = median, colour = assemblage_label)
+) +
+  geom_hline(yintercept = 0, colour = "grey35", linewidth = 0.35) +
+  geom_vline(
+    xintercept = c(2.5, 4.5),
+    colour = "grey60", linewidth = 0.35, linetype = "dashed"
+  ) +
+  geom_errorbar(
+    aes(ymin = p10, ymax = p90),
+    width = 0, linewidth = 0.4,
+    position = position_dodge(width = 0.45),
+    na.rm = TRUE
+  ) +
+  geom_point(
+    size = 2.0,
+    position = position_dodge(width = 0.45),
+    na.rm = TRUE
+  ) +
+  facet_wrap(~ response, ncol = 2, scales = "free_y") +
   scale_colour_manual(values = cols, name = "Assemblage") +
   labs(
     title = "The direction of taxonomic artefacts depends on the error or workflow mechanism",
-    subtitle = "Points are medians; intervals show 10th–90th percentiles across stochastic iterations.",
+    subtitle = paste(
+      "Scenarios are ordered as observed-pool errors, regional/expert errors and workflow decisions.",
+      "Points are medians; intervals show 10th–90th percentiles."
+    ),
     x = NULL,
     y = "Change relative to the appropriate baseline (%)\n(GDM: percentage points)"
   ) +
-  theme_paper(7.7) +
-  theme(axis.text.x = element_text(angle = 35, hjust = 1),
-        strip.text.x = element_text(size = rel(.82)),
-        panel.spacing = grid::unit(3.5, "mm"))
+  theme_paper(8.0) +
+  theme(
+    axis.text.x = element_text(angle = 38, hjust = 1),
+    panel.spacing = grid::unit(5, "mm")
+  )
 
-save_main(p3, "Fig3_directional_process_effects_v2", 235, 170)
+save_main(p3, "Fig3_directional_process_effects_v3", 205, 160)
 
 # =============================================================================
 # Fig 4: GDM ecological-inference heatmaps
@@ -327,7 +347,7 @@ p4 <- (p4a + p4b) +
   ) &
   theme(legend.position = "bottom")
 
-save_main(p4, "Fig4_GDM_ecological_inference_v2", 210, 155)
+save_main(p4, "Fig4_GDM_ecological_inference_v3", 210, 155)
 
 # =============================================================================
 # Fig 5: Blowes alpha-gamma-occupancy synthesis
@@ -423,7 +443,7 @@ p5 <- wrap_plots(p5_parts, ncol = 1) +
   ) &
   theme(legend.position = "bottom")
 
-save_main(p5, "Fig5_multitaxa_Blowes_synthesis_v2", 195, if (length(p5_parts) == 3) 300 else 225)
+save_main(p5, "Fig5_multitaxa_Blowes_synthesis_v3", 195, if (length(p5_parts) == 3) 300 else 225)
 
 message("\nFinished v2 figures:")
 message(MAIN_DIR)

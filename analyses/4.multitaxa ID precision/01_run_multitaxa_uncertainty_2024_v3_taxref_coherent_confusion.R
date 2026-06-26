@@ -1,5 +1,5 @@
 # ============================================================================
-# 01_run_multitaxa_uncertainty_2024_v2_coherent_confusion.R
+# 01_run_multitaxa_uncertainty_2024_v3_taxref_coherent_confusion.R
 # Empirical multi-taxon taxonomic-uncertainty pipeline for RMQS 2024
 #
 # Scope
@@ -87,7 +87,10 @@ REGIONAL_POOL_DIR <- "regional_pools"
 EXPERT_MAP_DIR <- "expert_confusion_maps"
 RUN_REGIONAL_POOL_SCENARIOS <- TRUE
 RUN_EXPERT_CONFUSION_SCENARIOS <- TRUE
-WRITE_COHERENT_CONFUSION_MAPS <- TRUE
+# Store one auditable source→target map per assemblage × scenario by default.
+# Full map sets can be produced by setting WRITE_ALL_COHERENT_CONFUSION_MAPS = TRUE.
+WRITE_EXAMPLE_COHERENT_CONFUSION_MAPS <- TRUE
+WRITE_ALL_COHERENT_CONFUSION_MAPS <- FALSE
 
 set.seed(123)
 
@@ -616,42 +619,62 @@ make_rare_error_probabilities <- function(species_long, rate) {
 # vary by site through binomial sampling, but source -> target identity does not.
 make_coherent_confusion_map <- function(source_meta, candidate_pool, seed = NULL) {
   if (!is.null(seed)) set.seed(seed)
-  
+
+  # CD_REF is optional for observed-pool maps. It is used for the regional
+  # TAXREF pool to prevent a source from being reassigned to the same accepted
+  # species under a different synonym/identifier.
+  if (!"cd_ref" %in% names(source_meta)) source_meta$cd_ref <- NA_character_
+  if (!"cd_ref" %in% names(candidate_pool)) candidate_pool$cd_ref <- NA_character_
+
   source_meta <- source_meta %>%
-    select(source_taxon_unit = taxon_unit, source_genus = genus) %>%
+    transmute(
+      source_taxon_unit = taxon_unit,
+      source_genus = genus,
+      source_cd_ref = as.character(cd_ref)
+    ) %>%
     filter(!is.na(source_taxon_unit), !is.na(source_genus)) %>%
     distinct()
-  
+
   candidate_pool <- candidate_pool %>%
-    select(target_taxon_unit = taxon_unit, target_genus = genus) %>%
+    transmute(
+      target_taxon_unit = taxon_unit,
+      target_genus = genus,
+      target_cd_ref = as.character(cd_ref)
+    ) %>%
     filter(!is.na(target_taxon_unit), !is.na(target_genus)) %>%
     distinct()
-  
+
   purrr::map_dfr(seq_len(nrow(source_meta)), function(i) {
     src <- source_meta[i, , drop = FALSE]
+
     candidates <- candidate_pool %>%
       filter(
         target_genus == src$source_genus,
-        target_taxon_unit != src$source_taxon_unit
+        target_taxon_unit != src$source_taxon_unit,
+        is.na(src$source_cd_ref) | is.na(target_cd_ref) | target_cd_ref != src$source_cd_ref
       )
-    
+
     if (nrow(candidates) == 0L) {
       return(tibble(
         source_taxon_unit = src$source_taxon_unit,
         source_genus = src$source_genus,
+        source_cd_ref = src$source_cd_ref,
         target_taxon_unit = NA_character_,
         target_genus = NA_character_,
+        target_cd_ref = NA_character_,
         mapping_type = "no_candidate"
       ))
     }
-    
+
     target <- candidates %>% slice_sample(n = 1L)
-    
+
     tibble(
       source_taxon_unit = src$source_taxon_unit,
       source_genus = src$source_genus,
+      source_cd_ref = src$source_cd_ref,
       target_taxon_unit = target$target_taxon_unit,
       target_genus = target$target_genus,
+      target_cd_ref = target$target_cd_ref,
       mapping_type = "coherent_random"
     )
   })
@@ -660,20 +683,45 @@ make_coherent_confusion_map <- function(source_meta, candidate_pool, seed = NULL
 read_regional_pool <- function(assemblage_id) {
   path <- file.path(REGIONAL_POOL_DIR, paste0(assemblage_id, "__regional_pool.csv"))
   if (!RUN_REGIONAL_POOL_SCENARIOS || !file.exists(path)) return(NULL)
-  
+
   pool <- readr::read_csv(path, show_col_types = FALSE) %>% janitor::clean_names()
   required <- c("taxon_unit", "genus")
   if (!all(required %in% names(pool))) {
     warning("Regional pool skipped (missing columns): ", path)
     return(NULL)
   }
-  
+
   pool %>%
     transmute(
       taxon_unit = as.character(taxon_unit),
-      genus = as.character(genus)
+      genus = stringr::str_squish(as.character(genus)),
+      cd_ref = if ("cd_ref" %in% names(pool)) as.character(cd_ref) else NA_character_
     ) %>%
+    filter(!is.na(taxon_unit), !is.na(genus), genus != "") %>%
     distinct()
+}
+
+read_regional_source_audit <- function(assemblage_id) {
+  path <- file.path(
+    REGIONAL_POOL_DIR,
+    paste0(assemblage_id, "__observed_taxref_match_audit.csv")
+  )
+  if (!file.exists(path)) {
+    return(tibble(taxon_unit = character(), cd_ref = character()))
+  }
+
+  audit <- readr::read_csv(path, show_col_types = FALSE) %>% janitor::clean_names()
+  if (!all(c("observed_taxon_unit", "cd_ref") %in% names(audit))) {
+    return(tibble(taxon_unit = character(), cd_ref = character()))
+  }
+
+  audit %>%
+    transmute(
+      taxon_unit = as.character(observed_taxon_unit),
+      cd_ref = as.character(cd_ref)
+    ) %>%
+    filter(!is.na(taxon_unit)) %>%
+    distinct(taxon_unit, .keep_all = TRUE)
 }
 
 read_expert_confusion_map <- function(assemblage_id) {
@@ -780,15 +828,49 @@ simulate_from_coherent_map <- function(
     summarise(abundance = sum(abundance), .groups = "drop")
 }
 
-write_confusion_map <- function(assemblage_id, scenario, iter, map) {
-  if (!WRITE_COHERENT_CONFUSION_MAPS || is.null(map) || nrow(map) == 0L) return(invisible(NULL))
-  
+annotate_confusion_map <- function(confusion_map, species_long, p_error_tbl) {
+  abundance_by_source <- species_long %>%
+    group_by(taxon_unit) %>%
+    summarise(source_total_abundance = sum(abundance), .groups = "drop") %>%
+    rename(source_taxon_unit = taxon_unit)
+
+  confusion_map %>%
+    left_join(abundance_by_source, by = "source_taxon_unit") %>%
+    left_join(
+      p_error_tbl %>% rename(source_taxon_unit = taxon_unit),
+      by = "source_taxon_unit"
+    ) %>%
+    mutate(
+      source_total_abundance = coalesce(source_total_abundance, 0),
+      p_error = coalesce(p_error, 0),
+      has_target = !is.na(target_taxon_unit),
+      expected_reassigned_individuals = source_total_abundance * p_error * has_target
+    )
+}
+
+write_confusion_map <- function(
+    assemblage_id,
+    scenario,
+    iter,
+    map,
+    species_long,
+    p_error_tbl
+) {
+  if (is.null(map) || nrow(map) == 0L) return(invisible(NULL))
+  if (!WRITE_ALL_COHERENT_CONFUSION_MAPS &&
+      !(WRITE_EXAMPLE_COHERENT_CONFUSION_MAPS && iter == 1L)) {
+    return(invisible(NULL))
+  }
+
   path <- file.path(
     OUT_DIR, "per_assemblage",
     paste0(assemblage_id, "__", scenario, "__iter_", sprintf("%02d", iter), "__confusion_map.csv")
   )
-  
-  readr::write_csv(map, path)
+
+  readr::write_csv(
+    annotate_confusion_map(map, species_long, p_error_tbl),
+    path
+  )
   invisible(path)
 }
 
@@ -895,6 +977,8 @@ build_scenarios <- function(assemblage_id, data, family_applicable, stage_candid
   
   observed_pool <- species_meta
   regional_pool <- read_regional_pool(assemblage_id)
+  regional_source_meta <- species_meta %>%
+    left_join(read_regional_source_audit(assemblage_id), by = "taxon_unit")
   expert_map <- read_expert_confusion_map(assemblage_id)
   
   fixed_p <- species_meta %>% transmute(taxon_unit, p_error = MAIN_ERROR_RATE)
@@ -909,7 +993,10 @@ build_scenarios <- function(assemblage_id, data, family_applicable, stage_candid
       candidate_pool = observed_pool,
       seed = 100000L + iter_i
     )
-    write_confusion_map(assemblage_id, "species_observed_congeneric_10pct", iter_i, observed_map)
+    write_confusion_map(
+      assemblage_id, "species_observed_congeneric_10pct", iter_i,
+      observed_map, data$species, fixed_p
+    )
     
     scenario_list <- append(scenario_list, list(list(
       scenario = "species_observed_congeneric_10pct",
@@ -930,7 +1017,10 @@ build_scenarios <- function(assemblage_id, data, family_applicable, stage_candid
       candidate_pool = observed_pool,
       seed = 120000L + iter_i
     )
-    write_confusion_map(assemblage_id, "species_observed_rare_weighted_10pct", iter_i, rare_map)
+    write_confusion_map(
+      assemblage_id, "species_observed_rare_weighted_10pct", iter_i,
+      rare_map, data$species, rare_p
+    )
     
     scenario_list <- append(scenario_list, list(list(
       scenario = "species_observed_rare_weighted_10pct",
@@ -948,11 +1038,14 @@ build_scenarios <- function(assemblage_id, data, family_applicable, stage_candid
     # Its full 1–20% response is handled separately in the Appendix script.
     if (!is.null(regional_pool) && nrow(regional_pool) > 0L) {
       regional_map <- make_coherent_confusion_map(
-        source_meta = species_meta,
+        source_meta = regional_source_meta,
         candidate_pool = regional_pool,
         seed = 140000L + iter_i
       )
-      write_confusion_map(assemblage_id, "species_regional_congeneric_10pct", iter_i, regional_map)
+      write_confusion_map(
+        assemblage_id, "species_regional_congeneric_10pct", iter_i,
+        regional_map, data$species, fixed_p
+      )
       
       scenario_list <- append(scenario_list, list(list(
         scenario = "species_regional_congeneric_10pct",
@@ -974,7 +1067,10 @@ build_scenarios <- function(assemblage_id, data, family_applicable, stage_candid
         expert_map = expert_map,
         seed = 160000L + iter_i
       )
-      write_confusion_map(assemblage_id, "species_expert_confusion_10pct", iter_i, coherent_expert_map)
+      write_confusion_map(
+        assemblage_id, "species_expert_confusion_10pct", iter_i,
+        coherent_expert_map, data$species, expert_p
+      )
       
       scenario_list <- append(scenario_list, list(list(
         scenario = "species_expert_confusion_10pct",
@@ -1194,6 +1290,26 @@ selected_manifest <- manifest %>%
 
 if (nrow(selected_manifest) == 0L) stop("No selected assemblages found in manifest.")
 readr::write_csv(selected_manifest, file.path(OUT_DIR, "selected_assemblages.csv"))
+
+regional_pool_availability <- selected_manifest %>%
+  transmute(
+    assemblage_id,
+    regional_pool_file = file.path(REGIONAL_POOL_DIR, paste0(assemblage_id, "__regional_pool.csv")),
+    regional_pool_available = file.exists(regional_pool_file),
+    expert_map_file = file.path(EXPERT_MAP_DIR, paste0(assemblage_id, "__expert_confusions.csv")),
+    expert_map_available = file.exists(expert_map_file)
+  )
+readr::write_csv(
+  regional_pool_availability,
+  file.path(OUT_DIR, "regional_pool_availability.csv")
+)
+
+if (RUN_REGIONAL_POOL_SCENARIOS && !any(regional_pool_availability$regional_pool_available)) {
+  warning(
+    "No regional TAXREF pools were found. The main run will omit regional-pool ",
+    "error scenarios. Run 05_build_multitaxa_taxref_pools_v2.R first."
+  )
+}
 
 all_out <- purrr::map(seq_len(nrow(selected_manifest)), function(i) {
   analyse_assemblage(selected_manifest[i, ], env_station)
@@ -1428,4 +1544,8 @@ message("Key outputs:")
 message("  - ", file.path(OUT_DIR, "results_summary.csv"))
 message("  - ", file.path(OUT_DIR, "gdm_terms_summary.csv"))
 message("  - ", file.path(OUT_DIR, "figures", "FigM1_multitaxa_robustness_heatmap.png"))
-message("\nBlowes diagnostics should be added only after reviewing these alpha-beta-GDM results.")
+message("\nCoherent-map audit files (iteration 1 by default) are stored in:")
+message("  ", file.path(OUT_DIR, "per_assemblage"))
+message("Regional pool availability audit:")
+message("  ", file.path(OUT_DIR, "regional_pool_availability.csv"))
+message("\nRun the separate 1–20% appendix-gradient script after reviewing this main 10% analysis.")
