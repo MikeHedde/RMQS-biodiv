@@ -16,6 +16,8 @@
 # R Environment Variables ----
 .Renviron
 
+# Large .txt files
+TAXREFv*.txt
 # User-specific files ----
 README.html
 inst/doc
